@@ -1,13 +1,13 @@
-<?php error_reporting(0);
+<?php //error_reporting(0);
 
-$server		=	"localhost";
-$user		=	"root";
-$password	=	"";
-$dbname		=	"nextpub";
+$hostname		=	"localhost";
+$username		=	"root";
+$password	    =	"";
+$database		=	"eseal_app";
 /*
-$connection	=	mysql_connect($server,$user,$password) or die("not Server not connected");
-$database	=	mysql_select_db($dbname) or die("Data base not connected");
-*/
+	$connection	=	mysql_connect($hostname,$username,$password) or die("not Server not connected");
+	$database	=	mysql_select_db($database) or die("Data base not connected");
+	*/
 
 $conn = mysqli_connect($hostname, $username, $password, $database);
 if( mysqli_connect_error()) echo "Failed to connect to MySQL: " . mysqli_connect_error();

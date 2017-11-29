@@ -71,8 +71,8 @@
               </a>
             </li>
             <li class="treeview">
-              <a href="writerlist.php">
-                <i class="ion ion-android-person"></i> <span>Writers</span>
+              <a href="productlist.php">
+                <i class="ion ion-android-person"></i> <span>Product</span>
               </a>
             </li> 
 			<li class="treeview">

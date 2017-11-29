@@ -19,14 +19,13 @@ if(isset($_REQUEST['login']))
 $email=$_REQUEST['email'];
 $password=$_REQUEST['password'];
 $password_md5=md5($password);
-$sql="SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password_md5' AND `confirmed`='1'";
+$sql="SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password_md5' AND `confirmed`='1' and `id`='2'";
+
 $exe=mysql_query($sql);
 $num=@mysql_num_rows($exe);
+
 if($num>0)
 	{
-	
-	
-	
 	$fet=@mysql_fetch_array($exe);
 	$user_id=$fet['id'];
 	
