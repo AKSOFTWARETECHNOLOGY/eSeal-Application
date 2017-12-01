@@ -12,20 +12,6 @@ $user_id=$_SESSION['adminuserid'];
 $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
-
-if(isset($_REQUEST['product_id']))
-{
-    $product_id=$_REQUEST['product_id'];
-}
-else
-{
-    exit;
-}
-
-$product_sql="SELECT * FROM `products` WHERE `id`='$product_id' ";
-$product_exe=mysql_query($product_sql);
-$product_cnt=@mysql_num_rows($product_exe);
-$product_fet=mysql_fetch_array($product_exe);
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,11 +35,11 @@ $product_fet=mysql_fetch_array($product_exe);
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Edit Product
+                Add New Product
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Edit Product</li>
+                <li class="active">Add Product</li>
             </ol>
         </section>
 
@@ -65,10 +51,10 @@ $product_fet=mysql_fetch_array($product_exe);
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Edit Product Details</h3>
+                            <h3 class="box-title">Add New Product</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="doupdateproduct.php?product_id=<?php echo $product_fet['id']; ?>" method="post">
+                        <form role="form" action="doaddproducts.php" method="post">
                             <div class="box-body">
 
                                 <div class="col-md-12">
@@ -76,25 +62,25 @@ $product_fet=mysql_fetch_array($product_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="productName" id="productName" value="<?php echo $product_fet['product_name']; ?>" />
+                                            <input type="text" name="productName" id="productName" value="" />
                                             <div id="errProdName" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Info</label>
                                         <div class="col-sm-9">
-                                            <textarea name="productInfo"><?php echo $product_fet['product_info']; ?></textarea>
+                                            <textarea name="productInfo"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Price<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="number" name="productPrice" id="productPrice" value="<?php echo $product_fet['product_price']; ?>" />
+                                            <input type="number" name="productPrice" id="productPrice" value="" />
                                             <div id="errProdPrice" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-block btn-flat save-prod">Save Changes</button>
+                                        <button type="submit" class="btn btn-primary btn-block btn-flat add-prod">Add</button>
                                     </div>
                                 </div>
                                 <div class="col-md-1"></div>
@@ -141,7 +127,7 @@ $product_fet=mysql_fetch_array($product_exe);
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $(".save-prod").click(function(){
+        $(".add-prod").click(function(){
             $("div#errProdName").html( " " );
             $("div#errProdPrice").html( " " );
             var prodName = $('#productName').val();

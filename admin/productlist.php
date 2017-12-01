@@ -58,9 +58,9 @@ $product_cnt=@mysql_num_rows($product_exe);
                             <h3 class="box-title" style="line-height:30px;">Products List</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
-
-                            <?php if(isset($_REQUEST['succ'])) { ?> <span style="color:green;font-size:16px;font-weight:bold;"> Record Deleted Successfully </span> <?php } ?>
-                            <?php if(isset($_REQUEST['err'])) { ?> <span style="color:red;font-size:16px;font-weight:bold;"> Record Not Deleted </span> <?php } ?>
+                            <div class="row">
+                                <a href="add-products.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs">Add Products</button></a>
+                            </div>
                             <?php
                             if($product_cnt>0)
                             {
