@@ -76,8 +76,8 @@
               </a>
             </li> 
 			<li class="treeview">
-              <a href="contentlist.php">
-                <i class="ion ion-android-clipboard"></i> <span>Writer Contents</span>
+              <a href="inventorieslist.php">
+                <i class="ion ion-android-clipboard"></i> <span>Product Inventories</span>
               </a>
             </li>
 			<li class="treeview">
