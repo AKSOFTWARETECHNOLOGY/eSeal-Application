@@ -81,8 +81,8 @@
               </a>
             </li>
 			<li class="treeview">
-              <a href="publisherlist.php">
-                <i class="ion ion-android-contact"></i> <span>Publishers</span>
+              <a href="exporterlist.php">
+                <i class="ion ion-android-contact"></i> <span>Exporters</span>
               </a>
             </li>
 			<li class="treeview">

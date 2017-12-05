@@ -17,7 +17,7 @@ function mysql_query($query) {
 $conn = $GLOBALS['conn'];	
 return mysqli_query($conn, $query);	
 }
-	
+
 function mysql_num_rows($exec) {
 return mysqli_num_rows($exec);
 }

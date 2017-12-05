@@ -25,6 +25,15 @@ function mysql_num_rows($exec) {
 function mysql_fetch_array($exec) {
     return mysqli_fetch_array($exec);
 }
+
+function mysql_fetch_assoc($exec) {
+    return mysqli_fetch_assoc($exec);
+}
+
+function mysql_insert_id() {
+    $conn = $GLOBALS['conn'];
+    return mysqli_insert_id($conn);
+}
 ?>
                             
 						
