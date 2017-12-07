@@ -120,7 +120,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                                 <option value="0">Select City</option>
                                                 <?php
                                                 foreach($city_results as $key => $value){ ?>
-                                                    <option value="<?php echo $value['id']; ?>"><?php echo $value['city_name']; ?></option>
+                                                    <option value="<?php echo $value['id']; ?>" <?php if($value['id'] == $export_fet['city']){ echo 'selected'; } ?>><?php echo $value['city_name']; ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -142,7 +142,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                                 <option value="0">Select Country</option>
                                                 <?php
                                                 foreach($country_results as $key => $value){ ?>
-                                                    <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
+                                                    <option value="<?php echo $value['id']; ?>" <?php if($value['id'] == $export_fet['country']){ echo 'selected'; } ?>><?php echo $value['name']; ?></option>
                                                 <?php
                                                 }
                                                 ?>

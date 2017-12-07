@@ -65,7 +65,7 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            <li class="active treeview hidden">
               <a href="dashboard.php">
                 <i class="ion ion-pie-graph"></i> <span>Dashboard</span>
               </a>
@@ -80,31 +80,17 @@
                 <i class="ion ion-android-clipboard"></i> <span>Product Inventories</span>
               </a>
             </li>
+              <li class="treeview">
+                  <a href="buy-product.php">
+                      <i class="ion ion-android-contact"></i> <span>Buy Product</span>
+                  </a>
+              </li>
 			<li class="treeview">
               <a href="exporterlist.php">
                 <i class="ion ion-android-contact"></i> <span>Exporters</span>
               </a>
             </li>
-			<li class="treeview">
-              <a href="booklist.php">
-                <i class="ion ion-android-list"></i> <span>Publisher Books</span>
-              </a>
-            </li>
-			<li class="treeview">
-              <a href="requirementlist.php">
-                <i class="ion ion-android-list"></i> <span>Publisher Requirements</span>
-              </a>
-            </li>
-			<li class="treeview">
-              <a href="languagelist.php">
-                <i class="ion ion-android-list"></i> <span>Languages</span>
-              </a>
-            </li>
-			<li class="treeview">
-              <a href="genrelist.php">
-                <i class="ion ion-android-list"></i> <span>Genres</span>
-              </a>
-            </li>
+
             <li class="treeview">
               <a href="logout.php">
                 <i class="ion ion-log-out"></i> <span>Logout</span>

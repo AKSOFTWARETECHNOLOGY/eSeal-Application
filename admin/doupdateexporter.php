@@ -32,9 +32,9 @@ if(isset($_REQUEST['exporter_id'])) {
     $username = $_SESSION['adminusername'];
     $date = date("Y-m-d");
 
-    $sql = "UPDATE `exporter_info` SET `name_exporter` = '$exporterName', `name_person` = $personName, `user_id` = '$userId',
+    $sql = "UPDATE `exporter_info` SET `name_exporter` = '$exporterName', `name_person` = '$personName', `user_id` = '$userId',
 `address` = '$address', `city` = '$cityId', `state` = '$state',`country` = '$countryId',`mobile` = '$mobile', `email` = '$email',
- `pincode` = '$pincode', `telephone` = '$telephone',`gstin` = '$gstin', `pan_number` = '$panNumber',`ice_code` = '$icecode',
+ `pincode` = '$pincode', `telephone` = '$telephone',`gstin` = '$gstin', `pan_number` = '$panNumber',`iec_code` = '$icecode',
             `updated_by` = '$username', `updated_at` = '$date'
             WHERE `exporter_info`.`id` = '$exporter_id'";
     $exe = mysql_query($sql);

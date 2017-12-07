@@ -34,10 +34,9 @@ $last_id = mysql_insert_id();
 $s = "INSERT INTO `role_user` (user_id, role_id) values ('$last_id', 3)";
 $e = mysql_query($s);
 
-$sq1l = "INSERT INTO `exporter_info` (user_id, name_exporter, name_person, address, city, state, country, pincode, telephone, mobile, email, gstin, pan_number, ice_code, created_by, updated_by, created_at, updated_at)
+$sq1l = "INSERT INTO `exporter_info` (user_id, name_exporter, name_person, address, city, state, country, pincode, telephone, mobile, email, gstin, pan_number, iec_code, created_by, updated_by, created_at, updated_at)
 VALUES ('$last_id','$exporterName','$personName','$address','$cityId','$state','$countryId','$pincode','$telephone','$mobile','$email','$gstin','$panNumber','$icecode','$username','$username','$date','$date')";
 $exe1 = mysql_query($sql1);
-
 
 header("Location: exporterlist.php?suc=1");
 
