@@ -1,0 +1,1 @@
+<div class="banner"><div class="banner-overlay"></div></div>
