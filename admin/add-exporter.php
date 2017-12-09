@@ -77,28 +77,28 @@ $user_email=$_SESSION['adminuseremail'];
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Exporter Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="exporterName" id="exporterName" value="" />
+                                            <input class="form-control" type="text" name="exporterName" id="exporterName" value="" />
                                             <div class="err" id="errExporterName" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Person Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="personName" id="personName" value="" />
+                                            <input class="form-control" type="text" name="personName" id="personName" value="" />
                                             <div class="err" id="errPersonName" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Address<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <textarea name="address" id="address"></textarea>
+                                            <textarea class="form-control" name="address" id="address"></textarea>
                                             <div class="err" id="errAddress" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">City<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <select name="cityId" id="cityId">
+                                            <select class="form-control" name="cityId" id="cityId">
                                                 <option value="0">Select City</option>
                                                 <?php
                                                 foreach($city_results as $key => $value){ ?>
@@ -113,14 +113,14 @@ $user_email=$_SESSION['adminuseremail'];
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">State<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="state" id="state" value="" />
+                                            <input class="form-control" type="text" name="state" id="state" value="" />
                                             <div class="err" id="errState" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Country<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <select name="countryId" id="countryId">
+                                            <select class="form-control" name="countryId" id="countryId">
                                                 <option value="0">Select Country</option>
                                                 <?php
                                                 foreach($country_results as $key => $value){ ?>
@@ -135,45 +135,45 @@ $user_email=$_SESSION['adminuseremail'];
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Pincode<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="number" name="pincode" id="pincode" value="" />
+                                            <input class="form-control" type="number" name="pincode" id="pincode" value="" />
                                             <div class="err" id="errPincode" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Telephone</label>
                                         <div class="col-sm-9">
-                                            <input type="number" name="telephone" id="telephone" value="" />
+                                            <input class="form-control" type="number" name="telephone" id="telephone" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Mobile</label>
                                         <div class="col-sm-9">
-                                            <input type="number" name="mobile" id="mobile" value="" />
+                                            <input class="form-control" type="number" name="mobile" id="mobile" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Email <span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="email" name="email" id="email" value="" />
+                                            <input class="form-control" type="email" name="email" id="email" value="" />
                                             <div class="err" id="errEmail" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">GstIn</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="gstin" id="gstin" value="" />
+                                            <input class="form-control" type="text" name="gstin" id="gstin" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Pan Number</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="panNumber" id="panNumber" value="" />
+                                            <input class="form-control" type="text" name="panNumber" id="panNumber" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">IEC Code</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="icecode" id="icecode" value="" />
+                                            <input class="form-control" type="text" name="icecode" id="icecode" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">

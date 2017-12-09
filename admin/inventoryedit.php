@@ -77,26 +77,26 @@ $product_fet=mysql_fetch_array($product_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="productName" id="productName" value="<?php echo $product_fet['product_name']; ?>" readonly/>
+                                            <input class="form-control" type="text" name="productName" id="productName" value="<?php echo $product_fet['product_name']; ?>" readonly/>
                                             <div id="errProdName" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Unicode</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="unicode" id="unicode" value="<?php echo $product_fet['product_unicode']; ?>"/>
+                                            <input class="form-control" type="text" name="unicode" id="unicode" value="<?php echo $product_fet['product_unicode']; ?>"/>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Sealcode</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="sealcode" id="sealcode" value="<?php echo $product_fet['product_sealcode']; ?>"/>
+                                            <input class="form-control" type="text" name="sealcode" id="sealcode" value="<?php echo $product_fet['product_sealcode']; ?>"/>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product sale Price<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="number" name="salePrice" id="salePrice" value="<?php echo $product_fet['product_sale_price']; ?>" />
+                                            <input class="form-control" type="number" name="salePrice" id="salePrice" value="<?php echo $product_fet['product_sale_price']; ?>" />
                                             <div id="errProdPrice" style="color:red"></div>
                                         </div>
                                     </div>

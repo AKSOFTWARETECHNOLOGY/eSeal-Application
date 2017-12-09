@@ -80,7 +80,7 @@ $export_cnt=@mysql_num_rows($export_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <select name="productName" id="productName">
+                                            <select name="productName" id="productName" class="form-control">
                                                 <option value="0"> Select Product </option>
                                                 <option value="<?php echo $product_fet['id']; ?>"> <?php echo $product_fet['product_name']; ?> </option>
                                             </select>
@@ -91,7 +91,7 @@ $export_cnt=@mysql_num_rows($export_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Exporter Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <select name="exporterName" id="exporterName">
+                                            <select class="form-control" name="exporterName" id="exporterName">
                                                 <option value="0"> Select Exporter </option>
                                                 <?php
                                                 while($export_fet=mysql_fetch_array($export_exe))
@@ -107,7 +107,7 @@ $export_cnt=@mysql_num_rows($export_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Quantity<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <select name="quantity" id="quantity">
+                                            <select class="form-control" name="quantity" id="quantity">
                                                 <option value="0"> Select Quantity </option>
                                                 <option value="10"> 10 </option>
                                                 <option value="20"> 20 </option>
@@ -122,10 +122,9 @@ $export_cnt=@mysql_num_rows($export_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Payment Option<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <select name="payment" id="payment">
+                                            <select class="form-control" name="payment" id="payment">
                                                 <option value="0"> Select Payment Option </option>
                                                 <option value="Cash On Delivery"> Cash On Delivery </option>
-                                                <option value="Online Payment"> Online Payment </option>
                                                 <option value="NEFT"> NEFT </option>
                                                 <option value="Cheque/DD"> Cheque/DD </option>
                                             </select>

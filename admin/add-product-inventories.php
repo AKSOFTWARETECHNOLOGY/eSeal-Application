@@ -76,26 +76,26 @@ $product_fet=mysql_fetch_array($product_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="productName" id="productName" value="<?php echo $product_fet['product_name'] ?>" readonly />
+                                            <input class="form-control" type="text" name="productName" id="productName" value="<?php echo $product_fet['product_name'] ?>" readonly />
                                             <input type="hidden" name="productId" value="<?php echo $product_fet['product_id'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Unicode</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="unicode" id="unicode" value="" />
+                                            <input class="form-control" type="text" name="unicode" id="unicode" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Sealcode</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="sealcode" id="unicode" value="" />
+                                            <input class="form-control" type="text" name="sealcode" id="unicode" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Sale Price</label>
                                         <div class="col-sm-9">
-                                            <input type="number" name="salePrice" id="salePrice" value="" />
+                                            <input class="form-control"  type="number" name="salePrice" id="salePrice" value="" />
                                             <div id="errProdPrice" style="color:red"></div>
                                         </div>
                                     </div>

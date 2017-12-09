@@ -85,6 +85,11 @@
                       <i class="ion ion-android-contact"></i> <span>Buy Product</span>
                   </a>
               </li>
+              <li class="treeview">
+                  <a href="orderlist.php">
+                      <i class="ion ion-android-contact"></i> <span>Product Order</span>
+                  </a>
+              </li>
 			<li class="treeview">
               <a href="exporterlist.php">
                 <i class="ion ion-android-contact"></i> <span>Exporters</span>

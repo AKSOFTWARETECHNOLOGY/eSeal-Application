@@ -95,28 +95,28 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Exporter Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="exporterName" id="exporterName" value="<?php echo $export_fet['name_exporter']; ?>" />
+                                            <input class="form-control" type="text" name="exporterName" id="exporterName" value="<?php echo $export_fet['name_exporter']; ?>" />
                                             <div class="err" id="errExporterName" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Person Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="personName" id="personName" value="<?php echo $export_fet['name_person']; ?>" />
+                                            <input class="form-control" type="text" name="personName" id="personName" value="<?php echo $export_fet['name_person']; ?>" />
                                             <div class="err" id="errPersonName" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Address<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <textarea name="address" id="address"><?php echo $export_fet['address']; ?></textarea>
+                                            <textarea class="form-control" name="address" id="address"><?php echo $export_fet['address']; ?></textarea>
                                             <div class="err" id="errAddress" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">City<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <select name="cityId" id="cityId">
+                                            <select class="form-control" name="cityId" id="cityId">
                                                 <option value="0">Select City</option>
                                                 <?php
                                                 foreach($city_results as $key => $value){ ?>
@@ -131,14 +131,14 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">State<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="state" id="state" value="<?php echo $export_fet['state']; ?>" />
+                                            <input class="form-control" type="text" name="state" id="state" value="<?php echo $export_fet['state']; ?>" />
                                             <div class="err" id="errState" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Country<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <select name="countryId" id="countryId">
+                                            <select class="form-control" name="countryId" id="countryId">
                                                 <option value="0">Select Country</option>
                                                 <?php
                                                 foreach($country_results as $key => $value){ ?>
@@ -153,45 +153,45 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Pincode<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="number" name="pincode" id="pincode" value="<?php echo $export_fet['pincode']; ?>" />
+                                            <input class="form-control" type="number" name="pincode" id="pincode" value="<?php echo $export_fet['pincode']; ?>" />
                                             <div class="err" id="errPincode" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Telephone</label>
                                         <div class="col-sm-9">
-                                            <input type="number" name="telephone" id="telephone" value="<?php echo $export_fet['telephone']; ?>" />
+                                            <input class="form-control" type="number" name="telephone" id="telephone" value="<?php echo $export_fet['telephone']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Mobile</label>
                                         <div class="col-sm-9">
-                                            <input type="number" name="mobile" id="mobile" value="<?php echo $export_fet['mobile']; ?>" />
+                                            <input class="form-control" type="number" name="mobile" id="mobile" value="<?php echo $export_fet['mobile']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Email <span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input type="email" name="email" id="email" value="<?php echo $export_fet['email']; ?>" />
+                                            <input class="form-control" type="email" name="email" id="email" value="<?php echo $export_fet['email']; ?>" />
                                             <div class="err" id="errEmail" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">GstIn</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="gstin" id="gstin" value="<?php echo $export_fet['gstin']; ?>" />
+                                            <input class="form-control" type="text" name="gstin" id="gstin" value="<?php echo $export_fet['gstin']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Pan Number</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="panNumber" id="panNumber" value="<?php echo $export_fet['pan_number']; ?>" />
+                                            <input class="form-control" type="text" name="panNumber" id="panNumber" value="<?php echo $export_fet['pan_number']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">IEC Code</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="icecode" id="icecode" value="<?php echo $export_fet['iec_code']; ?>" />
+                                            <input class="form-control" type="text" name="icecode" id="icecode" value="<?php echo $export_fet['iec_code']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
