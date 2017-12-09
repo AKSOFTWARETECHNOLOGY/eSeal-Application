@@ -63,15 +63,12 @@ $product_cnt=@mysql_num_rows($product_exe);
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Product Name</th>
                                         <th>Exporter Name</th>
                                         <th>Product Order Id</th>
                                         <th>Product Quantity</th>
                                         <th>Product Sale Price</th>
                                         <th>Product Sale Total</th>
-                                        <th>Product Sale Type</th>
                                         <th>Product Sale Date</th>
-                                        <th>Product Sale Payment Type</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -81,22 +78,14 @@ $product_cnt=@mysql_num_rows($product_exe);
                                     {
                                         ?>
                                         <tr>
-                                            <td><?php echo $product_fet['product_name']; ?></td>
                                             <td><?php echo $product_fet['name_exporter']; ?></td>
                                             <td><?php echo $product_fet['product_order_id']; ?></td>
                                             <td><?php echo $product_fet['product_sale_quantity']; ?></td>
                                             <td><?php echo $product_fet['product_sale_price']; ?></td>
                                             <td><?php echo $product_fet['product_sale_total']; ?></td>
-                                            <td><?php echo $product_fet['product_sale_type']; ?></td>
                                             <td><?php echo $product_fet['product_sale_date']; ?></td>
-                                            <td><?php echo $product_fet['product_sale_payment_type']; ?></td>
                                             <td>
                                                 <a href="orderview.php?order_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <a href="inventoryedit.php?inventory_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <a href="inventory-delete.php?delete=1&inventory_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
-
                                             </td>
                                         </tr>
                                     <?php

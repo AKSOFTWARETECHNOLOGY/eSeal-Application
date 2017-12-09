@@ -30,11 +30,9 @@ $gst_num = $exp_fet['gstin'];
 $pan_num = $exp_fet['pan_number'];
 $iec_code = $exp_fet['iec_code'];
 
-
 $inv_sql="SELECT * FROM `product_info` as `pi` WHERE `pi`.product_id = $prodId and `pi`.product_sale_status = 0";
 $inv_exe=mysql_query($inv_sql);
 $inv_cnt=@mysql_num_rows($inv_exe);
-//echo $inv_cnt; exit;
 $inv_results = array();
 while($row = mysql_fetch_assoc($inv_exe)) {
     array_push($inv_results, $row);
@@ -49,21 +47,20 @@ if($inv_cnt >= $quantity){
         $exe = mysql_query($sql);
     }
 
-
-        $sale_price = $inv_results[$i]['product_sale_price'];
-        $sale_total = $quantity * $sale_price;
+    $sale_price = $inv_results[0]['product_sale_price'];
+    $sale_total = $quantity * $sale_price;
 
         $s = "INSERT INTO `product_order` (user_id, product_exporter_id, product_id, product_order_id, product_sale_quantity,
 product_sale_price, product_sale_total, product_sale_type, product_sale_status, product_sale_date, product_sale_payment_type)
-values ('$userId', '$exporterId','$prodId','ESO100001', '$quantity','$sale_price','$sale_total','Direct','1','$date','$payment' )";
+values ('$userId', '$exporterId','$prodId','ESO100001', '$quantity','$sale_price','$sale_total','1','1','$date','$payment' )";
     $q= mysql_query($s);
 
-
     $last_order_id = mysql_insert_id();
-    $unicode =  $inv_results[$i]['product_unicode'];
-    $sealcode = $inv_results[$i]['product_sealcode'];
 
     for($i=0; $i<$quantity; $i++) {
+        $unicode =  $inv_results[$i]['product_unicode'];
+        $sealcode = $inv_results[$i]['product_sealcode'];
+
         $s1 = "INSERT INTO `product_order_info` (user_id, product_id, product_order_id, product_unicode,
 product_sealcode, product_exporter_id, iec_no, gst_no, pan_no, sealing_date)
 values ('$userId','$prodId','$last_order_id', '$unicode','$sealcode','$exporterId','$iec_code','$gst_num','$pan_num','$date')";
