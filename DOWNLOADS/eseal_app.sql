@@ -80,11 +80,8 @@ CREATE TABLE `customs_info` (
   `updated_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `doctor_doctor_id_foreign` (`user_id`),
-  KEY `doctor_city_foreign` (`city`),
-  KEY `doctor_country_foreign` (`country`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `customs_info` */
 
@@ -113,11 +110,8 @@ CREATE TABLE `exporter_info` (
   `updated_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `doctor_doctor_id_foreign` (`user_id`),
-  KEY `doctor_city_foreign` (`city`),
-  KEY `doctor_country_foreign` (`country`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `exporter_info` */
 
@@ -199,13 +193,77 @@ CREATE TABLE `product_info` (
   `updated_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `doctor_doctor_id_foreign` (`user_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `product_info` */
 
 insert  into `product_info`(`id`,`user_id`,`product_id`,`product_unicode`,`product_sealcode`,`product_sale_price`,`product_exporter_id`,`product_sale_status`,`product_sale_date`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (1,2,1,'ES100000001','121212',NULL,NULL,0,NULL,'ADMIN','ADMIN','2017-11-29 12:12:12','2017-11-29 12:12:12'),(2,2,1,'ES100000002','131313',NULL,NULL,0,NULL,'ADMIN','ADMIN','2017-11-29 12:12:12','2017-11-29 12:12:12');
+
+/*Table structure for table `product_order` */
+
+DROP TABLE IF EXISTS `product_order`;
+
+CREATE TABLE `product_order` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `product_exporter_id` int(10) DEFAULT NULL,
+  `product_id` int(11) unsigned NOT NULL,
+  `product_order_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `product_sale_quantity` int(11) unsigned NOT NULL,
+  `product_sale_price` decimal(15,2) DEFAULT NULL,
+  `product_sale_total` decimal(15,2) DEFAULT NULL,
+  `product_sale_type` int(11) NOT NULL,
+  `product_sale_status` int(11) NOT NULL DEFAULT '0',
+  `product_sale_date` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `product_sale_payment_type` int(11) NOT NULL,
+  `created_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `updated_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `product_order` */
+
+/*Table structure for table `product_order_info` */
+
+DROP TABLE IF EXISTS `product_order_info`;
+
+CREATE TABLE `product_order_info` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `product_id` int(11) unsigned NOT NULL,
+  `product_order_id` int(11) DEFAULT NULL,
+  `product_unicode` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `product_sealcode` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `product_exporter_id` int(11) unsigned DEFAULT NULL,
+  `zone` int(11) DEFAULT NULL,
+  `commissionerate` int(11) DEFAULT NULL,
+  `shipping_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `shipping_date` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `iec_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pan_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gst_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sealing_date` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sealing_time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `destination_port` int(11) DEFAULT NULL,
+  `container_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `trailer_truck_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `driver_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `driver_licence` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customs_approve_status` int(11) DEFAULT '0',
+  `customs_approve_note` text COLLATE utf8_unicode_ci,
+  `customs_approve_date` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customs_spprove_time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `updated_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `product_order_info` */
 
 /*Table structure for table `products` */
 
@@ -223,9 +281,8 @@ CREATE TABLE `products` (
   `updated_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `doctor_doctor_id_foreign` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `products` */
 
@@ -246,7 +303,7 @@ CREATE TABLE `role_user` (
   KEY `role_user_role_id_foreign` (`role_id`),
   CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
   CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `role_user` */
 
@@ -267,7 +324,7 @@ CREATE TABLE `roles` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `roles` */
 
@@ -319,7 +376,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `users` */
 
@@ -349,10 +406,7 @@ CREATE TABLE `vendor_info` (
   `updated_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `doctor_doctor_id_foreign` (`user_id`),
-  KEY `doctor_city_foreign` (`city`),
-  KEY `doctor_country_foreign` (`country`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `vendor_info` */
