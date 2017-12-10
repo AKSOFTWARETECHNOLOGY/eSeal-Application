@@ -1,3 +1,9 @@
+<?php session_start();
+ob_start();
+
+include "config.php";
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -141,16 +147,25 @@ $(document).ready(function() {
 
 
 <div class="col-md-6 col-sm-6 col-xs-12 contact">
+    <p><b>Sri Sai Ganesh Associates,</b></p>
+
+    <p>1-D First Floor, AM Tower, Old No: 239, New No: 36, Angappanaikken Street, Mannady, Chennai - 600 001</p>
+    <p>(+91) 94880 15119 , (+91) 88256 23258.</p>
+<!--
 <p><b>Sri Sai Ganesh Associates</b></p>
 <p>No.44, MIG, G1/5 Marutham Enclave,</p>
 <p>6th Main Road, Mogappair ERI Scheme,</p>
 <p>Chennai - 600 0037</p>
+-->
 <p>ssgassociates2015@gmail.com</p>
 
  
 
 <div class="map">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.0356191389897!2d80.17700885145436!3d13.075644402971957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526157089399f5%3A0x353a3700b48c2cae!2sSri+Sai+Ganesh+Associates!5e0!3m2!1sen!2sin!4v1512386830635" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7772.172458474217!2d80.28481417440369!3d13.093721413103285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f4ff2f07cf9%3A0x65f3c0b603a9ccb2!2sMannady%2C+George+Town%2C+Chennai%2C+Tamil+Nadu+600001!5e0!3m2!1sen!2sin!4v1512851437313" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+   <!--
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.0356191389897!2d80.17700885145436!3d13.075644402971957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526157089399f5%3A0x353a3700b48c2cae!2sSri+Sai+Ganesh+Associates!5e0!3m2!1sen!2sin!4v1512386830635" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    -->
 </div>
 </div><!-- Column 6 -->
 

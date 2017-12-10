@@ -25,8 +25,13 @@
       </div>
 	  <div class="col-md-3 col-sm-3 col-xs-12">
         <h3>Get in touch</h3>
-        <p>No.44, MIG, G1/5 Marutham Enclave, 6th Main Road, Mogappair ERI Scheme, Mogappair, Chennai - 600 0037</p>
-        <p>(+91) 94880 15119 , (+91) 88256 23258.</p>
+          <p>Sri Sai Ganesh Associates,<br/> 1-D First Floor, AM Tower, <br/>Old No: 239, New No: 36, Angappanaikken Street, Mannady, Chennai - 600 001</p>
+          <p>(+91) 94880 15119 , (+91) 88256 23258.</p>
+
+          <!--
+          <p>No.44, MIG, G1/5 Marutham Enclave, 6th Main Road, Mogappair ERI Scheme, Mogappair, Chennai - 600 0037</p>
+          <p>(+91) 94880 15119 , (+91) 88256 23258.</p>
+          -->
         <ul class="social">
           <li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
           <li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>

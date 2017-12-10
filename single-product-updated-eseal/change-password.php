@@ -1,3 +1,25 @@
+<?php session_start();
+ob_start();
+
+if(!isset($_SESSION['exporteruserid']))
+{
+    header("Location: login.php");
+}
+
+include "config.php";
+
+
+$user_id=$_SESSION['exporteruserid'];
+$user_role=$_SESSION['exporteruserrole'];
+$user_name=$_SESSION['exporterusername'];
+$user_email=$_SESSION['exporteruseremail'];
+
+
+$userinfo_sql="SELECT * FROM `exporter_info` WHERE `user_id`='$user_id'";
+$userinfo_exe=mysql_query($userinfo_sql);
+$userinfo=mysql_fetch_array($userinfo_exe);
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -108,15 +130,24 @@ $(document).ready(function() {
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="my-account">
 <h3><i class="fa fa-unlock" aria-hidden="true"></i> Change Password</h3>
+
+    <?php if(isset($_REQUEST['succ'])) { ?>
+        <p style="color:green;font-weight:bold"> Your Account Password Changed Successfully!</p><br/>
+    <?php } ?>
+
+    <?php if(isset($_REQUEST['err'])) { ?>
+        <p style="color:red;font-weight:bold"> Your Account Password Not Changed / Invalid Current Password.</p><br/>
+    <?php } ?>
+
 <h4>Change Your Account Password</h4>
 
-<form action="" method="post">
+<form name="passwordform" id="passwordform" action="dopassword.php" method="post">
 <div class="form-group row">
 <div class="col-md-3 col-sm-3 col-xs-12">
 <label>Old Password *</label>
 </div>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="fname" placeholder="Old Password" class="account-input" />
+<input type="password" name="currentpassword" id="currentpassword" placeholder="Old Password" class="account-input" />
 </div>
 </div>
 
@@ -126,7 +157,7 @@ $(document).ready(function() {
 <label>New Password *</label>
 </div>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="lname" placeholder="New Password" class="account-input" />
+<input type="password" name="password" id="password" placeholder="New Password" class="account-input" />
 </div>
 </div>
 
@@ -136,17 +167,17 @@ $(document).ready(function() {
 <label>Confirm Password *</label>
 </div>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="email" placeholder="Confirm Password" class="account-input" />
+<input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" class="account-input" />
 </div>
 </div>
 
 
 <div class="form-group row">
 <div class="col-md-6 col-sm-6 col-xs-12">
-<input type="reset" value="Back" class="account-submit" />
+<input type="reset" value="Back" class="account-submit hidden" />
 </div>
 <div class="col-md-6 col-sm-6 col-xs-12 text-right">
-<input type="submit" value="Submit" class="account-submit" />
+<input type="submit" name="passwordupdate" value="Submit" class="account-submit" />
 </div>
 </div>
 
@@ -164,5 +195,66 @@ $(document).ready(function() {
 
 <?php include "bottom_footer.php"; ?>
 
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+
+<script>
+    // Wait for the DOM to be ready
+    $(function() {
+
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        });
+
+        // Initialize form validation on the registration form.
+        // It has the name attribute "registration"
+        $("form#passwordform").validate({
+            // Specify validation rules
+            rules: {
+                currentpassword: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 15,
+                },
+                password: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 15,
+                },
+                confirmpassword: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 15,
+                    equalTo: "#password"
+                },
+            },
+            // Specify validation error messages
+            messages: {
+                currentpassword: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5 characters long",
+                    maxlength: "Your password must be at maximum 15 characters long"
+                },
+                password: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5 characters long",
+                    maxlength: "Your password must be at maximum 15 characters long"
+                },
+                confirmpassword: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5 characters long",
+                    maxlength: "Your password must be at maximum 15 characters long"
+                },
+            },
+            // Make sure the form is submitted to the destination defined
+            // in the "action" attribute of the form when valid
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    });
+</script>
+<style>
+    label.error { color: red; }
+</style>
 </body>
 </html>

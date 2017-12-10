@@ -1,3 +1,29 @@
+<?php session_start();
+ob_start();
+
+if(!isset($_SESSION['exporteruserid']))
+{
+    header("Location: login.php");
+}
+
+/*
+$_SESSION['scaleuppuser']="1";
+header("Location: index.php");
+*/
+include "config.php";
+
+
+$user_id=$_SESSION['exporteruserid'];
+$user_role=$_SESSION['exporteruserrole'];
+$user_name=$_SESSION['exporterusername'];
+$user_email=$_SESSION['exporteruseremail'];
+
+
+$userinfo_sql="SELECT * FROM `exporter_info` WHERE `user_id`='$user_id'";
+$userinfo_exe=mysql_query($userinfo_sql);
+$userinfo=mysql_fetch_array($userinfo_exe);
+
+?>
 <!doctype html>
 <html>
 <head>

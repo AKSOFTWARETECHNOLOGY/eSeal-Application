@@ -1,3 +1,9 @@
+<?php session_start();
+ob_start();
+
+include "config.php";
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -101,11 +107,11 @@ $(document).ready(function() {
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="common-item">
 <div class="text">
-<h3><a href="javascript:void(0);">Product Title</a></h3>
+    <h3><a href="javascript:void(0);">RFID Electronic Seal -  ₹ 299.00 </a></h3>
 </div>
 <div class="item">
 <a href="javascript:void(0);"><img src="images/seal.jpg" alt="" title="" class="img-responsive"></a>
-<div class="btn-group">
+<div class="btn-group hidden">
 <ul>
 <li><a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i> Add to cart</a></li>
 <li><a href="javascript:void(0);"><i class="fa fa-heart"></i> Wishlist</a></li>
@@ -113,7 +119,11 @@ $(document).ready(function() {
 </div>
 </div><!-- Item -->
 <div class="buy-now">
-<a href="javascript:void(0);">Buy Now</a>
+    <?php if(isset($_SESSION['exporteruserid'])){ ?>
+        <a href="product-buy.php">Buy Now</a>
+    <?php } else { ?>
+        <a href="login.php">Buy Now</a>
+    <?php } ?>
 </div>
 </div><!-- Common Item -->
 </div><!-- Column 6 -->

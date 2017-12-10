@@ -193,8 +193,11 @@ Chennai-600037, Tamil Nadu – India. Except as explicitly stated otherwise, SSG
  <div class="accept-btns">
  <ul>
  <li><a href="index.php">Decline</a></li>
+ <!--
  <li><a href="otp-registration.php">I Agree</a></li>
- </ul>
+ -->
+     <li><a href="user-registration.php">I Agree</a></li>
+  </ul>
  </div>
 </div><!-- Column 6 -->
 
@@ -208,9 +211,9 @@ Chennai-600037, Tamil Nadu – India. Except as explicitly stated otherwise, SSG
 </div><!-- Product category -->
 
 
-<?php include "slider.php"; ?>
+<?php //include "slider.php"; ?>
 
-<?php include "testimonial.php"; ?>
+<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 

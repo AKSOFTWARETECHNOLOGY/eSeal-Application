@@ -1,3 +1,45 @@
+<?php session_start();
+ob_start();
+
+if(!isset($_SESSION['exporteruserid']))
+{
+    header("Location: login.php");
+}
+
+include "config.php";
+
+
+$user_id=$_SESSION['exporteruserid'];
+$user_role=$_SESSION['exporteruserrole'];
+$user_name=$_SESSION['exporterusername'];
+$user_email=$_SESSION['exporteruseremail'];
+
+$city_sql="SELECT * FROM `cities` where `city_status`=1";
+$city_exe=mysql_query($city_sql);
+$city_results = array();
+while($row = mysql_fetch_assoc($city_exe)) {
+    array_push($city_results, $row);
+}
+
+$state_sql="SELECT * FROM `states` where `state_status`=1";
+$state_exe=mysql_query($state_sql);
+$state_results = array();
+while($row = mysql_fetch_assoc($state_exe)) {
+    array_push($state_results, $row);
+}
+
+$country_sql="SELECT * FROM `countries` where `country_status`=1 AND `id`=99";
+$country_exe=mysql_query($country_sql);
+$country_results = array();
+while($row1 = mysql_fetch_assoc($country_exe)) {
+    array_push($country_results, $row1);
+}
+
+$userinfo_sql="SELECT * FROM `exporter_info` WHERE `user_id`='$user_id'";
+$userinfo_exe=mysql_query($userinfo_sql);
+$userinfo=mysql_fetch_array($userinfo_exe);
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -108,49 +150,118 @@ $(document).ready(function() {
 <div class="my-account">
 <h3><i class="fa fa-user" aria-hidden="true"></i> My Account Information</h3>
 <h4>Your Account Details</h4>
+    <?php
 
+    //print_r($userinfo);
+
+    ?>
 <form action="" method="post">
 <div class="form-group row">
 <div class="col-md-3 col-sm-3 col-xs-12">
-<label>First Name *</label>
+<label>Exporter Name</label>
 </div>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="fname" value="First Name" placeholder="First Name" class="account-input" readonly />
+<span class="account-input">
+    <?php echo $userinfo['name_exporter']; ?>
+</span>
+</div>
+</div>
+
+<div class="form-group row">
+<div class="col-md-3 col-sm-3 col-xs-12">
+    <label>Exporter IEC Code</label>
+</div>
+<div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['iec_code']; ?>
+</span>
+</div>
+</div>
+
+<div class="form-group row">
+<div class="col-md-3 col-sm-3 col-xs-12">
+    <label>Exporter GST No</label>
+</div>
+<div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['gstin']; ?>
+</span>
 </div>
 </div>
 
 
 <div class="form-group row">
 <div class="col-md-3 col-sm-3 col-xs-12">
-<label>Last Name *</label>
+    <label>Exporter Pan No</label>
 </div>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="lname" value="Last Name" placeholder="Last Name" class="account-input" readonly />
+<span class="account-input">
+    <?php echo $userinfo['pan_number']; ?>
+</span>
+</div>
+</div>
+<div class="form-group row">
+<div class="col-md-3 col-sm-3 col-xs-12">
+    <label>Person Name</label>
+</div>
+<div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['name_person']; ?>
+</span>
 </div>
 </div>
 
 
 <div class="form-group row">
 <div class="col-md-3 col-sm-3 col-xs-12">
-<label>Email *</label>
+    <label>Address Details</label>
 </div>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="email" value="Email" placeholder="Email" class="account-input" readonly />
+<span class="account-input">
+    <?php echo $userinfo['address']; ?>,<br/>
+    <?php echo $userinfo['city']; ?>,
+    <?php echo $userinfo['state']; ?>,
+    <?php echo $userinfo['country']; ?>,
+    <?php echo $userinfo['pincode']; ?>
 </div>
 </div>
 
 
 <div class="form-group row">
 <div class="col-md-3 col-sm-3 col-xs-12">
-<label>Phone No *</label>
+    <label>Phone No</label>
 </div>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="phoneno" value="Phone Number" placeholder="Phone Number" class="account-input" readonly />
+<span class="account-input">
+    <?php echo $userinfo['telephone']; ?>
+</span>
 </div>
 </div>
 
 
 <div class="form-group row">
+<div class="col-md-3 col-sm-3 col-xs-12">
+    <label>Mobile No</label>
+</div>
+<div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['mobile']; ?>
+</span>
+</div>
+</div>
+
+<div class="form-group row">
+<div class="col-md-3 col-sm-3 col-xs-12">
+    <label>Email ID</label>
+</div>
+<div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['email']; ?>
+</span>
+</div>
+</div>
+
+<div class="form-group row hidden">
 <div class="col-md-6 col-sm-6 col-xs-12">
 <input type="reset" value="Back" class="account-submit" />
 </div>

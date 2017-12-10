@@ -12,11 +12,20 @@
 
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="mail-link mail-right">
+
+<?php if(isset($_SESSION['exporteruserid'])){ ?>
+<ul>
+<li><a href="dashboard.php"><i class="fa fa-user"></i> Welcome <?php echo $_SESSION['exporterusername']; ?></a></li>
+<li><a href="my-account.php"><i class="fa fa-asterisk"></i> My Account</a></li>
+<li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
+</ul>
+<?php } else { ?>
 <ul>
 <li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
 <li><a href="registration-terms.php"><i class="fa fa-user"></i> Register</a></li>
-<li><a href="javascript:void(0);"><i class="fa fa-asterisk"></i> My Account</a></li>
 </ul>
+<?php } ?>
+
 </div><!--Mail Link-->
 </div><!--Column 6-->
 

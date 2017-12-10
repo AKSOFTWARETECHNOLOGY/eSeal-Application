@@ -45,7 +45,7 @@ $userinfo=mysql_fetch_array($userinfo_exe);
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Edit Account</title>
+<title>My Account</title>
 <link href="images/favicon.png" type="image/png" rel="shortcut icon">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -133,7 +133,7 @@ $(document).ready(function() {
 
 <div class="home-about-banner">
 <div class="home-about-banner-overlay">
-<h3>Edit Account</h3>
+<h3>My Account</h3>
 </div>
 </div>
 
@@ -148,61 +148,129 @@ $(document).ready(function() {
 
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="my-account">
-<h3><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Information</h3>
-<h4>Edit Your Account Details</h4>
+<h3><i class="fa fa-user" aria-hidden="true"></i> My Account Information</h3>
+<h4>Your Account Details</h4>
+    <?php
 
-<form action="" method="post">
-<div class="form-group row">
-<div class="col-md-3 col-sm-3 col-xs-12">
-<label>First Name *</label>
-</div>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="fname" placeholder="First Name" class="account-input" />
-</div>
-</div>
+    //print_r($userinfo);
 
+    ?>
+    <form action="" method="post">
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>Exporter Name</label>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['name_exporter']; ?>
+</span>
+            </div>
+        </div>
 
-<div class="form-group row">
-<div class="col-md-3 col-sm-3 col-xs-12">
-<label>Last Name *</label>
-</div>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="lname" placeholder="Last Name" class="account-input" />
-</div>
-</div>
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>Exporter IEC Code</label>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['iec_code']; ?>
+</span>
+            </div>
+        </div>
 
-
-<div class="form-group row">
-<div class="col-md-3 col-sm-3 col-xs-12">
-<label>Email *</label>
-</div>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="email" placeholder="Email" class="account-input" />
-</div>
-</div>
-
-
-<div class="form-group row">
-<div class="col-md-3 col-sm-3 col-xs-12">
-<label>Phone No *</label>
-</div>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="phoneno" placeholder="Phone Number" class="account-input" />
-</div>
-</div>
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>Exporter GST No</label>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['gstin']; ?>
+</span>
+            </div>
+        </div>
 
 
-<div class="form-group row">
-<div class="col-md-6 col-sm-6 col-xs-12">
-<input type="reset" value="Back" class="account-submit" />
-</div>
-<div class="col-md-6 col-sm-6 col-xs-12 text-right">
-<input type="submit" value="Save" class="account-submit" />
-</div>
-</div>
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>Exporter Pan No</label>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['pan_number']; ?>
+</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>Person Name</label>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['name_person']; ?>
+</span>
+            </div>
+        </div>
 
-</form>
 
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>Address Details</label>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['address']; ?>,<br/>
+    <?php echo $userinfo['city']; ?>,
+    <?php echo $userinfo['state']; ?>,
+    <?php echo $userinfo['country']; ?>,
+    <?php echo $userinfo['pincode']; ?>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>Phone No</label>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['telephone']; ?>
+</span>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>Mobile No</label>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['mobile']; ?>
+</span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>Email ID</label>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['email']; ?>
+</span>
+            </div>
+        </div>
+
+        <div class="form-group row hidden">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="reset" value="Back" class="account-submit" />
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+                <input type="submit" value="Continue" class="account-submit" />
+            </div>
+        </div>
+
+    </form>
 </div><!--My Account-->
 </div><!--Column 9-->
 
@@ -214,6 +282,7 @@ $(document).ready(function() {
 <?php include "footer.php"; ?>
 
 <?php include "bottom_footer.php"; ?>
+
 
 </body>
 </html>
