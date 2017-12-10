@@ -133,6 +133,16 @@ $(document).ready(function() {
 </div><!-- Container Fluid -->
 </div><!-- Product category -->
 
+<div class="welcome">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <iframe src="e-seal-specification.pdf" width="100%" height="500px"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="welcome">
 <div class="container-fluid">

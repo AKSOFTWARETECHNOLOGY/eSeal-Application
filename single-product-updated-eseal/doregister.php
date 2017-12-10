@@ -1,15 +1,11 @@
 <?php session_start();
 ob_start();
 
-if(isset($_SESSION['nextpubuserid']))
+if(isset($_SESSION['exporteruserid']))
 {
 	header("Location: dashboard.php");
 }
 
-/*
-$_SESSION['scaleuppuser']="1";
-header("Location: index.php");
-*/
 include "config.php";
 
 if(isset($_REQUEST['register']))
@@ -41,30 +37,37 @@ $joindate=date("Y-m-d");
 		$num=@mysql_num_rows($exe);
 			if($num>0)
 				{
-				header("Location: user-registeration.php?err=4&msg=email");
+				header("Location: user-registration.php?err=4&msg=email");
 				}
 				else
 				{
 				$password_md=md5($password);
 				$insert_user_sql="INSERT INTO `users` (`name`, `email`, `password`, `confirmed`) 
 												VALUES ('$exporterName', '$email', '$password_md', '1')";
-				
-				$insert_user_exe=mysql_query($insert_user_sql);								
+
+                //echo $insert_user_sql;
+
+                $insert_user_exe=mysql_query($insert_user_sql);
 				
 				$user_id=mysql_insert_id();
 				$role_id=$role;
 				
 				$insert_role_sql="INSERT INTO `role_user` (`user_id`, `role_id`) 
 												VALUES ('$user_id', '$role_id')";
-				
+
+                //echo $insert_role_sql;
+
 				$insert_role_exe=mysql_query($insert_role_sql);
 
 
                 $insert_exporter_sq1 = "INSERT INTO `exporter_info` (user_id, name_exporter, name_person, address, city, state, country, pincode, telephone, mobile, email, gstin, pan_number, iec_code, created_by, updated_by, created_at, updated_at)
 VALUES ('$user_id','$exporterName','$personName','$address','$cityId','$state','$countryId','$pincode','$telephone','$mobile','$email','$gstin','$panNumber','$icecode','$username','$username','$date','$date')";
 
+                //echo $insert_exporter_sq1;
+
                 $insert_exporter_exe = mysql_query($insert_exporter_sq1);
-				
+
+                    //exit;
                 /*
 
 				if(!empty($user_id)) {
@@ -121,12 +124,12 @@ VALUES ('$user_id','$exporterName','$personName','$address','$cityId','$state','
 		}
 		else
 		{
-		header("Location: user-registeration.php?err=3&msg=pasword");
+		header("Location: user-registration.php?err=3&msg=pasword");
 		} 
 	}
 	else
 	{
-	header("Location: user-registeration.php?err=2&msg=all");
+	header("Location: user-registration.php?err=2&msg=all");
 	} 
 }
 else

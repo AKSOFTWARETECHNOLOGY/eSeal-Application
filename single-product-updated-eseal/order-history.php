@@ -152,7 +152,7 @@ $(document).ready(function() {
 <td>Pending</td>
 <td>Rs.1000.00</td>
 <td>7/12/2017</td>
-<td><a href="javascript:void(0);"><i class="fa fa-eye"></i></a></td>
+<td><a href="order-history-details.php"><i class="fa fa-eye"></i></a></td>
 </tr>
 <tr>
 <td>2</td>
@@ -161,7 +161,7 @@ $(document).ready(function() {
 <td>Pending</td>
 <td>Rs.1000.00</td>
 <td>7/12/2017</td>
-<td><a href="javascript:void(0);"><i class="fa fa-eye"></i></a></td>
+<td><a href="order-history-details.php"><i class="fa fa-eye"></i></a></td>
 </tr>
 <tr>
 <td>2</td>
@@ -170,7 +170,7 @@ $(document).ready(function() {
 <td>Pending</td>
 <td>Rs.1000.00</td>
 <td>7/12/2017</td>
-<td><a href="javascript:void(0);"><i class="fa fa-eye"></i></a></td>
+<td><a href="order-history-details.php"><i class="fa fa-eye"></i></a></td>
 </tr>
 <tr>
 <td>2</td>
@@ -179,7 +179,7 @@ $(document).ready(function() {
 <td>Pending</td>
 <td>Rs.1000.00</td>
 <td>7/12/2017</td>
-<td><a href="javascript:void(0);"><i class="fa fa-eye"></i></a></td>
+<td><a href="order-history-details.php"><i class="fa fa-eye"></i></a></td>
 </tr>
 </tbody>
 </table>

@@ -39,6 +39,66 @@ $userinfo_sql="SELECT * FROM `exporter_info` WHERE `user_id`='$user_id'";
 $userinfo_exe=mysql_query($userinfo_sql);
 $userinfo=mysql_fetch_array($userinfo_exe);
 
+
+$city_value = $userinfo['city'];
+$cityArray_values = array_filter($city_results, function($e) use ($city_value){
+
+    if($e['id'] == $city_value)
+    { return true; }
+    else
+    { return false; }
+
+});
+
+if(count($cityArray_values))
+{
+    $cityArray_values_key = key($cityArray_values);
+    $city_name = $cityArray_values[$cityArray_values_key]['city_name'];
+}
+else
+{
+    $city_name = "";
+}
+
+$state_value = $userinfo['state'];
+$stateArray_values = array_filter($state_results, function($e) use ($state_value){
+
+    if($e['id'] == $state_value)
+    { return true; }
+    else
+    { return false; }
+
+});
+
+if(count($stateArray_values))
+{
+    $stateArray_values_key = key($stateArray_values);
+    $state_name = $stateArray_values[$stateArray_values_key]['state_name'];
+}
+else
+{
+    $state_name = "";
+}
+
+$country_value = $userinfo['country'];
+$countryArray_values = array_filter($country_results, function($e) use ($country_value){
+
+    if($e['id'] == $country_value)
+    { return true; }
+    else
+    { return false; }
+
+});
+
+if(count($countryArray_values))
+{
+    $countryArray_values_key = key($countryArray_values);
+    $country_name = $countryArray_values[$countryArray_values_key]['name'];
+}
+else
+{
+    $country_name = "";
+}
 ?>
 <!doctype html>
 <html>
@@ -149,57 +209,176 @@ $(document).ready(function() {
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="my-account">
 <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Information</h3>
+
+    <?php if(isset($_REQUEST['succ'])) { ?>
+        <p style="color:green;font-weight:bold"> Your Account Details Successfully!</p><br/>
+    <?php } ?>
+
+    <?php if(isset($_REQUEST['err'])) { ?>
+        <p style="color:red;font-weight:bold"> Your Account Details Not Updated.</p><br/>
+    <?php } ?>
+
 <h4>Edit Your Account Details</h4>
 
-<form action="" method="post">
-<div class="form-group row">
-<div class="col-md-3 col-sm-3 col-xs-12">
-<label>First Name *</label>
-</div>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="fname" placeholder="First Name" class="account-input" />
-</div>
-</div>
+<form name="profileform" id="profileform"  action="doaccount.php" method="post">
+
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Exporter Name *</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" name="name_exporter" placeholder="Exporter Name" class="account-input" value="<?php echo $userinfo['name_exporter']; ?>" required />
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Exporter GST No</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" name="gstin" placeholder="GST No" class="account-input" value="<?php echo $userinfo['gstin']; ?>" />
+
+        </div>
+    </div>
 
 
-<div class="form-group row">
-<div class="col-md-3 col-sm-3 col-xs-12">
-<label>Last Name *</label>
-</div>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="lname" placeholder="Last Name" class="account-input" />
-</div>
-</div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Exporter Pan No</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" name="pan_number" placeholder="PAN No" class="account-input" value="<?php echo $userinfo['pan_number']; ?>" />
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Person Name *</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" name="name_person" placeholder="PAN No" class="account-input" value="<?php echo $userinfo['name_person']; ?>" />
+
+        </div>
+    </div>
 
 
-<div class="form-group row">
-<div class="col-md-3 col-sm-3 col-xs-12">
-<label>Email *</label>
-</div>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="email" placeholder="Email" class="account-input" />
-</div>
-</div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Address Details *</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <textarea name="address" id="address" placeholder="Address" class="account-input" required><?php echo $userinfo['address']; ?></textarea>
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>City *</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <select class="register-input" name="city" required>
+                <option value="">Select City</option>
+                <?php
+                foreach($city_results as $key => $value){ ?>
+                    <option value="<?php echo $value['id']; ?>" <?php if($value['id']==$userinfo['city']) { echo "selected"; } ?>  ><?php echo $value['city_name']; ?></option>
+                <?php
+                }
+                ?>
+            </select>
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>State *</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <select class="register-input" name="state" required>
+                <option value="">Select State</option>
+                <?php
+                foreach($state_results as $key => $value){ ?>
+                    <option value="<?php echo $value['id']; ?>" <?php if($value['id']==$userinfo['state']) { echo "selected"; } ?> ><?php echo strtoupper($value['state_name']); ?></option>
+                <?php
+                }
+                ?>
+            </select>
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Country *</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <select class="register-input" name="country" required >
+                <option value="">Select Country</option>
+                <?php
+                foreach($country_results as $key => $value){ ?>
+                    <option value="<?php echo $value['id']; ?>" <?php if($value['id']==$userinfo['country']) { echo "selected"; } ?> ><?php echo $value['name']; ?></option>
+                <?php
+                }
+                ?>
+            </select>
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Pin Code *</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" name="pincode" placeholder="Pin Code" class="account-input" value="<?php echo $userinfo['pincode']; ?>" required />
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Phone No *</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" name="telephone" placeholder="Phone No" class="account-input" value="<?php echo $userinfo['telephone']; ?>" required />
+
+        </div>
+    </div>
 
 
-<div class="form-group row">
-<div class="col-md-3 col-sm-3 col-xs-12">
-<label>Phone No *</label>
-</div>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" name="phoneno" placeholder="Phone Number" class="account-input" />
-</div>
-</div>
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Mobile No *</label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" name="mobile" placeholder="Mobile No" class="account-input" value="<?php echo $userinfo['mobile']; ?>" required />
+
+        </div>
+    </div>
 
 
-<div class="form-group row">
-<div class="col-md-6 col-sm-6 col-xs-12">
-<input type="reset" value="Back" class="account-submit" />
-</div>
-<div class="col-md-6 col-sm-6 col-xs-12 text-right">
-<input type="submit" value="Save" class="account-submit" />
-</div>
-</div>
+    <div class="form-group row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <input type="reset" value="Back" class="account-submit hidden" />
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+            <input type="submit" name="profileupdate" value="Update" class="account-submit" />
+        </div>
+    </div>
+
 
 </form>
 
@@ -215,5 +394,84 @@ $(document).ready(function() {
 
 <?php include "bottom_footer.php"; ?>
 
+
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+
+<script>
+    // Wait for the DOM to be ready
+    $(function() {
+
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        });
+
+        // Initialize form validation on the registration form.
+        // It has the name attribute "registration"
+        $("form#profileform").validate({
+            // Specify validation rules
+            rules: {
+                name_exporter: {
+                    required: true,
+                    lettersonly: true
+                },
+                name_person: {
+                    required: true,
+                    lettersonly: true
+                },
+                mobile: {
+                    required: true,
+                    number: true,
+                    minlength: 10,
+                    maxlength: 11
+                },
+                telephone: {
+                    required: true,
+                    number: true,
+                    minlength: 10,
+                    maxlength: 11
+                },
+                pincode: "required",
+                city: "required",
+                state: "required",
+                country: "required",
+                address: "required",
+            },
+            // Specify validation error messages
+            messages: {
+                name_exporter: {
+                    required: "Please enter your name",
+                    lettersonly: "Your name must be characters"
+                },
+                name_person: {
+                    required: "Please enter your name",
+                    lettersonly: "Your name must be characters"
+                },
+                mobile: {
+                    required: "Please provide a valid mobile number",
+                    minlength: "Your mobile number must be 10 characters long",
+                    maxlength: "Your mobile number must be 11 characters long"
+                },
+                telephone: {
+                    required: "Please provide a valid mobile number",
+                    minlength: "Your mobile number must be 10 characters long",
+                    maxlength: "Your mobile number must be 11 characters long"
+                },
+                pincode: "Please enter your Pincode",
+                city: "Please choose your City",
+                state: "Please choose your State",
+                country: "Please choose your Country",
+                address: "Please enter your Address",
+            },
+            // Make sure the form is submitted to the destination defined
+            // in the "action" attribute of the form when valid
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    });
+</script>
+<style>
+    label.error { color: red; }
+</style>
 </body>
 </html>

@@ -138,7 +138,13 @@ $(document).ready(function() {
 <form name="registerform" id="registerform" action="doregister.php" method="post">
 <div class="col-md-12 col-sm-12 col-xs-12 address">
 <div class="account-register">
+    <?php if(isset($_REQUEST['success'])) { ?>
+        <p style="color:green;font-weight:bold"> Your Account Activated Successfully! You can login now.</p>
+    <?php } ?>
 
+    <?php if(isset($_REQUEST['err'])) { ?>
+        <p style="color:red;font-weight:bold"> E-Mail Already Registered with us / Invalid Details.</p>
+    <?php } ?>
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="form-group">

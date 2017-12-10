@@ -39,6 +39,65 @@ $userinfo_sql="SELECT * FROM `exporter_info` WHERE `user_id`='$user_id'";
 $userinfo_exe=mysql_query($userinfo_sql);
 $userinfo=mysql_fetch_array($userinfo_exe);
 
+$city_value = $userinfo['city'];
+$cityArray_values = array_filter($city_results, function($e) use ($city_value){
+
+    if($e['id'] == $city_value)
+    { return true; }
+    else
+    { return false; }
+
+});
+
+if(count($cityArray_values))
+{
+    $cityArray_values_key = key($cityArray_values);
+    $city_name = $cityArray_values[$cityArray_values_key]['city_name'];
+}
+else
+{
+    $city_name = "";
+}
+
+$state_value = $userinfo['state'];
+$stateArray_values = array_filter($state_results, function($e) use ($state_value){
+
+    if($e['id'] == $state_value)
+    { return true; }
+    else
+    { return false; }
+
+});
+
+if(count($stateArray_values))
+{
+    $stateArray_values_key = key($stateArray_values);
+    $state_name = $stateArray_values[$stateArray_values_key]['state_name'];
+}
+else
+{
+    $state_name = "";
+}
+
+$country_value = $userinfo['country'];
+$countryArray_values = array_filter($country_results, function($e) use ($country_value){
+
+    if($e['id'] == $country_value)
+    { return true; }
+    else
+    { return false; }
+
+});
+
+if(count($countryArray_values))
+{
+    $countryArray_values_key = key($countryArray_values);
+    $country_name = $countryArray_values[$countryArray_values_key]['name'];
+}
+else
+{
+    $country_name = "";
+}
 ?>
 <!doctype html>
 <html>
@@ -149,12 +208,17 @@ $(document).ready(function() {
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="my-account">
 <h3><i class="fa fa-user" aria-hidden="true"></i> My Account Information</h3>
-<h4>Your Account Details</h4>
-    <?php
 
-    //print_r($userinfo);
+    <?php if(isset($_REQUEST['succ'])) { ?>
+        <p style="color:green;font-weight:bold"> Your Account Details Successfully!</p><br/>
+    <?php } ?>
 
-    ?>
+    <?php if(isset($_REQUEST['err'])) { ?>
+        <p style="color:red;font-weight:bold"> Your Account Details Not Updated.</p><br/>
+    <?php } ?>
+
+    <h4>Your Account Details</h4>
+
     <form action="" method="post">
         <div class="form-group row">
             <div class="col-md-3 col-sm-3 col-xs-12">
@@ -219,9 +283,9 @@ $(document).ready(function() {
             <div class="col-md-9 col-sm-9 col-xs-12">
 <span class="account-input">
     <?php echo $userinfo['address']; ?>,<br/>
-    <?php echo $userinfo['city']; ?>,
-    <?php echo $userinfo['state']; ?>,
-    <?php echo $userinfo['country']; ?>,
+    <?php echo $city_name; ?>,
+    <?php echo $state_name; ?>,
+    <?php echo $country_name; ?>,
     <?php echo $userinfo['pincode']; ?>
             </div>
         </div>
