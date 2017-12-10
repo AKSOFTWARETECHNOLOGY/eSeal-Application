@@ -128,18 +128,9 @@ $(document).ready(function() {
     <div class="container">
         <div class="row">
 
+
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <div class="account-link">
-                    <h3>Dashboard</h3>
-                    <ul>
-                        <li><a href="dashboard.html"><i class="fa fa-user" aria-hidden="true"></i> My Account</a></li>
-                        <li><a href="edit-account.html"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Account</a></li>
-                        <li><a href="javascript:void(0);"><i class="fa fa-history" aria-hidden="true"></i> Order History</a></li>
-                        <li><a href="change-password.html"><i class="fa fa-unlock" aria-hidden="true"></i> Change Password</a></li>
-                        <li><a href="address-book.html"><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</a></li>
-                        <li><a href="javascript:void(0);"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-                    </ul>
-                </div><!--Account Link-->
+                <?php include "sidebar.php"; ?>
             </div><!--Column 6-->
 
             <div class="col-md-9 col-sm-9 col-xs-12">
