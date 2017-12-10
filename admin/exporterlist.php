@@ -25,7 +25,7 @@ FROM `exporter_info` AS `ei`
 LEFT JOIN `users` ON users.id = ei.user_id
 LEFT JOIN `countries` ON countries.id = ei.country
 LEFT JOIN `cities` ON cities.id = ei.city
-WHERE `users`.delete_status = 1";
+WHERE `users`.delete_status = 0";
 $export_exe=mysql_query($export_sql);
 $export_cnt=@mysql_num_rows($export_exe);
 ?>
@@ -73,41 +73,31 @@ $export_cnt=@mysql_num_rows($export_exe);
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
+                                        <th>Sl.No</th>
+                                        <th>IEC Code</th>
                                         <th>Exporter Name</th>
-                                        <th>Person Name</th>
-                                        <th>Address</th>
-                                        <th>City</th>
-                                        <th>State</th>
-                                        <th>Country</th>
-                                        <th>Pincode</th>
-                                        <th>Telephone</th>
                                         <th>Mobile</th>
                                         <th>Email</th>
                                         <th>GstIn</th>
                                         <th>Pan Number</th>
-                                        <th>IEC Code</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php
+                                    $sl=0;
                                     while($export_fet=mysql_fetch_array($export_exe))
                                     {
+                                        $sl++;
                                         ?>
                                         <tr>
+                                            <td><?php echo $sl; ?></td>
+                                            <td><?php echo $export_fet['iec_code']; ?></td>
                                             <td><?php echo $export_fet['name_exporter']; ?></td>
-                                            <td><?php echo $export_fet['name_person']; ?></td>
-                                            <td><?php echo $export_fet['address']; ?></td>
-                                            <td><?php echo $export_fet['city_name']; ?></td>
-                                            <td><?php echo $export_fet['state']; ?></td>
-                                            <td><?php echo $export_fet['country_name']; ?></td>
-                                            <td><?php echo $export_fet['pincode']; ?></td>
-                                            <td><?php echo $export_fet['telephone']; ?></td>
                                             <td><?php echo $export_fet['mobile']; ?></td>
                                             <td><?php echo $export_fet['email']; ?></td>
                                             <td><?php echo $export_fet['gstin']; ?></td>
                                             <td><?php echo $export_fet['pan_number']; ?></td>
-                                            <td><?php echo $export_fet['iec_code']; ?></td>
                                             <td>
                                                 <a href="exporterview.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                                 &nbsp;&nbsp;&nbsp;

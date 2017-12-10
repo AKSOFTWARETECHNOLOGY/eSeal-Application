@@ -83,14 +83,14 @@ $product_cnt=@mysql_num_rows($product_exe);
                                         <tr>
                                             <td><?php echo $product_fet['id']; ?></td>
                                             <td><?php echo $product_fet['product_name']; ?></td>
-                                            <td><?php echo $product_fet['product_info']; ?></td>
+                                            <td><?php echo substr($product_fet['product_info'],0,50); ?>...</td>
                                             <td><?php echo $product_fet['product_price']; ?></td>
                                             <td>
                                                 <a href="productview.php?product_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                                 &nbsp;&nbsp;&nbsp;
                                                 <a href="productedit.php?product_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
                                                 &nbsp;&nbsp;&nbsp;
-                                                <a href="product-delete.php?delete=1&product_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
+                                                <a class="hidden" href="product-delete.php?delete=1&product_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
 
                                             </td>
                                         </tr>

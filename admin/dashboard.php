@@ -71,7 +71,7 @@ $publisher_book_requirement_cnt=@mysql_num_rows($publisher_book_requirement_exe)
         <!-- Main content -->
         <section class="content">
           <!-- Small boxes (Stat box) -->
-          <div class="row">
+          <div class="row hidden">
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="small-box bg-aqua">

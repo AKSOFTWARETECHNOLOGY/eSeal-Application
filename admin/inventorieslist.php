@@ -69,23 +69,25 @@ $product_cnt=@mysql_num_rows($product_exe);
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
+                                        <th>SlNo</th>
                                         <th>Product Name</th>
                                         <th>Product UniCode</th>
                                         <th>Product Seal Code</th>
-                                        <th>Product Sale Price</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php
+                                    $sl=0;
                                     while($product_fet=mysql_fetch_array($product_exe))
                                     {
+                                        $sl++;
                                         ?>
                                         <tr>
+                                            <td><?php echo $sl; ?></td>
                                             <td><?php echo $product_fet['product_name']; ?></td>
                                             <td><?php echo $product_fet['product_unicode']; ?></td>
                                             <td><?php echo $product_fet['product_sealcode']; ?></td>
-                                            <td><?php echo $product_fet['product_sale_price']; ?></td>
                                             <td>
                                                 <a href="inventoryview.php?inventory_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                                 &nbsp;&nbsp;&nbsp;

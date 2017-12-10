@@ -74,6 +74,14 @@ $user_email=$_SESSION['adminuseremail'];
 
                                 <div class="col-md-12">
                                     <style>.control-label{line-height:32px;} .form-group{line-height:32px;}</style>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">IEC Code<span class="req"> *</span></label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="icecode" id="icecode" value="" maxlength="10" />
+                                            <div class="err" id="erricecode" style="color:red"></div>
+                                        </div>
+                                    </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Exporter Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
@@ -171,12 +179,6 @@ $user_email=$_SESSION['adminuseremail'];
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">IEC Code</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="icecode" id="icecode" value="" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
                                         <button type="submit" class="btn btn-primary btn-block btn-flat add-export">Save Changes</button>
                                     </div>
                                 </div>
@@ -225,6 +227,11 @@ $user_email=$_SESSION['adminuseremail'];
     $(document).ready(function(){
         $(".add-export").click(function(){
             $("div.err").html( "  " );
+            var icecode = $('#icecode').val();
+            if(!icecode){
+                $("div#erricecode").html( "This field is required" );
+                return false;
+            }
             var expName = $('#exporterName').val();
             if(!expName){
                 $("div#errExporterName").html( "This field is required" );

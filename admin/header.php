@@ -3,9 +3,9 @@
         <!-- Logo -->
         <a href="dashboard.php" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><img src="images/nextpub.png" width="100%"></span>
+          <span class="logo-mini"><img src="images/ssg.png" width="100%"></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><img src="images/nextpub.png" width="100%"></span>
+          <span class="logo-lg"><img src="images/ssg.png" width="40%"></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -65,7 +65,7 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview hidden">
+            <li class="active treeview">
               <a href="dashboard.php">
                 <i class="ion ion-pie-graph"></i> <span>Dashboard</span>
               </a>

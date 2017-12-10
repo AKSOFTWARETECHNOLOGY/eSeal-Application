@@ -39,7 +39,7 @@ include "config.php";
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="index.php"><img src="images/nextpub.png" width="50%"></a>
+        <a href="index.php"><img src="images/ssg.png" width="50%"></a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
