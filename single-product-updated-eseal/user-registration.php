@@ -370,6 +370,16 @@ $(document).ready(function() {
                     minlength: 10,
                     maxlength: 10,
                 },
+                gstin: {
+                    required: true,
+                    minlength: 15,
+                    maxlength: 15,
+                },
+                panNumber: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10,
+                },
                 personName: {
                     required: true,
                     lettersonly: true
