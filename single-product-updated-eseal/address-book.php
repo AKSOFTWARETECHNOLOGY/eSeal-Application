@@ -160,12 +160,14 @@ $(document).ready(function() {
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="my-account">
 <h3><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</h3>
-<div class="address-bar">
-<div class="row">
+
 
    <?php if(mysql_num_rows($useraddress_exe)>0) { ?>
 
         <?php while($useraddress_fet=mysql_fetch_array($useraddress_exe)) { ?>
+
+    <div class="address-bar" style="border-top: 1px solid #cacaca;">
+        <div class="row">
 <?php
            $city_value = $useraddress_fet['city'];
            $cityArray_values = array_filter($city_results, function($e) use ($city_value){
@@ -228,39 +230,43 @@ $(document).ready(function() {
            }
 ?>
            <div class="col-md-8 col-sm-8 col-xs-12">
-               <p>Name      :: <?php echo $useraddress_fet['name']; ?></p>
-               <p>Address   :: <?php echo $useraddress_fet['address']; ?></p>
-               <p>City      :: <?php echo $city_name; ?></p>
-               <p>State     :: <?php echo $state_name; ?></p>
-               <p>Country   :: <?php echo $country_name; ?></p>
-               <p>Pincode   :: <?php echo $useraddress_fet['pincode']; ?></p>
-               <p>Mobile    :: <?php echo $useraddress_fet['mobile']; ?></p>
+               <p><label style="width:150px;">Name      </label> <?php echo $useraddress_fet['name']; ?></p>
+               <p><label style="width:150px;">Address   </label> <?php echo $useraddress_fet['address']; ?></p>
+               <p><label style="width:150px;">City      </label> <?php echo $city_name; ?></p>
+               <p><label style="width:150px;">State     </label> <?php echo $state_name; ?></p>
+               <p><label style="width:150px;">Country   </label> <?php echo $country_name; ?></p>
+               <p><label style="width:150px;">Pincode   </label> <?php echo $useraddress_fet['pincode']; ?></p>
+               <p><label style="width:150px;">Mobile    </label> <?php echo $useraddress_fet['mobile']; ?></p>
            </div><!--Inner Column 6-->
 
 
            <div class="col-md-4 col-sm-4 col-xs-12">
-               <div class="form-btn hidden">
-                   <ul>
+               <div class="form-btn">
+                   <br/>
+                   <ul class="">
                        <li><a href="javascript:void(0);">Edit</a></li>
                        <li><a href="javascript:void(0);">Delete</a></li>
                    </ul>
+
                </div><!--Form Btn-->
            </div><!--Inner Column 6-->
+
+
+
+        </div><!--Inner Row-->
+    </div><!--Address Bar-->
 
         <?php } ?>
 
    <?php } ?>
 
 
-
-</div><!--Inner Row-->
-</div><!--Address Bar-->
 </div><!--My Account-->
 
-<div class="submit-btn hidden">
+<div class="submit-btn">
 <ul>
-<li><a href="javascript:void(0);">Back</a></li>
-<li><a href="javascript:void(0);">New Address</a></li>
+<li><a class="hidden" href="javascript:void(0);">Back</a></li>
+<li><a href="add-address-book.php">New Address</a></li>
 </ul>
 </div><!--Form Btn-->
 
