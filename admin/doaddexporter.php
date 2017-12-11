@@ -34,9 +34,14 @@ $last_id = mysql_insert_id();
 $s = "INSERT INTO `role_user` (user_id, role_id) values ('$last_id', 3)";
 $e = mysql_query($s);
 
-$sq1l = "INSERT INTO `exporter_info` (user_id, name_exporter, name_person, address, city, state, country, pincode, telephone, mobile, email, gstin, pan_number, iec_code, created_by, updated_by, created_at, updated_at)
+$insert_exporter_sq1 = "INSERT INTO `exporter_info` (user_id, name_exporter, name_person, address, city, state, country, pincode, telephone, mobile, email, gstin, pan_number, iec_code, created_by, updated_by, created_at, updated_at)
 VALUES ('$last_id','$exporterName','$personName','$address','$cityId','$state','$countryId','$pincode','$telephone','$mobile','$email','$gstin','$panNumber','$icecode','$username','$username','$date','$date')";
-$exe1 = mysql_query($sq1l);
+$insert_exporter_exe = mysql_query($insert_exporter_sq1);
+
+$insert_address_sq1 = "INSERT INTO `exporter_address` (user_id, name, address, city, state, country, pincode,  mobile, created_by, updated_by, created_at, updated_at)
+VALUES ('$last_id','$personName','$address','$cityId','$state','$countryId','$pincode','$mobile','$username','$username','$date','$date')";
+
+$insert_address_exe = mysql_query($insert_address_sq1);
 
 
 header("Location: exporterlist.php?suc=1");

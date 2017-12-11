@@ -15,6 +15,13 @@ while($row = mysql_fetch_assoc($city_exe)) {
     array_push($city_results, $row);
 }
 
+$state_sql="SELECT * FROM `states` where `state_status`=1";
+$state_exe=mysql_query($state_sql);
+$state_results = array();
+while($row = mysql_fetch_assoc($state_exe)) {
+    array_push($state_results, $row);
+}
+
 $country_sql="SELECT * FROM `countries` where `country_status`=1";
 $country_exe=mysql_query($country_sql);
 $country_results = array();
@@ -121,7 +128,16 @@ $user_email=$_SESSION['adminuseremail'];
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">State<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="state" id="state" value="" />
+
+                                            <select class="form-control" name="state" id="state" required>
+                                                <option value="">Select State</option>
+                                                <?php
+                                                foreach($state_results as $key => $value){ ?>
+                                                    <option value="<?php echo $value['id']; ?>"><?php echo strtoupper($value['state_name']); ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
                                             <div class="err" id="errState" style="color:red"></div>
                                         </div>
                                     </div>
@@ -167,13 +183,13 @@ $user_email=$_SESSION['adminuseremail'];
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">GstIn</label>
+                                        <label class="col-sm-3 control-label">GstIn<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="gstin" id="gstin" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Pan Number</label>
+                                        <label class="col-sm-3 control-label">Pan Number<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="panNumber" id="panNumber" value="" />
                                         </div>

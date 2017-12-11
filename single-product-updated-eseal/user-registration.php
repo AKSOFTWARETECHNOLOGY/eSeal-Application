@@ -250,15 +250,15 @@ $(document).ready(function() {
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="form-group">
-<label>Pan Number </label>
-<input type="text" name="panNumber" id="panNumber" class="register-input " value="" />
+<label>Pan Number *</label>
+<input type="text" name="panNumber" id="panNumber" class="register-input " value="" required/>
 </div>
 </div><!-- Inner Column -->
 
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="form-group">
-<label>GSTIN </label>
-<input type="text" name="gstin" id="gstin" class="register-input" value="" />
+<label>GSTIN *</label>
+<input type="text" name="gstin" id="gstin" class="register-input" value="" required/>
 </div>
 </div><!-- Inner Column -->
 </div><!-- Inner Row -->
