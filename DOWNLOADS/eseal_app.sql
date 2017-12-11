@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2017 at 02:42 PM
+-- Generation Time: Dec 10, 2017 at 07:07 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -472,7 +472,8 @@ INSERT INTO `exporter_address` (`id`, `user_id`, `name`, `address`, `city`, `sta
 (2, 7, 'Alagirivimal', 'Annanagar', 15, 31, 99, '600040', '', 'vendor', 'vendor', '2017-12-08 18:30:00', '2017-12-08 18:30:00'),
 (3, 8, 'Alagirivimal Kottaimuthu', 'Villivakkam', 15, 31, 99, '600049', '', 'User', 'User', '2017-12-08 18:30:00', '2017-12-08 18:30:00'),
 (4, 9, 'SASIKALA', 'VIllivakkam', 15, 31, 99, '600049', '', 'User', 'User', '2017-12-08 18:30:00', '2017-12-08 18:30:00'),
-(5, 10, 'Kishore', 'Chetpet', 15, 31, 99, '600031', '', 'User', 'User', '2017-12-09 18:30:00', '2017-12-09 18:30:00');
+(5, 10, 'Kishore', 'Chetpet', 15, 31, 99, '600031', '', 'User', 'User', '2017-12-09 18:30:00', '2017-12-09 18:30:00'),
+(6, 11, 'KRISHNAN', 'ANNA NAGAR', 15, 31, 99, '600040', '9845698456', 'User', 'User', '2017-12-09 18:30:00', '2017-12-09 18:30:00');
 
 -- --------------------------------------------------------
 
@@ -511,7 +512,8 @@ INSERT INTO `exporter_info` (`id`, `user_id`, `name_exporter`, `name_person`, `a
 (2, 7, 'EXP One India', 'Alagirivimal', 'Annanagar', 15, 31, 99, '600040', '9898989898', '9898989898', 'alagirivimal@gmail.com', '12121212', '12121212', '12121212', '', 'vendor', 'vendor', '2017-12-08 18:30:00', '2017-12-08 18:30:00'),
 (3, 8, 'AK Exporter', 'Alagirivimal Kottaimuthu', 'Villivakkam', 15, 31, 99, '600049', '04443831118', '9940143811', 'akexporter@gmail.com', '', '', '1984198744', '', 'User', 'User', '2017-12-08 18:30:00', '2017-12-08 18:30:00'),
 (4, 9, 'SASI AND CO', 'SASIKALA', 'VIllivakkam', 15, 31, 99, '600049', '04443831118', '9898989898', 'sasiandco@gmail.com', '', '', '1987198466', '', 'User', 'User', '2017-12-08 18:30:00', '2017-12-08 18:30:00'),
-(5, 10, 'Kishore Export', 'Kishore', 'Chetpet', 15, 31, 99, '600031', '09898989898', '9898989898', 'kishore@gmail.com', '', '', '1994199494', '', 'User', 'User', '2017-12-09 18:30:00', '2017-12-09 18:30:00');
+(5, 10, 'Kishore Export', 'Kishore', 'Chetpet', 15, 31, 99, '600031', '09898989898', '9898989898', 'kishore@gmail.com', '', '', '1994199494', '', 'User', 'User', '2017-12-09 18:30:00', '2017-12-09 18:30:00'),
+(6, 11, 'KRISHNA EXPORTER', 'KRISHNAN', 'ANNA NAGAR', 15, 31, 99, '600040', '04445612389', '9845698456', 'krishnan@gmail.com', '', '', '1975197519', NULL, 'User', 'User', '2017-12-09 18:30:00', '2017-12-09 18:30:00');
 
 -- --------------------------------------------------------
 
@@ -835,7 +837,8 @@ INSERT INTO `role_user` (`id`, `user_id`, `role_id`, `created_at`, `updated_at`)
 (6, 7, 3, NULL, NULL),
 (7, 8, 3, NULL, NULL),
 (8, 9, 3, NULL, NULL),
-(9, 10, 3, NULL, NULL);
+(9, 10, 3, NULL, NULL),
+(10, 11, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -950,7 +953,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `confi
 (7, 'EXP One India', 'alagirivimal@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, 1, 0, '2017-12-08 18:30:00', '2017-12-08 18:30:00'),
 (8, 'AK Exporter', 'akexporter@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, 1, 0, NULL, NULL),
 (9, 'SASI AND CO', 'sasiandco@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, 1, 0, NULL, NULL),
-(10, 'Kishore Export', 'kishore@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, 1, 0, NULL, NULL);
+(10, 'Kishore Export', 'kishore@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, 1, 0, NULL, NULL),
+(11, 'KRISHNA EXPORTER', 'krishnan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, 1, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1144,12 +1148,12 @@ ALTER TABLE `customs_info`
 -- AUTO_INCREMENT for table `exporter_address`
 --
 ALTER TABLE `exporter_address`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `exporter_info`
 --
 ALTER TABLE `exporter_info`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `permissions`
 --
@@ -1194,7 +1198,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `role_user`
 --
 ALTER TABLE `role_user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `states`
 --
@@ -1209,7 +1213,7 @@ ALTER TABLE `support_info`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `vendor_info`
 --

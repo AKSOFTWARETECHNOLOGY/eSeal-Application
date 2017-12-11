@@ -19,9 +19,36 @@ $user_name=$_SESSION['exporterusername'];
 $user_email=$_SESSION['exporteruseremail'];
 
 
+$city_sql="SELECT * FROM `cities` where `city_status`=1";
+$city_exe=mysql_query($city_sql);
+$city_results = array();
+while($row = mysql_fetch_assoc($city_exe)) {
+    array_push($city_results, $row);
+}
+
+$state_sql="SELECT * FROM `states` where `state_status`=1";
+$state_exe=mysql_query($state_sql);
+$state_results = array();
+while($row = mysql_fetch_assoc($state_exe)) {
+    array_push($state_results, $row);
+}
+
+$country_sql="SELECT * FROM `countries` where `country_status`=1 AND `id`=99";
+$country_exe=mysql_query($country_sql);
+$country_results = array();
+while($row1 = mysql_fetch_assoc($country_exe)) {
+    array_push($country_results, $row1);
+}
+
+
 $userinfo_sql="SELECT * FROM `exporter_info` WHERE `user_id`='$user_id'";
 $userinfo_exe=mysql_query($userinfo_sql);
 $userinfo=mysql_fetch_array($userinfo_exe);
+
+
+$useraddress_sql="SELECT * FROM `exporter_address` WHERE `user_id`='$user_id'";
+$useraddress_exe=mysql_query($useraddress_sql);
+
 
 ?>
 <!doctype html>
@@ -135,30 +162,102 @@ $(document).ready(function() {
 <h3><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</h3>
 <div class="address-bar">
 <div class="row">
-<div class="col-md-8 col-sm-8 col-xs-12">
-<p>First Name</p>
-<p>Last Name</p>
-<p>Address 1</p>
-<p>Address 2</p>
-<p>City</p>
-<p>State</p>
-<p>Country</p>
-</div><!--Inner Column 6-->
+
+   <?php if(mysql_num_rows($useraddress_exe)>0) { ?>
+
+        <?php while($useraddress_fet=mysql_fetch_array($useraddress_exe)) { ?>
+<?php
+           $city_value = $useraddress_fet['city'];
+           $cityArray_values = array_filter($city_results, function($e) use ($city_value){
+
+               if($e['id'] == $city_value)
+               { return true; }
+               else
+               { return false; }
+
+           });
+
+           if(count($cityArray_values))
+           {
+               $cityArray_values_key = key($cityArray_values);
+               $city_name = $cityArray_values[$cityArray_values_key]['city_name'];
+           }
+           else
+           {
+               $city_name = "";
+           }
+
+           $state_value = $useraddress_fet['state'];
+           $stateArray_values = array_filter($state_results, function($e) use ($state_value){
+
+               if($e['id'] == $state_value)
+               { return true; }
+               else
+               { return false; }
+
+           });
+
+           if(count($stateArray_values))
+           {
+               $stateArray_values_key = key($stateArray_values);
+               $state_name = $stateArray_values[$stateArray_values_key]['state_name'];
+           }
+           else
+           {
+               $state_name = "";
+           }
+
+           $country_value = $useraddress_fet['country'];
+           $countryArray_values = array_filter($country_results, function($e) use ($country_value){
+
+               if($e['id'] == $country_value)
+               { return true; }
+               else
+               { return false; }
+
+           });
+
+           if(count($countryArray_values))
+           {
+               $countryArray_values_key = key($countryArray_values);
+               $country_name = $countryArray_values[$countryArray_values_key]['name'];
+           }
+           else
+           {
+               $country_name = "";
+           }
+?>
+           <div class="col-md-8 col-sm-8 col-xs-12">
+               <p>Name      :: <?php echo $useraddress_fet['name']; ?></p>
+               <p>Address   :: <?php echo $useraddress_fet['address']; ?></p>
+               <p>City      :: <?php echo $city_name; ?></p>
+               <p>State     :: <?php echo $state_name; ?></p>
+               <p>Country   :: <?php echo $country_name; ?></p>
+               <p>Pincode   :: <?php echo $useraddress_fet['pincode']; ?></p>
+               <p>Mobile    :: <?php echo $useraddress_fet['mobile']; ?></p>
+           </div><!--Inner Column 6-->
 
 
-<div class="col-md-4 col-sm-4 col-xs-12">
-<div class="form-btn">
-<ul>
-<li><a href="javascript:void(0);">Edit</a></li>
-<li><a href="javascript:void(0);">Delete</a></li>
-</ul>
-</div><!--Form Btn-->
-</div><!--Inner Column 6-->
+           <div class="col-md-4 col-sm-4 col-xs-12">
+               <div class="form-btn hidden">
+                   <ul>
+                       <li><a href="javascript:void(0);">Edit</a></li>
+                       <li><a href="javascript:void(0);">Delete</a></li>
+                   </ul>
+               </div><!--Form Btn-->
+           </div><!--Inner Column 6-->
+
+        <?php } ?>
+
+   <?php } ?>
+
+
+
 </div><!--Inner Row-->
 </div><!--Address Bar-->
 </div><!--My Account-->
 
-<div class="submit-btn">
+<div class="submit-btn hidden">
 <ul>
 <li><a href="javascript:void(0);">Back</a></li>
 <li><a href="javascript:void(0);">New Address</a></li>

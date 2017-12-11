@@ -14,7 +14,7 @@
 <li><a href="edit-account.php"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Account</a></li>
 <li><a href="order-history.php"><i class="fa fa-history" aria-hidden="true"></i> Order History</a></li>
 <li><a href="change-password.php"><i class="fa fa-unlock" aria-hidden="true"></i> Change Password</a></li>
-<li class="hidden"><a href="address-book.php"><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</a></li>
+<li><a href="address-book.php"><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</a></li>
 <li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
 </ul>
 </div><!--Account Link-->
