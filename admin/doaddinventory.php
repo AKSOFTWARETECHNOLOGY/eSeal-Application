@@ -12,7 +12,7 @@ $user_id=$_SESSION['adminuserid'];
 $prodId = $_REQUEST['productId'];
 $unicode = $_REQUEST['unicode'];
 $sealcode = $_REQUEST['sealcode'];
-$salePrice = $_REQUEST['salePrice'];
+$salePrice = $_REQUEST['productPrice'];
 $username = $_SESSION['adminusername'];
 $date = date("Y-m-d");
 

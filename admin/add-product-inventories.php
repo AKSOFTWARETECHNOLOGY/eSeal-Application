@@ -22,7 +22,7 @@ else
     exit;
 }
 
-$product_sql="SELECT product_info.*, products.product_name FROM `product_info` LEFT JOIN `products` ON products.id = product_info.product_id WHERE `product_info`.user_id = $user_id";
+$product_sql="SELECT product_info.*, products.product_name, products.product_price FROM `product_info` LEFT JOIN `products` ON products.id = product_info.product_id WHERE `product_info`.user_id = $user_id";
 $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);
 $product_fet=mysql_fetch_array($product_exe);
@@ -78,6 +78,7 @@ $product_fet=mysql_fetch_array($product_exe);
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="productName" id="productName" value="<?php echo $product_fet['product_name'] ?>" readonly />
                                             <input type="hidden" name="productId" value="<?php echo $product_fet['product_id'] ?>">
+                                            <input type="hidden" name="productPrice" value="<?php echo $product_fet['product_price'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -92,7 +93,7 @@ $product_fet=mysql_fetch_array($product_exe);
                                             <input class="form-control" type="text" name="sealcode" id="unicode" value="" />
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-12 hidden">
                                         <label class="col-sm-3 control-label">Product Sale Price</label>
                                         <div class="col-sm-9">
                                             <input class="form-control"  type="number" name="salePrice" id="salePrice" value="" />

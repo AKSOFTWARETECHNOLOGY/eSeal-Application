@@ -116,7 +116,7 @@ $product_fet=mysql_fetch_array($product_exe);
                                                 <td><?php echo $product_fet['product_sealcode']; ?></td>
                                                 <td><?php echo $product_fet['zone']; ?></td>
                                                 <td>
-                                                    <a href="#"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
+                                                    <a href="orderinfoview.php?orderinfo_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                                     &nbsp;&nbsp;&nbsp;
 
                                                 </td>
