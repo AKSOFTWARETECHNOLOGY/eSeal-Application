@@ -14,20 +14,14 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-/*
-SELECT a.tutorial_id, a.tutorial_author, b.tutorial_count
-    -> FROM tutorials_tbl a, tcount_tbl b
-    -> WHERE a.tutorial_author = b.tutorial_author;
-
-*/
-$export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name
-FROM `exporter_info` AS `ei`
-LEFT JOIN `users` ON users.id = ei.user_id
-LEFT JOIN `countries` ON countries.id = ei.country
-LEFT JOIN `cities` ON cities.id = ei.city
+$custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name
+FROM `customs_info` AS `ci`
+LEFT JOIN `users` ON users.id = ci.user_id
+LEFT JOIN `countries` ON countries.id = ci.country
+LEFT JOIN `cities` ON cities.id = ci.city
 WHERE `users`.delete_status = 1";
-$export_exe=mysql_query($export_sql);
-$export_cnt=@mysql_num_rows($export_exe);
+$custom_exe=mysql_query($custom_sql);
+$custom_cnt=@mysql_num_rows($custom_exe);
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,12 +39,12 @@ $export_cnt=@mysql_num_rows($export_exe);
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Exporters List
+                Customs List
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 
-                <li class="active">Exporters List</li>
+                <li class="active">Customs List</li>
             </ol>
         </section>
 
@@ -60,50 +54,46 @@ $export_cnt=@mysql_num_rows($export_exe);
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" style="line-height:30px;">Exporters List</h3>
+                            <h3 class="box-title" style="line-height:30px;">Customs List</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-                                <a href="add-exporter.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs">Add Exporters</button></a>
+                                <a href="add-customs.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs">Add Customs</button></a>
                             </div>
                             <?php
-                            if($export_cnt>0)
+                            if($custom_cnt>0)
                             {
                                 ?>
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
                                         <th>Sl.No</th>
-                                        <th>IEC Code</th>
-                                        <th>Exporter Name</th>
+                                        <th>Customs Code</th>
+                                        <th>Customs Name</th>
                                         <th>Mobile</th>
                                         <th>Email</th>
-                                        <th>GstIn</th>
-                                        <th>Pan Number</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                     $sl=0;
-                                    while($export_fet=mysql_fetch_array($export_exe))
+                                    while($custom_fet=mysql_fetch_array($custom_exe))
                                     {
                                         $sl++;
                                         ?>
                                         <tr>
                                             <td><?php echo $sl; ?></td>
-                                            <td><?php echo $export_fet['iec_code']; ?></td>
-                                            <td><?php echo $export_fet['name_exporter']; ?></td>
-                                            <td><?php echo $export_fet['mobile']; ?></td>
-                                            <td><?php echo $export_fet['email']; ?></td>
-                                            <td><?php echo $export_fet['gstin']; ?></td>
-                                            <td><?php echo $export_fet['pan_number']; ?></td>
+                                            <td><?php echo $custom_fet['customs_code']; ?></td>
+                                            <td><?php echo $custom_fet['name_customs']; ?></td>
+                                            <td><?php echo $custom_fet['mobile']; ?></td>
+                                            <td><?php echo $custom_fet['email']; ?></td>
                                             <td>
-                                                <a href="exporterview.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
+                                                <a href="customsview.php?customs_id=<?php echo $custom_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                                 &nbsp;&nbsp;&nbsp;
-                                                <a href="exporteredit.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
+                                                <a href="customsedit.php?customs_id=<?php echo $custom_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
                                                 &nbsp;&nbsp;&nbsp;
-                                                <a href="exporter-delete.php?delete=1&exporter_id=<?php echo $export_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
+                                                <a href="customs-delete.php?delete=1&customs_id=<?php echo $custom_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
                                             </td>
                                         </tr>
                                     <?php

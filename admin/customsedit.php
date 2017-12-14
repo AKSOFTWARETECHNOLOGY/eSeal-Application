@@ -13,25 +13,25 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-if(isset($_REQUEST['exporter_id']))
+if(isset($_REQUEST['customs_id']))
 {
-    $exporter_id=$_REQUEST['exporter_id'];
+    $customs_id=$_REQUEST['customs_id'];
 }
 else
 {
     exit;
 }
 
-$export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, states.state_name
-FROM `exporter_info` AS `ei`
-LEFT JOIN `users` ON users.id = ei.user_id
-LEFT JOIN `countries` ON countries.id = ei.country
-LEFT JOIN `cities` ON cities.id = ei.city
-LEFT JOIN `states` ON states.id = ei.state
-WHERE `users`.delete_status = 1 and `ei`.id = $exporter_id";
-$export_exe=mysql_query($export_sql);
-$export_cnt=@mysql_num_rows($export_exe);
-$export_fet=mysql_fetch_array($export_exe);
+$custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, states.state_name
+FROM `customs_info` AS `ci`
+LEFT JOIN `users` ON users.id = ci.user_id
+LEFT JOIN `countries` ON countries.id = ci.country
+LEFT JOIN `cities` ON cities.id = ci.city
+LEFT JOIN `states` ON states.id = ci.state
+WHERE `users`.delete_status = 1 and `ci`.id = $customs_id";
+$custom_exe=mysql_query($custom_sql);
+$custom_cnt=@mysql_num_rows($custom_exe);
+$custom_fet=mysql_fetch_array($custom_exe);
 
 $city_sql="SELECT * FROM `cities` where `city_status`=1";
 $city_exe=mysql_query($city_sql);
@@ -76,11 +76,11 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Edit Exporter
+                Edit Customs
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Edit Exporter</li>
+                <li class="active">Edit Customs</li>
             </ol>
         </section>
 
@@ -92,43 +92,41 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Edit Exporter Details</h3>
+                            <h3 class="box-title">Edit Customs Details</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="doupdateexporter.php?exporter_id=<?php echo $export_fet['id']; ?>" method="post">
+                        <form role="form" action="doupdatecustoms.php?customs_id=<?php echo $custom_fet['id']; ?>" method="post">
                             <div class="box-body">
 
                                 <div class="col-md-12">
                                     <style>.control-label{line-height:32px;} .form-group{line-height:32px;}</style>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Exporter Name<span class="req"> *</span></label>
+                                        <label class="col-sm-3 control-label">Customs Code<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="exporterName" id="exporterName" value="<?php echo $export_fet['name_exporter']; ?>" />
-                                            <div class="err" id="errExporterName" style="color:red"></div>
+                                            <input class="form-control" type="text" name="customscode" id="customscode" value="<?php echo $custom_fet['customs_code']; ?>" maxlength="10" required />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Person Name<span class="req"> *</span></label>
+                                        <label class="col-sm-3 control-label">Customs Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="personName" id="personName" value="<?php echo $export_fet['name_person']; ?>" />
-                                            <div class="err" id="errPersonName" style="color:red"></div>
+                                            <input class="form-control" type="text" name="customsName" id="customsName" value="<?php echo $custom_fet['name_customs']; ?>" required/>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Address<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" name="address" id="address"><?php echo $export_fet['address']; ?></textarea>
+                                            <textarea class="form-control" name="address" id="address" required><?php echo $custom_fet['address']; ?></textarea>
                                             <div class="err" id="errAddress" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">City<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <select class="form-control" name="cityId" id="cityId">
+                                            <select class="form-control" name="cityId" id="cityId" required>
                                                 <option value="0">Select City</option>
                                                 <?php
                                                 foreach($city_results as $key => $value){ ?>
-                                                    <option value="<?php echo $value['id']; ?>" <?php if($value['id'] == $export_fet['city']){ echo 'selected'; } ?>><?php echo $value['city_name']; ?></option>
+                                                    <option value="<?php echo $value['id']; ?>" <?php if($value['id'] == $custom_fet['city']){ echo 'selected'; } ?>><?php echo $value['city_name']; ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -143,7 +141,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                                 <option value="">Select State</option>
                                                 <?php
                                                 foreach($state_results as $key => $value){ ?>
-                                                    <option value="<?php echo $value['id']; ?>"<?php if($value['id'] == $export_fet['state']){ echo 'selected'; } ?>><?php echo strtoupper($value['state_name']); ?></option>
+                                                    <option value="<?php echo $value['id']; ?>"<?php if($value['id'] == $custom_fet['state']){ echo 'selected'; } ?>><?php echo strtoupper($value['state_name']); ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -153,11 +151,11 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Country<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <select class="form-control" name="countryId" id="countryId">
+                                            <select class="form-control" name="countryId" id="countryId" required>
                                                 <option value="0">Select Country</option>
                                                 <?php
                                                 foreach($country_results as $key => $value){ ?>
-                                                    <option value="<?php echo $value['id']; ?>" <?php if($value['id'] == $export_fet['country']){ echo 'selected'; } ?>><?php echo $value['name']; ?></option>
+                                                    <option value="<?php echo $value['id']; ?>" <?php if($value['id'] == $custom_fet['country']){ echo 'selected'; } ?>><?php echo $value['name']; ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -166,52 +164,27 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Pincode<span class="req"> *</span></label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="number" name="pincode" id="pincode" value="<?php echo $export_fet['pincode']; ?>" />
-                                            <div class="err" id="errPincode" style="color:red"></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Telephone</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="number" name="telephone" id="telephone" value="<?php echo $export_fet['telephone']; ?>" />
+                                            <input class="form-control" type="number" name="telephone" id="telephone" value="<?php echo $custom_fet['telephone']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Mobile</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="number" name="mobile" id="mobile" value="<?php echo $export_fet['mobile']; ?>" />
+                                            <input class="form-control" type="number" name="mobile" id="mobile" value="<?php echo $custom_fet['mobile']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Email <span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="email" name="email" id="email" value="<?php echo $export_fet['email']; ?>" />
+                                            <input class="form-control" type="email" name="email" id="email" value="<?php echo $custom_fet['email']; ?>" required/>
                                             <div class="err" id="errEmail" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">GstIn</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="gstin" id="gstin" value="<?php echo $export_fet['gstin']; ?>" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Pan Number</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="panNumber" id="panNumber" value="<?php echo $export_fet['pan_number']; ?>" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">IEC Code</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="icecode" id="icecode" value="<?php echo $export_fet['iec_code']; ?>" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <input type="hidden" name="userId" value="<?php echo $export_fet['user_id']; ?>" />
-                                        <button type="submit" class="btn btn-primary btn-block btn-flat save-export">Save Changes</button>
+                                        <input type="hidden" name="userId" value="<?php echo $custom_fet['user_id']; ?>" />
+                                        <button type="submit" class="btn btn-primary btn-block btn-flat save-customs">Save Changes</button>
                                     </div>
                                 </div>
                                 <div class="col-md-1"></div>
@@ -225,13 +198,13 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                     <!-- Horizontal Form -->
                     <div class="box box-danger" >
                         <div class="box-header with-border">
-                            <h3 class="box-title">Exporter</h3>
+                            <h3 class="box-title">Customs</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
 
                         <div class="box-body">
                             <div class="form-group col-md-12">
-                                <a href="exporterlist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Exporters List</button></a>
+                                <a href="customslist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Customs List</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
@@ -255,52 +228,5 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".save-export").click(function(){
-            $("div.err").html( "  " );
-            var expName = $('#exporterName').val();
-            if(!expName){
-                $("div#errExporterName").html( "This field is required" );
-                return false;
-            }
-            var personName = $('#personName').val();
-            if(!personName){
-                $("div#errPersonName").html( "This field is required" );
-                return false;
-            }
-            var address = $('#address').val();
-            if(!address){
-                $("div#errAddress").html( "This field is required" );
-                return false;
-            }
-            var city = $('#cityId').val();
-            if(city == 0){
-                $("div#errCity").html( "This field is required" );
-                return false;
-            }
-            var state = $('#state').val();
-            if(!(state)){
-                $("div#errState").html( "This field is required" );
-                return false;
-            }
-            var country = $('#countryId').val();
-            if(country == 0){
-                $("div#errCountry").html( "This field is required" );
-                return false;
-            }
-            var pincode = $('#pincode').val();
-            if(!pincode){
-                $("div#errPincode").html( "This field is required" );
-                return false;
-            }
-            var email = $('#email').val();
-            if(!email){
-                $("div#errEmail").html( "This field is required" );
-                return false;
-            }
-        });
-    });
-</script>
 </body>
 </html>
