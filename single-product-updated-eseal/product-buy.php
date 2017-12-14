@@ -39,6 +39,21 @@ $user_role=$_SESSION['exporteruserrole'];
 $user_name=$_SESSION['exporterusername'];
 $user_email=$_SESSION['exporteruseremail'];
 
+$product_id = 1;
+$product_sql="SELECT * FROM `products` WHERE `id`='$product_id'";
+$product_exe=mysql_query($product_sql);
+$product_fetch=mysql_fetch_array($product_exe);
+
+$product_count_fetch=0;
+$product_id = 1;
+$product_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0 AND `product_exporter_id` IS NULL";
+$product_count_exe=mysql_query($product_count_sql);
+$product_count_fet=mysql_fetch_array($product_count_exe);
+$product_count_fetch=$product_count_fet['pro_count'];
+
+$useraddress_sql="SELECT * FROM `exporter_address` WHERE `user_id`='$user_id'";
+$useraddress_exe=mysql_query($useraddress_sql);
+
 ?>
 <!doctype html>
 <html>
@@ -147,30 +162,74 @@ $(document).ready(function() {
 
 
 
-        <form name="buyform" id="buyform" action="#dobuy.php" method="post">
+        <form name="buyform" id="buyform" action="dobuy.php" method="post">
             <div class="row" style="padding-top:10px; ">
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group">
                          <select class="register-input" name="Product" id="Product" required >
-                            <option value="1">RFID Electronic Seal -  ₹ 299.00</option>
+                            <option value="<?php echo $product_fetch['id']; ?>"><?php echo $product_fetch['product_name']; ?> -  ₹ <?php echo $product_fetch['product_price']; ?></option>
                         </select>
                     </div>
                 </div><!-- Inner Column -->
 
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="form-group">
-                         <select class="register-input" name="Quantity" id="Quantity" required >
+                         <select class="register-input" name="Quantity" id="Quantity" required onchange="productquantity(this.value);" >
                             <option value="">Quantity</option>
+                            <?php if($product_count_fetch>=10) { ?>
                             <option value="10">10</option>
+                            <?php } ?>
+                            <?php if($product_count_fetch>=20) { ?>
                             <option value="20">20</option>
+                            <?php } ?>
+                            <?php if($product_count_fetch>=30) { ?>
                             <option value="30">30</option>
+                            <?php } ?>
+                            <?php if($product_count_fetch>=40) { ?>
                             <option value="40">40</option>
+                            <?php } ?>
+                            <?php if($product_count_fetch>=50) { ?>
                             <option value="50">50</option>
+                            <?php } ?>
+                            <?php if($product_count_fetch>=60) { ?>
                             <option value="60">60</option>
+                            <?php } ?>
+                            <?php if($product_count_fetch>=70) { ?>
                             <option value="70">70</option>
+                            <?php } ?>
+                            <?php if($product_count_fetch>=80) { ?>
                             <option value="80">80</option>
+                            <?php } ?>
+                            <?php if($product_count_fetch>=90) { ?>
                             <option value="90">90</option>
+                            <?php } ?>
+                            <?php if($product_count_fetch>=100) { ?>
                             <option value="100">100</option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div><!-- Inner Column -->
+
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                <div id="total" style="font-weight: bold;">
+                    Rs. 0:00
+                </div>
+                </div><!-- Inner Column -->
+            </div>
+
+
+            <div class="row" style="padding-top:10px; ">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+
+
+                        <select class="register-input" name="Delivery" id="Delivery" required onchange="javascript:deliveryaddress(this.value);">
+                            <option value="0">Add New Delivery Address / Choose Delivery Address</option>
+                            <?php if(mysql_num_rows($useraddress_exe)>0) { ?>
+                            <?php while($useraddress_fet=mysql_fetch_array($useraddress_exe)) { ?>
+                            <option value="<?php echo $useraddress_fet['id']; ?>"><?php echo $useraddress_fet['name'].' - '.$useraddress_fet['mobile']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
 
                         </select>
                     </div>
@@ -180,13 +239,16 @@ $(document).ready(function() {
 
         <div class="other-fields">
             <div class="row">
-
-
-
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group">
                         <label>Name Of Company / Person *</label>
-                        <input type="text" name="DeliveryName" id="DeliveryName" class="register-input" value="" placeholder="Name Of Company / Person" required />
+                        <input type="text" name="DeliveryName" id="DeliveryName" class="register-input" value="" placeholder="Name Of Person" required />
+                    </div>
+                </div><!-- Inner Column -->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Mobile *</label>
+                        <input type="text" name="DeliveryMobile" id="DeliveryMobile" class="register-input" value="" placeholder="Person Mobile" required />
                     </div>
                 </div><!-- Inner Column -->
             </div><!-- Inner Row -->
@@ -268,8 +330,36 @@ $(document).ready(function() {
 
         </div>
 
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label>Payment Type *</label>
+                        <select class="register-input" name="PaymentType" id="PaymentType" required>
+                            <option value=""> Select Payment Option </option>
+                            <option value="Online"> Online - CCAvenue </option>
+                            <option value="Credit"> Credit </option>
+                            <option value="Cash On Delivery"> Cash On Delivery </option>
+                            <option value="NEFT"> NEFT </option>
+                            <option value="Cheque/DD"> Cheque/DD </option>
+                        </select>
+
+                    </div>
+                </div><!-- Inner Column -->
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label>Payment Notes *</label>
+                        <textarea name="PaymentNotes" id="PaymentNotes" placeholder="Payment Notes" class="register-input" required></textarea>
+
+                    </div>
+                </div><!-- Inner Column -->
+            </div><!-- Inner Row -->
+
         <div class="buy-now">
-            <a href="javascript:void(0);">Buy Now</a>
+            <div class="form-group last-otp">
+                <input type="hidden" name="ProductAmount" id="ProductAmount" value="<?php echo $product_fetch['product_price']; ?>" />
+                <input type="hidden" name="TotalAmount" id="TotalAmount" value="" />
+                <input type="submit" name="buyproduct" value="Buy Now" />
+            </div>
         </div>
 
         </form>
@@ -300,5 +390,126 @@ $(document).ready(function() {
 
 <?php include "bottom_footer.php"; ?>
 
+<script>
+    function productquantity(countValue)
+    {
+
+        var ProductValue = $("#ProductAmount").val();
+        var TotalValue = countValue * ProductValue;
+
+        $("#total").text("Total Amount Rs. "+TotalValue);
+        $("#TotalAmount").val(TotalValue);
+
+    }
+
+
+    function deliveryaddress(id)
+    {
+
+        if(id==0)
+        {
+            $("#DeliveryName").val('');
+            $("#DeliveryMobile").val('');
+            $("#DeliveryAddress").val('');
+            $("#DeliveryCountry").val('');
+            $("#DeliveryState").val('');
+            $("#DeliveryCity").val('');
+            $("#DeliveryPin").val('');
+        }
+        else
+        {
+
+            var BASEURL = "http://localhost/eSeal-Application/single-product-updated-eseal/";
+            var status = 1;
+            var callurl = BASEURL + 'ajax-get-address.php?id='+id;
+
+            $.ajax({
+                url: callurl,
+                type: "get",
+                data: {"id": id, "status": status},
+                success: function (data) {
+                    var obj = JSON.parse(data);
+
+                    $("input#DeliveryName").val(obj.name);
+                    $("input#DeliveryMobile").val(obj.mobile);
+                    $("textarea#DeliveryAddress").val(obj.address);
+                    $("select#DeliveryCountry").val(obj.country);
+                    $("select#DeliveryState").val(obj.state);
+                    $("select#DeliveryCity").val(obj.city);
+                    $("input#DeliveryPin").val(obj.pincode);
+
+                }
+            });
+
+        }
+    }
+
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+
+<script>
+    // Wait for the DOM to be ready
+    $(function() {
+
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        });
+
+        // Initialize form validation on the registration form.
+        // It has the name attribute "registration"
+        $("form#buyform").validate({
+            // Specify validation rules
+            rules: {
+                DeliveryName: {
+                    required: true,
+                    lettersonly: true
+                },
+                DeliveryMobile: {
+                    required: true,
+                    number: true,
+                    minlength: 10,
+                    maxlength: 11
+                },
+                DeliveryPin: "required",
+                DeliveryCity: "required",
+                DeliveryState: "required",
+                DeliveryCountry: "required",
+                DeliveryAddress: "required",
+                Product: "required",
+                Quantity: "required",
+            },
+            // Specify validation error messages
+            messages: {
+                DeliveryName: {
+                    required: "Please enter your name",
+                    lettersonly: "Your name must be characters"
+                },
+                DeliveryMobile: {
+                    required: "Please provide a valid mobile number",
+                    minlength: "Your mobile number must be 10 characters long",
+                    maxlength: "Your mobile number must be 11 characters long"
+                },
+                DeliveryPin: "Please enter your Pincode",
+                DeliveryCity: "Please choose your City",
+                DeliveryState: "Please choose your State",
+                DeliveryCountry: "Please choose your Country",
+                DeliveryAddress: "Please enter your Address",
+                Product: "Please choose Product",
+                Quantity: "Please choose Quantity",
+            },
+            // Make sure the form is submitted to the destination defined
+            // in the "action" attribute of the form when valid
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    });
+</script>
+<style>
+    label.error { color: red; }
+</style>
 </body>
 </html>

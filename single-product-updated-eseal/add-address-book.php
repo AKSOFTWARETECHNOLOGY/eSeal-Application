@@ -297,7 +297,7 @@ $(document).ready(function() {
 </div><!--Address Bar-->
 </div><!--My Account-->
 
-<div class="submit-btn">
+<div class="submit-btn hidden">
 <ul>
 <li><a href="javascript:void(0);">Back</a></li>
 <li><a href="javascript:void(0);">New Address</a></li>
@@ -312,6 +312,68 @@ $(document).ready(function() {
 <?php include "footer.php"; ?>
 
 <?php include "bottom_footer.php"; ?>
+
+
+
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+
+<script>
+    // Wait for the DOM to be ready
+    $(function() {
+
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        });
+
+        // Initialize form validation on the registration form.
+        // It has the name attribute "registration"
+        $("form#addressform").validate({
+            // Specify validation rules
+            rules: {
+                personName: {
+                    required: true,
+                    lettersonly: true
+                },
+                mobile: {
+                    required: true,
+                    number: true,
+                    minlength: 10,
+                    maxlength: 11
+                },
+                pincode: "required",
+                cityId: "required",
+                state: "required",
+                countryId: "required",
+                address: "required",
+            },
+            // Specify validation error messages
+            messages: {
+                personName: {
+                    required: "Please enter your name",
+                    lettersonly: "Your name must be characters"
+                },
+                mobile: {
+                    required: "Please provide a valid mobile number",
+                    minlength: "Your mobile number must be 10 characters long",
+                    maxlength: "Your mobile number must be 11 characters long"
+                },
+                pincode: "Please enter your Pincode",
+                cityId: "Please choose your City",
+                state: "Please choose your State",
+                countryId: "Please choose your Country",
+                address: "Please enter your Address",
+            },
+            // Make sure the form is submitted to the destination defined
+            // in the "action" attribute of the form when valid
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    });
+</script>
+<style>
+    label.error { color: red; }
+</style>
 
 </body>
 </html>

@@ -23,6 +23,10 @@ $userinfo_sql="SELECT * FROM `exporter_info` WHERE `user_id`='$user_id'";
 $userinfo_exe=mysql_query($userinfo_sql);
 $userinfo=mysql_fetch_array($userinfo_exe);
 
+
+
+$product_order_sql="SELECT * FROM `product_order` WHERE `product_exporter_id`='$user_id' ORDER BY `id` DESC";
+$product_order_exe=mysql_query($product_order_sql);
 ?>
 <!doctype html>
 <html>
@@ -145,42 +149,26 @@ $(document).ready(function() {
 <th>View</th>
 </thead>
 <tbody>
+<?php if(mysql_num_rows($product_order_exe)>0) { ?>
+<?php while($product_order_fet=mysql_fetch_array($product_order_exe)) { ?>
 <tr>
-<td>2</td>
-<td>Name</td>
-<td>1</td>
-<td>Pending</td>
-<td>Rs.1000.00</td>
-<td>7/12/2017</td>
-<td><a href="order-history-details.php"><i class="fa fa-eye"></i></a></td>
+<td><?php echo $product_order_fet['product_order_id']; ?></td>
+<td><?php echo $product_order_fet['product_delivery_name']; ?></td>
+<td><?php echo $product_order_fet['product_sale_quantity']; ?></td>
+<td><?php echo $product_order_fet['product_sale_status']; ?></td>
+<td>Rs.<?php echo $product_order_fet['product_sale_total']; ?></td>
+<td><?php echo $product_order_fet['product_sale_date']; ?></td>
+<td><a href="order-history-details.php?order_id=<?php echo $product_order_fet['id']; ?>"><i class="fa fa-eye"></i></a></td>
 </tr>
+
+<?php } ?>
+
+<?php } else { ?>
+
 <tr>
-<td>2</td>
-<td>Name</td>
-<td>1</td>
-<td>Pending</td>
-<td>Rs.1000.00</td>
-<td>7/12/2017</td>
-<td><a href="order-history-details.php"><i class="fa fa-eye"></i></a></td>
+<td colspan="7"> No Order </td>
 </tr>
-<tr>
-<td>2</td>
-<td>Name</td>
-<td>1</td>
-<td>Pending</td>
-<td>Rs.1000.00</td>
-<td>7/12/2017</td>
-<td><a href="order-history-details.php"><i class="fa fa-eye"></i></a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>Name</td>
-<td>1</td>
-<td>Pending</td>
-<td>Rs.1000.00</td>
-<td>7/12/2017</td>
-<td><a href="order-history-details.php"><i class="fa fa-eye"></i></a></td>
-</tr>
+<?php } ?>
 </tbody>
 </table>
 </div><!--Table Responsive-->
