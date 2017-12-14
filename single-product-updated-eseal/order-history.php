@@ -120,7 +120,7 @@ $(document).ready(function() {
 <?php include "header.php"; ?>
 
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>Order History</h3>
 </div>
@@ -137,7 +137,9 @@ $(document).ready(function() {
 
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="order-history">
-<div class="table-responsive">
+    <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> My Order Information</h3>
+
+    <div class="table-responsive">
 <table class="table">
 <thead>
 <th>Order ID</th>

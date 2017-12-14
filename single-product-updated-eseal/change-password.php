@@ -112,7 +112,7 @@ $(document).ready(function() {
 
 
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>Change Password</h3>
 </div>

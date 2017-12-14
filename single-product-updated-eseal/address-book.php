@@ -142,7 +142,7 @@ $(document).ready(function() {
 <?php include "header.php"; ?>
 
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>Address Book Entries</h3>
 </div>

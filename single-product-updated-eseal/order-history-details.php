@@ -117,7 +117,7 @@ $(document).ready(function() {
 
 
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
     <div class="home-about-banner-overlay">
         <h3>Order History Details</h3>
     </div>

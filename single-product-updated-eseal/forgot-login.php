@@ -109,55 +109,58 @@ $(document).ready(function() {
 <div class="container">
 <div class="row">
 
-<div class="col-md-6 col-sm-6 col-xs-12">
-<div class="account-login">
-<h3>New Customers</h3>
-
-<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more</p>
-
-
-<a href="registration-terms.php"><i class="fa fa-user"></i> Create an Account</a>
-</div>
-</div>
+    <div class="col-md-3 col-sm-3 col-xs-12"></div>
 
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="account-sign">
-    <?php if(isset($_REQUEST['success'])) { ?>
-        <p style="color:green;font-weight:bold"> Your Account Activated Successfully! You can login now.</p>
-    <?php } ?>
-
-    <?php if(isset($_REQUEST['err'])) { ?>
-        <p style="color:red;font-weight:bold"> Invalid Login Details / Your Account not Activated.</p>
-    <?php } ?>
-<h3>Registered Customers</h3>
-<p>If you have an account with us, please log in.</p>
 
 
-<form name="loginform" id="loginform" action="dologin.php" method="post">
-<div class="modal-body">
 
-<div class="form-group row">
-<label>Email Id*</label>
-<input type="text" name="email" value="" required />
+    <form name="loginform" id="loginform" method="post" action="doforgotlogin.php">
+        <div class="modal-body">
+
+
+            <?php if(isset($_REQUEST['suc'])) { ?>
+                <p style="color:green;font-weight:bold"> Your Account Password Reset Mail Sent Successfully! You can check your mail now.</p>
+            <?php } ?>
+
+            <?php if(isset($_REQUEST['err'])) { ?>
+                <p style="color:red;font-weight:bold"> Invalid Login Details / Your Account not Activated.</p>
+            <?php } ?>
+
+            <h3>Registered Customers</h3>
+            <p>If you have an account with us, please recover your login in.</p>
+            <br/>
+            <div class="form-group row">
+                <label>Email Id*</label>
+                <input type="text" name="email" value="" required />
+            </div>
+
+
+
+            <div class="form-group row">
+                <span><input type="submit" name="forgotlogin" value="Reset Password" class="account-sign-submit" /></span>
+                <!--<button type="button" name="login"><i class="fa fa-lock"></i>Login</button>-->
+                <!--<a href="forgot-login.php">Forgot Your Password ?</a>-->
+                <br/>
+                <p>Not a Member! <a href="registration-terms.php"><i class="fa fa-user"></i> Create an Account</a>.</p>
+                <p>Know your Login Details!  <a href="login.php"><i class="fa fa-user"></i> Login to Account</a> </p>
+            </div>
+
+
+
+        </div>
+    </form>
+
 </div>
 
-<div class="form-group row">
-<label>Password*</label>
-<input type="password" name="password" value=""  required />
-</div>
 
-<div class="form-group row">
-<span><input type="submit" name="login" value="Login" class="account-sign-submit" /></span>
-<!--<button type="button" name="login"><i class="fa fa-lock"></i>Login</button>-->
-    <br/>
-<a href="forgot-login.php">Forgot Your Password ?</a>
-</div>
 
-</div>
-</form>
+
 </div>
 </div>
 
+    <div class="col-md-3 col-sm-3 col-xs-12"></div>
 
 
 

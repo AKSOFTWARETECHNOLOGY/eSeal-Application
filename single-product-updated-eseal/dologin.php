@@ -19,7 +19,7 @@ if(isset($_REQUEST['login']))
 $email=$_REQUEST['email'];
 $password=$_REQUEST['password'];
 $password_md5=md5($password);
-$sql="SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password_md5' AND `confirmed`='1' AND `delete_status`='0'";
+$sql="SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password_md5' AND `confirmed`='1' AND `delete_status`='1'";
 $exe=mysql_query($sql);
 $num=@mysql_num_rows($exe);
 if($num>0)

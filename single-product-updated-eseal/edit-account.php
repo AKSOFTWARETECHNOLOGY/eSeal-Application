@@ -191,7 +191,7 @@ $(document).ready(function() {
 <?php include "header.php"; ?>
 
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>Edit Account</h3>
 </div>
@@ -208,7 +208,7 @@ $(document).ready(function() {
 
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="my-account">
-<h3><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Information</h3>
+<h3><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Account Information</h3>
 
     <?php if(isset($_REQUEST['succ'])) { ?>
         <p style="color:green;font-weight:bold"> Your Account Details Successfully!</p><br/>

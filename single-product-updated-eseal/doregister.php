@@ -42,8 +42,8 @@ $joindate=date("Y-m-d");
 				else
 				{
 				$password_md=md5($password);
-				$insert_user_sql="INSERT INTO `users` (`name`, `email`, `password`, `confirmed`) 
-												VALUES ('$exporterName', '$email', '$password_md', '1')";
+				$insert_user_sql="INSERT INTO `users` (`name`, `email`, `password`, `confirmed`, `delete_status`)
+												VALUES ('$exporterName', '$email', '$password_md', '0', '1')";
 
                 $insert_user_exe=mysql_query($insert_user_sql);
 				
@@ -66,12 +66,12 @@ VALUES ('$user_id','$personName','$address','$cityId','$state','$countryId','$pi
 
                 $insert_address_exe = mysql_query($insert_address_sq1);
 
-                /*
+
 
 				if(!empty($user_id)) {
 					$actual_link = "http://$_SERVER[HTTP_HOST]/"."activate.php?id=" . $user_id;
 					$toEmail = $email;
-					$subject = "Nextpub - User Registration Activation Email";
+					$subject = "SSGA - User Registration Activation Email";
 					$content = " Click this link to activate your account. <a href='" . $actual_link . "'>" . $actual_link . "</a>";
 					
 					$message="<div style='width:700px;height:800px;background-image:none;background-repeat: no-repeat;'>
@@ -79,7 +79,7 @@ VALUES ('$user_id','$personName','$address','$cityId','$state','$countryId','$pi
 							  
 							  <tr>
 								<p style=''>Hi <strong>$name</strong>,</p>
-								<p style='text-align:center'>Welcome to Nextpub, Thanks for registered with us.</p>
+								<p style='text-align:center'>Welcome to SSGA, Thanks for registered with us.</p>
 									<div style='padding: 50px 50px 50px 50px;'>
 											$content	
 									</div>		
@@ -89,7 +89,7 @@ VALUES ('$user_id','$personName','$address','$cityId','$state','$countryId','$pi
 							  <tr>
 								<td height='100' align='center' valign='top'>
 								 <p class='style4'>Thanks</p> 
-								 <p class='style4'>Nextpub Team</p>
+								 <p class='style4'>SSGA Team</p>
 								 </td>
 							  </tr>
 							</table>
@@ -100,7 +100,7 @@ VALUES ('$user_id','$personName','$address','$cityId','$state','$countryId','$pi
 					$mailHeaders  = 'MIME-Version: 1.0' . "\r\n";
 					$mailHeaders .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 					// Additional headers
-					$mailHeaders .= 'From: Nextpub <info@nextpub.co.in>' . "\r\n";
+					$mailHeaders .= 'From: SSGA <info@ssgaeseal.com>' . "\r\n";
 
 					if(mail($toEmail, $subject, $message, $mailHeaders)) {
 						$message = "You have registered and the activation mail is sent to your email. Click the activation link to activate you account.";	
@@ -112,7 +112,7 @@ VALUES ('$user_id','$personName','$address','$cityId','$state','$countryId','$pi
 					}
 				}
 
-                */
+
 				
 				//include "doregister-mail.php";
 				
