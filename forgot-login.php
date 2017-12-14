@@ -116,7 +116,7 @@ include "config.php";
 								<?php } ?>
 								
 									<form class="form-horizontal form-bordered" method="post" action="doforgotlogin.php">
-									
+
 										<div class="form-group">
 											<label class="col-md-3 control-label" for="userEmail">Email</label>
 											<div class="col-md-6">
