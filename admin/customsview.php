@@ -13,25 +13,25 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-if(isset($_REQUEST['exporter_id']))
+if(isset($_REQUEST['customs_id']))
 {
-    $exporter_id=$_REQUEST['exporter_id'];
+    $customs_id=$_REQUEST['customs_id'];
 }
 else
 {
     exit;
 }
 
-$export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, states.state_name
-FROM `exporter_info` AS `ei`
-LEFT JOIN `users` ON users.id = ei.user_id
-LEFT JOIN `countries` ON countries.id = ei.country
-LEFT JOIN `cities` ON cities.id = ei.city
-LEFT JOIN `states` ON states.id = ei.state
-WHERE `users`.delete_status = 1 and `ei`.id = $exporter_id";
-$export_exe=mysql_query($export_sql);
-$export_cnt=@mysql_num_rows($export_exe);
-$export_fet=mysql_fetch_array($export_exe);
+$custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, states.state_name
+FROM `customs_info` AS `ci`
+LEFT JOIN `users` ON users.id = ci.user_id
+LEFT JOIN `countries` ON countries.id = ci.country
+LEFT JOIN `cities` ON cities.id = ci.city
+LEFT JOIN `states` ON states.id = ci.state
+WHERE `users`.delete_status = 1 and `ci`.id = $customs_id";
+$custom_exe=mysql_query($custom_sql);
+$custom_cnt=@mysql_num_rows($custom_exe);
+$custom_fet=mysql_fetch_array($custom_exe);
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,11 +49,11 @@ $export_fet=mysql_fetch_array($export_exe);
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                View Exporter
+                View Customs
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">View Exporter</li>
+                <li class="active">View Customs</li>
             </ol>
         </section>
 
@@ -65,7 +65,7 @@ $export_fet=mysql_fetch_array($export_exe);
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">View Exporter Details</h3>
+                            <h3 class="box-title">View Customs Details</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
                         <form role="form">
@@ -74,56 +74,40 @@ $export_fet=mysql_fetch_array($export_exe);
                                 <div class="col-md-12">
                                     <style>.control-label{line-height:32px;} .form-group{line-height:32px;}</style>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Exporter Name</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $export_fet['name_exporter']; ?></div></div>
+                                        <label class="col-sm-3 control-label">Customs Code</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $custom_fet['customs_code']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Person Name</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $export_fet['name_person']; ?></div></div>
+                                        <label class="col-sm-3 control-label">Customs Name</label>
+                                        <div class="col-sm-9"><div class=""><?php echo $custom_fet['name_customs']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Address</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $export_fet['address']; ?></div></div>
+                                        <div class="col-sm-9"><div class=""> <?php echo $custom_fet['address']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">City</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $export_fet['city_name']; ?></div></div>
+                                        <div class="col-sm-9"><div class=""><?php echo $custom_fet['city_name']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">State</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $export_fet['state_name']; ?></div></div>
+                                        <div class="col-sm-9"><div class="" ><?php echo $custom_fet['state_name']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Country</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $export_fet['country_name']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Pincode</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $export_fet['pincode']; ?></div></div>
+                                        <div class="col-sm-9"><div class=""> <?php echo $custom_fet['country_name']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Telephone</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $export_fet['telephone']; ?></div></div>
+                                        <div class="col-sm-9"><div class="" ><?php echo $custom_fet['telephone']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Mobile</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $export_fet['mobile']; ?></div></div>
+                                        <div class="col-sm-9"><div class=""> <?php echo $custom_fet['mobile']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Email</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $export_fet['email']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">GstIn</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $export_fet['gstin']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Pan Number</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $export_fet['pan_number']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">IEC Code</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $export_fet['iec_code']; ?></div></div>
+                                        <div class="col-sm-9"><div class=""><?php echo $custom_fet['email']; ?></div></div>
                                     </div>
                                 </div>
                                 <div class="col-md-1"></div>
@@ -137,13 +121,13 @@ $export_fet=mysql_fetch_array($export_exe);
                     <!-- Horizontal Form -->
                     <div class="box box-danger" >
                         <div class="box-header with-border">
-                            <h3 class="box-title">Exporter</h3>
+                            <h3 class="box-title">Customs</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
 
                         <div class="box-body">
                             <div class="form-group col-md-12">
-                                <a href="exporterlist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Exporters List</button></a>
+                                <a href="customslist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Customs List</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->

@@ -95,6 +95,11 @@
                 <i class="ion ion-android-contact"></i> <span>Exporters</span>
               </a>
             </li>
+              <li class="treeview">
+                  <a href="customslist.php">
+                      <i class="ion ion-android-contact"></i> <span>Customs</span>
+                  </a>
+              </li>
 
             <li class="treeview">
               <a href="logout.php">

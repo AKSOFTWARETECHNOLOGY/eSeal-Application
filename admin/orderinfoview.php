@@ -60,7 +60,7 @@ $product_fet=mysql_fetch_array($product_exe);
         <section class="content">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-12">
+                <div class="col-md-9">
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -159,6 +159,22 @@ $product_fet=mysql_fetch_array($product_exe);
                         </form>
                     </div><!-- /.box -->
                 </div><!--/.col (left) -->
+
+                <div class="col-md-3">
+                    <!-- Horizontal Form -->
+                    <div class="box box-danger" >
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Product Order</h3>
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+
+                        <div class="box-body">
+                            <div class="form-group col-md-12">
+                                <a href="orderview.php?order_id=<?php echo $product_fet['product_order_id']; ?>"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Product Order List</button></a>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!--/.col (right) -->
 
             </div>   <!-- /.row -->
         </section><!-- /.content -->
