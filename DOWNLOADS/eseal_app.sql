@@ -16,6 +16,35 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`eseal_app` /*!40100 DEFAULT CHARACTER S
 
 USE `eseal_app`;
 
+/*Table structure for table `brancher_info` */
+
+DROP TABLE IF EXISTS `brancher_info`;
+
+CREATE TABLE `brancher_info` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `exporter_id` int(10) NOT NULL,
+  `name_person` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `address` text COLLATE utf8_unicode_ci NOT NULL,
+  `city` int(10) unsigned NOT NULL,
+  `state` int(10) NOT NULL,
+  `country` int(10) unsigned NOT NULL,
+  `pincode` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `telephone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `mobile` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `photo` text COLLATE utf8_unicode_ci,
+  `created_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `updated_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `brancher_info` */
+
+insert  into `brancher_info`(`id`,`user_id`,`exporter_id`,`name_person`,`address`,`city`,`state`,`country`,`pincode`,`telephone`,`mobile`,`email`,`photo`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (1,15,7,'Vimal','Villivakkam',15,31,99,'600049','','9841486644','vimal@gmail.com',NULL,'User','User','2017-12-15 00:00:00','2017-12-15 00:00:00');
+
 /*Table structure for table `cities` */
 
 DROP TABLE IF EXISTS `cities`;
@@ -106,11 +135,11 @@ CREATE TABLE `exporter_address` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `exporter_address` */
 
-insert  into `exporter_address`(`id`,`user_id`,`name`,`address`,`city`,`state`,`country`,`pincode`,`mobile`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (2,7,'Alagirivimal','Annanagar',15,31,99,'600040','','vendor','vendor','2017-12-09 00:00:00','2017-12-09 00:00:00'),(3,8,'Alagirivimal Kottaimuthu','Villivakkam',15,31,99,'600049','','User','User','2017-12-09 00:00:00','2017-12-09 00:00:00'),(4,9,'SASIKALA','VIllivakkam',15,31,99,'600049','','User','User','2017-12-09 00:00:00','2017-12-09 00:00:00'),(5,10,'Kishore','Chetpet',15,31,99,'600031','','User','User','2017-12-10 00:00:00','2017-12-10 00:00:00'),(6,11,'KRISHNAN','ANNA NAGAR',15,31,99,'600040','9845698456','User','User','2017-12-10 00:00:00','2017-12-10 00:00:00'),(7,12,'AMMA','MADURAI',57,31,99,'625221','','vendor','vendor','2017-12-11 00:00:00','2017-12-11 00:00:00'),(8,7,'Kishore','Villivakkam ',15,31,99,'600049','9898989898','User','User','2017-12-11 00:00:00','2017-12-11 00:00:00');
+insert  into `exporter_address`(`id`,`user_id`,`name`,`address`,`city`,`state`,`country`,`pincode`,`mobile`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (3,8,'Alagirivimal Kottaimuthu','Villivakkam',15,31,99,'600049','','User','User','2017-12-09 00:00:00','2017-12-09 00:00:00'),(4,9,'SASIKALA','VIllivakkam',15,31,99,'600049','','User','User','2017-12-09 00:00:00','2017-12-09 00:00:00'),(5,10,'Kishore','Chetpet',15,31,99,'600031','','User','User','2017-12-10 00:00:00','2017-12-10 00:00:00'),(6,11,'KRISHNAN','ANNA NAGAR',15,31,99,'600040','9845698456','User','User','2017-12-10 00:00:00','2017-12-10 00:00:00'),(7,12,'AMMA','MADURAI',57,31,99,'625221','','vendor','vendor','2017-12-11 00:00:00','2017-12-11 00:00:00'),(8,7,'Kishore','Villivakkam ',15,31,99,'600049','9898989898','User','User','2017-12-11 00:00:00','2017-12-11 00:00:00'),(9,7,'Alagirivimal','Sidco Nagar, Villivakkam',15,31,99,'600049','9841486644','User','User','2017-12-15 00:00:00','2017-12-15 00:00:00');
 
 /*Table structure for table `exporter_info` */
 
@@ -218,11 +247,11 @@ CREATE TABLE `ports` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `ports` */
 
-insert  into `ports`(`id`,`ports_name`,`ports_status`,`created_by`,`modified_by`,`created_at`,`updated_at`) values (1,'Chennai Port',1,'admin','admin',NULL,NULL),(2,'Ennore Port',1,'admin','admin',NULL,NULL),(3,'Kattupalli Port',1,'admin','admin',NULL,NULL),(4,'Tuticorin Port',1,'admin','admin',NULL,NULL),(5,'Cochin Port',1,'admin','admin',NULL,NULL),(6,'Kolkata Port',0,'admin','admin',NULL,NULL),(7,'Paradip Port',0,'admin','admin',NULL,NULL),(8,'New Mangalore Port',0,'admin','admin',NULL,NULL),(9,'Jawaharlal Nehru Port',0,'admin','admin',NULL,NULL),(10,'Mumbai Port',0,'admin','admin',NULL,NULL),(11,'Kandla Port',0,'admin','admin',NULL,NULL),(12,'Vishakhapatnam Port',0,'admin','admin',NULL,NULL),(13,'Mormugao Port',0,'admin','admin',NULL,NULL),(14,'Port Blair Port',0,'admin','admin',NULL,NULL),(15,'Tiruppur - CFS',1,'admin','admin',NULL,NULL);
+insert  into `ports`(`id`,`ports_name`,`ports_status`,`created_by`,`modified_by`,`created_at`,`updated_at`) values (1,'Chennai Port1',0,'admin','vendor',NULL,'2017-12-15 00:00:00'),(2,'Ennore Port',1,'admin','admin',NULL,NULL),(3,'Kattupalli Port',1,'admin','admin',NULL,NULL),(4,'Tuticorin Port',1,'admin','admin',NULL,NULL),(5,'Cochin Port',1,'admin','admin',NULL,NULL),(6,'Kolkata Port',0,'admin','admin',NULL,NULL),(7,'Paradip Port',0,'admin','admin',NULL,NULL),(8,'New Mangalore Port',0,'admin','admin',NULL,NULL),(9,'Jawaharlal Nehru Port',0,'admin','admin',NULL,NULL),(10,'Mumbai Port',0,'admin','admin',NULL,NULL),(11,'Kandla Port',0,'admin','admin',NULL,NULL),(12,'Vishakhapatnam Port',0,'admin','admin',NULL,NULL),(13,'Mormugao Port',0,'admin','admin',NULL,NULL),(14,'Port Blair Port',0,'admin','admin',NULL,NULL),(15,'Tiruppur - CFS',1,'admin','admin',NULL,NULL);
 
 /*Table structure for table `product_info` */
 
@@ -325,6 +354,7 @@ CREATE TABLE `product_order_info` (
   `driver_number` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `form_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `eway_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notes` text COLLATE utf8_unicode_ci,
   `customs_approve_status` int(11) DEFAULT '0',
   `customs_approve_note` text COLLATE utf8_unicode_ci,
   `customs_approve_date` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -338,7 +368,7 @@ CREATE TABLE `product_order_info` (
 
 /*Data for the table `product_order_info` */
 
-insert  into `product_order_info`(`id`,`user_id`,`product_id`,`product_order_id`,`product_unicode`,`product_sealcode`,`product_exporter_id`,`seal_type`,`cfs_reach_time`,`zone`,`commissionerate`,`shipping_no`,`shipping_date`,`iec_no`,`pan_no`,`gst_no`,`sealing_date`,`sealing_time`,`destination_port`,`terminal_name`,`container_size`,`container_no`,`trailer_truck_no`,`driver_name`,`driver_licence`,`driver_number`,`form_no`,`eway_no`,`customs_approve_status`,`customs_approve_note`,`customs_approve_date`,`customs_spprove_time`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (41,7,1,16,'SSG100000001','111111',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(42,7,1,16,'SSG100000002','121212',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(43,7,1,16,'SSG100000003','131313',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(44,7,1,16,'SSG100000004','141414',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(45,7,1,16,'SSG100000005','151515',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(46,7,1,16,'SSG100000006','161616',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(47,7,1,16,'SSG100000007','171717',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(48,7,1,16,'SSG100000008','181818',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(49,7,1,16,'SSG100000009','191919',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(50,7,1,16,'SSG100000010','202020',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(51,7,1,17,'SSG100000011','212121',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(52,7,1,17,'SSG100000012','222222',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(53,7,1,17,'SSG100000013','232323',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(54,7,1,17,'SSG100000014','242424',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(55,7,1,17,'SSG100000015','252525',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(56,7,1,17,'SSG100000016','262626',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(57,7,1,17,'SSG100000017','272727',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(58,7,1,17,'SSG100000018','282828',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(59,7,1,17,'SSG100000019','292929',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(60,7,1,17,'SSG100000020','303030',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00');
+insert  into `product_order_info`(`id`,`user_id`,`product_id`,`product_order_id`,`product_unicode`,`product_sealcode`,`product_exporter_id`,`seal_type`,`cfs_reach_time`,`zone`,`commissionerate`,`shipping_no`,`shipping_date`,`iec_no`,`pan_no`,`gst_no`,`sealing_date`,`sealing_time`,`destination_port`,`terminal_name`,`container_size`,`container_no`,`trailer_truck_no`,`driver_name`,`driver_licence`,`driver_number`,`form_no`,`eway_no`,`notes`,`customs_approve_status`,`customs_approve_note`,`customs_approve_date`,`customs_spprove_time`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (41,7,1,16,'SSG100000001','111111',7,2,'00:59',NULL,NULL,'123456','2017-12-16','12121212','12121212','12121212','2017-12-16','12:00',1,'Chennai','1','124578','147852','Vimal','124578','125487','147852','895623','None',0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(42,7,1,16,'SSG100000002','121212',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(43,7,1,16,'SSG100000003','131313',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(44,7,1,16,'SSG100000004','141414',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(45,7,1,16,'SSG100000005','151515',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(46,7,1,16,'SSG100000006','161616',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(47,7,1,16,'SSG100000007','171717',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(48,7,1,16,'SSG100000008','181818',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(49,7,1,16,'SSG100000009','191919',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(50,7,1,16,'SSG100000010','202020',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(51,7,1,17,'SSG100000011','212121',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(52,7,1,17,'SSG100000012','222222',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(53,7,1,17,'SSG100000013','232323',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(54,7,1,17,'SSG100000014','242424',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(55,7,1,17,'SSG100000015','252525',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(56,7,1,17,'SSG100000016','262626',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(57,7,1,17,'SSG100000017','272727',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(58,7,1,17,'SSG100000018','282828',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(59,7,1,17,'SSG100000019','292929',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(60,7,1,17,'SSG100000020','303030',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00');
 
 /*Table structure for table `products` */
 
@@ -378,11 +408,11 @@ CREATE TABLE `role_user` (
   KEY `role_user_role_id_foreign` (`role_id`),
   CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
   CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `role_user` */
 
-insert  into `role_user`(`id`,`user_id`,`role_id`,`created_at`,`updated_at`) values (1,1,1,NULL,NULL),(2,2,2,NULL,NULL),(6,7,3,NULL,NULL),(7,8,3,NULL,NULL),(8,9,3,NULL,NULL),(9,10,3,NULL,NULL),(10,11,3,NULL,NULL),(11,12,3,NULL,NULL),(12,13,4,NULL,NULL);
+insert  into `role_user`(`id`,`user_id`,`role_id`,`created_at`,`updated_at`) values (1,1,1,NULL,NULL),(2,2,2,NULL,NULL),(6,7,3,NULL,NULL),(7,8,3,NULL,NULL),(8,9,3,NULL,NULL),(9,10,3,NULL,NULL),(10,11,3,NULL,NULL),(11,12,3,NULL,NULL),(12,13,4,NULL,NULL),(14,15,6,NULL,NULL);
 
 /*Table structure for table `roles` */
 
@@ -399,11 +429,11 @@ CREATE TABLE `roles` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `roles` */
 
-insert  into `roles`(`id`,`name`,`display_name`,`description`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (1,'admin','admin','admin','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42'),(2,'vendor','vendor','vendor','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42'),(3,'exporter','exporter','exporter','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42'),(4,'customs','customs','customs','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42'),(5,'support','support','support','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42');
+insert  into `roles`(`id`,`name`,`display_name`,`description`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (1,'admin','admin','admin','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42'),(2,'vendor','vendor','vendor','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42'),(3,'exporter','exporter','exporter','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42'),(4,'customs','customs','customs','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42'),(5,'support','support','support','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42'),(6,'brancher','brancher','brancher','Admin','Admin','2016-08-29 06:12:42','2016-08-29 06:12:42');
 
 /*Table structure for table `states` */
 
@@ -472,11 +502,11 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`password`,`remember_token`,`confirmation_code`,`confirmed`,`delete_status`,`created_at`,`updated_at`) values (1,'admin','admin@ssgaeseal.com','e10adc3949ba59abbe56e057f20f883e','',NULL,1,1,NULL,'2017-11-29 09:31:51'),(2,'vendor','vendor@ssgaeseal.com','e10adc3949ba59abbe56e057f20f883e','',NULL,1,1,NULL,'2017-11-29 09:31:51'),(7,'EXP One India','alagirivimal@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,'2017-12-09 00:00:00','2017-12-09 00:00:00'),(8,'AK Exporter','akexporter@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,NULL,NULL),(9,'SASI AND CO','sasiandco@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,NULL,NULL),(10,'Kishore Export','kishore@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,NULL,NULL),(11,'KRISHNA EXPORTER','krishnan@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,NULL,NULL),(12,'AMMA EXPORTER','amma@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,'2017-12-11 00:00:00','2017-12-11 00:00:00'),(13,'CHENNAI CUSTOMS','customschennai@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,'2017-12-14 00:00:00','2017-12-14 00:00:00');
+insert  into `users`(`id`,`name`,`email`,`password`,`remember_token`,`confirmation_code`,`confirmed`,`delete_status`,`created_at`,`updated_at`) values (1,'admin','admin@ssgaeseal.com','e10adc3949ba59abbe56e057f20f883e','',NULL,1,1,NULL,'2017-11-29 09:31:51'),(2,'vendor','vendor@ssgaeseal.com','e10adc3949ba59abbe56e057f20f883e','',NULL,1,1,NULL,'2017-11-29 09:31:51'),(7,'EXP One India','alagirivimal@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,'2017-12-09 00:00:00','2017-12-09 00:00:00'),(8,'AK Exporter','akexporter@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,NULL,NULL),(9,'SASI AND CO','sasiandco@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,NULL,NULL),(10,'Kishore Export','kishore@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,NULL,NULL),(11,'KRISHNA EXPORTER','krishnan@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,NULL,NULL),(12,'AMMA EXPORTER','amma@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,'2017-12-11 00:00:00','2017-12-11 00:00:00'),(13,'CHENNAI CUSTOMS','customschennai@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,1,'2017-12-14 00:00:00','2017-12-14 00:00:00'),(15,'Vimal','vimal@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,NULL,1,0,NULL,NULL);
 
 /*Table structure for table `vendor_info` */
 
