@@ -24,6 +24,14 @@ $inv_exe=mysql_query($inv_sql);
 $inv_cnt=@mysql_num_rows($inv_exe);
 //$product_fet=mysql_fetch_array($product_exe);
 
+$product_count_fetch=0;
+$product_id = 1;
+$product_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0 AND `product_exporter_id` IS NULL";
+$product_count_exe=mysql_query($product_count_sql);
+$product_count_fet=mysql_fetch_array($product_count_exe);
+$product_count_fetch=$product_count_fet['pro_count'];
+
+
 $export_sql="SELECT ei.* FROM `exporter_info` AS `ei`
 LEFT JOIN `users` ON users.id = ei.user_id
 WHERE `users`.delete_status = 1";
@@ -109,11 +117,36 @@ $export_cnt=@mysql_num_rows($export_exe);
                                         <div class="col-sm-9">
                                             <select class="form-control" name="quantity" id="quantity">
                                                 <option value="0"> Select Quantity </option>
-                                                <option value="10"> 10 </option>
-                                                <option value="20"> 20 </option>
-                                                <option value="30"> 30 </option>
-                                                <option value="40"> 40 </option>
-                                                <option value="50"> 50 </option>
+                                                <?php if($product_count_fetch>=10) { ?>
+                                                    <option value="10">10</option>
+                                                <?php } ?>
+                                                <?php if($product_count_fetch>=20) { ?>
+                                                    <option value="20">20</option>
+                                                <?php } ?>
+                                                <?php if($product_count_fetch>=30) { ?>
+                                                    <option value="30">30</option>
+                                                <?php } ?>
+                                                <?php if($product_count_fetch>=40) { ?>
+                                                    <option value="40">40</option>
+                                                <?php } ?>
+                                                <?php if($product_count_fetch>=50) { ?>
+                                                    <option value="50">50</option>
+                                                <?php } ?>
+                                                <?php if($product_count_fetch>=60) { ?>
+                                                    <option value="60">60</option>
+                                                <?php } ?>
+                                                <?php if($product_count_fetch>=70) { ?>
+                                                    <option value="70">70</option>
+                                                <?php } ?>
+                                                <?php if($product_count_fetch>=80) { ?>
+                                                    <option value="80">80</option>
+                                                <?php } ?>
+                                                <?php if($product_count_fetch>=90) { ?>
+                                                    <option value="90">90</option>
+                                                <?php } ?>
+                                                <?php if($product_count_fetch>=100) { ?>
+                                                    <option value="100">100</option>
+                                                <?php } ?>
                                             </select>
                                             <div class="err" id="errQuantity" style="color:red"></div>
                                         </div>
