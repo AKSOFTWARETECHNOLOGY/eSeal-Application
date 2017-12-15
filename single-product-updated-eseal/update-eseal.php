@@ -42,6 +42,10 @@ $userinfo_exe=mysql_query($userinfo_sql);
 $userinfo=mysql_fetch_array($userinfo_exe);
 
 
+$useraddress_sql="SELECT * FROM `exporter_address` WHERE `user_id`='$user_id'";
+$useraddress_exe=mysql_query($useraddress_sql);
+
+
 ?>
 <!doctype html>
 <html>
@@ -136,7 +140,7 @@ $(document).ready(function() {
 
 <div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
-<h3>Team Member Entries</h3>
+<h3>Address Book Entries</h3>
 </div>
 </div>
 
@@ -151,12 +155,12 @@ $(document).ready(function() {
 
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="my-account">
-<h3><i class="fa fa-address-book" aria-hidden="true"></i> Team Member Entries</h3>
+<h3><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</h3>
 <div class="address-bar">
 <div class="row">
 
 
-    <form name="addressform" id="addressform" action="doteam.php" method="post">
+    <form name="addressform" id="addressform" action="doaddress.php" method="post">
         <div class="col-md-12 col-sm-12 col-xs-12 address">
             <div class="account-register">
                 <?php if(isset($_REQUEST['insert'])) { ?>
@@ -173,26 +177,11 @@ $(document).ready(function() {
                     <div class="row">
 
 
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Email Id*</label>
-                                <input type="text" name="email" class="register-input" value="" required />
-                                <span>(This will become your default registered email)</span>
-                            </div>
-                        </div><!-- Inner Column -->
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Password*</label>
-                                <input type="password" name="password" class="register-input" value="" required />
-                                <span>( The password should be atleast 5 charaters long )</span>
-                            </div>
-                        </div><!-- Inner Column -->
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Name Of Member *</label>
-                                <input type="text" name="personName" class="register-input" value="" placeholder="Name Of Member" required />
+                                <label>Name Of Contact Person *</label>
+                                <input type="text" name="personName" class="register-input" value="" placeholder="Name Of Contact Person" required />
                             </div>
                         </div><!-- Inner Column -->
 
@@ -296,7 +285,7 @@ $(document).ready(function() {
                 <div class="row">
 
                   <div class="form-group last-otp">
-                    <input type="submit" name="addteam" value="Submit">
+                    <input type="submit" name="addaddress" value="Submit">
                 </div>
 
 

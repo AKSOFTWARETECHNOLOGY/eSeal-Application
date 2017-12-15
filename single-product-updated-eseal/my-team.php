@@ -46,8 +46,8 @@ $userinfo_exe=mysql_query($userinfo_sql);
 $userinfo=mysql_fetch_array($userinfo_exe);
 
 
-$useraddress_sql="SELECT * FROM `exporter_address` WHERE `user_id`='$user_id'";
-$useraddress_exe=mysql_query($useraddress_sql);
+$user_brancher_sql="SELECT * FROM `brancher_info` WHERE `exporter_id`='$user_id'";
+$user_brancher_exe=mysql_query($user_brancher_sql);
 
 
 ?>
@@ -162,14 +162,24 @@ $(document).ready(function() {
 <h3><i class="fa fa-address-book" aria-hidden="true"></i> My Team Members</h3>
 
 
-   <?php if(mysql_num_rows($useraddress_exe)>0) { ?>
+    <?php if(isset($_REQUEST['delete'])) { ?>
+        <?php if(isset($_REQUEST['success'])) { ?>
+            <p style="color:green;font-weight:bold"> Your Account Delete Successfully!.</p>
+        <?php } ?>
 
-        <?php while($useraddress_fet=mysql_fetch_array($useraddress_exe)) { ?>
+        <?php if(isset($_REQUEST['error'])) { ?>
+            <p style="color:red;font-weight:bold"> Your Account Not Deleted.</p>
+        <?php } ?>
+    <?php } ?>
+
+   <?php if(mysql_num_rows($user_brancher_exe)>0) { ?>
+
+        <?php while($user_brancher_fet=mysql_fetch_array($user_brancher_exe)) { ?>
 
     <div class="address-bar" style="border-top: 1px solid #cacaca;">
         <div class="row">
 <?php
-           $city_value = $useraddress_fet['city'];
+           $city_value = $user_brancher_fet['city'];
            $cityArray_values = array_filter($city_results, function($e) use ($city_value){
 
                if($e['id'] == $city_value)
@@ -189,7 +199,7 @@ $(document).ready(function() {
                $city_name = "";
            }
 
-           $state_value = $useraddress_fet['state'];
+           $state_value = $user_brancher_fet['state'];
            $stateArray_values = array_filter($state_results, function($e) use ($state_value){
 
                if($e['id'] == $state_value)
@@ -209,7 +219,7 @@ $(document).ready(function() {
                $state_name = "";
            }
 
-           $country_value = $useraddress_fet['country'];
+           $country_value = $user_brancher_fet['country'];
            $countryArray_values = array_filter($country_results, function($e) use ($country_value){
 
                if($e['id'] == $country_value)
@@ -230,13 +240,14 @@ $(document).ready(function() {
            }
 ?>
            <div class="col-md-8 col-sm-8 col-xs-12">
-               <p><label style="width:150px;">Name      </label> <?php echo $useraddress_fet['name']; ?></p>
-               <p><label style="width:150px;">Address   </label> <?php echo $useraddress_fet['address']; ?></p>
+               <p><label style="width:150px;">Name      </label> <?php echo $user_brancher_fet['name_person']; ?></p>
+               <p><label style="width:150px;">Email      </label> <?php echo $user_brancher_fet['email']; ?></p>
+               <p><label style="width:150px;">Address   </label> <?php echo $user_brancher_fet['address']; ?></p>
                <p><label style="width:150px;">City      </label> <?php echo $city_name; ?></p>
                <p><label style="width:150px;">State     </label> <?php echo $state_name; ?></p>
                <p><label style="width:150px;">Country   </label> <?php echo $country_name; ?></p>
-               <p><label style="width:150px;">Pincode   </label> <?php echo $useraddress_fet['pincode']; ?></p>
-               <p><label style="width:150px;">Mobile    </label> <?php echo $useraddress_fet['mobile']; ?></p>
+               <p><label style="width:150px;">Pincode   </label> <?php echo $user_brancher_fet['pincode']; ?></p>
+               <p><label style="width:150px;">Mobile    </label> <?php echo $user_brancher_fet['mobile']; ?></p>
            </div><!--Inner Column 6-->
 
 
@@ -244,8 +255,8 @@ $(document).ready(function() {
                <div class="form-btn">
                    <br/>
                    <ul class="">
-                       <li><a href="javascript:void(0);">Edit</a></li>
-                       <li><a href="javascript:void(0);">Delete</a></li>
+                       <li class="hidden"><a href="javascript:void(0);">Edit</a></li>
+                       <li><a href="delete-team.php?delete=1&id=<?php echo $user_brancher_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></li>
                    </ul>
 
                </div><!--Form Btn-->
