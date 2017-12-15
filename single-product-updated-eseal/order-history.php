@@ -174,7 +174,7 @@ $(document).ready(function() {
 </tbody>
 </table>
 </div><!--Table Responsive-->
-<div class="con-btn">
+<div class="con-btn hidden">
 <a href="javascript:void(0);">Continue</a>
 </div><!--Submit Btn-->
 </div><!--Order History-->

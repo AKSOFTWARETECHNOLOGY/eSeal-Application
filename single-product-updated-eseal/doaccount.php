@@ -37,12 +37,12 @@ if(isset($_REQUEST['profileupdate']))
     $user_update_sql="UPDATE `users` SET `name`='$name_exporter' WHERE `id` = $user_id";
     $user_update_exe=mysql_query($user_update_sql);
 
-      header("Location: my-account.php?succ=1&msg=all");
+      header("Location: my-account.php?success=1&msg=all");
 //header("Location: edit-profile.php?succ=1&msg=all");
 }
 else
 {
-    header("Location: edit-account.php?err=1&msg=all");
+    header("Location: edit-account.php?error=1&msg=all");
 }
 
 ?>

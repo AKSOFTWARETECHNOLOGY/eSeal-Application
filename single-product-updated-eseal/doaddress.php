@@ -35,13 +35,13 @@ VALUES ('$user_id','$personName','$address','$cityId','$state','$countryId','$pi
                 $insert_address_exe = mysql_query($insert_address_sq1);
 
 
-				header("Location: add-address-book.php?success=1&msg=all");
+header("Location: add-address-book.php?success=1&insert=1");
 				
 
 }
 else
 {
-header("Location: add-address-book.php?err=1&msg=all");
+header("Location: add-address-book.php?error=1&insert=1");
 } 	
 	
 ?>

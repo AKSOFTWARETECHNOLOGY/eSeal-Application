@@ -266,7 +266,7 @@ $(document).ready(function() {
 <div class="submit-btn">
 <ul>
 <li><a class="hidden" href="javascript:void(0);">Back</a></li>
-<li><a href="add-address-book.php">New Address</a></li>
+<li><a href="add-team-member.php">New Team Member</a></li>
 </ul>
 </div><!--Form Btn-->
 

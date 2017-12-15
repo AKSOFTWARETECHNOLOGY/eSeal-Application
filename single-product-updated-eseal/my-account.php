@@ -207,13 +207,16 @@ $(document).ready(function() {
 
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="my-account">
+    <style>
+        .my-account .account-input {border:none;}
+    </style>
 <h3><i class="fa fa-user" aria-hidden="true"></i> My Account Information</h3>
 
-    <?php if(isset($_REQUEST['succ'])) { ?>
-        <p style="color:green;font-weight:bold"> Your Account Details Successfully!</p><br/>
+    <?php if(isset($_REQUEST['success'])) { ?>
+        <p style="color:green;font-weight:bold"> Your Account Details Updated Successfully!</p><br/>
     <?php } ?>
 
-    <?php if(isset($_REQUEST['err'])) { ?>
+    <?php if(isset($_REQUEST['error'])) { ?>
         <p style="color:red;font-weight:bold"> Your Account Details Not Updated.</p><br/>
     <?php } ?>
 

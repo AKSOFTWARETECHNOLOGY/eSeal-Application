@@ -239,6 +239,11 @@ $(document).ready(function() {
 
             <div class="col-md-9 col-sm-9 col-xs-12">
                 <div class="order-history-details">
+
+                    <div class="con-btn">
+                        <a href="order-history.php">Back to List</a>
+                    </div><!--Submit Btn-->
+                    <br/>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -371,7 +376,7 @@ $(document).ready(function() {
 
                     </div><!--Table Responsive-->
                     <div class="con-btn">
-                        <a href="javascript:void(0);">Continue</a>
+                        <a href="order-history.php">Back to List</a>
                     </div><!--Submit Btn-->
                 </div><!--Order History-->
             </div><!-- Column 9  -->

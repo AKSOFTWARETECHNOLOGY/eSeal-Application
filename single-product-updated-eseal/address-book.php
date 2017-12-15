@@ -161,6 +161,16 @@ $(document).ready(function() {
 <div class="my-account">
 <h3><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</h3>
 
+    <?php if(isset($_REQUEST['delete'])) { ?>
+        <?php if(isset($_REQUEST['success'])) { ?>
+            <p style="color:green;font-weight:bold"> Your Address Delete Successfully!.</p>
+        <?php } ?>
+
+        <?php if(isset($_REQUEST['error'])) { ?>
+            <p style="color:red;font-weight:bold"> Your Address Not Deleted.</p>
+        <?php } ?>
+    <?php } ?>
+
 
    <?php if(mysql_num_rows($useraddress_exe)>0) { ?>
 
@@ -244,8 +254,8 @@ $(document).ready(function() {
                <div class="form-btn">
                    <br/>
                    <ul class="">
-                       <li><a href="javascript:void(0);">Edit</a></li>
-                       <li><a href="javascript:void(0);">Delete</a></li>
+                       <li class="hidden"><a href="javascript:void(0);">Edit</a></li>
+                       <li><a href="delete-address.php?delete=1&id=<?php echo $useraddress_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></li>
                    </ul>
 
                </div><!--Form Btn-->
