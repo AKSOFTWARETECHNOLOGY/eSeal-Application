@@ -103,7 +103,7 @@ $export_cnt=@mysql_num_rows($export_exe);
                                                 &nbsp;&nbsp;&nbsp;
                                                 <a href="exporteredit.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
                                                 &nbsp;&nbsp;&nbsp;
-                                                <a href="exporter-delete.php?delete=1&exporter_id=<?php echo $export_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
+                                                <a href="exporter-delete.php?delete=1&exporter_id=<?php echo $export_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
                                             </td>
                                         </tr>
                                     <?php

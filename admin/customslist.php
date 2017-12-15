@@ -93,7 +93,7 @@ $custom_cnt=@mysql_num_rows($custom_exe);
                                                 &nbsp;&nbsp;&nbsp;
                                                 <a href="customsedit.php?customs_id=<?php echo $custom_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
                                                 &nbsp;&nbsp;&nbsp;
-                                                <a href="customs-delete.php?delete=1&customs_id=<?php echo $custom_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
+                                                <a href="customs-delete.php?delete=1&customs_id=<?php echo $custom_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
                                             </td>
                                         </tr>
                                     <?php

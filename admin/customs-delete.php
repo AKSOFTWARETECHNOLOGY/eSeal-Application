@@ -17,7 +17,7 @@ if(isset($_REQUEST['delete']))
 {
     $customs_id = $_REQUEST['customs_id'];
 
-    $sql = "DELETE FROM `customs_info` WHERE `id` = '$customs_id'";
+    $sql = "UPDATE `users` SET `delete_status`='0' WHERE `id`='$customs_id'";
     $delete = mysql_query($sql);
 
     header("Location: customslist.php?succ=1&msg=all");
