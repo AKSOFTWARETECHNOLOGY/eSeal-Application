@@ -418,7 +418,7 @@ $(document).ready(function() {
                 <div class="row">
 
                   <div class="form-group last-otp">
-                      <input type="text" name="id" id="id" class="register-input" value="<?php echo $product_info_order_fet['id']; ?>" required />
+                      <input type="hidden" name="id" id="id" class="register-input" value="<?php echo $product_info_order_fet['id']; ?>" required />
 
                     <input type="submit" name="addseal" id="addseal" value="Submit">
                 </div>
