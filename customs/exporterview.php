@@ -37,7 +37,7 @@ $export_fet=mysql_fetch_array($export_exe);
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel </title>
+    <title>Customs Admin Panel </title>
     <?php include "head1.php"; ?>
 </head>
 <body class="skin-blue sidebar-mini">

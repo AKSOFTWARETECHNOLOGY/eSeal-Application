@@ -33,7 +33,7 @@ $product_cnt=@mysql_num_rows($product_exe);
         }
     </style>
     <meta charset="UTF-8">
-    <title>Admin Panel </title>
+    <title>Customs Admin Panel </title>
     <?php include "head1.php"; ?>
 </head>
 <body class="skin-blue sidebar-mini">

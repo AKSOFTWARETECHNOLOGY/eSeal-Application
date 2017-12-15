@@ -101,6 +101,11 @@
                   </a>
               </li>
               <li class="treeview">
+                  <a href="eseallist.php">
+                      <i class="ion ion-android-contact"></i> <span>E-Seal</span>
+                  </a>
+              </li>
+              <li class="treeview">
                   <a href="portslist.php">
                       <i class="ion ion-android-contact"></i> <span>Ports</span>
                   </a>

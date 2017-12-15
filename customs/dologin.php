@@ -19,8 +19,9 @@ if(isset($_REQUEST['login']))
 $email=$_REQUEST['email'];
 $password=$_REQUEST['password'];
 $password_md5=md5($password);
-$sql="SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password_md5' AND `confirmed`='1' and `id`='2'";
-
+$sql="SELECT * FROM `users`
+LEFT JOIN `role_user` ON users.id = role_user.user_id
+WHERE `email`='$email' AND `password`='$password_md5' AND `confirmed`='1' and `delete_status`='1' and role_id=4";
 $exe=mysql_query($sql);
 $num=@mysql_num_rows($exe);
 
@@ -41,7 +42,7 @@ if($num>0)
 	$_SESSION['adminuseremail']=$fet['email'];
 	$_SESSION['adminuserrole']=$role_id;
 	
-	header("Location: productlist.php");
+	header("Location: exporterlist.php");
 	}
 	else
 	{

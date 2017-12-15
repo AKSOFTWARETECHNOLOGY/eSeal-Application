@@ -18,7 +18,7 @@ $user_email=$_SESSION['adminuseremail'];
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel </title>
+    <title>Customs Admin Panel </title>
     <?php include "head1.php"; ?>
 </head>
 <body class="skin-blue sidebar-mini">
@@ -30,12 +30,12 @@ $user_email=$_SESSION['adminuseremail'];
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Vendor Profile
+                Customs Profile
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 
-                <li class="active">Vendor Profile</li>
+                <li class="active">Customs Profile</li>
             </ol>
         </section>
 
