@@ -37,22 +37,31 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
 }
 
 
+$port_sql="SELECT * FROM `ports` where `ports_status`=1";
+$port_exe=mysql_query($port_sql);
+$port_results = array();
+while($row1 = mysql_fetch_assoc($port_exe)) {
+    array_push($port_results, $row1);
+}
+
+
 $userinfo_sql="SELECT * FROM `exporter_info` WHERE `user_id`='$user_id'";
 $userinfo_exe=mysql_query($userinfo_sql);
 $userinfo=mysql_fetch_array($userinfo_exe);
 
 
-$useraddress_sql="SELECT * FROM `exporter_address` WHERE `user_id`='$user_id'";
-$useraddress_exe=mysql_query($useraddress_sql);
-
-
+$product_info_order_id=$_REQUEST['id'];
+$product_info_order_sql="SELECT * FROM `product_order_info` WHERE `id`='$product_info_order_id' AND `product_exporter_id`='$user_id'";
+$product_info_order_exe=mysql_query($product_info_order_sql);
+$product_info_order_fet=mysql_fetch_array($product_info_order_exe);
+//print_r($product_info_order_fet);
 ?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Address Book</title>
+<title>e-Seal Update</title>
 <link href="images/favicon.png" type="image/png" rel="shortcut icon">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -155,12 +164,12 @@ $(document).ready(function() {
 
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="my-account">
-<h3><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</h3>
+<h3><i class="fa fa-address-book" aria-hidden="true"></i> e-Seal Update Entries</h3>
 <div class="address-bar">
 <div class="row">
 
 
-    <form name="addressform" id="addressform" action="doaddress.php" method="post">
+    <form name="sealform" id="sealform" action="doseal.php" method="post" onsubmit="return validate(this);">
         <div class="col-md-12 col-sm-12 col-xs-12 address">
             <div class="account-register">
                 <?php if(isset($_REQUEST['insert'])) { ?>
@@ -173,104 +182,225 @@ $(document).ready(function() {
                 <?php } ?>
                 <?php } ?>
 
+                <?php //print_r($product_info_order_fet); ?>
                  <div class="other-fields">
-                    <div class="row">
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Exporter Name *</label>
+                                 <span class="account-input">
+                                 <?php echo $userinfo['name_exporter']; ?>
+                                 </span>
+                             </div>
+                         </div><!-- Inner Column -->
 
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>IEC Code *</label>
+                                 <span class="account-input">
+                                 <?php echo $userinfo['iec_code']; ?>
+                                 </span>
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Pan Number *</label>
+                                 <span class="account-input">
+                                 <?php echo $userinfo['pan_number']; ?>
+                                 </span>
+                             </div>
+                         </div><!-- Inner Column -->
 
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>GST Number *</label>
+                                 <span class="account-input">
+                                 <?php echo $userinfo['gstin']; ?>
+                                 </span>
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>SSG Code *</label>
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['product_unicode']; ?>
+                                 </span>
+                             </div>
+                         </div><!-- Inner Column -->
 
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Seal Code *</label>
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['product_sealcode']; ?>
+                                 </span>
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
+                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Name Of Contact Person *</label>
-                                <input type="text" name="personName" class="register-input" value="" placeholder="Name Of Contact Person" required />
+                                <label>Seal Date *</label>
+                                <input type="text" name="sealing_date" id="sealing_date" class="register-input" value="" required />
                             </div>
                         </div><!-- Inner Column -->
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Mobile No.*</label>
-                                <input type="text" name="mobile" id="mobile" class="register-input" value="" required />
+                                <label>Seal Time *</label>
+                                <input type="text" name="sealing_time" id="sealing_time" class="register-input" value="" required />
                             </div>
                         </div><!-- Inner Column -->
                     </div><!-- Inner Row -->
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Shipping Bill Number *</label>
+                                 <input type="text" name="shipping_no" id="shipping_no" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Shipping Bill Date *</label>
+                                 <input type="text" name="shipping_date" id="shipping_date" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
 
 
-                    <div class="row">
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Truck Number *</label>
+                                 <input type="text" name="trailer_truck_no" id="trailer_truck_no" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Driver Number *</label>
+                                 <input type="text" name="driver_number" id="driver_number" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Driver Licence *</label>
+                                 <input type="text" name="driver_licence" id="driver_licence" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Driver Name *</label>
+                                 <input type="text" name="driver_name" id="driver_name" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
+
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Container Size *</label>
+                                 <input type="text" name="container_size" id="container_size" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Container Number *</label>
+                                 <input type="text" name="container_no" id="container_no" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
+
+
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Destination Customs Station *</label>
+                                 <!--
+                                 <input type="text" name="destination_port" id="destination_port" class="register-input" value="" required />
+                                 -->
+                                 <select class="register-input" name="destination_port" id="destination_port" required>
+                                     <option value="">Select Port</option>
+                                     <?php
+                                     foreach($port_results as $key => $value){ ?>
+                                         <option value="<?php echo $value['id']; ?>"><?php echo $value['ports_name']; ?></option>
+                                     <?php
+                                     }
+                                     ?>
+                                 </select>
+                             </div>
+                         </div><!-- Inner Column -->
+
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Terminal Name *</label>
+                                 <input type="text" name="terminal_name" id="terminal_name" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
+
+
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Form 13 Number *</label>
+                                 <input type="text" name="form_no" id="form_no" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>e-Way Bill Number *</label>
+                                 <input type="text" name="eway_no" id="eway_no" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
+
+
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>Seael Type *</label>
+                                 <!--
+                                 <input type="text" name="seal_type" id="seal_type" class="register-input" value="" required />
+                                 -->
+                                 <select class="register-input" name="seal_type" id="seal_type" required onchange="javascript:sealtype(this.value)">
+                                     <option value="">Select Type</option>
+                                     <option value="1">Direct2Port</option>
+                                     <option value="2">CFS ICD</option>
+                                 </select>
+                             </div>
+                         </div><!-- Inner Column -->
+
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <div class="form-group">
+                                 <label>CFS Reach Time </label>
+                                 <input type="text" name="cfs_reach_time" id="cfs_reach_time" class="register-input" value="" required />
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
+
+                     <div class="row">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label>Address *</label>
-                                <textarea name="address" id="address" placeholder="Address" class="register-input" required></textarea>
+                                <label>Notes *</label>
+                                <textarea name="notes" id="notes" placeholder="Notes" class="register-input" required></textarea>
                             </div>
                         </div><!-- Inner Column -->
 
                     </div><!-- Inner Row -->
 
 
-                    <div class="row">
-
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>City *</label>
-                                <select class="register-input" name="cityId" id="cityId" required>
-                                    <option value="">Select City</option>
-                                    <?php
-                                    foreach($city_results as $key => $value){ ?>
-                                        <option value="<?php echo $value['id']; ?>"><?php echo $value['city_name']; ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div><!-- Inner Column -->
-
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>State *</label>
-
-
-                                <select class="register-input" name="state" id="state" required>
-                                    <option value="">Select State</option>
-                                    <?php
-                                    foreach($state_results as $key => $value){ ?>
-                                        <option value="<?php echo $value['id']; ?>"><?php echo strtoupper($value['state_name']); ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div><!-- Inner Column -->
-
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Country *</label>
-                                <select class="register-input" name="countryId" id="countryId" required >
-                                    <option value="">Select Country</option>
-                                    <?php
-                                    foreach($country_results as $key => $value){ ?>
-                                        <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div><!-- Inner Column -->
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Pincode *</label>
-                                <input type="text" name="pincode" id="pincode" class="register-input" value="" required />
-                            </div>
-                        </div><!-- Inner Column -->
-
-
-
-
-
-
-                    </div><!-- Inner Row -->
 
 
 
@@ -285,7 +415,7 @@ $(document).ready(function() {
                 <div class="row">
 
                   <div class="form-group last-otp">
-                    <input type="submit" name="addaddress" value="Submit">
+                    <input type="submit" name="addseal" id="addseal" value="Submit">
                 </div>
 
 
@@ -315,7 +445,41 @@ $(document).ready(function() {
 
 <?php include "bottom_footer.php"; ?>
 
+<script>
+    function sealtype(TypeValue)
+    {
 
+        if(TypeValue==1)
+        {
+            $("#cfs_reach_time").removeAttr('required');
+
+        }
+        else if(TypeValue==2)
+        {
+            $("#cfs_reach_time").attr('required');
+        }
+        else
+        {
+            $("#cfs_reach_time").removeAttr('required');
+        }
+
+    }
+</script>
+<script>
+    function validate(form) {
+
+        // validation code here ...
+
+
+        if(!valid) {
+            alert('Please correct the errors in the form!');
+            return false;
+        }
+        else {
+            return confirm('Do you really want to submit the form?');
+        }
+    }
+</script>
 
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 
@@ -329,41 +493,43 @@ $(document).ready(function() {
 
         // Initialize form validation on the registration form.
         // It has the name attribute "registration"
-        $("form#addressform").validate({
+        $("form#sealform").validate({
             // Specify validation rules
             rules: {
-                personName: {
-                    required: true,
-                    lettersonly: true
-                },
-                mobile: {
-                    required: true,
-                    number: true,
-                    minlength: 10,
-                    maxlength: 11
-                },
-                pincode: "required",
-                cityId: "required",
-                state: "required",
-                countryId: "required",
-                address: "required",
+                seal_type: "required",
+                shipping_no: "required",
+                shipping_date: "required",
+                sealing_date: "required",
+                sealing_time: "required",
+                destination_port: "required",
+                terminal_name: "required",
+                container_size: "required",
+                container_no: "required",
+                trailer_truck_no: "required",
+                driver_name: "required",
+                driver_licence: "required",
+                driver_number: "required",
+                form_no: "required",
+                eway_no: "required",
             },
             // Specify validation error messages
             messages: {
-                personName: {
-                    required: "Please enter your name",
-                    lettersonly: "Your name must be characters"
-                },
-                mobile: {
-                    required: "Please provide a valid mobile number",
-                    minlength: "Your mobile number must be 10 characters long",
-                    maxlength: "Your mobile number must be 11 characters long"
-                },
-                pincode: "Please enter your Pincode",
-                cityId: "Please choose your City",
-                state: "Please choose your State",
-                countryId: "Please choose your Country",
-                address: "Please enter your Address",
+                seal_type: "Please choose your Seal Type",
+                shipping_no: "Please enter your Shipping Number",
+                shipping_date: "Please enter your Shipping Date",
+                sealing_date: "Please enter your Sealing Date",
+                sealing_time: "Please enter your Sealing Time",
+                destination_port: "Please choose your Port Details",
+                terminal_name: "Please enter your Terminal Name",
+                container_size: "Please enter your Container Size",
+                container_no: "Please enter your Container Number",
+                trailer_truck_no: "Please enter your Truck Number",
+                driver_name: "Please enter your Driver Name",
+                driver_licence: "Please enter your Driver Licence",
+                driver_number: "Please enter your Driver Number",
+                form_no: "Please enter your Form 13 Number",
+                eway_no: "Please enter your e-Way Bill Number",
+
             },
             // Make sure the form is submitted to the destination defined
             // in the "action" attribute of the form when valid

@@ -156,7 +156,13 @@ $(document).ready(function() {
                         <td><?php echo $product_info_order_fet['product_unicode']; ?></td>
                         <td><?php echo $product_info_order_fet['product_sealcode']; ?></td>
                         <td><?php if($product_info_order_fet['seal_type']=="") { echo "Unused"; } else {  echo "Used"; }?></td>
-                        <td><a href="#">UPDATE SEAL</a></td>
+                        <td>
+                        <?php if($product_info_order_fet['seal_type']=="") { ?>
+                        <a href="update-eseal.php?id=<?php echo $product_info_order_fet['id']; ?>">UPDATE SEAL</a>
+                        <?php } else {  ?>
+                        <a href="view-eseal.php?id=<?php echo $product_info_order_fet['id']; ?>">VIEW SEAL</a>
+                        <?php } ?>
+                        </td>
                     </tr>
 
                 <?php } ?>
