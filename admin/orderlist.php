@@ -18,6 +18,10 @@ $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_
 LEFT JOIN `products` ON products.id = product_order.product_id
 LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
 WHERE `product_order`.user_id = $user_id";
+
+$product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id";
 $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);
 //$product_fet=mysql_fetch_array($product_exe);
