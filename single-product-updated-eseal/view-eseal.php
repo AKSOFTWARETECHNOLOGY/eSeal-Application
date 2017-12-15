@@ -169,7 +169,7 @@ $(document).ready(function() {
 <div class="row">
 
 
-    <form name="sealform" id="sealform" action="doeseal.php" method="post" onsubmit="return validate(this);">
+    <form name="sealform" id="sealform" action="#doeseal.php" method="post" onsubmit="return validate(this);">
         <div class="col-md-12 col-sm-12 col-xs-12 address">
             <div class="account-register">
                 <?php if(isset($_REQUEST['insert'])) { ?>
@@ -198,8 +198,7 @@ $(document).ready(function() {
                              <div class="form-group">
                                  <label>IEC Code *</label>
                                  <span class="account-input">
-                                 <?php echo $userinfo['iec_code']; ?>
-                                 <input type="hidden" name="iec_no" id="iec_no" class="register-input" value="<?php echo $userinfo['iec_code']; ?>" required />
+                                 <?php echo $product_info_order_fet['iec_no']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
@@ -208,9 +207,8 @@ $(document).ready(function() {
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Pan Number *</label>
-                                 <span class="account-inputX">
-                                 <?php //echo $userinfo['pan_number']; ?>
-                                 <input type="text" name="pan_no" id="pan_no" class="register-input" value="<?php echo $userinfo['pan_number']; ?>" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['pan_no']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
@@ -218,9 +216,8 @@ $(document).ready(function() {
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>GST Number *</label>
-                                 <span class="account-inputX">
-                                 <?php //echo $userinfo['gstin']; ?>
-                                 <input type="text" name="gst_no" id="gst_no" class="register-input" value="<?php echo $userinfo['gstin']; ?>" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['gst_no']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
@@ -248,14 +245,18 @@ $(document).ready(function() {
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label>Seal Date *</label>
-                                <input type="date" name="sealing_date" id="sealing_date" class="register-input" value="" required />
-                            </div>
+                                <span class="account-input">
+                                 <?php echo $product_info_order_fet['sealing_date']; ?>
+                                 </span>
+                             </div>
                         </div><!-- Inner Column -->
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label>Seal Time *</label>
-                                <input type="time" name="sealing_time" id="sealing_time" class="register-input" value="" required />
+                                <span class="account-input">
+                                 <?php echo $product_info_order_fet['sealing_time']; ?>
+                                 </span>
                             </div>
                         </div><!-- Inner Column -->
                     </div><!-- Inner Row -->
@@ -263,14 +264,18 @@ $(document).ready(function() {
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Shipping Bill Number *</label>
-                                 <input type="text" name="shipping_no" id="shipping_no" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['shipping_no']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
 
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Shipping Bill Date *</label>
-                                 <input type="date" name="shipping_date" id="shipping_date" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['shipping_date']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
                      </div><!-- Inner Row -->
@@ -280,14 +285,18 @@ $(document).ready(function() {
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Truck Number *</label>
-                                 <input type="text" name="trailer_truck_no" id="trailer_truck_no" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['trailer_truck_no']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
 
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Driver Number *</label>
-                                 <input type="text" name="driver_number" id="driver_number" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['driver_number']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
                      </div><!-- Inner Row -->
@@ -295,14 +304,18 @@ $(document).ready(function() {
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Driver Licence *</label>
-                                 <input type="text" name="driver_licence" id="driver_licence" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['driver_licence']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
 
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Driver Name *</label>
-                                 <input type="text" name="driver_name" id="driver_name" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['driver_name']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
                      </div><!-- Inner Row -->
@@ -311,14 +324,18 @@ $(document).ready(function() {
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Container Size *</label>
-                                 <input type="text" name="container_size" id="container_size" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['container_size']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
 
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Container Number *</label>
-                                 <input type="text" name="container_no" id="container_no" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['container_no']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
                      </div><!-- Inner Row -->
@@ -328,25 +345,18 @@ $(document).ready(function() {
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Destination Customs Station *</label>
-                                 <!--
-                                 <input type="text" name="destination_port" id="destination_port" class="register-input" value="" required />
-                                 -->
-                                 <select class="register-input" name="destination_port" id="destination_port" required>
-                                     <option value="">Select Port</option>
-                                     <?php
-                                     foreach($port_results as $key => $value){ ?>
-                                         <option value="<?php echo $value['id']; ?>"><?php echo $value['ports_name']; ?></option>
-                                     <?php
-                                     }
-                                     ?>
-                                 </select>
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['destination_port']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
 
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Terminal Name *</label>
-                                 <input type="text" name="terminal_name" id="terminal_name" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['terminal_name']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
                      </div><!-- Inner Row -->
@@ -356,14 +366,18 @@ $(document).ready(function() {
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Form 13 Number *</label>
-                                 <input type="text" name="form_no" id="form_no" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['form_no']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
 
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>e-Way Bill Number *</label>
-                                 <input type="text" name="eway_no" id="eway_no" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['eway_no']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
                      </div><!-- Inner Row -->
@@ -373,21 +387,19 @@ $(document).ready(function() {
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Seael Type *</label>
-                                 <!--
-                                 <input type="text" name="seal_type" id="seal_type" class="register-input" value="" required />
-                                 -->
-                                 <select class="register-input" name="seal_type" id="seal_type" required onchange="javascript:sealtype(this.value)">
-                                     <option value="">Select Type</option>
-                                     <option value="1">Direct2Port</option>
-                                     <option value="2">CFS ICD</option>
-                                 </select>
+                                 <span class="account-input">
+                                 <?php if($product_info_order_fet['seal_type']==1) { echo "Direct2Port"; } else { echo "CFS ICD"; }?>
+                                 </span>
+
                              </div>
                          </div><!-- Inner Column -->
 
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>CFS Reach Time </label>
-                                 <input type="time" name="cfs_reach_time" id="cfs_reach_time" class="register-input" value="" required />
+                                 <span class="account-input">
+                                 <?php echo $product_info_order_fet['cfs_reach_time']; ?>
+                                 </span>
                              </div>
                          </div><!-- Inner Column -->
                      </div><!-- Inner Row -->
@@ -397,7 +409,9 @@ $(document).ready(function() {
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label>Notes *</label>
-                                <textarea name="notes" id="notes" placeholder="Notes" class="register-input" required></textarea>
+                                <span class="account-input">
+                                 <?php echo $product_info_order_fet['notes']; ?>
+                                 </span>
                             </div>
                         </div><!-- Inner Column -->
 
@@ -415,7 +429,7 @@ $(document).ready(function() {
 
 
 
-                <div class="row">
+                <div class="row hidden">
 
                   <div class="form-group last-otp">
                       <input type="text" name="id" id="id" class="register-input" value="<?php echo $product_info_order_fet['id']; ?>" required />

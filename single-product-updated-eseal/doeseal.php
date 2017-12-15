@@ -14,25 +14,39 @@ $user_role=$_SESSION['exporteruserrole'];
 $user_name=$_SESSION['exporterusername'];
 $user_email=$_SESSION['exporteruseremail'];
 
-if(isset($_REQUEST['buyproduct']))
+if(isset($_REQUEST['addseal']))
 {
-print_r($_REQUEST);
-$Product = $_REQUEST['Product'];
-$Quantity = $_REQUEST['Quantity'];
+//print_r($_REQUEST);exit;
 
-$ProductAmount = $_REQUEST['ProductAmount'];
-$TotalAmount = $_REQUEST['TotalAmount'];
 
-$DeliveryName = $_REQUEST['DeliveryName'];
-$DeliveryAddress = $_REQUEST['DeliveryAddress'];
-$DeliveryCity = $_REQUEST['DeliveryCity'];
-$DeliveryState = $_REQUEST['DeliveryState'];
-$DeliveryCountry = $_REQUEST['DeliveryCountry'];
-$DeliveryPin = $_REQUEST['DeliveryPin'];
-$DeliveryMobile = $_REQUEST['DeliveryMobile'];
+$id = $_REQUEST['id'];
 
-$PaymentType = $_REQUEST['PaymentType'];
-$PaymentNotes = $_REQUEST['PaymentNotes'];
+$iec_no = $_REQUEST['iec_no'];
+$pan_no = $_REQUEST['pan_no'];
+$gst_no = $_REQUEST['gst_no'];
+
+$sealing_date = $_REQUEST['sealing_date'];
+$sealing_time = $_REQUEST['sealing_time'];
+
+$shipping_no = $_REQUEST['shipping_no'];
+$shipping_date = $_REQUEST['shipping_date'];
+
+$trailer_truck_no = $_REQUEST['trailer_truck_no'];
+$driver_number = $_REQUEST['driver_number'];
+$driver_licence = $_REQUEST['driver_licence'];
+$driver_name = $_REQUEST['driver_name'];
+
+$container_size = $_REQUEST['container_size'];
+$container_no = $_REQUEST['container_no'];
+
+$destination_port = $_REQUEST['destination_port'];
+$terminal_name = $_REQUEST['terminal_name'];
+
+$form_no = $_REQUEST['form_no'];
+$eway_no = $_REQUEST['eway_no'];
+$seal_type = $_REQUEST['seal_type'];
+$cfs_reach_time = $_REQUEST['cfs_reach_time'];
+$notes = $_REQUEST['notes'];
 
 $SaleType = "Online";
 $SaleStatus = "0";
@@ -47,92 +61,46 @@ $date = date("Y-m-d");
 
 $ProductOrder="10000000".time();
 
-$product_count_fetch=0;
-$product_id = $Product;
-$product_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0 AND `product_exporter_id` IS NULL";
-$product_count_exe=mysql_query($product_count_sql);
-$product_count_fet=mysql_fetch_array($product_count_exe);
-$product_count_fetch=$product_count_fet['pro_count'];
-//echo $product_count_fetch;
+$product_order_info_count_fetch=0;
+$product_order_info_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_order_info` WHERE `id`='$id' AND `product_exporter_id`='$user_id' AND `seal_type` IS NULL";
+$product_order_info_count_exe=mysql_query($product_order_info_count_sql);
+$product_order_info_count_fet=mysql_fetch_array($product_order_info_count_exe);
+$product_order_info_count_fetch=$product_order_info_count_fet['pro_count'];
 
-    if($product_count_fetch>=$Quantity)
+//echo $product_order_info_count_fetch;
+//echo $product_order_info_count_sql;
+//exit;
+
+    if($product_order_info_count_fetch>0)
     {
 
-        $insert_order_sq1 = "INSERT INTO `product_order` (user_id, product_exporter_id, product_id, product_order_id,
-    product_sale_quantity, product_sale_price, product_sale_total,  product_sale_type, product_sale_status, product_sale_date, product_sale_payment_type, product_sale_payment_notes,
-    product_delivery_name, product_delivery_address, product_delivery_city,  product_delivery_state, product_delivery_country, product_delivery_pincode, product_delivery_mobile,
-    product_delivery_type, product_delivery_status, product_delivery_date,
-    created_by, updated_by, created_at, updated_at)
-    VALUES ('$user_id','$user_id','$Product','$ProductOrder',
-    '$Quantity','$ProductAmount','$TotalAmount','$SaleType','$SaleStatus','$SaleDate','$PaymentType','$PaymentNotes',
-    '$DeliveryName','$DeliveryAddress','$DeliveryCity','$DeliveryState','$DeliveryCountry','$DeliveryPin','$DeliveryMobile',
-    '$DeliveryType', '$DeliveryStatus', '$DeliveryDate',
-    '$username','$username','$date','$date')";
-        //echo $insert_order_sq1;
-        $insert_order_exe = mysql_query($insert_order_sq1);
+            $product_order_info_update_sql="UPDATE `product_order_info` SET
+                                        `iec_no`='$iec_no',`pan_no`='$pan_no',`gst_no`='$gst_no',
+                                        `sealing_date`='$sealing_date',`sealing_time`='$sealing_time',
+                                        `shipping_no`='$shipping_no',`shipping_date`='$shipping_date',
+                                        `trailer_truck_no`='$trailer_truck_no',`driver_number`='$driver_number',
+                                        `driver_licence`='$driver_licence',`driver_name`='$driver_name',
+                                        `container_size`='$container_size',`container_no`='$container_no',
+                                        `destination_port`='$destination_port',`terminal_name`='$terminal_name',
+                                        `form_no`='$form_no',`eway_no`='$eway_no',
+                                        `seal_type`='$seal_type',`cfs_reach_time`='$cfs_reach_time',
+                                        `notes`='$notes'
+                                        WHERE `id`='$id' AND `product_exporter_id`='$user_id' AND `seal_type` IS NULL";
+            //echo $product_order_info_update_sql;
+            $product_order_info_update_exe=mysql_query($product_order_info_update_sql);
 
-        $order_id=mysql_insert_id();
-
-        $product_info_sql="SELECT * FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0 AND `product_exporter_id` IS NULL ORDER BY `id` ASC LIMIT $Quantity ";
-        //echo $product_info_sql;
-        $product_info_exe=mysql_query($product_info_sql);
-        while($product_info_fet=mysql_fetch_array($product_info_exe))
-        {
-            $product_id=$product_info_fet['product_id'];
-            $product_info_id=$product_info_fet['id'];
-            $product_unicode=$product_info_fet['product_unicode'];
-            $product_sealcode=$product_info_fet['product_sealcode'];
-            $product_sale_price=$product_info_fet['product_sale_price'];
-            $product_exporter_id=$user_id;
-            $product_sale_status = 1;
-            $product_sale_date = date("Y-m-d");
-
-
-            $product_info_update_sql="UPDATE `product_info` SET `product_exporter_id`='$product_exporter_id',`product_sale_status`='$product_sale_status',`product_sale_date`='$product_sale_date' WHERE `id`='$product_info_id' AND `product_id`='$product_id' AND `product_sale_status`=0 AND `product_exporter_id` IS NULL";
-            //echo $product_info_update_sql;
-            $product_info_update_exe=mysql_query($product_info_update_sql);
-
-            /*
-             INSERT SQL
-            */
-             $product_order_info_sql="INSERT INTO `product_order_info`
-            (`user_id`, `product_id`, `product_order_id`, `product_unicode`, `product_sealcode`, `product_exporter_id`,
-            `created_by`, `updated_by`, `created_at`, `updated_at`)
-            VALUES
-            ('$user_id', '$product_id', '$order_id', '$product_unicode', '$product_sealcode','$product_exporter_id',
-            '$username', '$username', '$product_sale_date', '$product_sale_date')";
-            //echo $product_order_info_sql;
-            $product_order_info_exe=mysql_query($product_order_info_sql);
-
-        }
-
-        if($PaymentType=="Online")
-        {
-
-            //exit;
-            header("Location: product-order.php?order=$order_id");
-
-            //header("Location: http://www.ccavenue.com");
-
-        }
-        else
-        {
-            //exit;
-            header("Location: product-order.php?order=$order_id");
-
-        }
-
+        header("Location: my-seal.php?success=1&msg=all");
     }
     else
     {
-        header("Location: product-buy.php?err=2&msg=all");
+        header("Location: my-seal.php?error=2&msg=all");
     }
 				
 
 }
 else
 {
-header("Location: product-buy.php?err=1&msg=all");
+header("Location: my-seal.php?error=1&msg=all");
 } 	
 	
 ?>
