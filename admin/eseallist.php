@@ -34,7 +34,7 @@ $order_cnt=@mysql_num_rows($order_exe);
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Customs Admin Panel </title>
+    <title>Admin Panel </title>
     <?php include "head1.php"; ?>
 </head>
 <body class="skin-blue sidebar-mini">
@@ -90,6 +90,8 @@ $order_cnt=@mysql_num_rows($order_exe);
                                             <td><?php echo $order_fet['product_sealcode']; ?></td>
                                             <td>
                                                 <a href="esealview.php?eseal_id=<?php echo $order_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <a href="esealedit.php?eseal_id=<?php echo $order_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
                                             </td>
                                         </tr>
                                     <?php

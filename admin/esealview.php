@@ -36,7 +36,7 @@ $order_fet=mysql_fetch_array($order_exe);
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Customs Admin Panel </title>
+    <title>Admin Panel </title>
     <?php include "head1.php"; ?>
 </head>
 <body class="skin-blue sidebar-mini">
@@ -81,6 +81,14 @@ $order_fet=mysql_fetch_array($order_exe);
                                         <div class="col-sm-9"><div class="" ><?php echo $order_fet['iec_no']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Gst Number</label>
+                                        <div class="col-sm-9"><div class="" ><?php echo $order_fet['gst_no']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Pan Number</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['pan_no']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Unicode</label>
                                         <div class="col-sm-9"><div class=""> <?php echo $order_fet['product_unicode']; ?></div></div>
                                     </div>
@@ -89,13 +97,100 @@ $order_fet=mysql_fetch_array($order_exe);
                                         <div class="col-sm-9"><div class=""><?php echo $order_fet['product_sealcode']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Gst Number</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $order_fet['gst_no']; ?></div></div>
+                                        <label class="col-sm-3 control-label">Seal Date</label>
+                                        <div class="col-sm-9"><div class=""><?php echo $order_fet['sealing_date']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Pan Number</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['pan_no']; ?></div></div>
+                                        <label class="col-sm-3 control-label">Seal Time</label>
+                                        <div class="col-sm-9"><div class="" ><?php echo $order_fet['sealing_time']; ?></div></div>
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Shipping Bill Number</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['shipping_no']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Shipping Bill Date</label>
+                                        <div class="col-sm-9"><div class=""><?php echo $order_fet['shipping_date']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Truck Number</label>
+                                        <div class="col-sm-9"><div class="" ><?php echo $order_fet['trailer_truck_no']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Driver Number</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['driver_number']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Driver Licence</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['driver_licence']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Driver Name</label>
+                                        <div class="col-sm-9"><div class=""><?php echo $order_fet['driver_name']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Container Size</label>
+                                        <div class="col-sm-9"><div class="" ><?php echo $order_fet['container_size']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Container Number</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['container_no']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Destination Customs Station</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['destination_port']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Terminal Name</label>
+                                        <div class="col-sm-9"><div class=""><?php echo $order_fet['terminal_name']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Form 13 Number</label>
+                                        <div class="col-sm-9"><div class="" ><?php echo $order_fet['form_no']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">e-Way Bill Number</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['eway_no']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Seal Type</label>
+                                        <div class="col-sm-9"><div class="" ><?php if($order_fet['seal_type'] == 1) { echo "Direct2Port"; } else { echo "CFS ICD"; } ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">CFS Reach Time</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['cfs_reach_time']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Notes</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['notes']; ?></div></div>
+                                    </div>
+
+                                    <fieldset class="form-group col-md-12">
+                                        <legend>Customs Details</legend>
+                                        <?php if($order_fet['customs_approve_status'] == 1){ ?>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-3 control-label">Customs Approve Date</label>
+                                            <div class="col-sm-9"><div class=""> <?php echo $order_fet['customs_approve_date']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-3 control-label">Customs Approve Time</label>
+                                            <div class="col-sm-9"><div class="" ><?php echo $order_fet['customs_approve_time'] ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-3 control-label">Customs Approve Note</label>
+                                            <div class="col-sm-9"><div class=""> <?php echo $order_fet['customs_approve_note']; ?></div></div>
+                                        </div>
+                                        <?php
+                                        }
+                                        else{
+                                        ?>
+                                            <div class="form-group col-md-12">
+                                                <label class="col-sm-12 control-label">Waiting for the Customs Approval</label>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </fieldset>
                                 </div>
                                 <div class="col-md-1"></div>
                             </div><!-- /.box-body -->

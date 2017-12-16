@@ -386,7 +386,7 @@ $(document).ready(function() {
                      <div class="row">
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
-                                 <label>Seael Type *</label>
+                                 <label>Seal Type *</label>
                                  <span class="account-input">
                                  <?php if($product_info_order_fet['seal_type']==1) { echo "Direct2Port"; } else { echo "CFS ICD"; }?>
                                  </span>
