@@ -224,7 +224,7 @@ $(document).ready(function() {
 
     <div class="form-group row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>Exporter Name *</label>
+            <label>Exporter Name <span class="required">*</span></label>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
@@ -235,11 +235,11 @@ $(document).ready(function() {
 
     <div class="form-group row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>Exporter GST No</label>
+            <label>Exporter GST No <span class="required">*</span></label>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
-            <input type="text" name="gstin" placeholder="GST No" class="account-input" value="<?php echo $userinfo['gstin']; ?>" />
+            <input type="text" name="gstin" placeholder="GST No" class="account-input" value="<?php echo $userinfo['gstin']; ?>" required />
 
         </div>
     </div>
@@ -247,17 +247,17 @@ $(document).ready(function() {
 
     <div class="form-group row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>Exporter Pan No</label>
+            <label>Exporter Pan No <span class="required">*</span></label>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
-            <input type="text" name="pan_number" placeholder="PAN No" class="account-input" value="<?php echo $userinfo['pan_number']; ?>" />
+            <input type="text" name="pan_number" placeholder="PAN No" class="account-input" value="<?php echo $userinfo['pan_number']; ?>" required />
 
         </div>
     </div>
     <div class="form-group row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>Person Name *</label>
+            <label>Person Name <span class="required">*</span></label>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
@@ -269,7 +269,7 @@ $(document).ready(function() {
 
     <div class="form-group row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>Address Details *</label>
+            <label>Address Details <span class="required">*</span></label>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
@@ -280,7 +280,7 @@ $(document).ready(function() {
 
     <div class="form-group row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>City *</label>
+            <label>City <span class="required">*</span></label>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
@@ -299,7 +299,7 @@ $(document).ready(function() {
 
     <div class="form-group row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>State *</label>
+            <label>State <span class="required">*</span></label>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
@@ -318,7 +318,7 @@ $(document).ready(function() {
 
     <div class="form-group row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>Country *</label>
+            <label>Country <span class="required">*</span></label>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
@@ -337,7 +337,7 @@ $(document).ready(function() {
 
     <div class="form-group row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>Pin Code *</label>
+            <label>Pin Code <span class="required">*</span></label>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
@@ -346,21 +346,11 @@ $(document).ready(function() {
         </div>
     </div>
 
-    <div class="form-group row">
-        <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>Phone No *</label>
-        </div>
-        <div class="col-md-9 col-sm-9 col-xs-12">
-
-            <input type="text" name="telephone" placeholder="Phone No" class="account-input" value="<?php echo $userinfo['telephone']; ?>" required />
-
-        </div>
-    </div>
 
 
     <div class="form-group row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-            <label>Mobile No *</label>
+            <label>Mobile No <span class="required">*</span></label>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
@@ -370,6 +360,16 @@ $(document).ready(function() {
     </div>
 
 
+    <div class="form-group row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Landline Number </label>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" name="telephone" placeholder="Phone No" class="account-input" value="<?php echo $userinfo['telephone']; ?>" />
+
+        </div>
+    </div>
     <div class="form-group row">
         <div class="col-md-6 col-sm-6 col-xs-12">
             <input type="reset" value="Back" class="account-submit hidden" />
@@ -405,6 +405,10 @@ $(document).ready(function() {
             return this.optional(element) || /^[a-z\s]+$/i.test(value);
         });
 
+        jQuery.validator.addMethod("alphanumeric", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9]+$/.test(value);
+        });
+
         // Initialize form validation on the registration form.
         // It has the name attribute "registration"
         $("form#profileform").validate({
@@ -414,6 +418,17 @@ $(document).ready(function() {
                     required: true,
                     lettersonly: true
                 },
+                gstin: {
+                    required: true,
+                    minlength: 15,
+                    maxlength: 15,
+                },
+                pan_number: {
+                    required: true,
+                    alphanumeric: true,
+                    minlength: 10,
+                    maxlength: 10,
+                },
                 name_person: {
                     required: true,
                     lettersonly: true
@@ -421,13 +436,12 @@ $(document).ready(function() {
                 mobile: {
                     required: true,
                     number: true,
-                    minlength: 10,
+                    minlength: 11,
                     maxlength: 11
                 },
                 telephone: {
-                    required: true,
                     number: true,
-                    minlength: 10,
+                    minlength: 11,
                     maxlength: 11
                 },
                 pincode: "required",
@@ -449,12 +463,11 @@ $(document).ready(function() {
                 mobile: {
                     required: "Please provide a valid mobile number",
                     minlength: "Your mobile number must be 10 characters long",
-                    maxlength: "Your mobile number must be 11 characters long"
+                    maxlength: "Your mobile number must be 10 characters long"
                 },
                 telephone: {
-                    required: "Please provide a valid mobile number",
-                    minlength: "Your mobile number must be 10 characters long",
-                    maxlength: "Your mobile number must be 11 characters long"
+                    minlength: "Your Landline number must be 11 characters long",
+                    maxlength: "Your Landline number must be 11 characters long"
                 },
                 pincode: "Please enter your Pincode",
                 city: "Please choose your City",
@@ -472,6 +485,7 @@ $(document).ready(function() {
 </script>
 <style>
     label.error { color: red; }
+    span.required { color: red; float: right;  padding: 5px; }
 </style>
 </body>
 </html>

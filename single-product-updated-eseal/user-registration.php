@@ -148,15 +148,16 @@ $(document).ready(function() {
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="form-group">
-        <label>Name of Exporter*</label>
+        <label>Name of Exporter <span class="required">*</span></label>
         <input type="text" name="exporterName" class="register-input" value="" placeholder="Name of Exporter" required />
         <p>(please fill in the name as it appears in official IEC records)</p>
     </div>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="form-group">
-        <label>IEC Code.*</label>
-        <input type="text" name="icecode" class="register-input" value="" placeholder="IEC Code" required />
+        <label>IEC Code <span class="required">*</span></label>
+        <input type="text" name="icecode" class="register-input" maxlength="10" value="" placeholder="IEC Code" required />
+        <p>(IEC Code is unique 10 digit code issued by DGFT)</p>
     </div>
 </div>
 </div>
@@ -167,7 +168,7 @@ $(document).ready(function() {
 
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="form-group">
-<label>Country *</label>
+<label>Country <span class="required">*</span></label>
 <select class="register-input" name="countryId" id="countryId" required >
     <option value="">Select Country</option>
     <?php
@@ -182,7 +183,7 @@ $(document).ready(function() {
 
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="form-group">
-<label>Name Of Contact Person *</label>
+<label>Name Of Contact Person <span class="required">*</span></label>
 <input type="text" name="personName" class="register-input" value="" placeholder="Name Of Contact Person" required />
 </div>
 </div><!-- Inner Column -->
@@ -193,7 +194,7 @@ $(document).ready(function() {
 
 <div class="col-md-12 col-sm-12 col-xs-12">
 <div class="form-group">
-<label>Address *</label>
+<label>Address <span class="required">*</span></label>
 <textarea name="address" id="address" placeholder="Address" class="register-input" required></textarea>
 </div>
 </div><!-- Inner Column -->
@@ -205,14 +206,14 @@ $(document).ready(function() {
 
 <div class="col-md-4 col-sm-4 col-xs-12">
 <div class="form-group">
-<label>Pincode *</label>
+<label>Pincode <span class="required">*</span></label>
 <input type="text" name="pincode" id="pincode" class="register-input" value="" required />
 </div>
 </div><!-- Inner Column -->
 
 <div class="col-md-4 col-sm-4 col-xs-12">
 <div class="form-group">
-<label>City *</label>
+<label>City <span class="required">*</span></label>
 <select class="register-input" name="cityId" id="cityId" required>
     <option value="">Select City</option>
     <?php
@@ -228,7 +229,7 @@ $(document).ready(function() {
 
 <div class="col-md-4 col-sm-4 col-xs-12">
 <div class="form-group">
-<label>State *</label>
+<label>State <span class="required">*</span></label>
 
 
 <select class="register-input" name="state" id="state" required>
@@ -250,15 +251,15 @@ $(document).ready(function() {
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="form-group">
-<label>Pan Number *</label>
-<input type="text" name="panNumber" id="panNumber" class="register-input " value="" required/>
+<label>Pan Number <span class="required">*</span></label>
+<input type="text" name="panNumber" id="panNumber" class="register-input" maxlength="10" value="" required/>
 </div>
 </div><!-- Inner Column -->
 
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="form-group">
-<label>GSTIN *</label>
-<input type="text" name="gstin" id="gstin" class="register-input" value="" required/>
+<label>GSTIN <span class="required">*</span></label>
+<input type="text" name="gstin" id="gstin" class="register-input" maxlength="15" value="" required/>
 </div>
 </div><!-- Inner Column -->
 </div><!-- Inner Row -->
@@ -271,7 +272,7 @@ $(document).ready(function() {
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="form-group">
-<label>Email Id*</label>
+<label>Email Id <span class="required">*</span></label>
 <input type="text" name="email" class="register-input" value="" required />
 <span>(This will become your default registered email)</span>
 </div>
@@ -279,7 +280,7 @@ $(document).ready(function() {
 
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="form-group">
-<label>Password*</label>
+<label>Password <span class="required">*</span></label>
 <input type="password" name="password" class="register-input" value="" required />
 <span>( The password should be atleast 5 charaters long )</span>
 </div>
@@ -289,15 +290,15 @@ $(document).ready(function() {
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="form-group">
-<label>Mobile No.*</label>
+<label>Mobile No. <span class="required">*</span></label>
 <input type="text" name="mobile" id="mobile" class="register-input" value="" required />
 </div>
 </div><!-- Inner Column -->
 
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="form-group">
-<label>Landline Number *</label>
-<input type="text" name="telephone" id="telephone" class="register-input " value="" required />
+<label>Landline Number <span class="required">&nbsp;</span></label>
+<input type="text" name="telephone" id="telephone" class="register-input " value="" />
 </div>
 </div><!-- Inner Column -->
 </div><!-- Inner Row -->
@@ -351,6 +352,10 @@ $(document).ready(function() {
             return this.optional(element) || /^[a-z\s]+$/i.test(value);
         });
 
+        jQuery.validator.addMethod("alphanumeric", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9]+$/.test(value);
+        });
+
         // Initialize form validation on the registration form.
         // It has the name attribute "registration"
         $("form#registerform").validate({
@@ -377,6 +382,7 @@ $(document).ready(function() {
                 },
                 panNumber: {
                     required: true,
+                    alphanumeric: true,
                     minlength: 10,
                     maxlength: 10,
                 },
@@ -399,12 +405,11 @@ $(document).ready(function() {
                     required: true,
                     number: true,
                     minlength: 10,
-                    maxlength: 11
+                    maxlength: 10
                 },
                 telephone: {
-                    required: true,
                     number: true,
-                    minlength: 10,
+                    minlength: 11,
                     maxlength: 11
                 },
                 pincode: "required",
@@ -438,12 +443,11 @@ $(document).ready(function() {
                 mobile: {
                     required: "Please provide a valid mobile number",
                     minlength: "Your mobile number must be 10 characters long",
-                    maxlength: "Your mobile number must be 11 characters long"
+                    maxlength: "Your mobile number must be 10 characters long"
                 },
                 telephone: {
-                    required: "Please provide a valid mobile number",
-                    minlength: "Your mobile number must be 10 characters long",
-                    maxlength: "Your mobile number must be 11 characters long"
+                    minlength: "Your Landline number must be 11 characters long",
+                    maxlength: "Your Landline number must be 11 characters long"
                 },
                 pincode: "Please enter your Pincode",
                 cityId: "Please choose your City",
@@ -461,6 +465,7 @@ $(document).ready(function() {
 </script>
 <style>
     label.error { color: red; }
+    span.required { color: red; float: right;  padding: 5px 0px 0px 5px; }
 </style>
 </body>
 </html>

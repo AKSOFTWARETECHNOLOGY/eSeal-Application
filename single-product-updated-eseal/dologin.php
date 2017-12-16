@@ -42,9 +42,9 @@ if($num>0)
 	$_SESSION['exporteruseremail']=$fet['email'];
 	$_SESSION['exporteruserrole']=$role_id;
 
-    header("Location: product-buy.php");
+    //header("Location: product-buy.php");
 
-	//header("Location: dashboard.php");
+	header("Location: dashboard.php");
 
 	}
 	else

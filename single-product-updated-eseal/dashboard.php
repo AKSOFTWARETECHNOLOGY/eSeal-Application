@@ -209,6 +209,12 @@ $(document).ready(function() {
 
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="my-account">
+        <h3><i class="fa fa-user" aria-hidden="true"></i> Dashboard Information</h3>
+        <h4>Your Account Details</h4>
+</div>
+
+
+<div class="my-account hidden" style="display:none;">
 <h3><i class="fa fa-user" aria-hidden="true"></i> Dashboard Information</h3>
 <h4>Your Account Details</h4>
     <?php

@@ -135,256 +135,243 @@ $(document).ready(function() {
 <h3>E Seal</h3>
 </div>
 </div>
-
+<style>
+    .products-category {
+        background: #ffffff !important;
+        padding: 0 !important;
+    }
+</style>
 
 <div class="products-category">
 <div class="container">
 <div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-<h2>Seal Product</h2>
-</div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+        <?php include "sidebar.php"; ?>
+    </div><!--Column 6-->
 
+    <div class="col-md-9 col-sm-9 col-xs-12">
+        <div class="my-account">
+            <h3><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy Seal Product </h3>
 
-<div class="col-md-6 col-sm-6 col-xs-12">
-<div class="common-item">
-<div class="text">
-    <h3><a href="javascript:void(0);">RFID Electronic Seal -  ₹ 299.00 </a></h3>
-</div>
-<div class="item">
-<a href="javascript:void(0);"><img src="images/seal.jpg" alt="" title="" class="img-responsive"></a>
-</div><!-- Item -->
-
-</div><!-- Common Item -->
-</div><!-- Column 6 -->
-
-
-    <div class="col-md-6 col-sm-6 col-xs-12 freedom-list">
-
-
-
-        <form name="buyform" id="buyform" action="dobuy.php" method="post">
-            <div class="row" style="padding-top:10px; ">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                         <select class="register-input" name="Product" id="Product" required >
-                            <option value="<?php echo $product_fetch['id']; ?>"><?php echo $product_fetch['product_name']; ?> -  ₹ <?php echo $product_fetch['product_price']; ?></option>
-                        </select>
-                    </div>
-                </div><!-- Inner Column -->
-
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="form-group">
-                         <select class="register-input" name="Quantity" id="Quantity" required onchange="productquantity(this.value);" >
-                            <option value="">Quantity</option>
-                            <?php if($product_count_fetch>=10) { ?>
-                            <option value="10">10</option>
-                            <?php } ?>
-                            <?php if($product_count_fetch>=20) { ?>
-                            <option value="20">20</option>
-                            <?php } ?>
-                            <?php if($product_count_fetch>=30) { ?>
-                            <option value="30">30</option>
-                            <?php } ?>
-                            <?php if($product_count_fetch>=40) { ?>
-                            <option value="40">40</option>
-                            <?php } ?>
-                            <?php if($product_count_fetch>=50) { ?>
-                            <option value="50">50</option>
-                            <?php } ?>
-                            <?php if($product_count_fetch>=60) { ?>
-                            <option value="60">60</option>
-                            <?php } ?>
-                            <?php if($product_count_fetch>=70) { ?>
-                            <option value="70">70</option>
-                            <?php } ?>
-                            <?php if($product_count_fetch>=80) { ?>
-                            <option value="80">80</option>
-                            <?php } ?>
-                            <?php if($product_count_fetch>=90) { ?>
-                            <option value="90">90</option>
-                            <?php } ?>
-                            <?php if($product_count_fetch>=100) { ?>
-                            <option value="100">100</option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div><!-- Inner Column -->
-
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                <div id="total" style="font-weight: bold;">
-                    Rs. 0:00
+            <div class="common-item">
+                <div class="text">
+                    <h3><a href="javascript:void(0);">RFID Electronic Seal -  ₹ 299.00 </a></h3>
                 </div>
-                </div><!-- Inner Column -->
+                <div class="item">
+                    <a href="javascript:void(0);"><img src="images/seal.jpg" alt="" title="" class="img-responsive"></a>
+                </div><!-- Item -->
             </div>
 
+            <form name="buyform" id="buyform" action="dobuy.php" method="post">
+                <div class="row" style="padding-top:10px; ">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <select class="register-input" name="Product" id="Product" required >
+                                <option value="<?php echo $product_fetch['id']; ?>"><?php echo $product_fetch['product_name']; ?> -  ₹ <?php echo $product_fetch['product_price']; ?></option>
+                            </select>
+                        </div>
+                    </div><!-- Inner Column -->
 
-            <div class="row" style="padding-top:10px; ">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-group">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <select class="register-input" name="Quantity" id="Quantity" required onchange="productquantity(this.value);" >
+                                <option value="">Quantity</option>
+                                <?php if($product_count_fetch>=10) { ?>
+                                    <option value="10">10</option>
+                                <?php } ?>
+                                <?php if($product_count_fetch>=20) { ?>
+                                    <option value="20">20</option>
+                                <?php } ?>
+                                <?php if($product_count_fetch>=30) { ?>
+                                    <option value="30">30</option>
+                                <?php } ?>
+                                <?php if($product_count_fetch>=40) { ?>
+                                    <option value="40">40</option>
+                                <?php } ?>
+                                <?php if($product_count_fetch>=50) { ?>
+                                    <option value="50">50</option>
+                                <?php } ?>
+                                <?php if($product_count_fetch>=60) { ?>
+                                    <option value="60">60</option>
+                                <?php } ?>
+                                <?php if($product_count_fetch>=70) { ?>
+                                    <option value="70">70</option>
+                                <?php } ?>
+                                <?php if($product_count_fetch>=80) { ?>
+                                    <option value="80">80</option>
+                                <?php } ?>
+                                <?php if($product_count_fetch>=90) { ?>
+                                    <option value="90">90</option>
+                                <?php } ?>
+                                <?php if($product_count_fetch>=100) { ?>
+                                    <option value="100">100</option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div><!-- Inner Column -->
+
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div id="total" style="font-weight: bold;">
+                            Rs. 0:00
+                        </div>
+                    </div><!-- Inner Column -->
+                </div>
 
 
-                        <select class="register-input" name="Delivery" id="Delivery" required onchange="javascript:deliveryaddress(this.value);">
-                            <option value="0">Add New Delivery Address / Choose Delivery Address</option>
-                            <?php if(mysql_num_rows($useraddress_exe)>0) { ?>
-                            <?php while($useraddress_fet=mysql_fetch_array($useraddress_exe)) { ?>
-                            <option value="<?php echo $useraddress_fet['id']; ?>"><?php echo $useraddress_fet['name'].' - '.$useraddress_fet['mobile']; ?></option>
-                            <?php } ?>
-                            <?php } ?>
+                <div class="row" style="padding-top:10px; ">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
 
-                        </select>
+
+                            <select class="register-input" name="Delivery" id="Delivery" required onchange="javascript:deliveryaddress(this.value);">
+                                <option value="0">Add New Delivery Address / Choose Delivery Address</option>
+                                <?php if(mysql_num_rows($useraddress_exe)>0) { ?>
+                                    <?php while($useraddress_fet=mysql_fetch_array($useraddress_exe)) { ?>
+                                        <option value="<?php echo $useraddress_fet['id']; ?>"><?php echo $useraddress_fet['name'].' - '.$useraddress_fet['mobile']; ?></option>
+                                    <?php } ?>
+                                <?php } ?>
+
+                            </select>
+                        </div>
+                    </div><!-- Inner Column -->
+                </div>
+
+
+                <div class="other-fields">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Name Of Company / Person *</label>
+                                <input type="text" name="DeliveryName" id="DeliveryName" class="register-input" value="" placeholder="Name Of Person" required />
+                            </div>
+                        </div><!-- Inner Column -->
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Mobile *</label>
+                                <input type="text" name="DeliveryMobile" id="DeliveryMobile" class="register-input" value="" placeholder="Person Mobile" required />
+                            </div>
+                        </div><!-- Inner Column -->
+                    </div><!-- Inner Row -->
+
+
+                    <div class="row">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label>Address *</label>
+                                <textarea name="DeliveryAddress" id="DeliveryAddress" placeholder="Delivery Address" class="register-input" required></textarea>
+                            </div>
+                        </div><!-- Inner Column -->
+
+                    </div><!-- Inner Row -->
+
+
+                    <div class="row">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Country *</label>
+                                <select class="register-input" name="DeliveryCountry" id="DeliveryCountry" required >
+                                    <option value="">Select Country</option>
+                                    <?php
+                                    foreach($country_results as $key => $value){ ?>
+                                        <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div><!-- Inner Column -->
+
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>State *</label>
+                                <select class="register-input" name="DeliveryState" id="DeliveryState" required>
+                                    <option value="">Select State</option>
+                                    <?php
+                                    foreach($state_results as $key => $value){ ?>
+                                        <option value="<?php echo $value['id']; ?>"><?php echo strtoupper($value['state_name']); ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div><!-- Inner Column -->
+
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>City *</label>
+                                <select class="register-input" name="DeliveryCity" id="DeliveryCity" required>
+                                    <option value="">Select City</option>
+                                    <?php
+                                    foreach($city_results as $key => $value){ ?>
+                                        <option value="<?php echo $value['id']; ?>"><?php echo $value['city_name']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div><!-- Inner Column -->
+
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Pincode *</label>
+                                <input type="text" name="DeliveryPin" id="DeliveryPin" class="register-input" value="" required />
+                            </div>
+                        </div><!-- Inner Column -->
+
+                    </div><!-- Inner Row -->
+
+
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label>Payment Type *</label>
+                            <select class="register-input" name="PaymentType" id="PaymentType" required>
+                                <option value=""> Select Payment Option </option>
+                                <option value="Online"> Online - CCAvenue </option>
+                                <option value="Credit"> Credit </option>
+                                <option value="Cash On Delivery"> Cash On Delivery </option>
+                                <option value="NEFT"> NEFT </option>
+                                <option value="Cheque/DD"> Cheque/DD </option>
+                            </select>
+
+                        </div>
+                    </div><!-- Inner Column -->
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label>Payment Notes *</label>
+                            <textarea name="PaymentNotes" id="PaymentNotes" placeholder="Payment Notes" class="register-input" required></textarea>
+
+                        </div>
+                    </div><!-- Inner Column -->
+                </div><!-- Inner Row -->
+
+                <div class="buy-now">
+                    <div class="form-group last-otp">
+                        <input type="hidden" name="ProductAmount" id="ProductAmount" value="<?php echo $product_fetch['product_price']; ?>" />
+                        <input type="hidden" name="TotalAmount" id="TotalAmount" value="" />
+                        <input type="submit" name="buyproduct" value="Buy Now" />
                     </div>
-                </div><!-- Inner Column -->
-            </div>
+                </div>
 
-
-        <div class="other-fields">
-            <div class="row">
-                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>Name Of Company / Person *</label>
-                        <input type="text" name="DeliveryName" id="DeliveryName" class="register-input" value="" placeholder="Name Of Person" required />
-                    </div>
-                </div><!-- Inner Column -->
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>Mobile *</label>
-                        <input type="text" name="DeliveryMobile" id="DeliveryMobile" class="register-input" value="" placeholder="Person Mobile" required />
-                    </div>
-                </div><!-- Inner Column -->
-            </div><!-- Inner Row -->
-
-
-            <div class="row">
-
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-group">
-                        <label>Address *</label>
-                        <textarea name="DeliveryAddress" id="DeliveryAddress" placeholder="Delivery Address" class="register-input" required></textarea>
-                    </div>
-                </div><!-- Inner Column -->
-
-            </div><!-- Inner Row -->
-
-
-            <div class="row">
-
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>Country *</label>
-                        <select class="register-input" name="DeliveryCountry" id="DeliveryCountry" required >
-                            <option value="">Select Country</option>
-                            <?php
-                            foreach($country_results as $key => $value){ ?>
-                                <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                    </div>
-                </div><!-- Inner Column -->
-
-
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>State *</label>
-                        <select class="register-input" name="DeliveryState" id="DeliveryState" required>
-                            <option value="">Select State</option>
-                            <?php
-                            foreach($state_results as $key => $value){ ?>
-                                <option value="<?php echo $value['id']; ?>"><?php echo strtoupper($value['state_name']); ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                    </div>
-                </div><!-- Inner Column -->
-
-
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>City *</label>
-                        <select class="register-input" name="DeliveryCity" id="DeliveryCity" required>
-                            <option value="">Select City</option>
-                            <?php
-                            foreach($city_results as $key => $value){ ?>
-                                <option value="<?php echo $value['id']; ?>"><?php echo $value['city_name']; ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                    </div>
-                </div><!-- Inner Column -->
-
-
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>Pincode *</label>
-                        <input type="text" name="DeliveryPin" id="DeliveryPin" class="register-input" value="" required />
-                    </div>
-                </div><!-- Inner Column -->
-
-            </div><!-- Inner Row -->
-
-
-
+            </form>
 
         </div>
+    </div>
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-group">
-                        <label>Payment Type *</label>
-                        <select class="register-input" name="PaymentType" id="PaymentType" required>
-                            <option value=""> Select Payment Option </option>
-                            <option value="Online"> Online - CCAvenue </option>
-                            <option value="Credit"> Credit </option>
-                            <option value="Cash On Delivery"> Cash On Delivery </option>
-                            <option value="NEFT"> NEFT </option>
-                            <option value="Cheque/DD"> Cheque/DD </option>
-                        </select>
-
-                    </div>
-                </div><!-- Inner Column -->
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-group">
-                        <label>Payment Notes *</label>
-                        <textarea name="PaymentNotes" id="PaymentNotes" placeholder="Payment Notes" class="register-input" required></textarea>
-
-                    </div>
-                </div><!-- Inner Column -->
-            </div><!-- Inner Row -->
-
-        <div class="buy-now">
-            <div class="form-group last-otp">
-                <input type="hidden" name="ProductAmount" id="ProductAmount" value="<?php echo $product_fetch['product_price']; ?>" />
-                <input type="hidden" name="TotalAmount" id="TotalAmount" value="" />
-                <input type="submit" name="buyproduct" value="Buy Now" />
-            </div>
-        </div>
-
-        </form>
-
-    </div><!-- Column 6 -->
 
 </div><!-- Row -->
 </div><!-- Container Fluid -->
 </div><!-- Product category -->
 
-
-<div class="welcome hidden">
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-<p>Sri Sai Ganesh Associates &reg; helps manufacturers with gaining full control of their supply chain.</p>
-</div><!-- Column 12 -->
-</div><!-- Row -->
-</div><!-- Container Fluid -->
-</div><!-- Welcome -->
-
-
-<?php //include "slider.php"; ?>
-
-<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 

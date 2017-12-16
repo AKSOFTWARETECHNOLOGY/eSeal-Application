@@ -110,7 +110,7 @@ $product_count_fetch=$product_count_fet['pro_count'];
         {
 
             //exit;
-            header("Location: product-order.php?order=$order_id");
+            header("Location: product-order.php?order_id=$order_id");
 
             //header("Location: http://www.ccavenue.com");
 
@@ -118,7 +118,7 @@ $product_count_fetch=$product_count_fet['pro_count'];
         else
         {
             //exit;
-            header("Location: product-order.php?order=$order_id");
+            header("Location: product-order.php?order_id=$order_id");
 
         }
 
