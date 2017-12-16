@@ -24,7 +24,9 @@ $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
 FROM `product_order_info` AS `poi`
 LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
 LEFT JOIN `products` ON products.id = poi.product_id
-LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id";
+LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
+WHERE `poi`.iec_no IS NOT NULL";
+//echo $order_sql;
 $order_exe=mysql_query($order_sql);
 $order_cnt=@mysql_num_rows($order_exe);
 ?>
