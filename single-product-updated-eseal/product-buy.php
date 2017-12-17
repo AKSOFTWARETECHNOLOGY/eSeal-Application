@@ -336,11 +336,12 @@ $(document).ready(function() {
                             <label>Payment Type *</label>
                             <select class="register-input" name="PaymentType" id="PaymentType" required>
                                 <option value=""> Select Payment Option </option>
-                                <option value="Online"> Online - CCAvenue </option>
-                                <option value="Credit"> Credit </option>
-                                <option value="Cash On Delivery"> Cash On Delivery </option>
-                                <option value="NEFT"> NEFT </option>
-                                <option value="Cheque/DD"> Cheque/DD </option>
+                                <option value="1"> Online - CCAvenue </option>
+                                <option value="2"> Credit - 15 Days </option>
+                                <option value="3"> Credit - 30 Days </option>
+                                <option value="4"> Cash On Delivery </option>
+                                <option value="5"> NEFT </option>
+                                <option value="6"> Cheque/DD </option>
                             </select>
 
                         </div>
@@ -406,7 +407,7 @@ $(document).ready(function() {
         else
         {
 
-            var BASEURL = "http://localhost/eSeal-Application/single-product-updated-eseal/";
+            var BASEURL = "http://www.ssgaeseal.com/";
             var status = 1;
             var callurl = BASEURL + 'ajax-get-address.php?id='+id;
 

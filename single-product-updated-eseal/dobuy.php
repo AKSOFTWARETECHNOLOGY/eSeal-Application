@@ -34,7 +34,7 @@ $DeliveryMobile = $_REQUEST['DeliveryMobile'];
 $PaymentType = $_REQUEST['PaymentType'];
 $PaymentNotes = $_REQUEST['PaymentNotes'];
 
-$SaleType = "Online";
+$SaleType = "1";
 $SaleStatus = "0";
 $SaleDate = date("Y-m-d");
 
@@ -68,7 +68,7 @@ $product_count_fetch=$product_count_fet['pro_count'];
     '$DeliveryName','$DeliveryAddress','$DeliveryCity','$DeliveryState','$DeliveryCountry','$DeliveryPin','$DeliveryMobile',
     '$DeliveryType', '$DeliveryStatus', '$DeliveryDate',
     '$username','$username','$date','$date')";
-        //echo $insert_order_sq1;
+        //echo $insert_order_sq1; exit;
         $insert_order_exe = mysql_query($insert_order_sq1);
 
         $order_id=mysql_insert_id();
