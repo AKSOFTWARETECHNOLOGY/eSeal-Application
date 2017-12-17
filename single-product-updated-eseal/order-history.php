@@ -195,7 +195,19 @@ $(document).ready(function() {
     $(document).ready(function(){
         $('#myTable').DataTable();
     });
-
 </script>
+<style>
+    .table-responsive {
+        min-height: .01%;
+        overflow-x: visible;
+    }
+    div#myTable_length,  div#myTable_info{
+        width: 50%;
+        float: left;
+    }
+    div#myTable_filter, div#myTable_paginate{
+        float: right;
+    }
+</style>
 </body>
 </html>
