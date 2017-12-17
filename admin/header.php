@@ -106,6 +106,11 @@
                   </a>
               </li>
               <li class="treeview">
+                  <a href="enquirylist.php">
+                      <i class="ion ion-android-contact"></i> <span>Enquiry</span>
+                  </a>
+              </li>
+              <li class="treeview">
                   <a href="portslist.php">
                       <i class="ion ion-android-contact"></i> <span>Ports</span>
                   </a>

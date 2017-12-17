@@ -2,7 +2,8 @@
 SQLyog Ultimate v8.82 
 MySQL - 5.5.5-10.1.16-MariaDB : Database - eseal_app
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -543,3 +544,27 @@ insert  into `vendor_info`(`id`,`user_id`,`name_vendor`,`name_person`,`address`,
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+/*
+/*Table structure for table `complaint_enquiry` */
+
+DROP TABLE IF EXISTS `complaint_enquiry`;
+
+CREATE TABLE `complaint_enquiry` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `query` varchar(255) DEFAULT NULL,
+  `description` text,
+  `complaint_status` tinyint(4) DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `complaint_enquiry` */
+
+insert  into `complaint_enquiry`(`id`,`query`,`description`,`complaint_status`,`created_at`,`updated_at`) values (1,'Demo','Sample...........',1,'2017-12-18 02:00:15','0000-00-00 00:00:00'),(2,'Enquiry','Enquiry about eseal',1,'2017-12-18 02:03:30','0000-00-00 00:00:00');
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;*/

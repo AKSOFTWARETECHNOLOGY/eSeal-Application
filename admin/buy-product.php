@@ -97,22 +97,6 @@ $export_cnt=@mysql_num_rows($export_exe);
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Exporter Name<span class="req"> *</span></label>
-                                        <div class="col-sm-9">
-                                            <select class="form-control" name="exporterName" id="exporterName">
-                                                <option value="0"> Select Exporter </option>
-                                                <?php
-                                                while($export_fet=mysql_fetch_array($export_exe))
-                                                {
-                                                ?>
-                                                <option value="<?php echo $export_fet['id']; ?>"> <?php echo $export_fet['name_exporter']; ?> </option>
-                                                <?php } ?>
-                                            </select>
-                                            <div class="err" id="errExporterName" style="color:red"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Quantity<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <select class="form-control" name="quantity" id="quantity">
@@ -153,6 +137,22 @@ $export_cnt=@mysql_num_rows($export_exe);
                                     </div>
 
                                     <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Exporter Name<span class="req"> *</span></label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" name="exporterName" id="exporterName" required onchange="javascript:exporter(this.value);">
+                                                <option value="0"> Select Exporter </option>
+                                                <?php
+                                                while($export_fet=mysql_fetch_array($export_exe))
+                                                {
+                                                ?>
+                                                <option value="<?php echo $export_fet['id']; ?>"> <?php echo $export_fet['name_exporter']; ?> </option>
+                                                <?php } ?>
+                                            </select>
+                                            <div class="err" id="errExporterName" style="color:red"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Payment Option<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <select class="form-control" name="payment" id="payment">
@@ -165,6 +165,12 @@ $export_cnt=@mysql_num_rows($export_exe);
                                         </div>
                                     </div>
 
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Payment Notes<span class="req"> *</span></label>
+                                        <div class="col-sm-9">
+                                            <textarea name="PaymentNotes" id="PaymentNotes" placeholder="Payment Notes" class="form-control" required></textarea>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group col-md-12">
                                         <input type="hidden" name="userId" value="<?php echo $product_fet['user_id']; ?>" />
@@ -239,6 +245,49 @@ $export_cnt=@mysql_num_rows($export_exe);
 
         });
     });
+</script>
+
+<script>
+    function deliveryaddress(id)
+    {
+        if(id==0)
+        {
+            $("#DeliveryName").val('');
+            $("#DeliveryMobile").val('');
+            $("#DeliveryAddress").val('');
+            $("#DeliveryCountry").val('');
+            $("#DeliveryState").val('');
+            $("#DeliveryCity").val('');
+            $("#DeliveryPin").val('');
+        }
+        else
+        {
+
+            var BASEURL = "http://www.ssgaeseal.com/";
+            var status = 1;
+            var callurl = BASEURL + 'ajax-get-address.php?id='+id;
+
+            $.ajax({
+                url: callurl,
+                type: "get",
+                data: {"id": id, "status": status},
+                success: function (data) {
+                    var obj = JSON.parse(data);
+
+                    $("input#DeliveryName").val(obj.name);
+                    $("input#DeliveryMobile").val(obj.mobile);
+                    $("textarea#DeliveryAddress").val(obj.address);
+                    $("select#DeliveryCountry").val(obj.country);
+                    $("select#DeliveryState").val(obj.state);
+                    $("select#DeliveryCity").val(obj.city);
+                    $("input#DeliveryPin").val(obj.pincode);
+
+                }
+            });
+
+        }
+    }
+
 </script>
 </body>
 </html>

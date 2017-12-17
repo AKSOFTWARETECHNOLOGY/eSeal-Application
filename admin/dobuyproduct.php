@@ -17,6 +17,7 @@ $prodId = $_REQUEST['productName'];
 $exporterId = $_REQUEST['exporterName'];
 $quantity = $_REQUEST['quantity'];
 $payment = $_REQUEST['payment'];
+$paymentnotes = $_REQUEST['PaymentNotes'];
 $userId = $_REQUEST['userId'];
 $username = $_SESSION['adminusername'];
 $date = date("Y-m-d");
@@ -51,8 +52,8 @@ if($inv_cnt >= $quantity){
     $sale_total = $quantity * $sale_price;
 
         $s = "INSERT INTO `product_order` (user_id, product_exporter_id, product_id, product_order_id, product_sale_quantity,
-product_sale_price, product_sale_total, product_sale_type, product_sale_status, product_sale_date, product_sale_payment_type)
-values ('$userId', '$exporterId','$prodId','ESO100001', '$quantity','$sale_price','$sale_total','1','1','$date','$payment' )";
+product_sale_price, product_sale_total, product_sale_type, product_sale_status, product_sale_date, product_sale_payment_type, product_sale_payment_notes)
+values ('$userId', '$exporterId','$prodId','ESO100001', '$quantity','$sale_price','$sale_total','1','1','$date','$payment','$paymentnotes' )";
     $q= mysql_query($s);
 
     $last_order_id = mysql_insert_id();
