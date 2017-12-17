@@ -141,7 +141,7 @@ $product_cnt=@mysql_num_rows($product_exe);
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
-            "searching": false,
+            "searching": true,
             "ordering": true,
             "info": true,
             "autoWidth": false
