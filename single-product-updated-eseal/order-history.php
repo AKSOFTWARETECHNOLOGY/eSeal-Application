@@ -140,7 +140,7 @@ $(document).ready(function() {
     <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> My Order Information</h3>
 
     <div class="table-responsive">
-<table class="table">
+<table id="myTable" class="display table">
 <thead>
 <th>Order ID</th>
 <th>Customer</th>
@@ -189,5 +189,13 @@ $(document).ready(function() {
 <?php include "bottom_footer.php"; ?>
 
 
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" />
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        $('#myTable').DataTable();
+    });
+
+</script>
 </body>
 </html>

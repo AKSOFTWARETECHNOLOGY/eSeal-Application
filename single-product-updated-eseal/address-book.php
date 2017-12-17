@@ -172,103 +172,115 @@ $(document).ready(function() {
     <?php } ?>
 
 
-   <?php if(mysql_num_rows($useraddress_exe)>0) { ?>
-
-        <?php while($useraddress_fet=mysql_fetch_array($useraddress_exe)) { ?>
-
-    <div class="address-bar" style="border-top: 1px solid #cacaca;">
-        <div class="row">
-<?php
-           $city_value = $useraddress_fet['city'];
-           $cityArray_values = array_filter($city_results, function($e) use ($city_value){
-
-               if($e['id'] == $city_value)
-               { return true; }
-               else
-               { return false; }
-
-           });
-
-           if(count($cityArray_values))
-           {
-               $cityArray_values_key = key($cityArray_values);
-               $city_name = $cityArray_values[$cityArray_values_key]['city_name'];
-           }
-           else
-           {
-               $city_name = "";
-           }
-
-           $state_value = $useraddress_fet['state'];
-           $stateArray_values = array_filter($state_results, function($e) use ($state_value){
-
-               if($e['id'] == $state_value)
-               { return true; }
-               else
-               { return false; }
-
-           });
-
-           if(count($stateArray_values))
-           {
-               $stateArray_values_key = key($stateArray_values);
-               $state_name = $stateArray_values[$stateArray_values_key]['state_name'];
-           }
-           else
-           {
-               $state_name = "";
-           }
-
-           $country_value = $useraddress_fet['country'];
-           $countryArray_values = array_filter($country_results, function($e) use ($country_value){
-
-               if($e['id'] == $country_value)
-               { return true; }
-               else
-               { return false; }
-
-           });
-
-           if(count($countryArray_values))
-           {
-               $countryArray_values_key = key($countryArray_values);
-               $country_name = $countryArray_values[$countryArray_values_key]['name'];
-           }
-           else
-           {
-               $country_name = "";
-           }
-?>
-           <div class="col-md-8 col-sm-8 col-xs-12">
-               <p><label style="width:150px;">Name      </label> <?php echo $useraddress_fet['name']; ?></p>
-               <p><label style="width:150px;">Address   </label> <?php echo $useraddress_fet['address']; ?></p>
-               <p><label style="width:150px;">City      </label> <?php echo $city_name; ?></p>
-               <p><label style="width:150px;">State     </label> <?php echo $state_name; ?></p>
-               <p><label style="width:150px;">Country   </label> <?php echo $country_name; ?></p>
-               <p><label style="width:150px;">Pincode   </label> <?php echo $useraddress_fet['pincode']; ?></p>
-               <p><label style="width:150px;">Mobile    </label> <?php echo $useraddress_fet['mobile']; ?></p>
-           </div><!--Inner Column 6-->
+    <div class="submit-btn">
+        <ul>
+            <li><a class="hidden" href="javascript:void(0);">Back</a></li>
+            <li><a href="add-address-book.php">New Address</a></li>
+        </ul>
+    </div><!--Form Btn-->
 
 
-           <div class="col-md-4 col-sm-4 col-xs-12">
-               <div class="form-btn">
-                   <br/>
-                   <ul class="">
-                       <li class="hidden"><a href="javascript:void(0);">Edit</a></li>
-                       <li><a href="delete-address.php?delete=1&id=<?php echo $useraddress_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></li>
-                   </ul>
+    <div class="table-responsive">
 
-               </div><!--Form Btn-->
-           </div><!--Inner Column 6-->
+        <table id="myTable" class="display table">
+            <thead>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Mobile</th>
+            <th></th>
+            </thead>
+            <tbody>
+            <?php if(mysql_num_rows($useraddress_exe)>0) { ?>
+                <?php while($useraddress_fet=mysql_fetch_array($useraddress_exe)) { ?>
+                    <?php
+                    $city_value = $useraddress_fet['city'];
+                    $cityArray_values = array_filter($city_results, function($e) use ($city_value){
 
+                        if($e['id'] == $city_value)
+                        { return true; }
+                        else
+                        { return false; }
 
+                    });
 
-        </div><!--Inner Row-->
-    </div><!--Address Bar-->
+                    if(count($cityArray_values))
+                    {
+                        $cityArray_values_key = key($cityArray_values);
+                        $city_name = $cityArray_values[$cityArray_values_key]['city_name'];
+                    }
+                    else
+                    {
+                        $city_name = "";
+                    }
 
-        <?php } ?>
+                    $state_value = $useraddress_fet['state'];
+                    $stateArray_values = array_filter($state_results, function($e) use ($state_value){
 
-   <?php } ?>
+                        if($e['id'] == $state_value)
+                        { return true; }
+                        else
+                        { return false; }
+
+                    });
+
+                    if(count($stateArray_values))
+                    {
+                        $stateArray_values_key = key($stateArray_values);
+                        $state_name = $stateArray_values[$stateArray_values_key]['state_name'];
+                    }
+                    else
+                    {
+                        $state_name = "";
+                    }
+
+                    $country_value = $useraddress_fet['country'];
+                    $countryArray_values = array_filter($country_results, function($e) use ($country_value){
+
+                        if($e['id'] == $country_value)
+                        { return true; }
+                        else
+                        { return false; }
+
+                    });
+
+                    if(count($countryArray_values))
+                    {
+                        $countryArray_values_key = key($countryArray_values);
+                        $country_name = $countryArray_values[$countryArray_values_key]['name'];
+                    }
+                    else
+                    {
+                        $country_name = "";
+                    }
+                    ?>
+                    <tr>
+                        <td><?php echo $useraddress_fet['name']; ?></td>
+                        <td><?php echo $useraddress_fet['address']; ?></td>
+                        <td>
+                            <?php echo $city_name; ?>,<?php echo $state_name; ?>,<br/>
+                            <?php echo $country_name; ?> - <?php echo $useraddress_fet['pincode']; ?>
+                        </td>
+                        <td><?php echo $useraddress_fet['mobile']; ?></td>
+                        <td>
+                            <a class="hidden" href="javascript:void(0);">Edit</a>
+                            <a href="delete-address.php?delete=1&id=<?php echo $useraddress_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+
+                        </td>
+                    </tr>
+
+                <?php } ?>
+
+            <?php } else { ?>
+
+                <tr>
+                    <td colspan="3"> No Address Details </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div><!--Table Responsive-->
+
 
 
 </div><!--My Account-->
@@ -288,6 +300,15 @@ $(document).ready(function() {
 <?php include "footer.php"; ?>
 
 <?php include "bottom_footer.php"; ?>
+
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" />
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        $('#myTable').DataTable();
+    });
+
+</script>
 
 </body>
 </html>

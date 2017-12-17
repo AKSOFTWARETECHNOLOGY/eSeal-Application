@@ -145,6 +145,43 @@ $(document).ready(function() {
     <?php if(isset($_REQUEST['err'])) { ?>
         <p style="color:red;font-weight:bold"> E-Mail Already Registered with us / Invalid Details.</p>
     <?php } ?>
+
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label>Email Id <span class="required">*</span></label>
+                <input type="text" name="email" id="email" class="register-input" value="" required />
+                <span id="emailstatus"></span>
+                <span>(This will become your default registered email)</span>
+            </div>
+        </div><!-- Inner Column -->
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label>Password <span class="required">*</span></label>
+                <input type="password" name="password" id="password" class="register-input" value="" required />
+                <span>( The password should be atleast 5 charaters long )</span>
+            </div>
+        </div><!-- Inner Column -->
+    </div><!-- Inner Row -->
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label>Mobile No. <span class="required">*</span></label>
+                <input type="text" name="mobile" id="mobile" class="register-input" value="" required />
+            </div>
+        </div><!-- Inner Column -->
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label>Landline Number <span class="required">&nbsp;</span></label>
+                <input type="text" name="telephone" id="telephone" class="register-input " value="" />
+            </div>
+        </div><!-- Inner Column -->
+    </div><!-- Inner Row -->
+
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="form-group">
@@ -269,39 +306,6 @@ $(document).ready(function() {
 
 
 
-<div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12">
-<div class="form-group">
-<label>Email Id <span class="required">*</span></label>
-<input type="text" name="email" class="register-input" value="" required />
-<span>(This will become your default registered email)</span>
-</div>
-</div><!-- Inner Column -->
-
-<div class="col-md-6 col-sm-6 col-xs-12">
-<div class="form-group">
-<label>Password <span class="required">*</span></label>
-<input type="password" name="password" class="register-input" value="" required />
-<span>( The password should be atleast 5 charaters long )</span>
-</div>
-</div><!-- Inner Column -->
-</div><!-- Inner Row -->
-
-<div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12">
-<div class="form-group">
-<label>Mobile No. <span class="required">*</span></label>
-<input type="text" name="mobile" id="mobile" class="register-input" value="" required />
-</div>
-</div><!-- Inner Column -->
-
-<div class="col-md-6 col-sm-6 col-xs-12">
-<div class="form-group">
-<label>Landline Number <span class="required">&nbsp;</span></label>
-<input type="text" name="telephone" id="telephone" class="register-input " value="" />
-</div>
-</div><!-- Inner Column -->
-</div><!-- Inner Row -->
 
 <div class="declare">
 <h4>We declare that we are entitled for self-sealing facility as per circular 26/2017 and 36/2017 and belong to one of the following permitted categories:</h4>
@@ -341,6 +345,48 @@ $(document).ready(function() {
 
 <?php include "bottom_footer.php"; ?>
 
+<script>
+    $("input#email").change(function(){
+
+        //alert("The text has been changed.");
+
+        var email = $("input#email").val();
+        //var BASEURL = "http://www.ssgaeseal.com/";
+        var BASEURL = "http://localhost/eSeal-Application/single-product-updated-eseal/";
+        var status = 1;
+        var callurl = BASEURL + 'ajax-check-email.php?email='+email;
+
+        $.ajax({
+            url: callurl,
+            type: "get",
+            data: {"email": email, "status": status},
+            success: function (data) {
+                var obj = JSON.parse(data);
+                //alert(obj.status);
+                if(obj.status==1)
+                {
+                    $("#emailstatus").text("");
+                }
+                else if(obj.status==2)
+                {
+                    $("#emailstatus").text(obj.email+" Email Already Taken!");
+                }
+
+                /*
+                $("input#DeliveryName").val(obj.name);
+                $("input#DeliveryMobile").val(obj.mobile);
+                $("textarea#DeliveryAddress").val(obj.address);
+                $("select#DeliveryCountry").val(obj.country);
+                $("select#DeliveryState").val(obj.state);
+                $("select#DeliveryCity").val(obj.city);
+                $("input#DeliveryPin").val(obj.pincode);
+                */
+
+            }
+        });
+
+    });
+</script>
 
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 
@@ -466,6 +512,7 @@ $(document).ready(function() {
 <style>
     label.error { color: red; }
     span.required { color: red; float: right;  padding: 5px 0px 0px 5px; }
+    span#emailstatus { color: red; }
 </style>
 </body>
 </html>

@@ -100,7 +100,7 @@ $(document).ready(function() {
 
 <div class="home-about-banner">
 <div class="home-about-banner-overlay">
-<h3>Login or Create an Account</h3>
+<h3>Registration Complete</h3>
 </div>
 </div>
 
@@ -123,11 +123,11 @@ $(document).ready(function() {
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="account-sign">
     <?php if(isset($_REQUEST['success'])) { ?>
-        <p style="color:green;font-weight:bold"> Your Account Activated Successfully! You can login now.</p>
+        <p style="color:green;font-weight:bold"> Your Account Registration Successfully!<br/> We send Account Activation Link to Email Address.</p>
     <?php } ?>
 
     <?php if(isset($_REQUEST['err'])) { ?>
-        <p style="color:red;font-weight:bold"> Invalid Login Details / Your Account not Activated.</p>
+        <p style="color:red;font-weight:bold"> Invalid Registration Details / Please try again after some time.</p>
     <?php } ?>
 <h3>Registered Customers</h3>
 <p>If you have an account with us, please log in.</p>
@@ -149,7 +149,8 @@ $(document).ready(function() {
 <div class="form-group row">
 <span><input type="submit" name="login" value="Login" class="account-sign-submit" /></span>
 <!--<button type="button" name="login"><i class="fa fa-lock"></i>Login</button>-->
-<a href="javascript:void(0);">Forgot Your Password ?</a>
+    <br/>
+<a href="forgot-login.php">Forgot Your Password ?</a>
 </div>
 
 </div>

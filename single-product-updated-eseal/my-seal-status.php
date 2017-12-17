@@ -25,7 +25,7 @@ $userinfo=mysql_fetch_array($userinfo_exe);
 
 
 $product_exporter_id=$user_id;
-$product_info_order_sql="SELECT * FROM `product_order_info` WHERE `product_exporter_id`='$product_exporter_id' AND `seal_type` IS NULL";
+$product_info_order_sql="SELECT * FROM `product_order_info` WHERE `product_exporter_id`='$product_exporter_id' AND `seal_type`!=''";
 $product_info_order_exe=mysql_query($product_info_order_sql);
 ?>
 <!doctype html>
