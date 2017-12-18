@@ -82,7 +82,7 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
                                             <td><?php echo $complaint_fet['name']; ?></td>
                                             <td><?php echo $complaint_fet['subject']; ?></td>
                                             <td>
-                                                <a href="#enquiryview.php?enquiry_id=<?php echo $complaint_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
+                                                <a href="enquiryview.php?enquiry_id=<?php echo $complaint_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                             </td>
                                         </tr>
                                     <?php

@@ -22,7 +22,7 @@ $username = "User";
 $date = date("Y-m-d");
 
 $insert_complaint_sq1 = "INSERT INTO `complaint_enquiry` (sender_id, receiver_id, subject, message, enquiry_id, created_by, updated_by, created_at, updated_at)
-VALUES ('$senderId','$senderId','$subject','$message','0','$username','$username','$date','$date')";
+VALUES ('$senderId','2','$subject','$message','0','$username','$username','$date','$date')";
 $insert_complaint_exe=mysql_query($insert_complaint_sq1);
 
     header("Location: complaint-form.php?succ=1&msg=all");
