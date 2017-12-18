@@ -19,6 +19,7 @@
 <li><a href="my-team.php"><i class="fa fa-user" aria-hidden="true"></i> My Team Members</a></li>
 <li><a href="address-book.php"><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</a></li>
 <li><a href="change-password.php"><i class="fa fa-unlock" aria-hidden="true"></i> Change Password</a></li>
+<li><a href="my-complaint.php"><i class="fa fa-refresh" aria-hidden="true"></i> My Complaints</a></li>
 <li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
 </ul>
 </div><!--Account Link-->
