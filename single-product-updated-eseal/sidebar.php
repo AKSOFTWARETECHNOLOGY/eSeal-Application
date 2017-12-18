@@ -2,7 +2,7 @@
     .account-link {
         background: #23aef4;
         padding: 10px;
-        height: 510px;
+        height: 650px;
         margin: 10px 0;
     }
 </style>

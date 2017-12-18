@@ -158,7 +158,7 @@ $(document).ready(function() {
 </div><!--Column 6-->
 
 <div class="col-md-9 col-sm-9 col-xs-12">
-<div class="my-account">
+<div class="order-history">
 <h3><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</h3>
 
     <?php if(isset($_REQUEST['delete'])) { ?>
@@ -285,7 +285,7 @@ $(document).ready(function() {
 
 </div><!--My Account-->
 
-<div class="submit-btn">
+<div class="submit-btn hidden">
 <ul>
 <li><a class="hidden" href="javascript:void(0);">Back</a></li>
 <li><a href="add-address-book.php">New Address</a></li>
