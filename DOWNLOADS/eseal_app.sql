@@ -2,8 +2,7 @@
 SQLyog Ultimate v8.82 
 MySQL - 5.5.5-10.1.16-MariaDB : Database - eseal_app
 *********************************************************************
-*/
-
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -67,6 +66,30 @@ CREATE TABLE `cities` (
 /*Data for the table `cities` */
 
 insert  into `cities`(`id`,`city_name`,`country`,`city_status`,`created_by`,`modified_by`,`created_at`,`updated_at`) values (1,'AHMEDABAD',99,1,'admin','admin',NULL,NULL),(2,'ALLEPPEY',99,1,'admin','admin',NULL,NULL),(3,'ANAND',99,1,'admin','admin',NULL,NULL),(4,'AURANGABAD',99,1,'admin','admin',NULL,NULL),(5,'BACHELI',99,1,'admin','admin',NULL,NULL),(6,'BANGALORE',99,1,'admin','admin',NULL,NULL),(7,'BANNERGHATTA',99,1,'admin','admin',NULL,NULL),(8,'BELLARY',99,1,'admin','admin',NULL,NULL),(9,'BHAVNAGAR',99,1,'admin','admin',NULL,NULL),(10,'BHILAI',99,1,'admin','admin',NULL,NULL),(11,'BHUBANESHWAR',99,1,'admin','admin',NULL,NULL),(12,'BILASPUR',99,1,'admin','admin',NULL,NULL),(13,'CALICUT',99,1,'admin','admin',NULL,NULL),(14,'CHANDIGARH',99,1,'admin','admin',NULL,NULL),(15,'CHENNAI',99,1,'admin','admin',NULL,NULL),(16,'CHITOOR',99,1,'admin','admin',NULL,NULL),(17,'CITY',99,1,'admin','admin',NULL,NULL),(18,'COCHIN',99,1,'admin','admin',NULL,NULL),(19,'COIMBATORE',99,1,'admin','admin',NULL,NULL),(20,'CUTTACK',99,1,'admin','admin',NULL,NULL),(21,'DAVANGREE',99,1,'admin','admin',NULL,NULL),(22,'DEHRADUN',99,1,'admin','admin',NULL,NULL),(23,'DURGAPUR',99,1,'admin','admin',NULL,NULL),(24,'ERNAKULAM',99,1,'admin','admin',NULL,NULL),(25,'ERODE',99,1,'admin','admin',NULL,NULL),(26,'FARIDABAD',99,1,'admin','admin',NULL,NULL),(27,'GHAZIABAD',99,1,'admin','admin',NULL,NULL),(28,'GOA',99,1,'admin','admin',NULL,NULL),(29,'GORAKHPUR',99,1,'admin','admin',NULL,NULL),(30,'GULBARGA',99,1,'admin','admin',NULL,NULL),(31,'GURGAON',99,1,'admin','admin',NULL,NULL),(32,'HARIDWAR',99,1,'admin','admin',NULL,NULL),(33,'HUBLI',99,1,'admin','admin',NULL,NULL),(34,'HYDERABAD',99,1,'admin','admin',NULL,NULL),(35,'INDORE',99,1,'admin','admin',NULL,NULL),(36,'JAIPUR',99,1,'admin','admin',NULL,NULL),(37,'JALANDHAR',99,1,'admin','admin',NULL,NULL),(38,'JAMNAGAR',99,1,'admin','admin',NULL,NULL),(39,'KAKINADA',99,1,'admin','admin',NULL,NULL),(40,'KANCHEEPURAM',99,1,'admin','admin',NULL,NULL),(41,'KANNUR',99,1,'admin','admin',NULL,NULL),(42,'KARAIKUDI',99,1,'admin','admin',NULL,NULL),(43,'KARIMNAGAR',99,1,'admin','admin',NULL,NULL),(44,'KARNATAKA',99,1,'admin','admin',NULL,NULL),(45,'KARUR',99,1,'admin','admin',NULL,NULL),(46,'KOCHI',99,1,'admin','admin',NULL,NULL),(47,'KOLHAPUR',99,1,'admin','admin',NULL,NULL),(48,'KOLKATA',99,1,'admin','admin',NULL,NULL),(49,'KOLLAM',99,1,'admin','admin',NULL,NULL),(50,'KOTTAYAM',99,1,'admin','admin',NULL,NULL),(51,'KOVALAM',99,1,'admin','admin',NULL,NULL),(52,'KOZHENCHERRY',99,1,'admin','admin',NULL,NULL),(53,'KOZHIKODE',99,1,'admin','admin',NULL,NULL),(54,'KRISHNAGIRI',99,1,'admin','admin',NULL,NULL),(55,'LUCKNOW',99,1,'admin','admin',NULL,NULL),(56,'LUDHIANA',99,1,'admin','admin',NULL,NULL),(57,'MADURAI',99,1,'admin','admin',NULL,NULL),(58,'MALAKPET',99,1,'admin','admin',NULL,NULL),(59,'MALAPPURAM',99,1,'admin','admin',NULL,NULL),(60,'MANGALORE',99,1,'admin','admin',NULL,NULL),(61,'MARGAO',99,1,'admin','admin',NULL,NULL),(62,'MEERUT',99,1,'admin','admin',NULL,NULL),(63,'MOHALI',99,1,'admin','admin',NULL,NULL),(64,'MUMBAI',99,1,'admin','admin',NULL,NULL),(65,'MYSORE',99,1,'admin','admin',NULL,NULL),(66,'NAGPUR',99,1,'admin','admin',NULL,NULL),(67,'NASHIK',99,1,'admin','admin',NULL,NULL),(68,'NAVI MUMBAI',99,1,'admin','admin',NULL,NULL),(69,'NEDUMBASSERY',99,1,'admin','admin',NULL,NULL),(70,'NELLORE',99,1,'admin','admin',NULL,NULL),(71,'NEW DELHI',99,1,'admin','admin',NULL,NULL),(72,'NOIDA',99,1,'admin','admin',NULL,NULL),(73,'ONGOLE',99,1,'admin','admin',NULL,NULL),(74,'PALAKKAD',99,1,'admin','admin',NULL,NULL),(75,'PALANI',99,1,'admin','admin',NULL,NULL),(76,'PANAJI',99,1,'admin','admin',NULL,NULL),(77,'PANCHKULA',99,1,'admin','admin',NULL,NULL),(78,'PATHANAMTHITTA',99,1,'admin','admin',NULL,NULL),(79,'PATIALA',99,1,'admin','admin',NULL,NULL),(80,'PITAMPURA',99,1,'admin','admin',NULL,NULL),(81,'PONDICHERRY',99,1,'admin','admin',NULL,NULL),(82,'PORDENONE',99,1,'admin','admin',NULL,NULL),(83,'PUDUKKOTAI',99,1,'admin','admin',NULL,NULL),(84,'PUNE',99,1,'admin','admin',NULL,NULL),(85,'RAIPUR',99,1,'admin','admin',NULL,NULL),(86,'RAJAHMUNDRY',99,1,'admin','admin',NULL,NULL),(87,'RANCHI',99,1,'admin','admin',NULL,NULL),(88,'RANIPET',99,1,'admin','admin',NULL,NULL),(89,'REWARI',99,1,'admin','admin',NULL,NULL),(90,'ROHINI',99,1,'admin','admin',NULL,NULL),(91,'SALEM',99,1,'admin','admin',NULL,NULL),(92,'SALT LAKE',99,1,'admin','admin',NULL,NULL),(93,'SECUNDERABAD',99,1,'admin','admin',NULL,NULL),(94,'SHIMOGA',99,1,'admin','admin',NULL,NULL),(95,'SIVAKASI',99,1,'admin','admin',NULL,NULL),(96,'SOMAJIGUDA',99,1,'admin','admin',NULL,NULL),(97,'SURAT',99,1,'admin','admin',NULL,NULL),(98,'THANE',99,1,'admin','admin',NULL,NULL),(99,'THIRUVANANTHAPURAM',99,1,'admin','admin',NULL,NULL),(100,'THRISSUR',99,1,'admin','admin',NULL,NULL),(101,'TIRUPATI',99,1,'admin','admin',NULL,NULL),(102,'TIRUVANNAMALAI',99,1,'admin','admin',NULL,NULL),(103,'TRICHY',99,1,'admin','admin',NULL,NULL),(104,'TRIVANDRAM',99,1,'admin','admin',NULL,NULL),(105,'TUMKUR',99,1,'admin','admin',NULL,NULL),(106,'TUTICORIN',99,1,'admin','admin',NULL,NULL),(107,'VADODRA',99,1,'admin','admin',NULL,NULL),(108,'VARANASI',99,1,'admin','admin',NULL,NULL),(109,'VELLORE',99,1,'admin','admin',NULL,NULL),(110,'VIJAYAWADA',99,1,'admin','admin',NULL,NULL),(111,'VISHAKHAPATNAM',99,1,'admin','admin',NULL,NULL);
+
+/*Table structure for table `complaint_enquiry` */
+
+DROP TABLE IF EXISTS `complaint_enquiry`;
+
+CREATE TABLE `complaint_enquiry` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `sender_id` int(10) unsigned DEFAULT NULL,
+  `receiver_id` int(10) unsigned DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `message` text,
+  `enquiry_id` int(10) DEFAULT NULL,
+  `read_status` tinyint(10) DEFAULT '0',
+  `complaint_status` tinyint(4) DEFAULT '1',
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+/*Data for the table `complaint_enquiry` */
+
+insert  into `complaint_enquiry`(`id`,`sender_id`,`receiver_id`,`subject`,`message`,`enquiry_id`,`read_status`,`complaint_status`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (1,7,2,'demo','demo',0,1,1,'User','vendor','2017-12-18 17:31:05','2017-12-18 00:00:00'),(2,7,2,'sample','sample demo',0,0,1,'User','User','2017-12-18 15:38:10','2017-12-18 00:00:00'),(4,2,7,'demo','reply message',1,0,1,'User','User','2017-12-18 17:22:57','2017-12-18 00:00:00'),(6,7,2,'demo','sdfsdgsdg',1,0,1,'User','User','2017-12-18 18:02:29','2017-12-18 00:00:00');
 
 /*Table structure for table `countries` */
 
@@ -248,11 +271,11 @@ CREATE TABLE `ports` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `ports` */
 
-insert  into `ports`(`id`,`ports_name`,`ports_status`,`created_by`,`modified_by`,`created_at`,`updated_at`) values (1,'Chennai Port1',0,'admin','vendor',NULL,'2017-12-15 00:00:00'),(2,'Ennore Port',1,'admin','admin',NULL,NULL),(3,'Kattupalli Port',1,'admin','admin',NULL,NULL),(4,'Tuticorin Port',1,'admin','admin',NULL,NULL),(5,'Cochin Port',1,'admin','admin',NULL,NULL),(6,'Kolkata Port',0,'admin','admin',NULL,NULL),(7,'Paradip Port',0,'admin','admin',NULL,NULL),(8,'New Mangalore Port',0,'admin','admin',NULL,NULL),(9,'Jawaharlal Nehru Port',0,'admin','admin',NULL,NULL),(10,'Mumbai Port',0,'admin','admin',NULL,NULL),(11,'Kandla Port',0,'admin','admin',NULL,NULL),(12,'Vishakhapatnam Port',0,'admin','admin',NULL,NULL),(13,'Mormugao Port',0,'admin','admin',NULL,NULL),(14,'Port Blair Port',0,'admin','admin',NULL,NULL),(15,'Tiruppur - CFS',1,'admin','admin',NULL,NULL);
+insert  into `ports`(`id`,`ports_name`,`ports_status`,`created_by`,`modified_by`,`created_at`,`updated_at`) values (1,'Chennai Port',1,'admin','vendor',NULL,'2017-12-15 00:00:00'),(2,'Ennore Port',1,'admin','admin',NULL,NULL),(3,'Kattupalli Port',1,'admin','admin',NULL,NULL),(4,'Tuticorin Port',1,'admin','admin',NULL,NULL),(5,'Cochin Port',1,'admin','admin',NULL,NULL),(6,'Kolkata Port',0,'admin','admin',NULL,NULL),(7,'Paradip Port',0,'admin','admin',NULL,NULL),(8,'New Mangalore Port',0,'admin','admin',NULL,NULL),(9,'Jawaharlal Nehru Port',0,'admin','admin',NULL,NULL),(10,'Mumbai Port',0,'admin','admin',NULL,NULL),(11,'Kandla Port',0,'admin','admin',NULL,NULL),(12,'Vishakhapatnam Port',0,'admin','admin',NULL,NULL),(13,'Mormugao Port',0,'admin','admin',NULL,NULL),(14,'Port Blair Port',0,'admin','admin',NULL,NULL),(15,'Tiruppur - CFS',1,'admin','admin',NULL,NULL);
 
 /*Table structure for table `product_info` */
 
@@ -311,6 +334,9 @@ CREATE TABLE `product_order` (
   `product_delivery_date` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `product_estimate_delivery_days` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `product_estimate_delivery_charge` decimal(15,2) NOT NULL,
+  `product_order_status` int(11) DEFAULT '0',
+  `product_order_date` date DEFAULT NULL,
+  `product_order_note` text COLLATE utf8_unicode_ci,
   `created_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `updated_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -320,7 +346,7 @@ CREATE TABLE `product_order` (
 
 /*Data for the table `product_order` */
 
-insert  into `product_order`(`id`,`user_id`,`product_exporter_id`,`product_id`,`product_order_id`,`product_sale_quantity`,`product_sale_price`,`product_sale_total`,`product_sale_type`,`product_sale_status`,`product_sale_date`,`product_sale_payment_type`,`product_sale_payment_notes`,`product_delivery_name`,`product_delivery_address`,`product_delivery_city`,`product_delivery_state`,`product_delivery_country`,`product_delivery_pincode`,`product_delivery_mobile`,`product_delivery_type`,`product_delivery_status`,`product_delivery_date`,`product_estimate_delivery_days`,`product_estimate_delivery_charge`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (16,7,7,1,'100000001513180851',10,'299.00','2990.00',0,0,'2017-12-13',0,'none','Kishore','Villivakkam ',15,31,99,600049,'9898989898',0,0,'0','','0.00','User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(17,7,7,1,'100000001513180888',10,'299.00','2990.00',0,0,'2017-12-13',0,'none','Kishore','Villivakkam ',15,31,99,600049,'9898989898',0,0,'0','','0.00','User','User','2017-12-13 00:00:00','2017-12-13 00:00:00');
+insert  into `product_order`(`id`,`user_id`,`product_exporter_id`,`product_id`,`product_order_id`,`product_sale_quantity`,`product_sale_price`,`product_sale_total`,`product_sale_type`,`product_sale_status`,`product_sale_date`,`product_sale_payment_type`,`product_sale_payment_notes`,`product_delivery_name`,`product_delivery_address`,`product_delivery_city`,`product_delivery_state`,`product_delivery_country`,`product_delivery_pincode`,`product_delivery_mobile`,`product_delivery_type`,`product_delivery_status`,`product_delivery_date`,`product_estimate_delivery_days`,`product_estimate_delivery_charge`,`product_order_status`,`product_order_date`,`product_order_note`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (16,2,7,1,'100000001513180851',10,'299.00','2990.00',0,0,'2017-12-13',0,'none','Kishore','Villivakkam ',15,31,99,600049,'9898989898',0,0,'0','','0.00',0,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(17,2,7,1,'100000001513180888',10,'299.00','2990.00',0,0,'2017-12-13',0,'none','Kishore','Villivakkam ',15,31,99,600049,'9898989898',0,0,'0','','0.00',0,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00');
 
 /*Table structure for table `product_order_info` */
 
@@ -359,7 +385,8 @@ CREATE TABLE `product_order_info` (
   `customs_approve_status` int(11) DEFAULT '0',
   `customs_approve_note` text COLLATE utf8_unicode_ci,
   `customs_approve_date` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `customs_spprove_time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customs_approve_time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `product_item_status` int(11) DEFAULT '0',
   `created_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `updated_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -369,7 +396,7 @@ CREATE TABLE `product_order_info` (
 
 /*Data for the table `product_order_info` */
 
-insert  into `product_order_info`(`id`,`user_id`,`product_id`,`product_order_id`,`product_unicode`,`product_sealcode`,`product_exporter_id`,`seal_type`,`cfs_reach_time`,`zone`,`commissionerate`,`shipping_no`,`shipping_date`,`iec_no`,`pan_no`,`gst_no`,`sealing_date`,`sealing_time`,`destination_port`,`terminal_name`,`container_size`,`container_no`,`trailer_truck_no`,`driver_name`,`driver_licence`,`driver_number`,`form_no`,`eway_no`,`notes`,`customs_approve_status`,`customs_approve_note`,`customs_approve_date`,`customs_spprove_time`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (41,7,1,16,'SSG100000001','111111',7,2,'00:59',NULL,NULL,'123456','2017-12-16','12121212','12121212','12121212','2017-12-16','12:00',1,'Chennai','1','124578','147852','Vimal','124578','125487','147852','895623','None',0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(42,7,1,16,'SSG100000002','121212',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(43,7,1,16,'SSG100000003','131313',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(44,7,1,16,'SSG100000004','141414',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(45,7,1,16,'SSG100000005','151515',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(46,7,1,16,'SSG100000006','161616',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(47,7,1,16,'SSG100000007','171717',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(48,7,1,16,'SSG100000008','181818',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(49,7,1,16,'SSG100000009','191919',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(50,7,1,16,'SSG100000010','202020',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(51,7,1,17,'SSG100000011','212121',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(52,7,1,17,'SSG100000012','222222',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(53,7,1,17,'SSG100000013','232323',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(54,7,1,17,'SSG100000014','242424',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(55,7,1,17,'SSG100000015','252525',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(56,7,1,17,'SSG100000016','262626',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(57,7,1,17,'SSG100000017','272727',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(58,7,1,17,'SSG100000018','282828',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(59,7,1,17,'SSG100000019','292929',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(60,7,1,17,'SSG100000020','303030',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00');
+insert  into `product_order_info`(`id`,`user_id`,`product_id`,`product_order_id`,`product_unicode`,`product_sealcode`,`product_exporter_id`,`seal_type`,`cfs_reach_time`,`zone`,`commissionerate`,`shipping_no`,`shipping_date`,`iec_no`,`pan_no`,`gst_no`,`sealing_date`,`sealing_time`,`destination_port`,`terminal_name`,`container_size`,`container_no`,`trailer_truck_no`,`driver_name`,`driver_licence`,`driver_number`,`form_no`,`eway_no`,`notes`,`customs_approve_status`,`customs_approve_note`,`customs_approve_date`,`customs_approve_time`,`product_item_status`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (41,7,1,16,'SSG100000001','111111',7,2,'00:59',NULL,NULL,'123456','2017-12-16','12121212','12121212','12121212','2017-12-16','12:00',1,'Chennai','1','124578','147852','Vimal','124578','125487','147852','895623','  None  ',1,'Demo','12/12/20147','08:00',0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(42,7,1,16,'SSG100000002','121212',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(43,7,1,16,'SSG100000003','131313',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(44,7,1,16,'SSG100000004','141414',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(45,7,1,16,'SSG100000005','151515',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(46,7,1,16,'SSG100000006','161616',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(47,7,1,16,'SSG100000007','171717',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(48,7,1,16,'SSG100000008','181818',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(49,7,1,16,'SSG100000009','191919',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(50,7,1,16,'SSG100000010','202020',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(51,7,1,17,'SSG100000011','212121',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(52,7,1,17,'SSG100000012','222222',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(53,7,1,17,'SSG100000013','232323',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(54,7,1,17,'SSG100000014','242424',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(55,7,1,17,'SSG100000015','252525',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(56,7,1,17,'SSG100000016','262626',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(57,7,1,17,'SSG100000017','272727',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(58,7,1,17,'SSG100000018','282828',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(59,7,1,17,'SSG100000019','292929',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00'),(60,7,1,17,'SSG100000020','303030',7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,'User','User','2017-12-13 00:00:00','2017-12-13 00:00:00');
 
 /*Table structure for table `products` */
 
@@ -392,7 +419,7 @@ CREATE TABLE `products` (
 
 /*Data for the table `products` */
 
-insert  into `products`(`id`,`user_id`,`product_name`,`product_info`,`product_photo`,`product_price`,`product_status`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (1,1,'RFID E-SEAL','The other name is E-Seal(electronic seal) or RFID seal(Radio Frequency Identification).  The E-seal has many types that has active, passive and semi-active. The passive E-seal is without battery.\r\n\r\nIt can substitute for tradition seals that often applies on gas, oil, truck and container. It can prevent the goods to steal by thief when customer build the security system. It also can provide automatic identification and help you to manage  the trucks or containers. \r\n\r\nMany Customs will use it to implement certification system of authorized economic operator (AEO) and use E-seal to enhance the efficiency of Customs clearance. ','../uploads/book/1505824859_health-concern.png','299.00',1,'ADMIN','vendor','2017-11-29 12:12:12','2017-12-09 00:00:00');
+insert  into `products`(`id`,`user_id`,`product_name`,`product_info`,`product_photo`,`product_price`,`product_status`,`created_by`,`updated_by`,`created_at`,`updated_at`) values (1,2,'RFID E-SEAL','The other name is E-Seal(electronic seal) or RFID seal(Radio Frequency Identification).  The E-seal has many types that has active, passive and semi-active. The passive E-seal is without battery.\r\n\r\nIt can substitute for tradition seals that often applies on gas, oil, truck and container. It can prevent the goods to steal by thief when customer build the security system. It also can provide automatic identification and help you to manage  the trucks or containers. \r\n\r\nMany Customs will use it to implement certification system of authorized economic operator (AEO) and use E-seal to enhance the efficiency of Customs clearance. ','../uploads/book/1505824859_health-concern.png','299.00',1,'ADMIN','vendor','2017-11-29 12:12:12','2017-12-09 00:00:00');
 
 /*Table structure for table `role_user` */
 
@@ -486,6 +513,25 @@ CREATE TABLE `support_info` (
 
 /*Data for the table `support_info` */
 
+/*Table structure for table `terminals` */
+
+DROP TABLE IF EXISTS `terminals`;
+
+CREATE TABLE `terminals` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `terminals_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `terminals_status` tinyint(4) NOT NULL,
+  `created_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'admin',
+  `modified_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'admin',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `terminals` */
+
+insert  into `terminals`(`id`,`terminals_name`,`terminals_status`,`created_by`,`modified_by`,`created_at`,`updated_at`) values (1,'BANGALORE - ICD/WFD (WHITEFIELD)',1,'admin','vendor',NULL,'2017-12-18 00:00:00'),(2,'CHENNAI - CFS/TNPM (TONDIARPET)',1,'admin','admin',NULL,NULL),(3,'CHENNAI - HOM (HARBOUR)',1,'admin','admin',NULL,NULL),(4,'COCHIN - RCT/CHTS (COCHIN)',1,'admin','admin',NULL,NULL),(5,'TUTICORIN - CFS/MVN (MILAVITTAN)',1,'admin','admin',NULL,NULL),(6,'MADURAI - ICD/KON (KOODAL NAGAR)',1,'admin','admin',NULL,NULL),(7,'IRUGAR - ICD/IGU (IRUGUR)',1,'admin','admin',NULL,NULL),(8,'SALEM - CRT/SAMT (SALEM)',0,'admin','vendor',NULL,'2017-12-18 00:00:00'),(9,'TIRUPPUR - ICD/TUP (TIRUPPUR)',1,'admin','vendor',NULL,'2017-12-18 00:00:00');
+
 /*Table structure for table `users` */
 
 DROP TABLE IF EXISTS `users`;
@@ -544,27 +590,3 @@ insert  into `vendor_info`(`id`,`user_id`,`name_vendor`,`name_person`,`address`,
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
-/*
-/*Table structure for table `complaint_enquiry` */
-
-DROP TABLE IF EXISTS `complaint_enquiry`;
-
-CREATE TABLE `complaint_enquiry` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `query` varchar(255) DEFAULT NULL,
-  `description` text,
-  `complaint_status` tinyint(4) DEFAULT '1',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
-/*Data for the table `complaint_enquiry` */
-
-insert  into `complaint_enquiry`(`id`,`query`,`description`,`complaint_status`,`created_at`,`updated_at`) values (1,'Demo','Sample...........',1,'2017-12-18 02:00:15','0000-00-00 00:00:00'),(2,'Enquiry','Enquiry about eseal',1,'2017-12-18 02:03:30','0000-00-00 00:00:00');
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;*/
