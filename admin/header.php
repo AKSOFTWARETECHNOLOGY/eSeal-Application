@@ -115,6 +115,11 @@
                       <i class="ion ion-android-contact"></i> <span>Ports</span>
                   </a>
               </li>
+              <li class="treeview">
+                  <a href="terminalslist.php">
+                      <i class="ion ion-android-contact"></i> <span>Terminals</span>
+                  </a>
+              </li>
 
             <li class="treeview">
               <a href="logout.php">

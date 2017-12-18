@@ -14,11 +14,15 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-$complaint_sql="SELECT complaint_enquiry.*, users.name FROM `complaint_enquiry`
-LEFT JOIN `users` ON complaint_enquiry.sender_id = users.id
- WHERE complaint_enquiry.complaint_status = 1 and complaint_enquiry.enquiry_id = 0 and users.delete_status = 1";
-$complaint_exe=mysql_query($complaint_sql);
-$complaint_cnt=@mysql_num_rows($complaint_exe);
+/*
+SELECT a.tutorial_id, a.tutorial_author, b.tutorial_count
+    -> FROM tutorials_tbl a, tcount_tbl b
+    -> WHERE a.tutorial_author = b.tutorial_author;
+
+*/
+$terminal_sql="SELECT * FROM `terminals`";
+$terminal_exe=mysql_query($terminal_sql);
+$terminal_cnt=@mysql_num_rows($terminal_exe);
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,10 +30,6 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
     <meta charset="UTF-8">
     <title>Admin Panel </title>
     <?php include "head1.php"; ?>
-
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.datatables.net/buttons/1.5.0/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
@@ -40,12 +40,12 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Enquiry List
+                Terminals List
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 
-                <li class="active">Enquiry List</li>
+                <li class="active">Terminals List</li>
             </ol>
         </section>
 
@@ -55,37 +55,51 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" style="line-height:30px;">Enquiry List</h3>
+                            <h3 class="box-title" style="line-height:30px;">Terminals List</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
+                            <?php if(isset($_REQUEST['suc'])) { ?>
+                                <p style="color:green;font-weight:bold"> Terminals added Successfully!</p><br/>
+                            <?php } ?>
+                            <div class="row">
+                                <a href="add-terminals.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs">Add Terminals</button></a>
+                            </div>
                             <?php
-                            $slno = 1;
-                            if($complaint_cnt>0)
+                            if($terminal_cnt>0)
                             {
                                 ?>
-                                <table id="example2" class="display nowrap" >
+                                <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>S. No.</th>
-                                        <th>Sender</th>
-                                        <th>Query</th>
+                                        <th>ID</th>
+                                        <th>Terminal Name</th>
+                                        <th>Terminal Status</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php
-                                    while($complaint_fet=mysql_fetch_array($complaint_exe))
+                                    $i =1;
+                                    while($terminal_fet=mysql_fetch_array($terminal_exe))
                                     {
                                         ?>
-                                        <tr <?php if($complaint_fet['read_status'] == 0){ ?> style="font-weight:bold"; <?php } ?>>
-                                            <td><?php echo $slno++; ?>
-                                            <td><?php echo $complaint_fet['name']; ?></td>
-                                            <td><?php echo $complaint_fet['subject']; ?></td>
+                                        <tr>
+                                            <td><?php echo $i; ?></td>
+                                            <td><?php echo $terminal_fet['terminals_name']; ?></td>
+                                            <td><?php
+                                                if($terminal_fet['terminals_status'] == 1){
+                                                    echo 'Active';
+                                                }
+                                                else if($terminal_fet['terminals_status'] == 0){
+                                                    echo 'Inactive';
+                                                }
+                                                ?></td>
                                             <td>
-                                                <a href="#enquiryview.php?enquiry_id=<?php echo $complaint_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
+                                                <a href="terminalsedit.php?terminal_id=<?php echo $terminal_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
                                             </td>
                                         </tr>
-                                    <?php
+                                        <?php
+                                        $i++;
                                     }
                                     ?>
                                     </tbody>
@@ -95,7 +109,7 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
                             }
                             else{
                                 ?>
-                                <p><b> No Records found. </b></p>
+                                <p><b> Records are being updated. </b></p>
                             <?php
                             }
                             ?>
@@ -134,33 +148,12 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
-            "searching": true,
+            "searching": false,
             "ordering": true,
             "info": true,
-            "autoWidth": false,
-            "dom": 'Bfrtip',
-            "buttons": [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ]
+            "autoWidth": false
         });
-
     });
 </script>
-<!--
-<script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.0/js/dataTables.buttons.min.js" type="text/javascript"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.0/js/buttons.html5.min.js" type="text/javascript"></script>
-
--->
-
-
 </body>
 </html>
