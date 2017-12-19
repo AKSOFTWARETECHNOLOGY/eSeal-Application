@@ -58,7 +58,7 @@ $custom_cnt=@mysql_num_rows($custom_exe);
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-                                <a href="add-customs.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs">Add Customs</button></a>
+                                <a href="add-customs.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom:10px;">Add Customs</button></a>
                             </div>
                             <?php
                             if($custom_cnt>0)
@@ -90,10 +90,6 @@ $custom_cnt=@mysql_num_rows($custom_exe);
                                             <td><?php echo $custom_fet['email']; ?></td>
                                             <td>
                                                 <a href="customsview.php?customs_id=<?php echo $custom_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <a href="customsedit.php?customs_id=<?php echo $custom_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <a href="customs-delete.php?delete=1&customs_id=<?php echo $custom_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
                                             </td>
                                         </tr>
                                     <?php

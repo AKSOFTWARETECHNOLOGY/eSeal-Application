@@ -83,6 +83,10 @@ $product_fet=mysql_fetch_array($product_exe);
                                         <div class="col-sm-9"><div class=""> <?php echo $product_fet['product_sealcode']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Product PartCode</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $product_fet['manufacturing_part_code']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Sale Price</label>
                                         <div class="col-sm-9"><div class=""> <?php echo $product_fet['product_sale_price']; ?></div></div>
                                     </div>
@@ -109,6 +113,8 @@ $product_fet=mysql_fetch_array($product_exe);
                         <div class="box-body">
                             <div class="form-group col-md-12">
                                 <a href="inventorieslist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Product Inventories List</button></a>
+                                <a href="inventoryedit.php?inventory_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger col-md-12" style="margin-bottom: 10px;"><i class="fa fa-pencil"></i> Edit</button></a>
+                                <a href="inventory-delete.php?delete=1&inventory_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Delete</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->

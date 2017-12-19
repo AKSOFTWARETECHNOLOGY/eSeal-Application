@@ -128,6 +128,8 @@ $custom_fet=mysql_fetch_array($custom_exe);
                         <div class="box-body">
                             <div class="form-group col-md-12">
                                 <a href="customslist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Customs List</button></a>
+                                <a href="customsedit.php?customs_id=<?php echo $custom_fet['id']; ?>"><button type="button" class="btn btn-danger col-md-12" style="margin-bottom:10px;"><i class="fa fa-pencil"></i> Edit</button></a>
+                                <a href="customs-delete.php?delete=1&customs_id=<?php echo $custom_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Delete</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
