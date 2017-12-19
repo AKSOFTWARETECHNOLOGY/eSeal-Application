@@ -46,7 +46,7 @@ $product_fetch=mysql_fetch_array($product_exe);
 
 $product_count_fetch=0;
 $product_id = 1;
-$product_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0 AND `product_exporter_id` IS NULL";
+$product_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0";
 $product_count_exe=mysql_query($product_count_sql);
 $product_count_fet=mysql_fetch_array($product_count_exe);
 $product_count_fetch=$product_count_fet['pro_count'];
@@ -408,6 +408,8 @@ $(document).ready(function() {
         {
 
             var BASEURL = "http://www.ssgaeseal.com/";
+            //var BASEURL = "http://localhost/eSeal-Application/single-product-updated-eseal/";
+            var BASEURL = "";
             var status = 1;
             var callurl = BASEURL + 'ajax-get-address.php?id='+id;
 

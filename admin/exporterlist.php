@@ -78,8 +78,6 @@ $export_cnt=@mysql_num_rows($export_exe);
                                         <th>Exporter Name</th>
                                         <th>Mobile</th>
                                         <th>Email</th>
-                                        <th>GstIn</th>
-                                        <th>Pan Number</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -96,8 +94,6 @@ $export_cnt=@mysql_num_rows($export_exe);
                                             <td><?php echo $export_fet['name_exporter']; ?></td>
                                             <td><?php echo $export_fet['mobile']; ?></td>
                                             <td><?php echo $export_fet['email']; ?></td>
-                                            <td><?php echo $export_fet['gstin']; ?></td>
-                                            <td><?php echo $export_fet['pan_number']; ?></td>
                                             <td>
                                                 <a href="exporterview.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                                 &nbsp;&nbsp;&nbsp;

@@ -351,8 +351,9 @@ $(document).ready(function() {
         //alert("The text has been changed.");
 
         var email = $("input#email").val();
-        //var BASEURL = "http://www.ssgaeseal.com/";
-        var BASEURL = "http://localhost/eSeal-Application/single-product-updated-eseal/";
+        var BASEURL = "http://www.ssgaeseal.com/";
+        //var BASEURL = "http://localhost/eSeal-Application/single-product-updated-eseal/";
+        var BASEURL = "";
         var status = 1;
         var callurl = BASEURL + 'ajax-check-email.php?email='+email;
 

@@ -49,7 +49,7 @@ $ProductOrder="10000000".time();
 
 $product_count_fetch=0;
 $product_id = $Product;
-$product_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0 AND `product_exporter_id` IS NULL";
+$product_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0";
 $product_count_exe=mysql_query($product_count_sql);
 $product_count_fet=mysql_fetch_array($product_count_exe);
 $product_count_fetch=$product_count_fet['pro_count'];
@@ -73,54 +73,63 @@ $product_count_fetch=$product_count_fet['pro_count'];
 
         $order_id=mysql_insert_id();
 
-        $product_info_sql="SELECT * FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0 AND `product_exporter_id` IS NULL ORDER BY `id` ASC LIMIT $Quantity ";
+        if($order_id>0)
+        {
+        $product_info_sql="SELECT * FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0 ORDER BY `id` ASC LIMIT $Quantity ";
         //echo $product_info_sql;
         $product_info_exe=mysql_query($product_info_sql);
-        while($product_info_fet=mysql_fetch_array($product_info_exe))
-        {
-            $product_id=$product_info_fet['product_id'];
-            $product_info_id=$product_info_fet['id'];
-            $product_unicode=$product_info_fet['product_unicode'];
-            $product_sealcode=$product_info_fet['product_sealcode'];
-            $product_sale_price=$product_info_fet['product_sale_price'];
-            $product_exporter_id=$user_id;
+        while($product_info_fet=mysql_fetch_array($product_info_exe)) {
+            $product_id = $product_info_fet['product_id'];
+            $product_info_id = $product_info_fet['id'];
+            $product_unicode = $product_info_fet['product_unicode'];
+            $product_sealcode = $product_info_fet['product_sealcode'];
+            $product_sale_price = $product_info_fet['product_sale_price'];
+            $product_exporter_id = $user_id;
             $product_sale_status = 1;
             $product_sale_date = date("Y-m-d");
 
 
-            $product_info_update_sql="UPDATE `product_info` SET `product_exporter_id`='$product_exporter_id',`product_sale_status`='$product_sale_status',`product_sale_date`='$product_sale_date' WHERE `id`='$product_info_id' AND `product_id`='$product_id' AND `product_sale_status`=0 AND `product_exporter_id` IS NULL";
+            $product_info_update_sql = "UPDATE `product_info` SET `product_exporter_id`='$product_exporter_id',`product_sale_status`='$product_sale_status',`product_sale_date`='$product_sale_date' WHERE `id`='$product_info_id' AND `product_id`='$product_id' AND `product_sale_status`=0";
             //echo $product_info_update_sql;
-            $product_info_update_exe=mysql_query($product_info_update_sql);
+            $product_info_update_exe = mysql_query($product_info_update_sql);
 
             /*
              INSERT SQL
             */
-             $product_order_info_sql="INSERT INTO `product_order_info`
+            $product_order_info_sql = "INSERT INTO `product_order_info`
             (`user_id`, `product_id`, `product_order_id`, `product_unicode`, `product_sealcode`, `product_exporter_id`,
             `created_by`, `updated_by`, `created_at`, `updated_at`)
             VALUES
             ('$user_id', '$product_id', '$order_id', '$product_unicode', '$product_sealcode','$product_exporter_id',
             '$username', '$username', '$product_sale_date', '$product_sale_date')";
             //echo $product_order_info_sql;
-            $product_order_info_exe=mysql_query($product_order_info_sql);
+            $product_order_info_exe = mysql_query($product_order_info_sql);
 
         }
 
-        if($PaymentType=="Online")
-        {
+            if($PaymentType=="Online")
+            {
 
-            //exit;
-            header("Location: product-order.php?order_id=$order_id");
+                //exit;
+                header("Location: product-order.php?order_id=$order_id");
 
-            //header("Location: http://www.ccavenue.com");
+                //header("Location: http://www.ccavenue.com");
+
+            }
+            else
+            {
+                //exit;
+                header("Location: product-order.php?order_id=$order_id");
+
+            }
+
 
         }
         else
         {
-            //exit;
-            header("Location: product-order.php?order_id=$order_id");
-
+            header("Location: product-buy.php?err=3&msg=all");
         }
+
 
     }
     else
