@@ -60,7 +60,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-                                <a href="add-product-inventories.php?inventory_id=1" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs">Add Product Inventories</button></a>
+                                <a href="add-product-inventories.php?inventory_id=1" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom: 10px;">Add Product Inventories</button></a>
                             </div>
                             <?php
                             if($product_cnt>0)
@@ -73,6 +73,8 @@ $product_cnt=@mysql_num_rows($product_exe);
                                         <th>Product Name</th>
                                         <th>Product UniCode</th>
                                         <th>Product Seal Code</th>
+                                        <th>Product Part Code</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -88,13 +90,21 @@ $product_cnt=@mysql_num_rows($product_exe);
                                             <td><?php echo $product_fet['product_name']; ?></td>
                                             <td><?php echo $product_fet['product_unicode']; ?></td>
                                             <td><?php echo $product_fet['product_sealcode']; ?></td>
+                                            <td><?php echo $product_fet['manufacturing_part_code']; ?></td>
+                                            <td>
+                                                <?php if($product_fet['product_sale_status'] == 0){
+                                                    ?>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Instock </button>
+                                                <?php
+                                                }
+                                                else if($product_fet['product_sale_status'] == 1){
+                                                    ?>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Sold </button>
+                                                <?php
+                                                }?>
+                                            </td>
                                             <td>
                                                 <a href="inventoryview.php?inventory_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <a href="inventoryedit.php?inventory_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <a href="inventory-delete.php?delete=1&inventory_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
-
                                             </td>
                                         </tr>
                                     <?php

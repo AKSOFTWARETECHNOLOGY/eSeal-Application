@@ -94,6 +94,12 @@ $product_fet=mysql_fetch_array($product_exe);
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Product Partcode</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="partcode" id="partcode" value="<?php echo $product_fet['manufacturing_part_code']; ?>"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product sale Price<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="number" name="salePrice" id="salePrice" value="<?php echo $product_fet['product_sale_price']; ?>" readonly/>

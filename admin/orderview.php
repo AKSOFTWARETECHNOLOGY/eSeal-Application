@@ -23,7 +23,11 @@ else
     exit;
 }
 
-$product_sql="SELECT product_order_info.*, products.product_name, exporter_info.name_exporter FROM `product_order_info`
+$product_sql="SELECT product_order_info.*, products.product_name, exporter_info.name_exporter,product_order.product_delivery_name,product_order.product_delivery_address,
+ product_order.product_delivery_city,product_order.product_delivery_state,product_order.product_delivery_country,product_order.product_delivery_pincode,
+ product_order.product_delivery_mobile,product_order.product_delivery_type,
+  product_order.product_order_date,product_order.product_order_status,product_order.product_order_note
+ FROM `product_order_info`
 LEFT JOIN `product_order` ON product_order.id = product_order_info.product_order_id
 LEFT JOIN `products` ON products.id = product_order.product_id
 LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
@@ -31,6 +35,87 @@ WHERE `product_order_info`.product_order_id = $order_id";
 $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);
 $product_fet=mysql_fetch_array($product_exe);
+
+$city_sql="SELECT * FROM `cities` where `city_status`=1";
+$city_exe=mysql_query($city_sql);
+$city_results = array();
+while($row = mysql_fetch_assoc($city_exe)) {
+    array_push($city_results, $row);
+}
+
+$state_sql="SELECT * FROM `states` where `state_status`=1";
+$state_exe=mysql_query($state_sql);
+$state_results = array();
+while($row = mysql_fetch_assoc($state_exe)) {
+    array_push($state_results, $row);
+}
+
+$country_sql="SELECT * FROM `countries` where `country_status`=1 AND `id`=99";
+$country_exe=mysql_query($country_sql);
+$country_results = array();
+while($row1 = mysql_fetch_assoc($country_exe)) {
+    array_push($country_results, $row1);
+}
+
+$city_value = $product_fet['product_delivery_city'];
+$cityArray_values = array_filter($city_results, function($e) use ($city_value){
+
+    if($e['id'] == $city_value)
+    { return true; }
+    else
+    { return false; }
+
+});
+
+if(count($cityArray_values))
+{
+    $cityArray_values_key = key($cityArray_values);
+    $city_name = $cityArray_values[$cityArray_values_key]['city_name'];
+}
+else
+{
+    $city_name = "";
+}
+
+$state_value = $product_fet['product_delivery_state'];
+$stateArray_values = array_filter($state_results, function($e) use ($state_value){
+
+    if($e['id'] == $state_value)
+    { return true; }
+    else
+    { return false; }
+
+});
+
+if(count($stateArray_values))
+{
+    $stateArray_values_key = key($stateArray_values);
+    $state_name = $stateArray_values[$stateArray_values_key]['state_name'];
+}
+else
+{
+    $state_name = "";
+}
+
+$country_value = $product_fet['product_delivery_country'];
+$countryArray_values = array_filter($country_results, function($e) use ($country_value){
+
+    if($e['id'] == $country_value)
+    { return true; }
+    else
+    { return false; }
+
+});
+
+if(count($countryArray_values))
+{
+    $countryArray_values_key = key($countryArray_values);
+    $country_name = $countryArray_values[$countryArray_values_key]['name'];
+}
+else
+{
+    $country_name = "";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,6 +123,9 @@ $product_fet=mysql_fetch_array($product_exe);
     <meta charset="UTF-8">
     <title>Admin Panel </title>
     <?php include "head1.php"; ?>
+    <style>
+        .other-fields{border:1px dotted black; padding:10px;margin: 10px;}
+    </style>
 </head>
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
@@ -63,7 +151,10 @@ $product_fet=mysql_fetch_array($product_exe);
                 <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="box box-primary">
-                        <div class="box-header with-border">
+                        <div class="other-fields">
+                            <div class="row">
+                                <div class="col-md-12"><h4 style="font-weight: bold; text-align: center;">Exporter</h4></div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="col-md-6"><label>Exporter Name</label></div>
@@ -87,9 +178,29 @@ $product_fet=mysql_fetch_array($product_exe);
                             </div>
                         </div>
 
+                        <div class="other-fields">
+                            <table class="table">
+                                <thead>
+                                <th>Delivery Address</th>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <?php echo $product_fet['product_delivery_name']; ?><br>
+                                        <?php echo $product_fet['product_delivery_address']; ?>,
+                                        <?php echo $city_name; ?>, <?php echo $state_name; ?>, <?php echo $country_name; ?> - <?php echo $product_fet['product_delivery_pincode']; ?><br>
+                                        <?php echo "Mobile : ".$product_fet['product_delivery_mobile']; ?><br>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                         <div class="box-header with-border">
                             <h3 class="box-title">View Product Order</h3>
                         </div><!-- /.box-header -->
+
+
                         <!-- form start -->
                         <form role="form">
                             <div class="box-body">
@@ -102,8 +213,8 @@ $product_fet=mysql_fetch_array($product_exe);
                                         <tr>
                                             <th>Product Unicode</th>
                                             <th>Product SealCode</th>
-                                            <th>Zone</th>
-                                            <th></th>
+                                            <th>Status</th>
+                                            <th class="hidden"></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -114,8 +225,19 @@ $product_fet=mysql_fetch_array($product_exe);
                                             <tr>
                                                 <td><?php echo $product_fet['product_unicode']; ?></td>
                                                 <td><?php echo $product_fet['product_sealcode']; ?></td>
-                                                <td><?php echo $product_fet['zone']; ?></td>
                                                 <td>
+                                                    <?php if($product_fet['product_item_status'] == 0){
+                                                        ?>
+                                                        <button type="button" class="btn btn-warning btn-xs"> Unused </button>
+                                                    <?php
+                                                    }
+                                                    else if($product_fet['product_item_status'] == 1){
+                                                        ?>
+                                                        <button type="button" class="btn btn-warning btn-xs"> Used </button>
+                                                    <?php
+                                                    }?>
+                                                </td>
+                                                <td class="hidden">
                                                     <a href="orderinfoview.php?orderinfo_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                                     &nbsp;&nbsp;&nbsp;
                                                     <a href="orderinfoedit.php?orderinfo_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
@@ -137,6 +259,53 @@ $product_fet=mysql_fetch_array($product_exe);
                                 ?>
                             </div>
                         </form>
+
+                        <div class="other-fields">
+                            <table class="table">
+                                <thead>
+                                <th>Order Summary</th>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Comment</th>
+                                </tr>
+
+                                <tr>
+                                    <td><?php echo $product_fet['product_order_date']; ?></td>
+                                    <td>
+                                        <?php if($product_fet['product_order_status'] == 0){
+                                            ?>
+                                            <button type="button" class="btn btn-warning btn-xs"> Order Placed </button>
+                                        <?php
+                                        }
+                                        else if($product_fet['product_order_status'] == 1){
+                                            ?>
+                                            <button type="button" class="btn btn-warning btn-xs"> Order Confirmed </button>
+                                        <?php
+                                        }
+                                        else if($product_fet['product_order_status'] == 2){
+                                            ?>
+                                            <button type="button" class="btn btn-warning btn-xs"> Order Packed </button>
+                                        <?php
+                                        }
+                                        else if($product_fet['product_order_status'] == 3){
+                                        ?>
+                                        <button type="button" class="btn btn-warning btn-xs"> Order Intransit </button>
+                                        <?php
+                                        }
+                                            else if($product_fet['product_order_status'] == 4){
+                                            ?>
+                                            <button type="button" class="btn btn-warning btn-xs"> Order Delivered </button>
+                                        <?php
+                                        }?>
+                                    </td>
+                                    <td><?php echo $product_fet['product_order_note']; ?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div><!-- /.box -->
                 </div><!--/.col (left) -->
 

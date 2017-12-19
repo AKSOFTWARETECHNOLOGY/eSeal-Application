@@ -64,13 +64,13 @@ $export_cnt=@mysql_num_rows($export_exe);
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-                                <a href="add-exporter.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs">Add Exporters</button></a>
+                                <a href="add-exporter.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom:10px;">Add Exporters</button></a>
                             </div>
                             <?php
                             if($export_cnt>0)
                             {
                                 ?>
-                                <table id="example2" class="table table-bordered table-hover">
+                                <table id="example2" class="display nowrap">
                                     <thead>
                                     <tr>
                                         <th>Sl.No</th>
@@ -96,10 +96,6 @@ $export_cnt=@mysql_num_rows($export_exe);
                                             <td><?php echo $export_fet['email']; ?></td>
                                             <td>
                                                 <a href="exporterview.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <a href="exporteredit.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <a href="exporter-delete.php?delete=1&exporter_id=<?php echo $export_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a>
                                             </td>
                                         </tr>
                                     <?php

@@ -70,9 +70,9 @@ $product_cnt=@mysql_num_rows($product_exe);
                                         <th>Exporter Name</th>
                                         <th>Product Order Id</th>
                                         <th>Product Quantity</th>
-                                        <th>Product Sale Price</th>
                                         <th>Product Sale Total</th>
                                         <th>Product Sale Date</th>
+                                        <th>Delivery Status</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -85,9 +85,20 @@ $product_cnt=@mysql_num_rows($product_exe);
                                             <td><?php echo $product_fet['name_exporter']; ?></td>
                                             <td><?php echo $product_fet['product_order_id']; ?></td>
                                             <td><?php echo $product_fet['product_sale_quantity']; ?></td>
-                                            <td><?php echo $product_fet['product_sale_price']; ?></td>
                                             <td><?php echo $product_fet['product_sale_total']; ?></td>
                                             <td><?php echo $product_fet['product_sale_date']; ?></td>
+                                            <td>
+                                                <?php if($product_fet['product_delivery_status'] == 0){
+                                                    ?>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Undelivered </button>
+                                                <?php
+                                                }
+                                                else if($product_fet['product_delivery_status'] == 1){
+                                                    ?>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Delivered </button>
+                                                <?php
+                                                }?>
+                                            </td>
                                             <td>
                                                 <a href="orderview.php?order_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                             </td>

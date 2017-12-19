@@ -27,9 +27,6 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
     <title>Admin Panel </title>
     <?php include "head1.php"; ?>
 
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.datatables.net/buttons/1.5.0/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
