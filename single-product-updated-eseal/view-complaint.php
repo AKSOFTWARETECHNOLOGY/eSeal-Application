@@ -163,9 +163,16 @@ $(document).ready(function() {
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="order-history">
     <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> View Complaint Information</h3>
+<style>
+    .col-md-12.conversationhead {
+        border: 1px solid #ccc;
+    }
+    .col-md-12.conversation {
+        border: 1px solid #ccc;
+    }
+</style>
 
-
-    <div class="col-md-12">
+    <div class="col-md-12 conversationhead">
         <div class="col-md-6">
             <div class="form-group col-md-12">
                 <label class="col-sm-6 control-label">Exporter Name</label>
