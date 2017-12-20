@@ -27,7 +27,7 @@ FROM `product_order_info` AS `poi`
 LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
 LEFT JOIN `products` ON products.id = poi.product_id
 LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
-where poi.id = $eseal_id";
+where poi.product_sealcode = $eseal_id";
 $order_exe=mysql_query($order_sql);
 $order_cnt=@mysql_num_rows($order_exe);
 $order_fet=mysql_fetch_array($order_exe);
@@ -195,6 +195,52 @@ $order_fet=mysql_fetch_array($order_exe);
                                 <div class="col-md-1"></div>
                             </div><!-- /.box-body -->
                         </form>
+                        <?php if($order_fet['customs_approve_status'] == 0){ ?>
+                        <div class="row">
+                            <div class="col-xs-6">
+
+                            <form action="doesealupdate.php" method="get">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="form-group has-feedback">
+                                        <input name="product_sealcode" type="hidden" class="form-control" value="<?php echo $order_fet['product_sealcode']; ?>" required />
+                                        <input name="customs_approve_status" type="hidden" class="form-control" value="1" required />
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <button name="eseal_accept" type="submit" class="btn btn-success btn-block btn-flat">Accept</button>
+                                </div><!-- /.col -->
+                                <div class="col-xs-4">
+                                    <div class="form-group has-feedback">
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
+                                <br/><br/>
+                            </div>
+                            <div class="col-xs-6">
+
+                            <form action="doesealupdate.php" method="get">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <div class="form-group has-feedback">
+                                            <input name="product_sealcode" type="hidden" class="form-control" value="<?php echo $order_fet['product_sealcode']; ?>" required />
+                                            <input name="customs_approve_status" type="hidden" class="form-control" value="2" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button name="eseal_decline" type="submit" class="btn btn-danger btn-block btn-flat">Decline</button>
+                                    </div><!-- /.col -->
+                                    <div class="col-xs-4">
+                                        <div class="form-group has-feedback">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+<br/><br/>
+                            </div>
+                        </div>
+                        <?php } ?>
                     </div><!-- /.box -->
                 </div><!--/.col (left) -->
 

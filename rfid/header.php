@@ -70,12 +70,12 @@
                 <i class="ion ion-pie-graph"></i> <span>Dashboard</span>
               </a>
             </li>
-			<li class="treeview">
+			<li class="treeview hidden">
               <a href="exporterlist.php">
                 <i class="ion ion-android-contact"></i> <span>Exporters</span>
               </a>
             </li>
-              <li class="treeview">
+              <li class="treeview hidden">
                   <a href="eseallist.php">
                       <i class="ion ion-android-contact"></i> <span>ESeal</span>
                   </a>

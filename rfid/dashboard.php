@@ -70,7 +70,28 @@ $publisher_book_requirement_cnt=@mysql_num_rows($publisher_book_requirement_exe)
 
         <!-- Main content -->
         <section class="content">
-          <!-- Small boxes (Stat box) -->
+
+            <div class="row">
+                <div class="col-lg-12 col-xs-12">
+
+                    <form action="esealview.php" method="get">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="form-group has-feedback">
+                                    <input name="eseal_id" type="text" class="form-control" placeholder="eseal id" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <button name="eseal" type="submit" class="btn btn-primary btn-block btn-flat">Get eSeal Info</button>
+                            </div><!-- /.col -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+                <!-- Small boxes (Stat box) -->
           <div class="row hidden">
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
