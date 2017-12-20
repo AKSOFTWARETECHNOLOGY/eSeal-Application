@@ -14,11 +14,10 @@ if(isset($_REQUEST['inventory_id'])) {
     $unicode = $_REQUEST['unicode'];
     $sealcode = $_REQUEST['sealcode'];
     $salePrice = $_REQUEST['salePrice'];
-    $partcode = $_REQUEST['partcode'];
     $username = $_SESSION['adminusername'];
     $date = date("Y-m-d");
 
-    $sql = "UPDATE `product_info` SET `product_unicode` = '$unicode', `product_sealcode` = '$sealcode',`manufacturing_part_code` = '$partcode', `product_sale_price` = '$salePrice',
+    $sql = "UPDATE `product_info` SET `product_unicode` = '$unicode', `product_sealcode` = '$sealcode', `product_sale_price` = '$salePrice',
             `updated_by` = '$username', `updated_at` = '$date'
             WHERE `product_info`.`id` = '$inventory_id'";
     $exe = mysql_query($sql);

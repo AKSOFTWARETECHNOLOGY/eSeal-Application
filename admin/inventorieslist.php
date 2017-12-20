@@ -21,6 +21,8 @@ SELECT a.tutorial_id, a.tutorial_author, b.tutorial_count
 
 */
 $product_sql="SELECT product_info.*, products.product_name FROM `product_info` LEFT JOIN `products` ON products.id = product_info.product_id WHERE `product_info`.user_id = $user_id";
+//echo $product_sql; exit;
+
 $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);
 //$product_fet=mysql_fetch_array($product_exe);
@@ -71,9 +73,8 @@ $product_cnt=@mysql_num_rows($product_exe);
                                     <tr>
                                         <th>SlNo</th>
                                         <th>Product Name</th>
-                                        <th>Product UniCode</th>
-                                        <th>Product Seal Code</th>
-                                        <th>Product Part Code</th>
+                                        <th>Product Code</th>
+                                        <th>E-Seal Number</th>
                                         <th>Status</th>
                                         <th></th>
                                     </tr>
@@ -90,11 +91,10 @@ $product_cnt=@mysql_num_rows($product_exe);
                                             <td><?php echo $product_fet['product_name']; ?></td>
                                             <td><?php echo $product_fet['product_unicode']; ?></td>
                                             <td><?php echo $product_fet['product_sealcode']; ?></td>
-                                            <td><?php echo $product_fet['manufacturing_part_code']; ?></td>
                                             <td>
                                                 <?php if($product_fet['product_sale_status'] == 0){
                                                     ?>
-                                                    <button type="button" class="btn btn-warning btn-xs"> Instock </button>
+                                                    <button type="button" class="btn btn-success btn-xs"> Instock </button>
                                                 <?php
                                                 }
                                                 else if($product_fet['product_sale_status'] == 1){

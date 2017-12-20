@@ -72,23 +72,33 @@ $publisher_book_requirement_cnt=@mysql_num_rows($publisher_book_requirement_exe)
         <section class="content">
 
             <div class="row">
-                <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-3 col-xs-3"></div>
+                <div class="col-lg-6 col-xs-6">
+
+                        <?php if(isset($_REQUEST['success'])) { ?>
+                            <p style="color:green;font-weight:bold"> Your E-Seal Fetched Successfully!</p>
+                        <?php } ?>
+
+                        <?php if(isset($_REQUEST['error'])) { ?>
+                            <p style="color:red;font-weight:bold"> Invalid E-Seal Details / E-Seal Not Updated </p>
+                        <?php } ?>
 
                     <form action="esealview.php" method="get">
                         <div class="row">
-                            <div class="col-xs-4">
+                            <div class="col-xs-6">
                                 <div class="form-group has-feedback">
                                     <input name="eseal_id" type="text" class="form-control" placeholder="eseal id" required />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-4">
+                            <div class="col-xs-6">
                                 <button name="eseal" type="submit" class="btn btn-primary btn-block btn-flat">Get eSeal Info</button>
                             </div><!-- /.col -->
                         </div>
                     </form>
                 </div>
+                <div class="col-lg-3 col-xs-3"></div>
             </div>
 
                 <!-- Small boxes (Stat box) -->

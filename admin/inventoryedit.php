@@ -1,4 +1,3 @@
-
 <?php session_start();
 ob_start();
 
@@ -82,21 +81,15 @@ $product_fet=mysql_fetch_array($product_exe);
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Unicode</label>
+                                        <label class="col-sm-3 control-label">Product Code</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="unicode" id="unicode" value="<?php echo $product_fet['product_unicode']; ?>"/>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Sealcode</label>
+                                        <label class="col-sm-3 control-label">E-Seal Number</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="sealcode" id="sealcode" value="<?php echo $product_fet['product_sealcode']; ?>"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Partcode</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="partcode" id="partcode" value="<?php echo $product_fet['manufacturing_part_code']; ?>"/>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">

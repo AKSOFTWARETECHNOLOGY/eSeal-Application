@@ -75,16 +75,12 @@ $product_fet=mysql_fetch_array($product_exe);
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Unicode</label>
+                                        <label class="col-sm-3 control-label">Product Code</label>
                                         <div class="col-sm-9"><div class="" ><?php echo $product_fet['product_unicode']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product SealCode</label>
+                                        <label class="col-sm-3 control-label">E-Seal Number</label>
                                         <div class="col-sm-9"><div class=""> <?php echo $product_fet['product_sealcode']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product PartCode</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $product_fet['manufacturing_part_code']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Sale Price</label>
