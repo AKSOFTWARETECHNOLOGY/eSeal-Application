@@ -95,7 +95,7 @@ $(document).ready(function() {
 <?php include "header.php"; ?>
 
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>Contact Us</h3>
 </div>
@@ -105,7 +105,8 @@ $(document).ready(function() {
 <div class="contact-us">
 <div class="container">
 <div class="row">
-
+<h3>Contact Us</h3>
+<br/>
 <div class="col-md-6 col-sm-6 col-xs-12 contact-form">
 <form action="" method="post" >
 <div class="form-group">
@@ -178,9 +179,9 @@ $(document).ready(function() {
 </div><!-- Product category -->
 
 
-<?php include "slider.php"; ?>
+<?php //include "slider.php"; ?>
 
-<?php include "testimonial.php"; ?>
+<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 

@@ -98,7 +98,7 @@ $(document).ready(function() {
 
 <?php include "header.php"; ?>
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>Login or Create an Account</h3>
 </div>
@@ -108,7 +108,8 @@ $(document).ready(function() {
 <div class="contact-us">
 <div class="container">
 <div class="row">
-
+    <h3>Login or Create an Account</h3>
+    <br/>
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="account-login">
 <h3>New Customers</h3>
@@ -147,10 +148,12 @@ $(document).ready(function() {
 </div>
 
 <div class="form-group row">
-<span><input type="submit" name="login" value="Login" class="account-sign-submit" /></span>
-<!--<button type="button" name="login"><i class="fa fa-lock"></i>Login</button>-->
-    <br/>
-<a href="forgot-login.php">Forgot Your Password ?</a>
+    <div class="col-md-6">
+        <span><input type="submit" name="login" value="Login" class="account-sign-submit" /></span>
+    </div>
+    <div class="col-md-6">
+        <a href="forgot-login.php">Forgot Your Password ?</a>
+    </div>
 </div>
 
 </div>
@@ -167,9 +170,9 @@ $(document).ready(function() {
 </div><!-- Product category -->
 
 
-<?php include "slider.php"; ?>
+<?php //include "slider.php"; ?>
 
-<?php include "testimonial.php"; ?>
+<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 

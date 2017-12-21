@@ -78,7 +78,7 @@ $(document).ready(function() {
 
 <?php include "header.php"; ?>
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>Terms &amp; Conditions</h3>
 </div>
@@ -89,6 +89,7 @@ $(document).ready(function() {
 <div class="container">
 <div class="row">
 <div class="col-md-12 col-sm-12 col-xs-12">
+    <h3>Terms &amp; Conditions</h3><br/>
 <p>Please read the following terms and conditions very carefully as your use of service is subject to your acceptance of and compliance with the following terms and conditions ("Terms").</p>
 <h2>Information about us</h2>
 <p><a href="about-us.html" target="_blank">www.ssgaeseal.com</a> is a website owned by SSGA. a company incorporated under the Indian Companies Act, 1956.</p>
@@ -172,20 +173,11 @@ Chennai-600037, Tamil Nadu – India. Except as explicitly stated otherwise, SSG
 </div><!-- Home About -->
 
 
-<div class="welcome">
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-<p>Sri Sai Ganesh Associates &reg; helps manufacturers with gaining full control of their supply chain.</p>
-</div><!-- Column 12 -->
-</div><!-- Row -->
-</div><!-- Container Fluid -->
-</div><!-- Welcome -->
+<?php //include "welcome.php"; ?>
 
+<?php //include "slider.php"; ?>
 
-<?php include "slider.php"; ?>
-
-<?php include "testimonial.php"; ?>
+<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 

@@ -9,7 +9,7 @@ include "config.php";
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About Us</title>
+<title>E-Seal Procedure</title>
 <link href="images/favicon.png" type="image/png" rel="shortcut icon">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -90,7 +90,7 @@ $(document).ready(function() {
 <div class="home-about grey-bg">
 <div class="container">
 <div class="row web-inner-top">
-<h3>About Us</h3>
+<h3>E-Seal Procedure</h3>
 <br/>
 <div class="col-md-9 col-sm-9 col-xs-12 about-us">
 

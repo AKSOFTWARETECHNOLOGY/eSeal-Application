@@ -80,7 +80,7 @@ $(document).ready(function() {
 <?php include "header.php"; ?>
 
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>Privacy Policy</h3>
 </div>
@@ -91,6 +91,7 @@ $(document).ready(function() {
 <div class="container">
 <div class="row">
 <div class="col-md-12 col-sm-12 col-xs-12">
+    <h3>Privacy Policy</h3><br/>
 <p><strong>Sri Sai Ganesh Associates</strong> operates the <a href="www.ssgaeseal.com">www.ssgaeseal.com</a> website, which provides the Services of E - Seal Sale.</p>
 <p>This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.</p>
 <p>If you choose to use our Service, then you agree to the collection and use of information in relation with this policy. The Personal Information that we collect are used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.</p>
@@ -133,21 +134,11 @@ $(document).ready(function() {
 
 
 
-<div class="welcome">
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-<p>Sri Sai Ganesh Associates &reg; helps manufacturers with gaining full control of their supply chain.</p>
-</div><!-- Column 12 -->
-</div><!-- Row -->
-</div><!-- Container Fluid -->
-</div><!-- Welcome -->
+<?php //include "welcome.php"; ?>
 
+<?php //include "slider.php"; ?>
 
-
-<?php include "slider.php"; ?>
-
-<?php include "testimonial.php"; ?>
+<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 

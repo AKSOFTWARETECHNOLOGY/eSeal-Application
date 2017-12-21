@@ -80,7 +80,7 @@ $(document).ready(function() {
 <?php include "header.php"; ?>
 
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>Return &amp; Refund Policy</h3>
 </div>
@@ -91,6 +91,8 @@ $(document).ready(function() {
 <div class="container">
 <div class="row">
 <div class="col-md-12 col-sm-12 col-xs-12">
+    <h3>Return &amp; Refund Policy</h3>
+    <br/>
 <p>Thanks for shopping at My Site <a href="www.ssgaeseal.com">www.ssgaeseal.com</a> </p>
 <p>If you are not entirely satisfied with your purchase, we're here to help.</p>
 <h2>Returns</h2>
@@ -121,27 +123,11 @@ $(document).ready(function() {
 
 
 
+<?php //include "welcome.php"; ?>
 
+<?php //include "slider.php"; ?>
 
-
-
-<div class="welcome">
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-<p>Sri Sai Ganesh Associates &reg; helps manufacturers with gaining full control of their supply chain.</p>
-</div><!-- Column 12 -->
-</div><!-- Row -->
-</div><!-- Container Fluid -->
-</div><!-- Welcome -->
-
-
-
-
-
-<?php include "slider.php"; ?>
-
-<?php include "testimonial.php"; ?>
+<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 

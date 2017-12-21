@@ -77,10 +77,9 @@ $(document).ready(function() {
 
 <?php include "top_header.php"; ?>
 
-<?php include "banner.php"; ?>
-
 <?php include "header.php"; ?>
 
+<?php include "banner.php"; ?>
 
 <div class="home-about">
 <div class="container">
@@ -149,20 +148,12 @@ $(document).ready(function() {
 
 
 
-<div class="welcome">
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-<p>Sri Sai Ganesh Associates &reg; helps manufacturers with gaining full control of their supply chain.</p>
-</div><!-- Column 12 -->
-</div><!-- Row -->
-</div><!-- Container Fluid -->
-</div><!-- Welcome -->
 
+<?php //include "welcome.php"; ?>
 
-<?php include "slider.php"; ?>
+<?php //include "slider.php"; ?>
 
-<?php include "testimonial.php"; ?>
+<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 

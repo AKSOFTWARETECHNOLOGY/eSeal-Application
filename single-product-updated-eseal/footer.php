@@ -1,13 +1,8 @@
 
 <div class="footer">
   <div class="container">
-    <div class="row">
-<div class="col-md-3 col-sm-4 col-xs-12">
-<h3>About us</h3>
-<p>Sri Sai Ganesh Associates is an industry leader in Indian Telecom Space with over two decades of experience and more than 3,000 employees.</p>
 
-      </div>
-      <div class="col-md-2 col-sm-2 col-xs-12 account">
+      <div class="col-md-3 col-sm-3 col-xs-12 account">
         <h3>My Account</h3>
         <ul>
 		  <li><a href="login.php">Login</a></li>
@@ -15,7 +10,7 @@
           <li><a href="javascript:void(0);">View Cart</a></li>
         </ul>
       </div>
-      <div class="col-md-2 col-sm-3 col-xs-12 account">
+      <div class="col-md-3 col-sm-3 col-xs-12 account">
         <h3>Policy</h3>
         <ul>
           <li><a href="privacy-policy.php">Privacy Policy</a></li>
@@ -40,7 +35,7 @@
         </ul>
       </div>
 	  
-<div class="col-md-2 col-sm-3 col-xs-12 store">
+<div class="col-md-3 col-sm-3 col-xs-12 store">
 <h3>Store Hours</h3>
 <ul>
 <li>Monday - Thursday : <span>10 AM to 7PM</span></li>

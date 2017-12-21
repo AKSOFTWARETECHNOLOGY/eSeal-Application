@@ -89,7 +89,7 @@ $(document).ready(function() {
 <?php include "header.php"; ?>
 
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>Custom Sign Up</h3>
 </div>
@@ -99,7 +99,7 @@ $(document).ready(function() {
 <div class="contact-us">
 <div class="container">
 <div class="row">
-
+    <h3>Custom Sign Up</h3><br/>
 <div class="col-md-12 col-sm-12 col-xs-12">
 <div class="reg-process">
 

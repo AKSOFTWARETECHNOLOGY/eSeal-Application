@@ -121,7 +121,7 @@ $(document).ready(function() {
 <?php include "header.php"; ?>
 
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>User Registration</h3>
 </div>
@@ -131,7 +131,7 @@ $(document).ready(function() {
 <div class="contact-us">
 <div class="container">
 <div class="row">
-
+    <h3>User Registration</h3><br/>
 
 
 

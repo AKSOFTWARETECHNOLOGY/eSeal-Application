@@ -79,9 +79,9 @@ $(document).ready(function() {
 
 <?php include "header.php"; ?>
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
-<h3>E Seal</h3>
+<h3>E-Seal</h3>
 </div>
 </div>
 
@@ -90,7 +90,7 @@ $(document).ready(function() {
 <div class="container">
 <div class="row">
 <div class="col-md-12 col-sm-12 col-xs-12">
-<h2>Seal Product</h2>
+<h2>E-Seal Product</h2>
 </div>
 
 <div class="col-md-6 col-sm-6 col-xs-12 freedom-list">
@@ -144,20 +144,12 @@ $(document).ready(function() {
 </div>
 
 
-<div class="welcome">
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-<p>Sri Sai Ganesh Associates &reg; helps manufacturers with gaining full control of their supply chain.</p>
-</div><!-- Column 12 -->
-</div><!-- Row -->
-</div><!-- Container Fluid -->
-</div><!-- Welcome -->
 
+<?php //include "welcome.php"; ?>
 
-<?php include "slider.php"; ?>
+<?php //include "slider.php"; ?>
 
-<?php include "testimonial.php"; ?>
+<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 

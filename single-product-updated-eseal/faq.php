@@ -94,7 +94,7 @@ $(document).ready(function() {
 
 <?php include "header.php"; ?>
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
 <h3>FAQ</h3>
 </div>
@@ -105,7 +105,8 @@ $(document).ready(function() {
 <div class="container">
 <div class="row">
 <div class="col-md-12 col-sm-12 col-xs-12">
-
+<h3>FAQ</h3>
+<br/>
  <section id="only-one" data-accordion-group>
       <section data-accordion>
         <button data-control>1) What is RFID electronic self-sealing facility for exporters?</button>
@@ -243,9 +244,11 @@ Sri Sai Ganesh Associates is consciously aware of your time critical needs. Blue
 </div><!-- Product category -->
 
 
-<?php include "slider.php"; ?>
+<?php //include "welcome.php"; ?>
 
-<?php include "testimonial.php"; ?>
+<?php //include "slider.php"; ?>
+
+<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 
