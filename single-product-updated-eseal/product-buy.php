@@ -143,7 +143,7 @@ $(document).ready(function() {
 </style>
 
 <div class="products-category">
-<div class="container">
+<div class="container-fluid">
 <div class="row">
     <div class="col-md-3 col-sm-3 col-xs-12">
         <?php include "sidebar.php"; ?>

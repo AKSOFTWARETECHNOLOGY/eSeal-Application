@@ -45,6 +45,14 @@ while($row1 = mysql_fetch_assoc($port_exe)) {
 }
 
 
+$terminal_sql="SELECT * FROM `terminals` where `terminals_status`=1";
+$terminal_exe=mysql_query($terminal_sql);
+$terminal_results = array();
+while($row2 = mysql_fetch_assoc($terminal_exe)) {
+    array_push($terminal_results, $row2);
+}
+
+
 $userinfo_sql="SELECT * FROM `exporter_info` WHERE `user_id`='$user_id'";
 $userinfo_exe=mysql_query($userinfo_sql);
 $userinfo=mysql_fetch_array($userinfo_exe);
@@ -155,7 +163,7 @@ $(document).ready(function() {
 
 
 <div class="dashboard">
-<div class="container">
+<div class="container-fluid">
 <div class="row">
 
 <div class="col-md-3 col-sm-3 col-xs-12">
@@ -163,6 +171,12 @@ $(document).ready(function() {
 </div><!--Column 6-->
 
 <div class="col-md-9 col-sm-9 col-xs-12">
+    <div class="submit-btn">
+        <ul>
+            <li><a class="hidden" href="#">New Complaint</a></li>
+            <li><a class="" href="my-seal.php">Back</a></li>
+        </ul>
+    </div><!--Form Btn-->
 <div class="my-account">
 <h3><i class="fa fa-address-book" aria-hidden="true"></i> e-Seal Update Entries</h3>
 <div class="address-bar">
@@ -171,7 +185,7 @@ $(document).ready(function() {
 
     <form name="sealform" id="sealform" action="doeseal.php" method="post" onsubmit="return validate(this);">
         <div class="col-md-12 col-sm-12 col-xs-12 address">
-            <div class="account-register">
+            <div class="account-register" style="padding: 0px;">
                 <?php if(isset($_REQUEST['insert'])) { ?>
                 <?php if(isset($_REQUEST['success'])) { ?>
                     <p style="color:green;font-weight:bold"> Your Address Added Successfully!</p>
@@ -185,74 +199,64 @@ $(document).ready(function() {
                 <?php //print_r($product_info_order_fet); ?>
                  <div class="other-fields">
                      <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-12 col-sm-12 col-xs-12">
                              <div class="form-group">
-                                 <label>Exporter Name *</label>
+                                 <label>Exporter Name </label>
                                  <span class="account-input">
                                  <?php echo $userinfo['name_exporter']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
-
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                     </div>
+                     <div class="row">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>IEC Code *</label>
+                                 <label>IEC Code </label>
                                  <span class="account-input">
                                  <?php echo $userinfo['iec_code']; ?>
                                  <input type="hidden" name="iec_no" id="iec_no" class="register-input" value="<?php echo $userinfo['iec_code']; ?>" required />
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
-                     </div><!-- Inner Row -->
-                     <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Pan Number *</label>
-                                 <span class="account-inputX">
-                                 <?php //echo $userinfo['pan_number']; ?>
-                                 <input type="text" name="pan_no" id="pan_no" class="register-input" value="<?php echo $userinfo['pan_number']; ?>" required />
-                                 </span>
-                             </div>
-                         </div><!-- Inner Column -->
-
-                         <div class="col-md-6 col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                 <label>GST Number *</label>
-                                 <span class="account-inputX">
-                                 <?php //echo $userinfo['gstin']; ?>
-                                 <input type="text" name="gst_no" id="gst_no" class="register-input" value="<?php echo $userinfo['gstin']; ?>" required />
-                                 </span>
-                             </div>
-                         </div><!-- Inner Column -->
-                     </div><!-- Inner Row -->
-                     <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                 <label>SSG Code *</label>
+                                 <label>Pan Number </label>
                                  <span class="account-input">
-                                 <?php echo $product_info_order_fet['product_unicode']; ?>
+                                 <?php echo $userinfo['pan_number']; ?>
+                                 <input type="hidden" name="pan_no" id="pan_no" class="register-input" value="<?php echo $userinfo['pan_number']; ?>" required />
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
 
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Seal Code *</label>
+                                 <label>GST Number </label>
+                                 <span class="account-input">
+                                 <?php echo $userinfo['gstin']; ?>
+                                 <input type="hidden" name="gst_no" id="gst_no" class="register-input" value="<?php echo $userinfo['gstin']; ?>" required />
+                                 </span>
+                             </div>
+                         </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
+                     <div class="row">
+
+                         <div class="col-md-4 col-sm-4 col-xs-12">
+                             <div class="form-group">
+                                 <label>E-Seal Number *</label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['product_sealcode']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
-                     </div><!-- Inner Row -->
-                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
                                 <label>Seal Date *</label>
                                 <input type="date" name="sealing_date" id="sealing_date" class="register-input" value="" required />
                             </div>
                         </div><!-- Inner Column -->
 
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
                                 <label>Seal Time *</label>
                                 <input type="time" name="sealing_time" id="sealing_time" class="register-input" value="" required />
@@ -346,7 +350,19 @@ $(document).ready(function() {
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
                                  <label>Terminal Name *</label>
+                                 <!--
                                  <input type="text" name="terminal_name" id="terminal_name" class="register-input" value="" required />
+                                 -->
+                                 <select class="register-input" name="terminal_name" id="terminal_name" required>
+                                     <option value="">Select Terminal</option>
+                                     <?php
+                                     foreach($terminal_results as $key => $value){ ?>
+                                         <option value="<?php echo $value['id']; ?>"><?php echo $value['terminals_name']; ?></option>
+                                     <?php
+                                     }
+                                     ?>
+                                 </select>
+
                              </div>
                          </div><!-- Inner Column -->
                      </div><!-- Inner Row -->
@@ -355,15 +371,15 @@ $(document).ready(function() {
                      <div class="row">
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
-                                 <label>Form 13 Number *</label>
-                                 <input type="text" name="form_no" id="form_no" class="register-input" value="" required />
+                                 <label>Form 13 Number </label>
+                                 <input type="text" name="form_no" id="form_no" class="register-input" value="" />
                              </div>
                          </div><!-- Inner Column -->
 
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
-                                 <label>e-Way Bill Number *</label>
-                                 <input type="text" name="eway_no" id="eway_no" class="register-input" value="" required />
+                                 <label>e-Way Bill Number </label>
+                                 <input type="text" name="eway_no" id="eway_no" class="register-input" value="" />
                              </div>
                          </div><!-- Inner Column -->
                      </div><!-- Inner Row -->

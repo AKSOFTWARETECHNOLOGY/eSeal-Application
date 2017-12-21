@@ -25,7 +25,7 @@ $userinfo=mysql_fetch_array($userinfo_exe);
 
 
 $product_exporter_id=$user_id;
-$product_info_order_sql="SELECT * FROM `product_order_info` WHERE `product_exporter_id`='$product_exporter_id' AND `seal_type`!=''";
+$product_info_order_sql="SELECT * FROM `product_order_info` WHERE `product_exporter_id`='$product_exporter_id' AND `product_item_status`='1'";
 $product_info_order_exe=mysql_query($product_info_order_sql);
 ?>
 <!doctype html>
@@ -128,7 +128,7 @@ $(document).ready(function() {
 
 
 <div class="dashboard">
-<div class="container">
+<div class="container-fluid">
 <div class="row">
 
 <div class="col-md-3 col-sm-3 col-xs-12">
@@ -137,31 +137,36 @@ $(document).ready(function() {
 
 <div class="col-md-9 col-sm-9 col-xs-12">
 <div class="order-history">
-    <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> My E-Seal Information</h3>
+    <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> My E-Seal Status Information</h3>
 
     <div class="table-responsive">
 
         <table id="myTable" class="display table">
             <thead>
-            <th>SSG CODE</th>
-            <th>SEAL CODE</th>
+            <th>SL.NO</th>
+            <th>E-SEAL NUMBER</th>
             <th>STATUS</th>
             <th></th>
             </thead>
             <tbody>
             <?php if(mysql_num_rows($product_info_order_exe)>0) { ?>
+                <?php $sl=0; ?>
                 <?php while($product_info_order_fet=mysql_fetch_array($product_info_order_exe)) { ?>
-
+                <?php $sl++; ?>
                     <tr>
-                        <td><?php echo $product_info_order_fet['product_unicode']; ?></td>
+                        <td><?php //print_r($product_info_order_fet); ?><?php echo $sl; ?></td>
                         <td><?php echo $product_info_order_fet['product_sealcode']; ?></td>
-                        <td><?php if($product_info_order_fet['seal_type']=="") { echo "Unused"; } else {  echo "Used"; }?></td>
+                        <td><?php
+                            if($product_info_order_fet['customs_approve_status']==0) { echo "Pending"; }
+                            else if($product_info_order_fet['customs_approve_status']==1) { echo "Success"; }
+                            else if($product_info_order_fet['customs_approve_status']==2) { echo "Tampered"; }
+                            else {  echo "Others"; }?></td>
                         <td>
-                        <?php if($product_info_order_fet['seal_type']=="") { ?>
-                        <a href="update-eseal.php?id=<?php echo $product_info_order_fet['id']; ?>">UPDATE SEAL</a>
-                        <?php } else {  ?>
-                        <a href="view-eseal.php?id=<?php echo $product_info_order_fet['id']; ?>">VIEW SEAL</a>
-                        <?php } ?>
+                            <?php if($product_info_order_fet['product_item_status']==0) { ?>
+                                <a href="update-eseal.php?id=<?php echo $product_info_order_fet['id']; ?>">UPDATE SEAL</a>
+                            <?php } else {  ?>
+                                <a href="view-eseal.php?id=<?php echo $product_info_order_fet['id']; ?>">VIEW SEAL</a>
+                            <?php } ?>
                         </td>
                     </tr>
 

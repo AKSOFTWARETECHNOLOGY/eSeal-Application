@@ -229,7 +229,7 @@ $(document).ready(function() {
 
 
 <div class="dashboard">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
 
 
@@ -238,12 +238,14 @@ $(document).ready(function() {
             </div><!--Column 6-->
 
             <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="submit-btn">
+                    <ul>
+                        <li><a class="hidden" href="#">New Complaint</a></li>
+                        <li><a class="" href="order-history.php">Back</a></li>
+                    </ul>
+                </div><!--Form Btn-->
                 <div class="order-history-details">
 
-                    <div class="con-btn">
-                        <a href="order-history.php">Back to List</a>
-                    </div><!--Submit Btn-->
-                    <br/>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

@@ -120,7 +120,7 @@ $userinfo=mysql_fetch_array($userinfo_exe);
 
 
 <div class="dashboard">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
 
             <div class="col-md-3 col-sm-3 col-xs-12">
@@ -128,12 +128,19 @@ $userinfo=mysql_fetch_array($userinfo_exe);
             </div><!--Column 6-->
 
             <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="submit-btn">
+                    <ul>
+                        <li><a class="hidden" href="complaint-form.php">New Complaint</a></li>
+                        <li><a class="" href="my-complaint.php">Back</a></li>
+                    </ul>
+                </div><!--Form Btn-->
                 <div class="my-account">
                     <h3><i class="fa fa-unlock" aria-hidden="true"></i> Complaint Form</h3>
 
                     <?php if(isset($_REQUEST['succ'])) { ?>
                         <p style="color:green;font-weight:bold"> Your Enquiry has been sent Successfully!</p><br/>
                     <?php } ?>
+
 
                     <form name="passwordform" id="passwordform" action="docomplaint.php" method="post">
                         <div class="form-group row">

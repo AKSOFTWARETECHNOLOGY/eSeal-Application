@@ -128,7 +128,7 @@ $(document).ready(function() {
 
 
 <div class="dashboard">
-<div class="container">
+<div class="container-fluid">
 <div class="row">
 
 <div class="col-md-3 col-sm-3 col-xs-12">

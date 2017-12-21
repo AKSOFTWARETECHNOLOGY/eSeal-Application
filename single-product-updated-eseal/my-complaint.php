@@ -129,7 +129,7 @@ $(document).ready(function() {
 
 
 <div class="dashboard">
-<div class="container">
+<div class="container-fluid">
 <div class="row">
 
 <div class="col-md-3 col-sm-3 col-xs-12">
@@ -137,16 +137,17 @@ $(document).ready(function() {
 </div><!--Column 6-->
 
 <div class="col-md-9 col-sm-9 col-xs-12">
-<div class="order-history">
-    <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> My Complaint Information</h3>
-
-
     <div class="submit-btn">
         <ul>
             <li><a class="hidden" href="javascript:void(0);">Back</a></li>
             <li><a href="complaint-form.php">New Complaint</a></li>
         </ul>
     </div><!--Form Btn-->
+<div class="order-history">
+    <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> My Complaint Information</h3>
+
+
+
     <div class="table-responsive">
 
         <table id="myTable" class="display table">

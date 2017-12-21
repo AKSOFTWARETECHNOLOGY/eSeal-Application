@@ -48,6 +48,7 @@ $seal_type = $_REQUEST['seal_type'];
 $cfs_reach_time = $_REQUEST['cfs_reach_time'];
 $notes = $_REQUEST['notes'];
 
+$product_item_status = "1";
 $SaleType = "Online";
 $SaleStatus = "0";
 $SaleDate = date("Y-m-d");
@@ -62,7 +63,7 @@ $date = date("Y-m-d");
 $ProductOrder="10000000".time();
 
 $product_order_info_count_fetch=0;
-$product_order_info_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_order_info` WHERE `id`='$id' AND `product_exporter_id`='$user_id' AND `seal_type` IS NULL";
+$product_order_info_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_order_info` WHERE `id`='$id' AND `product_exporter_id`='$user_id' AND `product_item_status`='0'";
 $product_order_info_count_exe=mysql_query($product_order_info_count_sql);
 $product_order_info_count_fet=mysql_fetch_array($product_order_info_count_exe);
 $product_order_info_count_fetch=$product_order_info_count_fet['pro_count'];
@@ -84,8 +85,8 @@ $product_order_info_count_fetch=$product_order_info_count_fet['pro_count'];
                                         `destination_port`='$destination_port',`terminal_name`='$terminal_name',
                                         `form_no`='$form_no',`eway_no`='$eway_no',
                                         `seal_type`='$seal_type',`cfs_reach_time`='$cfs_reach_time',
-                                        `notes`='$notes'
-                                        WHERE `id`='$id' AND `product_exporter_id`='$user_id' AND `seal_type` IS NULL";
+                                        `product_item_status`='$product_item_status',`notes`='$notes'
+                                        WHERE `id`='$id' AND `product_exporter_id`='$user_id' AND `product_item_status`='0'";
             //echo $product_order_info_update_sql;
             $product_order_info_update_exe=mysql_query($product_order_info_update_sql);
 

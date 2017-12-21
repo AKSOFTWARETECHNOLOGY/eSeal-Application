@@ -61,7 +61,7 @@ $product_info_order_fet=mysql_fetch_array($product_info_order_exe);
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>e-Seal Update</title>
+<title>E-Seal Status</title>
 <link href="images/favicon.png" type="image/png" rel="shortcut icon">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -149,13 +149,13 @@ $(document).ready(function() {
 
 <div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
-<h3>Address Book Entries</h3>
+<h3>E-Seal Status</h3>
 </div>
 </div>
 
 
 <div class="dashboard">
-<div class="container">
+<div class="container-fluid">
 <div class="row">
 
 <div class="col-md-3 col-sm-3 col-xs-12">
@@ -163,15 +163,21 @@ $(document).ready(function() {
 </div><!--Column 6-->
 
 <div class="col-md-9 col-sm-9 col-xs-12">
+    <div class="submit-btn">
+        <ul>
+            <li><a class="hidden" href="#">New Complaint</a></li>
+            <li><a class="" href="my-seal-status.php">Back</a></li>
+        </ul>
+    </div><!--Form Btn-->
 <div class="my-account">
-<h3><i class="fa fa-address-book" aria-hidden="true"></i> e-Seal Update Entries</h3>
+<h3><i class="fa fa-address-book" aria-hidden="true"></i> E-Seal Status</h3>
 <div class="address-bar">
 <div class="row">
 
 
     <form name="sealform" id="sealform" action="#doeseal.php" method="post" onsubmit="return validate(this);">
         <div class="col-md-12 col-sm-12 col-xs-12 address">
-            <div class="account-register">
+            <div class="account-register" style="padding: 0px;">
                 <?php if(isset($_REQUEST['insert'])) { ?>
                 <?php if(isset($_REQUEST['success'])) { ?>
                     <p style="color:green;font-weight:bold"> Your Address Added Successfully!</p>
@@ -185,7 +191,7 @@ $(document).ready(function() {
                 <?php //print_r($product_info_order_fet); ?>
                  <div class="other-fields">
                      <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-12 col-sm-12 col-xs-12">
                              <div class="form-group">
                                  <label>Exporter Name *</label>
                                  <span class="account-input">
@@ -194,7 +200,11 @@ $(document).ready(function() {
                              </div>
                          </div><!-- Inner Column -->
 
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                     </div><!-- Inner Row -->
+                     <div class="row">
+
+
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
                                  <label>IEC Code *</label>
                                  <span class="account-input">
@@ -202,9 +212,7 @@ $(document).ready(function() {
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
-                     </div><!-- Inner Row -->
-                     <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
                                  <label>Pan Number *</label>
                                  <span class="account-input">
@@ -213,7 +221,7 @@ $(document).ready(function() {
                              </div>
                          </div><!-- Inner Column -->
 
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
                                  <label>GST Number *</label>
                                  <span class="account-input">
@@ -223,26 +231,15 @@ $(document).ready(function() {
                          </div><!-- Inner Column -->
                      </div><!-- Inner Row -->
                      <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>SSG Code *</label>
-                                 <span class="account-input">
-                                 <?php echo $product_info_order_fet['product_unicode']; ?>
-                                 </span>
-                             </div>
-                         </div><!-- Inner Column -->
-
-                         <div class="col-md-6 col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                 <label>Seal Code *</label>
+                                 <label>E-Seal Number *</label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['product_sealcode']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
-                     </div><!-- Inner Row -->
-                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
                                 <label>Seal Date *</label>
                                 <span class="account-input">
@@ -251,7 +248,7 @@ $(document).ready(function() {
                              </div>
                         </div><!-- Inner Column -->
 
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
                                 <label>Seal Time *</label>
                                 <span class="account-input">

@@ -42,7 +42,8 @@ $exe = mysql_query($sql);
 $complaint_sql="SELECT complaint_enquiry.*, vendor_info.name_vendor, vendor_info.vendor_code, exporter_info.name_exporter, exporter_info.iec_code FROM `complaint_enquiry`
 LEFT JOIN `vendor_info` ON vendor_info.user_id = complaint_enquiry.receiver_id
 LEFT JOIN `exporter_info` ON exporter_info.user_id = complaint_enquiry.sender_id
- WHERE complaint_enquiry.complaint_status = 1 and complaint_enquiry.enquiry_id = 0";
+ WHERE complaint_enquiry.complaint_status = 1 and complaint_enquiry.enquiry_id = 0 AND `complaint_enquiry`.`id` = '$enquiry_id'";
+
 $complaint_exe=mysql_query($complaint_sql);
 $complaint_cnt=@mysql_num_rows($complaint_exe);
 $complaint_fet=mysql_fetch_array($complaint_exe);
@@ -153,7 +154,7 @@ $(document).ready(function() {
 
 
 <div class="dashboard">
-<div class="container">
+<div class="container-fluid">
 <div class="row">
 
 <div class="col-md-3 col-sm-3 col-xs-12">
@@ -161,6 +162,12 @@ $(document).ready(function() {
 </div><!--Column 6-->
 
 <div class="col-md-9 col-sm-9 col-xs-12">
+    <div class="submit-btn">
+        <ul>
+            <li><a class="hidden" href="complaint-form.php">New Complaint</a></li>
+            <li><a class="" href="my-complaint.php">Back</a></li>
+        </ul>
+    </div><!--Form Btn-->
 <div class="order-history">
     <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> View Complaint Information</h3>
 <style>

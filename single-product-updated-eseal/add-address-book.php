@@ -146,7 +146,7 @@ $(document).ready(function() {
 
 
 <div class="dashboard">
-<div class="container">
+<div class="container-fluid">
 <div class="row">
 
 <div class="col-md-3 col-sm-3 col-xs-12">
@@ -154,6 +154,12 @@ $(document).ready(function() {
 </div><!--Column 6-->
 
 <div class="col-md-9 col-sm-9 col-xs-12">
+    <div class="submit-btn">
+        <ul>
+            <li><a class="hidden" href="#">New Complaint</a></li>
+            <li><a class="" href="address-book.php">Back</a></li>
+        </ul>
+    </div><!--Form Btn-->
 <div class="my-account">
 <h3><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</h3>
 <div class="address-bar">
