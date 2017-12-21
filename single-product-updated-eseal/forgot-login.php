@@ -13,7 +13,7 @@ include "config.php";
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Login</title>
+<title>Forgot Login</title>
 <link href="images/favicon.png" type="image/png" rel="shortcut icon">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -98,9 +98,9 @@ $(document).ready(function() {
 
 <?php include "header.php"; ?>
 
-<div class="home-about-banner">
+<div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
-<h3>Login or Create an Account</h3>
+<h3>Forgot Login</h3>
 </div>
 </div>
 
@@ -108,11 +108,11 @@ $(document).ready(function() {
 <div class="contact-us">
 <div class="container">
 <div class="row">
-
+    <h3>Forgot Login</h3><br/>
     <div class="col-md-3 col-sm-3 col-xs-12"></div>
 
 <div class="col-md-6 col-sm-6 col-xs-12">
-<div class="account-sign">
+<div class="account-sign" style="min-height: 300px;">
 
 
 
@@ -128,7 +128,6 @@ $(document).ready(function() {
                 <p style="color:red;font-weight:bold"> Invalid Login Details / Your Account not Activated.</p>
             <?php } ?>
 
-            <h3>Registered Customers</h3>
             <p>If you have an account with us, please recover your login in.</p>
             <br/>
             <div class="form-group row">
@@ -170,9 +169,9 @@ $(document).ready(function() {
 </div><!-- Product category -->
 
 
-<?php include "slider.php"; ?>
+<?php //include "slider.php"; ?>
 
-<?php include "testimonial.php"; ?>
+<?php //include "testimonial.php"; ?>
 
 <?php include "footer.php"; ?>
 
@@ -230,5 +229,10 @@ $(document).ready(function() {
     });
 </script>
 
+<style>
+    label.error { color: red; }
+    span.required { color: red; float: right;  padding: 5px 0px 0px 5px; }
+    span#emailstatus { color: red; }
+</style>
 </body>
 </html>

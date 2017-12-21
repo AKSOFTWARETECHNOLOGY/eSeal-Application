@@ -81,7 +81,7 @@ $(document).ready(function() {
 
 <?php include "banner.php"; ?>
 
-<div class="home-about">
+<div class="home-about hidden">
 <div class="container">
 <div class="row">
 <div class="col-md-12 col-sm-12 col-xs-12 about">
@@ -98,7 +98,7 @@ $(document).ready(function() {
 </div><!-- Home About -->
 
 
-<div class="products-category">
+<div class="products-category hidden">
 <div class="container">
 <div class="row">
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -116,7 +116,7 @@ $(document).ready(function() {
 
 </div><!-- Column 6 -->
 
-<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="col-md-6 col-sm-6 col-xs-12 hidden">
 <div class="common-item">
 <div class="text">
 <h3><a href="javascript:void(0);">RFID Electronic Seal -  ₹ 299.00 </a></h3>
@@ -149,7 +149,7 @@ $(document).ready(function() {
 
 
 
-<?php //include "welcome.php"; ?>
+<?php include "welcome.php"; ?>
 
 <?php //include "slider.php"; ?>
 

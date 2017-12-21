@@ -229,6 +229,10 @@ $(document).ready(function() {
         });
     });
 </script>
-
+<style>
+    label.error { color: red; }
+    span.required { color: red; float: right;  padding: 5px 0px 0px 5px; }
+    span#emailstatus { color: red; }
+</style>
 </body>
 </html>
