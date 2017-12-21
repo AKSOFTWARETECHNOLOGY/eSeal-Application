@@ -82,13 +82,13 @@ $product_fet=mysql_fetch_array($product_exe);
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Unicode</label>
+                                        <label class="col-sm-3 control-label">Product Code</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="unicode" id="unicode" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Sealcode</label>
+                                        <label class="col-sm-3 control-label">E-Seal Number</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="sealcode" id="unicode" value="" />
                                         </div>
