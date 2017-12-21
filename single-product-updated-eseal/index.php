@@ -75,7 +75,7 @@ $(document).ready(function() {
 
 <body>
 
-<?php include "top_header.php"; ?>
+<?php //include "top_header.php"; ?>
 
 <?php include "header.php"; ?>
 

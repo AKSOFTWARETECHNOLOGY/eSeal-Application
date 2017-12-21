@@ -1,14 +1,64 @@
+<style>
+    .logo img {
+        max-width: 100% !important;
+        padding: 25px 0px !important;
+    }
+    @media (min-width: 768px)
+    {
+        .navbar {
+            min-height: 30px !important;
+            float: right !important;
+        }
+        .navbar-nav>li>a {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+    }
 
-<div class="main-header">
+</style>
+<div class="main-header" style="padding: 5px 0;">
 <div class="container-fluid">
 <div class="row">
 <div class="col-md-4 col-sm-4 col-xs-12 logo">
-<h3><a href="index.php"><img src="images/logo.jpg" alt="Sri Sai Ganesh Associates" title="Sri Sai Ganesh Associates" class="img-responsive"></a></h3>
-<!--<h3><a href="index.html"><img src="images/logo.jpg" alt="Sri Sai Ganesh Associates" title="Sri Sai Ganesh Associates" class="img-responsive"></a></h3>
--->
+<h3><a href="index.php">
+        <img src="images/logo.png" alt="Sri Sai Ganesh Associates" title="Sri Sai Ganesh Associates" class="img-responsive">
+    </a>
+</h3>
 </div>
 <div class="col-md-8 col-sm-8 col-xs-12">
-<nav class="navbar navbar-default">
+
+    <div class="top-barX" style="padding-bottom: 50px;">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="mail-link mail-rightX">
+
+                        <?php if(isset($_SESSION['exporteruserid'])){ ?>
+                            <ul>
+                                <li><i class="fa fa-phone"></i> Hotline: 044-48677050</li>
+                                <li><a href="dashboard.php"><i class="fa fa-user"></i> Welcome <?php echo $_SESSION['exporterusername']; ?></a></li>
+                                <li><a href="my-account.php"><i class="fa fa-asterisk"></i> My Account</a></li>
+                                <li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            </ul>
+                        <?php } else { ?>
+                            <ul>
+                                <li><i class="fa fa-phone"></i> Hotline: 044-48677050</li>
+                                <li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="registration-terms.php"><i class="fa fa-user"></i> Register</a></li>
+                            </ul>
+                        <?php } ?>
+
+                    </div><!--Mail Link-->
+                </div><!--Column 6-->
+
+            </div><!--Row-->
+        </div><!--Container-->
+    </div><!--Top Bar-->
+
+
+
+    <nav class="navbar navbar-default">
   <div class="container-full">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">

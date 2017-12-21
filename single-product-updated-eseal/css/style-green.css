@@ -221,7 +221,7 @@
 /*----------------------------------------------------Registration Process----------------------------------------------------*/
 /*----------------------------------------------------Account Link----------------------------------------------------*/
 .dashboard{width:100%; float:left;}
-.account-link{background:#a4c334 !important; padding:10px; height:330px; margin:10px 0;}
+.account-link{background:#a4c334; padding:10px; height:330px; margin:10px 0;}
 .account-link h3{color:#fff; margin:10px 0 5px 0; text-align:center;} 
 .account-link ul{margin:20px 0 0 0; padding:0;}
 .account-link ul li{list-style:none; margin-left:2px; margin-bottom:15px; display:block;  line-height:25px; border-bottom:1px solid rgba(255, 255, 255, 0.5);}
