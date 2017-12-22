@@ -26,6 +26,22 @@ $product_sql="SELECT product_info.*, products.product_name, products.product_pri
 $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);
 $product_fet=mysql_fetch_array($product_exe);
+
+$prod_sql="SELECT * from products WHERE product_status = 1";
+$prod_exe=mysql_query($prod_sql);
+$prod_results = array();
+while($row = mysql_fetch_assoc($prod_exe)) {
+    array_push($prod_results, $row);
+}
+
+$seal_sql="SELECT max(product_sealcode) as maxCode from product_info";
+$seal_exe=mysql_query($seal_sql);
+$seal_fet=mysql_fetch_array($seal_exe);
+$code = $seal_fet['maxCode'];
+$seal = str_replace('SSGA', '', $code);
+$maxseal =  $seal + 1;
+$sealcode = 'SSGA' . $maxseal;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,12 +92,19 @@ $product_fet=mysql_fetch_array($product_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="productName" id="productName" value="<?php echo $product_fet['product_name'] ?>" readonly />
-                                            <input type="hidden" name="productId" value="<?php echo $product_fet['product_id'] ?>">
+                                            <select class="form-control" name="productId" id="productId">
+                                                <option value="0">Select Product</option>
+                                                <?php
+                                                foreach($prod_results as $key => $value){ ?>
+                                                    <option value="<?php echo $value['id']; ?>"><?php echo $value['product_name']; ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
                                             <input type="hidden" name="productPrice" value="<?php echo $product_fet['product_price'] ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-12 hidden">
                                         <label class="col-sm-3 control-label">Product Code</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="unicode" id="unicode" value="" />
@@ -90,7 +113,7 @@ $product_fet=mysql_fetch_array($product_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">E-Seal Number</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="sealcode" id="unicode" value="" />
+                                            <input class="form-control" type="text" name="sealcode" id="unicode" value="<?php echo $sealcode; ?>" readonly/>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12 hidden">

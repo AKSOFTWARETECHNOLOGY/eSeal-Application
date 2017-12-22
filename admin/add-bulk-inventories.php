@@ -13,23 +13,37 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-if(isset($_REQUEST['product_id']))
+if(isset($_REQUEST['inventory_id']))
 {
-    $product_id=$_REQUEST['product_id'];
+    $inventory_id=$_REQUEST['inventory_id'];
 }
 else
 {
     exit;
 }
 
-$product_sql="SELECT * FROM `products` WHERE `id`='$product_id' ";
+$product_sql="SELECT product_info.*, products.product_name, products.product_price FROM `product_info` LEFT JOIN `products` ON products.id = product_info.product_id WHERE `product_info`.user_id = $user_id";
 $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);
 $product_fet=mysql_fetch_array($product_exe);
+
+$prod_sql="SELECT * from products WHERE product_status = 1";
+$prod_exe=mysql_query($prod_sql);
+$prod_results = array();
+while($row = mysql_fetch_assoc($prod_exe)) {
+    array_push($prod_results, $row);
+}
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .req{
+            color : red;
+        }
+    </style>
+
     <meta charset="UTF-8">
     <title>Admin Panel </title>
     <?php include "head1.php"; ?>
@@ -43,11 +57,11 @@ $product_fet=mysql_fetch_array($product_exe);
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                View Product
+                Add Bulk Product Inventory
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">View Product</li>
+                <li class="active">Add Bulk Product Inventory</li>
             </ol>
         </section>
 
@@ -59,27 +73,48 @@ $product_fet=mysql_fetch_array($product_exe);
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">View Product Details</h3>
+                            <h3 class="box-title">Add New Bulk Product Inventory</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form">
+                        <form role="form" action="doaddbulkinventory.php" method="post">
                             <div class="box-body">
 
                                 <div class="col-md-12">
                                     <style>.control-label{line-height:32px;} .form-group{line-height:32px;}</style>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Name</label>
+                                        <label class="col-sm-3 control-label">Product Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <div class=""><?php echo $product_fet['product_name']; ?></div>
+                                            <select class="form-control" name="productId" id="productId">
+                                                <option value="0">Select Product</option>
+                                                <?php
+                                                foreach($prod_results as $key => $value){ ?>
+                                                    <option value="<?php echo $value['id']; ?>"><?php echo $value['product_name']; ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Info</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $product_fet['product_info']; ?></div></div>
+                                        <label class="col-sm-3 control-label">How many E-Seals?</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="number" name="eseal" id="eseal" min="1" value="" />
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Price</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $product_fet['product_price']; ?></div></div>
+                                        <label class="col-sm-3 control-label">Starting E-Seal Number</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="startsealcode" id="startsealcode" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Ending E-Seal Number</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="endsealcode" id="endsealcode" value="" readonly/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-primary btn-block btn-flat add-prod">Add</button>
                                     </div>
                                 </div>
                                 <div class="col-md-1"></div>
@@ -99,8 +134,7 @@ $product_fet=mysql_fetch_array($product_exe);
 
                         <div class="box-body">
                             <div class="form-group col-md-12">
-                                <a href="productlist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Products List</button></a>
-                                <a href="productedit.php?product_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger col-md-12"><i class="fa fa-pencil"></i> Edit</button></a>
+                                <a href="inventorieslist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Product Inventory List</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
@@ -123,5 +157,6 @@ $product_fet=mysql_fetch_array($product_exe);
 <script src="dist/js/app.min.js" type="text/javascript"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js" type="text/javascript"></script>
+
 </body>
 </html>

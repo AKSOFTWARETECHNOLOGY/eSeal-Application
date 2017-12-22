@@ -63,6 +63,8 @@ $product_cnt=@mysql_num_rows($product_exe);
                         <div class="box-body">
                             <div class="row">
                                 <a href="add-product-inventories.php?inventory_id=1" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom: 10px;">Add Product Inventories</button></a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="add-bulk-inventories.php?inventory_id=1" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom: 10px;">Add Bulk Inventories</button></a>
                             </div>
                             <?php
                             if($product_cnt>0)
@@ -73,7 +75,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                                     <tr>
                                         <th>SlNo</th>
                                         <th>Product Name</th>
-                                        <th>Product Code</th>
+                                        <th class="hidden">Product Code</th>
                                         <th>E-Seal Number</th>
                                         <th>Status</th>
                                         <th></th>
@@ -89,7 +91,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                                         <tr>
                                             <td><?php echo $sl; ?></td>
                                             <td><?php echo $product_fet['product_name']; ?></td>
-                                            <td><?php echo $product_fet['product_unicode']; ?></td>
+                                            <td class="hidden"><?php echo $product_fet['product_unicode']; ?></td>
                                             <td><?php echo $product_fet['product_sealcode']; ?></td>
                                             <td>
                                                 <?php if($product_fet['product_sale_status'] == 0){
