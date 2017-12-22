@@ -30,7 +30,7 @@ $exe = mysql_query($sql);
 $complaint_sql="SELECT complaint_enquiry.*, vendor_info.name_vendor, vendor_info.vendor_code, exporter_info.name_exporter, exporter_info.iec_code FROM `complaint_enquiry`
 LEFT JOIN `vendor_info` ON vendor_info.user_id = complaint_enquiry.receiver_id
 LEFT JOIN `exporter_info` ON exporter_info.user_id = complaint_enquiry.sender_id
- WHERE complaint_enquiry.complaint_status = 1 and complaint_enquiry.enquiry_id = 0";
+ WHERE complaint_enquiry.complaint_status = 1 and complaint_enquiry.enquiry_id = 0 and `complaint_enquiry`.`id` = '$enquiry_id'";
 $complaint_exe=mysql_query($complaint_sql);
 $complaint_cnt=@mysql_num_rows($complaint_exe);
 $complaint_fet=mysql_fetch_array($complaint_exe);

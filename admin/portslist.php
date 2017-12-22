@@ -84,11 +84,14 @@ $port_cnt=@mysql_num_rows($port_exe);
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $port_fet['ports_name']; ?></td>
                                             <td><?php
-                                                if($port_fet['ports_status'] == 1){
-                                                    echo 'Active';
+                                                if($port_fet['ports_status'] == 1){?>
+                                                    <button type="button" class="btn btn-success btn-xs"> Active </button>
+                                                <?php
                                                 }
                                                 else if($port_fet['ports_status'] == 0){
-                                                    echo 'Inactive';
+                                                    ?>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Inactive </button>
+                                                    <?php
                                                 }
                                                  ?></td>
                                             <td>

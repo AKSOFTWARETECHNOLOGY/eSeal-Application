@@ -72,7 +72,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                                         <th>Product Quantity</th>
                                         <th>Product Sale Total</th>
                                         <th>Product Sale Date</th>
-                                        <th>Delivery Status</th>
+                                        <th>Order Status</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -88,14 +88,29 @@ $product_cnt=@mysql_num_rows($product_exe);
                                             <td><?php echo $product_fet['product_sale_total']; ?></td>
                                             <td><?php echo $product_fet['product_sale_date']; ?></td>
                                             <td>
-                                                <?php if($product_fet['product_delivery_status'] == 0){
+                                                <?php if($product_fet['product_order_status'] == 0){
                                                     ?>
-                                                    <button type="button" class="btn btn-warning btn-xs"> Undelivered </button>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Order Placed </button>
                                                 <?php
                                                 }
-                                                else if($product_fet['product_delivery_status'] == 1){
+                                                else if($product_fet['product_order_status'] == 1){
                                                     ?>
-                                                    <button type="button" class="btn btn-warning btn-xs"> Delivered </button>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Order Confirmed </button>
+                                                <?php
+                                                }
+                                                else if($product_fet['product_order_status'] == 2){
+                                                    ?>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Order Packed </button>
+                                                <?php
+                                                }
+                                                else if($product_fet['product_order_status'] == 3){
+                                                    ?>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Order Intransit </button>
+                                                <?php
+                                                }
+                                                else if($product_fet['product_order_status'] == 4){
+                                                    ?>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Order Delivered </button>
                                                 <?php
                                                 }?>
                                             </td>

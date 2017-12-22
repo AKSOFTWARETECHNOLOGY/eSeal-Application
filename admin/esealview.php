@@ -22,11 +22,13 @@ else
     exit;
 }
 
-$order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+$order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name, ports.ports_name,terminals.terminals_name
 FROM `product_order_info` AS `poi`
 LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
 LEFT JOIN `products` ON products.id = poi.product_id
 LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
+LEFT JOIN `ports` ON ports.id = poi.destination_port
+LEFT JOIN `terminals` ON terminals.id = poi.terminal_name
 where poi.id = $eseal_id";
 $order_exe=mysql_query($order_sql);
 $order_cnt=@mysql_num_rows($order_exe);
@@ -89,12 +91,16 @@ $order_fet=mysql_fetch_array($order_exe);
                                         <div class="col-sm-9"><div class=""> <?php echo $order_fet['pan_no']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Unicode</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['product_unicode']; ?></div></div>
+                                        <label class="col-sm-3 control-label">E-seal Number</label>
+                                        <div class="col-sm-9"><div class=""><?php echo $order_fet['product_sealcode']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product SealCode</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $order_fet['product_sealcode']; ?></div></div>
+                                        <label class="col-sm-3 control-label">E-seal Status</label>
+                                        <div class="col-sm-9"><div class=""><?php
+                                                if($order_fet['customs_approve_status']==0) { echo "Pending"; }
+                                                else if($order_fet['customs_approve_status']==1) { echo "Success"; }
+                                                else if($order_fet['customs_approve_status']==2) { echo "Tampered"; }
+                                                else {  echo "Others"; }?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Seal Date</label>
@@ -138,11 +144,11 @@ $order_fet=mysql_fetch_array($order_exe);
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Destination Customs Station</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['destination_port']; ?></div></div>
+                                        <div class="col-sm-9"><div class=""> <?php echo $order_fet['ports_name']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Terminal Name</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $order_fet['terminal_name']; ?></div></div>
+                                        <div class="col-sm-9"><div class=""><?php echo $order_fet['terminals_name']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Form 13 Number</label>

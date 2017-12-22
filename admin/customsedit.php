@@ -53,6 +53,20 @@ $country_results = array();
 while($row1 = mysql_fetch_assoc($country_exe)) {
     array_push($country_results, $row1);
 }
+
+$port_sql="SELECT * FROM `ports` where `ports_status`=1";
+$port_exe=mysql_query($port_sql);
+$port_results = array();
+while($portrow = mysql_fetch_assoc($port_exe)) {
+    array_push($port_results, $portrow);
+}
+
+$terminal_sql="SELECT * FROM `terminals` where `terminals_status`=1";
+$terminal_exe=mysql_query($terminal_sql);
+$terminal_results = array();
+while($terminalrow = mysql_fetch_assoc($terminal_exe)) {
+    array_push($terminal_results, $terminalrow);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -180,6 +194,34 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                         <div class="col-sm-9">
                                             <input class="form-control" type="email" name="email" id="email" value="<?php echo $custom_fet['email']; ?>" required/>
                                             <div class="err" id="errEmail" style="color:red"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Port</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" name="port" id="port">
+                                                <option value="">Select Port</option>
+                                                <?php
+                                                foreach($port_results as $key => $value){ ?>
+                                                    <option value="<?php echo $value['id']; ?>"<?php if($value['id'] == $custom_fet['port']){ echo 'selected'; } ?>><?php echo strtoupper($value['ports_name']); ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Terminal</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" name="terminal" id="terminal">
+                                                <option value="">Select Terminal</option>
+                                                <?php
+                                                foreach($terminal_results as $key => $value){ ?>
+                                                    <option value="<?php echo $value['id']; ?>"<?php if($value['id'] == $custom_fet['terminal']){ echo 'selected'; } ?>><?php echo strtoupper($value['terminals_name']); ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">

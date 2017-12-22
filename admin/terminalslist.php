@@ -87,11 +87,14 @@ $terminal_cnt=@mysql_num_rows($terminal_exe);
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $terminal_fet['terminals_name']; ?></td>
                                             <td><?php
-                                                if($terminal_fet['terminals_status'] == 1){
-                                                    echo 'Active';
+                                                if($terminal_fet['terminals_status'] == 1){?>
+                                                    <button type="button" class="btn btn-success btn-xs"> Active </button>
+                                                <?php
                                                 }
                                                 else if($terminal_fet['terminals_status'] == 0){
-                                                    echo 'Inactive';
+                                                    ?>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Inactive </button>
+                                                <?php
                                                 }
                                                 ?></td>
                                             <td>

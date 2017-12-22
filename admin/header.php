@@ -102,7 +102,7 @@
               </li>
               <li class="treeview">
                   <a href="eseallist.php">
-                      <i class="ion ion-android-contact"></i> <span>E-Seal</span>
+                      <i class="ion ion-android-contact"></i> <span>E-Seal Status</span>
                   </a>
               </li>
               <li class="treeview">

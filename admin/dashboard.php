@@ -19,29 +19,107 @@ $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
 
-$user_sql="SELECT * FROM `users` WHERE `id`!='1'";
-$user_exe=mysql_query($user_sql);
-$user_cnt=@mysql_num_rows($user_exe);
+$exporter_sql="SELECT * FROM `exporter_info`
+LEFT JOIN `users` ON users.id = exporter_info.user_id
+WHERE users.delete_status='1'";
+$exporter_exe=mysql_query($exporter_sql);
+$exporter_cnt=@mysql_num_rows($exporter_exe);
 
-$writer_sql="SELECT * FROM `writer` ";
-$writer_exe=mysql_query($writer_sql);
-$writer_cnt=@mysql_num_rows($writer_exe);
+$customs_sql="SELECT * FROM `customs_info`
+LEFT JOIN `users` ON users.id = customs_info.user_id
+WHERE users.delete_status='1'";
+$custom_exe=mysql_query($customs_sql);
+$custom_cnt=@mysql_num_rows($custom_exe);
 
-$writer_content_sql="SELECT * FROM `writer_content` ";
-$writer_content_exe=mysql_query($writer_content_sql);
-$writer_content_cnt=@mysql_num_rows($writer_content_exe);
+$support_sql="SELECT * FROM `support_info`
+LEFT JOIN `users` ON users.id = support_info.user_id
+WHERE users.delete_status='1'";
+$support_exe=mysql_query($support_sql);
+$support_cnt=@mysql_num_rows($support_exe);
 
-$publisher_sql="SELECT * FROM `publisher` ";
-$publisher_exe=mysql_query($publisher_sql);
-$publisher_cnt=@mysql_num_rows($publisher_exe);
+$product_sql="SELECT * FROM `product_info`
+LEFT JOIN `products` ON products.id = product_info.product_id
+WHERE products.product_status='1'";
+$product_exe=mysql_query($product_sql);
+$product_cnt=@mysql_num_rows($product_exe);
 
-$publisher_book_sql="SELECT * FROM `publisher_book` ";
-$publisher_book_exe=mysql_query($publisher_book_sql);
-$publisher_book_cnt=@mysql_num_rows($publisher_book_exe);
+$product_sold_sql="SELECT * FROM `product_info`
+LEFT JOIN `products` ON products.id = product_info.product_id
+WHERE products.product_status='1' and product_info.product_sale_status = 1";
+$product_sold_exe=mysql_query($product_sold_sql);
+$product_sold_cnt=@mysql_num_rows($product_sold_exe);
 
-$publisher_book_requirement_sql="SELECT * FROM `publisher_book_requirement` ";
-$publisher_book_requirement_exe=mysql_query($publisher_book_requirement_sql);
-$publisher_book_requirement_cnt=@mysql_num_rows($publisher_book_requirement_exe);
+$product_instock_sql="SELECT * FROM `product_info`
+LEFT JOIN `products` ON products.id = product_info.product_id
+WHERE products.product_status='1' and product_info.product_sale_status = 0";
+$product_instock_exe=mysql_query($product_instock_sql);
+$product_instock_cnt=@mysql_num_rows($product_instock_exe);
+
+$product_order_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1'";
+$product_order_exe=mysql_query($product_order_sql);
+$product_order_cnt=@mysql_num_rows($product_order_exe);
+
+$product_order_placed_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1' and product_order.product_order_status=0";
+$product_order_placed_exe=mysql_query($product_order_placed_sql);
+$product_order_placed_cnt=@mysql_num_rows($product_order_placed_exe);
+
+$product_order_confirmed_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1' and product_order.product_order_status=1";
+$product_order_confirmed_exe=mysql_query($product_order_confirmed_sql);
+$product_order_confirmed_cnt=@mysql_num_rows($product_order_confirmed_exe);
+
+$product_order_packed_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1' and product_order.product_order_status=2";
+$product_order_packed_exe=mysql_query($product_order_packed_sql);
+$product_order_packed_cnt=@mysql_num_rows($product_order_packed_exe);
+
+$product_order_intransit_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1' and product_order.product_order_status=3";
+$product_order_intransit_exe=mysql_query($product_order_intransit_sql);
+$product_order_intransit_cnt=@mysql_num_rows($product_order_intransit_exe);
+
+$product_order_delivered_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1' and product_order.product_order_status=4";
+$product_order_delivered_exe=mysql_query($product_order_delivered_sql);
+$product_order_delivered_cnt=@mysql_num_rows($product_order_delivered_exe);
+
+$eseal_sql="SELECT * FROM `product_order_info`
+LEFT JOIN `products` ON products.id = product_order_info.product_id
+WHERE products.product_status='1' and product_order_info.product_item_status=1";
+$eseal_exe=mysql_query($eseal_sql);
+$eseal_cnt=@mysql_num_rows($eseal_exe);
+
+$eseal_pending_sql="SELECT * FROM `product_order_info`
+LEFT JOIN `products` ON products.id = product_order_info.product_id
+WHERE products.product_status='1' and product_order_info.product_item_status=1 and product_order_info.customs_approve_status=0 ";
+$eseal_pending_exe=mysql_query($eseal_pending_sql);
+$eseal_pending_cnt=@mysql_num_rows($eseal_pending_exe);
+
+$eseal_success_sql="SELECT * FROM `product_order_info`
+LEFT JOIN `products` ON products.id = product_order_info.product_id
+WHERE products.product_status='1' and product_order_info.product_item_status=1 and product_order_info.customs_approve_status=1";
+$eseal_success_exe=mysql_query($eseal_success_sql);
+$eseal_success_cnt=@mysql_num_rows($eseal_success_exe);
+
+$eseal_tampered_sql="SELECT * FROM `product_order_info`
+LEFT JOIN `products` ON products.id = product_order_info.product_id
+WHERE products.product_status='1' and product_order_info.product_item_status=1 and product_order_info.customs_approve_status=2";
+$eseal_tampered_exe=mysql_query($eseal_tampered_sql);
+$eseal_tampered_cnt=@mysql_num_rows($eseal_tampered_exe);
+
+$eseal_other_sql="SELECT * FROM `product_order_info`
+LEFT JOIN `products` ON products.id = product_order_info.product_id
+WHERE products.product_status='1' and product_order_info.product_item_status=1 and product_order_info.customs_approve_status=3";
+$eseal_other_exe=mysql_query($eseal_other_sql);
+$eseal_other_cnt=@mysql_num_rows($eseal_other_exe);
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,233 +149,108 @@ $publisher_book_requirement_cnt=@mysql_num_rows($publisher_book_requirement_exe)
         <!-- Main content -->
         <section class="content">
           <!-- Small boxes (Stat box) -->
-          <div class="row hidden">
+          <div class="row">
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3><?php echo $writer_cnt; ?></h3>
-                  <p>Writers</p>
+                  <h3><?php echo $exporter_cnt;?></h3>
+                  <p>Exporters</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-android-person"></i>
                 </div>
-                <a href="writerlist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="exporterlist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
-            <div class="col-lg-6 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3><?php echo $writer_content_cnt; ?></h3>
-                  <p>Contents</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-android-clipboard"></i>
-                </div>
-                <a href="contentlist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-4 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
-                  <h3><?php echo $publisher_cnt; ?></h3>
-                  <p>Publishers</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-android-contact"></i>
-                </div>
-                <a href="publisherlist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-4 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-red">
-                <div class="inner">
-                  <h3><?php echo $publisher_book_cnt; ?></h3>
-                  <p>Books</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-android-list"></i>
-                </div>
-                <a href="booklist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-			<div class="col-lg-4 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-blue">
-                <div class="inner">
-                  <h3><?php echo $publisher_book_requirement_cnt; ?></h3>
-                  <p>Requirements</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-android-list"></i>
-                </div>
-                <a href="requirementlist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
+
+              <div class="col-lg-6 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-red">
+                      <div class="inner">
+                          <h3><?php echo $custom_cnt;?></h3>
+                          <p>Customs</p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-android-person"></i>
+                      </div>
+                      <a href="customslist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+              </div><!-- ./col -->
+
+              <div class="col-lg-4 col-xs-4 hidden">
+                  <!-- small box -->
+                  <div class="small-box bg-yellow">
+                      <div class="inner">
+                          <h3><?php echo $support_cnt;?></h3>
+                          <p>Support</p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-android-person"></i>
+                      </div>
+                      <a href="customslist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+              </div><!-- ./col -->
 			
           </div><!-- /.row -->
-          <!-- Main row -->
-          <div class="row" style="display:none">
-            <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
-              <!-- Custom tabs (Charts with tabs)-->
-              <div class="nav-tabs-custom">
-                <!-- Tabs within a box -->
-                <ul class="nav nav-tabs pull-right">
-                  <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
-                  <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
-                  <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
-                </ul>
-                <div class="tab-content no-padding">
-                  <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
-                </div>
-              </div><!-- /.nav-tabs-custom -->
 
-              
-              <!-- Calendar -->
-              <div class="box box-solid bg-green-gradient">
-                <div class="box-header">
-                  <i class="fa fa-calendar"></i>
-                  <h3 class="box-title">Calendar</h3>
-                  <!-- tools box -->
-                  <div class="pull-right box-tools">
-                    <!-- button with a dropdown -->
-                    <div class="btn-group">
-                      <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
-                      <ul class="dropdown-menu pull-right" role="menu">
-                        <li><a href="#">Add new event</a></li>
-                        <li><a href="#">Clear events</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">View calendar</a></li>
-                      </ul>
+
+            <div class="row">
+                <div class="col-lg-4 col-xs-4">
+                    <!-- small box -->
+                    <div class="small-box bg-blue">
+                        <div class="inner">
+                            <h3><?php echo $product_cnt;?></h3>
+                            <p>Product Inventories</p>
+                            <p>Sold <b><?php echo $product_sold_cnt;?></b></p>
+                            <p>Instock <b><?php echo $product_instock_cnt;?></b></p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-android-person"></i>
+                        </div>
+                        <a href="inventorieslist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                    <button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div><!-- /. tools -->
-                </div><!-- /.box-header -->
-                <div class="box-body no-padding">
-                  <!--The calendar -->
-                  <div id="calendar" style="width: 100%"></div>
-                </div><!-- /.box-body -->
-                <div class="box-footer text-black">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- Progress bars -->
-                      <div class="clearfix">
-                        <span class="pull-left">Task #1</span>
-                        <small class="pull-right">90%</small>
-                      </div>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 90%;"></div>
-                      </div>
+                </div><!-- ./col -->
 
-                      <div class="clearfix">
-                        <span class="pull-left">Task #2</span>
-                        <small class="pull-right">70%</small>
-                      </div>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
-                      </div>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                      <div class="clearfix">
-                        <span class="pull-left">Task #3</span>
-                        <small class="pull-right">60%</small>
-                      </div>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 60%;"></div>
-                      </div>
+                <div class="col-lg-4 col-xs-4">
+                    <!-- small box -->
+                    <div class="small-box bg-orange">
+                        <div class="inner">
+                            <h3><?php echo $product_order_cnt;?></h3>
+                            <p>Product Order</p>
+                            <p>Placed <b><?php echo $product_order_placed_cnt;?></b></p>
+                            <p>Confirmed <b><?php echo $product_order_confirmed_cnt;?></b></p>
+                            <p>Packed <b><?php echo $product_order_packed_cnt;?></b></p>
+                            <p>Intransit <b><?php echo $product_order_intransit_cnt;?></b></p>
+                            <p>Delivered <b><?php echo $product_order_delivered_cnt;?></b></p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-android-person"></i>
+                        </div>
+                        <a href="orderlist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div><!-- ./col -->
 
-                      <div class="clearfix">
-                        <span class="pull-left">Task #4</span>
-                        <small class="pull-right">40%</small>
-                      </div>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 40%;"></div>
-                      </div>
-                    </div><!-- /.col -->
-                  </div><!-- /.row -->
-                </div>
-              </div><!-- /.box -->
+                <div class="col-lg-4 col-xs-4">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3><?php echo $eseal_cnt;?></h3>
+                            <p>E-seal Status</p>
+                            <p>Pending <b><?php echo $eseal_pending_cnt;?></b></p>
+                            <p>Success <b><?php echo $eseal_success_cnt;?></b></p>
+                            <p>Tampered <b><?php echo $eseal_tampered_cnt;?></b></p>
+                            <p>Other <b><?php echo $eseal_other_cnt;?></b></p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-android-person"></i>
+                        </div>
+                        <a href="eseallist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div><!-- ./col -->
 
-            </section><!-- /.Left col -->
-            <!-- right col (We are only adding the ID to make the widgets sortable)-->
-            <section class="col-lg-5 connectedSortable">
-
-              <!-- Map box -->
-              <div class="box box-solid bg-light-blue-gradient">
-                <div class="box-header">
-                  <!-- tools box -->
-                  <div class="pull-right box-tools">
-                    <button class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range"><i class="fa fa-calendar"></i></button>
-                    <button class="btn btn-primary btn-sm pull-right" data-widget="collapse" data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
-                  </div><!-- /. tools -->
-
-                  <i class="fa fa-map-marker"></i>
-                  <h3 class="box-title">
-                    Visitors
-                  </h3>
-                </div>
-                <div class="box-body">
-                  <div id="world-map" style="height: 250px; width: 100%;"></div>
-                </div><!-- /.box-body-->
-                <div class="box-footer no-border">
-                  <div class="row">
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <div id="sparkline-1"></div>
-                      <div class="knob-label">Visitors</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <div id="sparkline-2"></div>
-                      <div class="knob-label">Online</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center">
-                      <div id="sparkline-3"></div>
-                      <div class="knob-label">Exists</div>
-                    </div><!-- ./col -->
-                  </div><!-- /.row -->
-                </div>
-              </div>
-              <!-- /.box -->
-
-              <!-- solid sales graph -->
-              <div class="box box-solid bg-teal-gradient">
-                <div class="box-header">
-                  <i class="fa fa-th"></i>
-                  <h3 class="box-title">Sales Graph</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div>
-                </div>
-                <div class="box-body border-radius-none">
-                  <div class="chart" id="line-chart" style="height: 250px;"></div>
-                </div><!-- /.box-body -->
-                <div class="box-footer no-border">
-                  <div class="row">
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC" />
-                      <div class="knob-label">Mail-Orders</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC" />
-                      <div class="knob-label">Online</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center">
-                      <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC" />
-                      <div class="knob-label">In-Store</div>
-                    </div><!-- ./col -->
-                  </div><!-- /.row -->
-                </div><!-- /.box-footer -->
-              </div><!-- /.box -->
-
-            </section><!-- right col -->
-          </div><!-- /.row (main row) -->
+            </div><!-- /.row -->
+          <!-- Main row -->
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

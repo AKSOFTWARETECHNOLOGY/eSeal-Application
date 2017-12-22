@@ -24,13 +24,15 @@ if(isset($_REQUEST['customs_id'])) {
     $telephone = $_REQUEST['telephone'];
     $mobile = $_REQUEST['mobile'];
     $email = $_REQUEST['email'];
+    $port = $_REQUEST['port'];
+    $terminal = $_REQUEST['terminal'];
     $customscode = $_REQUEST['customscode'];
     $username = $_SESSION['adminusername'];
     $date = date("Y-m-d");
 
     $sql = "UPDATE `customs_info` SET `name_customs` = '$customsName', `user_id` = '$userId',`address` = '$address', `city` = '$cityId',
 `state` = '$state',`country` = '$countryId',`mobile` = '$mobile', `email` = '$email',`telephone` = '$telephone',`customs_code` = '$customscode',
-            `updated_by` = '$username', `updated_at` = '$date'
+            `port` = '$port',`terminal` = '$terminal',`updated_by` = '$username', `updated_at` = '$date'
             WHERE `customs_info`.`id` = '$customs_id'";
     $exe = mysql_query($sql);
     header("Location: customslist.php?suc=1");

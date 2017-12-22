@@ -22,12 +22,14 @@ else
     exit;
 }
 
-$custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, states.state_name
+$custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, states.state_name, terminals.terminals_name, ports.ports_name
 FROM `customs_info` AS `ci`
 LEFT JOIN `users` ON users.id = ci.user_id
 LEFT JOIN `countries` ON countries.id = ci.country
 LEFT JOIN `cities` ON cities.id = ci.city
 LEFT JOIN `states` ON states.id = ci.state
+LEFT JOIN `ports` ON ports.id = ci.port
+LEFT JOIN `terminals` ON terminals.id = ci.terminal
 WHERE `users`.delete_status = 1 and `ci`.id = $customs_id";
 $custom_exe=mysql_query($custom_sql);
 $custom_cnt=@mysql_num_rows($custom_exe);
@@ -108,6 +110,14 @@ $custom_fet=mysql_fetch_array($custom_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Email</label>
                                         <div class="col-sm-9"><div class=""><?php echo $custom_fet['email']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Port</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $custom_fet['ports_name']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Terminal</label>
+                                        <div class="col-sm-9"><div class=""><?php echo $custom_fet['terminals_name']; ?></div></div>
                                     </div>
                                 </div>
                                 <div class="col-md-1"></div>

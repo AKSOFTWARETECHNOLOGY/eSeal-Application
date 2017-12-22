@@ -25,7 +25,7 @@ FROM `product_order_info` AS `poi`
 LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
 LEFT JOIN `products` ON products.id = poi.product_id
 LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
-WHERE `poi`.iec_no IS NOT NULL";
+WHERE poi.product_item_status = 1";
 //echo $order_sql;
 $order_exe=mysql_query($order_sql);
 $order_cnt=@mysql_num_rows($order_exe);
@@ -72,8 +72,8 @@ $order_cnt=@mysql_num_rows($order_exe);
                                     <thead>
                                     <tr>
                                         <th>Sl.No</th>
-                                        <th>Product Unicode</th>
-                                        <th>Product SealCode</th>
+                                        <th>E-seal Number</th>
+                                        <th>E-seal Status</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -86,12 +86,27 @@ $order_cnt=@mysql_num_rows($order_exe);
                                         ?>
                                         <tr>
                                             <td><?php echo $sl; ?></td>
-                                            <td><?php echo $order_fet['product_unicode']; ?></td>
                                             <td><?php echo $order_fet['product_sealcode']; ?></td>
+                                            <td>
+                                                <?php
+                                                if($order_fet['customs_approve_status']==0) { ?>
+                                                    <button type="button" class="btn btn-warning btn-xs">Pending</button>
+                                                <?php
+                                                }
+                                                else if($order_fet['customs_approve_status']==1) { ?>
+                                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                                <?php }
+                                                else if($order_fet['customs_approve_status']==2) { ?>
+                                                    <button type="button" class="btn btn-danger btn-xs">Tampered</button>
+                                                <?php }
+                                                else {  ?>
+                                                    <button type="button" class="btn btn-info btn-xs">Others</button>
+                                                <?php }?></td>
+                                            </td>
                                             <td>
                                                 <a href="esealview.php?eseal_id=<?php echo $order_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                                 &nbsp;&nbsp;&nbsp;
-                                                <a href="esealedit.php?eseal_id=<?php echo $order_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
+                                                <a class="hidden" href="esealedit.php?eseal_id=<?php echo $order_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
                                             </td>
                                         </tr>
                                     <?php

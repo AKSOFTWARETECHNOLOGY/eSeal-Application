@@ -211,7 +211,6 @@ else
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                         <tr>
-                                            <th>Product Unicode</th>
                                             <th>Product SealCode</th>
                                             <th>Status</th>
                                             <th class="hidden"></th>
@@ -219,28 +218,27 @@ else
                                         </thead>
                                         <tbody>
                                         <?php
-                                        while($product_fet=mysql_fetch_array($product_exe))
+                                        while($prod_fet=mysql_fetch_array($product_exe))
                                         {
                                             ?>
                                             <tr>
-                                                <td><?php echo $product_fet['product_unicode']; ?></td>
-                                                <td><?php echo $product_fet['product_sealcode']; ?></td>
+                                                <td><?php echo $prod_fet['product_sealcode']; ?></td>
                                                 <td>
-                                                    <?php if($product_fet['product_item_status'] == 0){
+                                                    <?php if($prod_fet['product_item_status'] == 0){
                                                         ?>
                                                         <button type="button" class="btn btn-warning btn-xs"> Unused </button>
                                                     <?php
                                                     }
-                                                    else if($product_fet['product_item_status'] == 1){
+                                                    else if($prod_fet['product_item_status'] == 1){
                                                         ?>
                                                         <button type="button" class="btn btn-warning btn-xs"> Used </button>
                                                     <?php
                                                     }?>
                                                 </td>
                                                 <td class="hidden">
-                                                    <a href="orderinfoview.php?orderinfo_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
+                                                    <a href="orderinfoview.php?orderinfo_id=<?php echo $prod_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                                     &nbsp;&nbsp;&nbsp;
-                                                    <a href="orderinfoedit.php?orderinfo_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
+                                                    <a href="orderinfoedit.php?orderinfo_id=<?php echo $prod_fet['id']; ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
                                                 </td>
                                             </tr>
                                         <?php
@@ -263,7 +261,9 @@ else
                         <div class="other-fields">
                             <table class="table">
                                 <thead>
-                                <th>Order Summary</th>
+                                <tr>
+                                    <th colspan="3">Order Summary</th>
+                                </tr>
                                 </thead>
                                 <tbody>
                                 <tr>

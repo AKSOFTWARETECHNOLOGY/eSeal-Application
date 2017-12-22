@@ -53,11 +53,10 @@ $(document).ready(function() {
 			moveSlides:1,
 			slideMargin: 40,
 			infiniteLoop: true,
-			slideWidth:550,
 			minSlides:1,
-			maxSlides: 2,
+			maxSlides: 1,
 			speed: 800,
-			//auto:true,
+			auto:true,
 		});
 			  
 			  

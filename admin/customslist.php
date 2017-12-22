@@ -14,11 +14,13 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-$custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name
+$custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name
 FROM `customs_info` AS `ci`
 LEFT JOIN `users` ON users.id = ci.user_id
 LEFT JOIN `countries` ON countries.id = ci.country
 LEFT JOIN `cities` ON cities.id = ci.city
+LEFT JOIN `ports` ON ports.id = ci.port
+LEFT JOIN `terminals` ON terminals.id = ci.terminal
 WHERE `users`.delete_status = 1";
 $custom_exe=mysql_query($custom_sql);
 $custom_cnt=@mysql_num_rows($custom_exe);
@@ -68,10 +70,11 @@ $custom_cnt=@mysql_num_rows($custom_exe);
                                     <thead>
                                     <tr>
                                         <th>Sl.No</th>
-                                        <th>Customs Code</th>
                                         <th>Customs Name</th>
                                         <th>Mobile</th>
                                         <th>Email</th>
+                                        <th>Port</th>
+                                        <th>Terminal</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -84,10 +87,11 @@ $custom_cnt=@mysql_num_rows($custom_exe);
                                         ?>
                                         <tr>
                                             <td><?php echo $sl; ?></td>
-                                            <td><?php echo $custom_fet['customs_code']; ?></td>
                                             <td><?php echo $custom_fet['name_customs']; ?></td>
                                             <td><?php echo $custom_fet['mobile']; ?></td>
                                             <td><?php echo $custom_fet['email']; ?></td>
+                                            <td><?php echo $custom_fet['ports_name']; ?></td>
+                                            <td><?php echo $custom_fet['terminals_name']; ?></td>
                                             <td>
                                                 <a href="customsview.php?customs_id=<?php echo $custom_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                             </td>
