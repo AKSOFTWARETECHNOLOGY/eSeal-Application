@@ -1026,7 +1026,7 @@ html {
 }
 body {
 	/*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Merriweather', serif;
 	font-size: 14px;
 	line-height: 1.42857143;
 	color: #333;
@@ -3694,6 +3694,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	/*font-weight:100;*/
 	color:#000;
 	letter-spacing:1px;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 @media (max-width:767px) {
 .navbar-nav .open .dropdown-menu {

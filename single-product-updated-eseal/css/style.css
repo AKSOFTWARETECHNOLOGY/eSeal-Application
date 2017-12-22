@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 *{margin:0; padding:0;}
 /*----------------------------------------------------Top Bar----------------------------------------------------*/
 .top-bar{width:100%; float:left; padding:10px 0; background:#a4c334; display:none;}
 .top-bar .container-fluid{padding:0 40px;}
-.mail-link{text-align:right;}
+.mail-link{text-align:right; font-family: 'Source Sans Pro', sans-serif;}
 .mail-link ul{margin:0; padding:0;}
-.mail-link ul li{list-style:none; display:inline-block; padding:0 10px; color:#fff;}
-.mail-link ul li a{color:#fff;}
+.mail-link ul li{list-style:none; display:inline-block; padding:0 10px; color:#fff; font-size:16px;}
+.mail-link ul li a{color:#fff; }
 .mail-link ul li i{padding-right:5px;}
 .mail-right{text-align:left;}
 /*----------------------------------------------------Top Bar----------------------------------------------------*/
@@ -15,7 +16,7 @@
 .banner-overlay{width:100%; float:left; background:rgba(0, 0, 0, 0.1); height:350px;}
 /*----------------------------------------------------Banner----------------------------------------------------*/
 /*----------------------------------------------------Main Header----------------------------------------------------*/
-.main-header{width:100%; float:left; border-bottom:0 solid #ddd; padding:15px 0; background:#a4c334;}
+.main-header{width:100%; float:left; border-bottom:0 solid #ddd; padding:15px 0; background:#32b4d8; }
 .logo h3{margin:0px 0 5px 0; font-size:26px; font-weight:bold; line-height:25px; color:#e03912;}
 .logo h3 a{color:#e03912; text-shadow:0 2px 3px rgba(0, 0, 0, 0.3);}
 .logo p{text-align:center; margin:10px 0 0 0; color:#a4c334; font-size:18px; position:relative;}
@@ -29,7 +30,7 @@
 .main-header .navbar-nav > li > a:hover::before{right:0; left:0;}
 .main-header .navbar-nav > li > a::after{content: ""; position: absolute; top:0; z-index: -1; left: 50%; right: 50%; bottom: 0; background:#fff; height:2px; -webkit-transition-property: left, right; transition-property: left, right; -webkit-transition-duration: 0.3s; transition-duration: 0.3s; -webkit-transition-timing-function: ease-out;transition-timing-function: ease-out;}
 .main-header .navbar-nav > li > a:hover::after{right:0; left:0;}
-.fixed{position: fixed; top:0; left:0; width: 100%; background:#a4c334; z-index:9999;}
+.fixed{position: fixed; top:0; left:0; width: 100%; background:#32b4d8; z-index:9999;}
 .css-menu{margin-top:28px;}
 /*----------------------------------------------------Main Header----------------------------------------------------*/
 /*----------------------------------------------------Home About----------------------------------------------------*/
@@ -59,8 +60,8 @@
 .about-img img{margin:20px 0;}
 /*----------------------------------------------------Home About----------------------------------------------------*/
 /*----------------------------------------------------Welcome----------------------------------------------------*/
-.welcome{width:100%; float:left; padding:10px 0; text-align:center;}
-.welcome p{background:#a4c334; color:#fff; font-size:20px; line-height:25px; padding:20px 0; margin:20px 40px; border-radius:3px;}
+.welcome{width:100%; float:left; padding:10px 0; text-align:center; background:#141414;}
+.welcome p{background:#32b4d8; color:#fff; font-size:20px; line-height:25px; padding:20px 0; margin:20px 40px; border-radius:3px;}
 /*----------------------------------------------------Welcome----------------------------------------------------*/
 /*----------------------------------------------------Products Category----------------------------------------------------*/
 .products-category{width:100%; float:left; background:#f8f3f7; padding:30px 0;}
@@ -269,7 +270,17 @@
 
 /*----------------------------------------------------Account Link----------------------------------------------------*/
 .blue{color:#23aef4;}
+.how-it-works{width:100%; float:left; background:#eceded; padding:50px 0;}
+.how-it-works h3{text-align:center; margin:0 0 30px 0; font-size:28px; font-weight:bold;}
+.login-account h4{ font-weight:bold; color:#365569; font-size:25px;}
+.login-account{text-align:center;}
+.login-account img{max-width:50%;}
 
+.why-choose{width:100%; float:left; background:#fff; padding:50px 0;}
+.why-choose h3{text-align:center; margin:0 0 30px 0; font-size:28px; font-weight:bold;}
+.choose-eseal h4{ font-weight:bold; color:#365569; font-size:25px;}
+.choose-eseal{text-align:center;}
+.choose-eseal img{max-width:50%;}
 
 
 @media(max-width:767px){ 

@@ -55,7 +55,7 @@ $(document).ready(function() {
 			infiniteLoop: true,
 			minSlides:1,
 			maxSlides: 1,
-			speed: 800,
+			speed: 2000,
 			auto:true,
 		});
 			  

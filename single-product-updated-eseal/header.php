@@ -15,6 +15,21 @@
         }
     }
 
+     .main-header {background: #4E4E4E; }
+
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+        color: #00bfff;
+    }
+    .navbar-default .navbar-nav>li>a {
+        color: #00bfff;
+    }
+    .mail-link ul li {
+        color: #00bfff;
+    }
+    .mail-link ul li a {
+        color: #00bfff;
+    }
+
 </style>
 <div class="main-header" style="padding: 5px 0;">
 <div class="container-fluid">

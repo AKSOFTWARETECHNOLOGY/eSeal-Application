@@ -1,6 +1,6 @@
 <style>
     .account-link {
-        background: #23aef4;
+        background: #32b4d8 !important;
         padding: 10px;
         height: 650px;
         margin: 10px 0;
