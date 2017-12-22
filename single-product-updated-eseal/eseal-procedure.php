@@ -87,39 +87,104 @@ $(document).ready(function() {
 </div>
 
 
-<div class="home-about grey-bg">
-<div class="container">
-<div class="row web-inner-top">
-<h3>E-Seal Procedure</h3>
-<br/>
-<div class="col-md-9 col-sm-9 col-xs-12 about-us">
+<div class="home-about">
+    <div class="container">
+        <div class="row web-inner-top">
+            <h3>E-Seal Procedure</h3>
+            <p><i>Electronic Sealing of Container by exporter under self-sealing procedure WEF 01.10.2017</i></p>
 
-<p>Head quartered in Thanjavur District, Tamil Nadu, SSG Groupis a major player in Tamil Nadu and the flagship company . With a rich heritage and an exhaustive and diverse portfolio of successfully completed projects across industry sectors, the company is poised for the next era of growth. The key factors to its robust and stable growth are its client focus, its leadership, the adoption of the latest technology and its work force orientation. SSG Group brings a host of capabilities to major  projects through an integrated approach that spans the life cycle of infrastructure, Education and Training, Media and Entertainment and Logistic Solutions to professional & support services are been Headed by Mr.Sridharan, along with the energetic team of professionals.</p>
-</div>
-<div class="col-md-3 col-sm-3 col-xs-12 abt-img">
-<img src="images/eseal1.jpg" alt="" title="" class="img-responsive">
-</div>
-</div>
+            <div class="col-md-12 col-sm-12 col-xs-12 about-img">
+                <h2>How it Works ?</h2>
+                <img src="images/eseal-procedure.png" alt="E-Seal Procedure" title="E-Seal Procedure" class="img-responsive">
+            </div>
 
-<!--<div class="row web-inner-top">
-<div class="col-md-3 col-sm-3 col-xs-12 abt-img">
-<img src="images/eseal1.jpg" alt="" title="" class="img-responsive img-circle">
-</div>
+            <div class="col-md-12 col-sm-12 col-xs-12 about-us">
+                <h4>Objective : </h4>
+                <p>In order to do ease export of the goods, now sealing for export will be electronic in absence of the CBEC official. Presence of the Superintendent of GST is not required for sealing of export container only intimation would be suffice with effect from 01st October 2017.</p>
 
-<div class="col-md-9 col-sm-9 col-xs-12 about-us">
-<p>To our credit we sold the first official mobile handset in India in 1995 and have since been instrumental in evolution of mobile industry in the country. In 2015, we entered into a joint venture with Wistron Corporation of Taiwan to set up world class manufacturing facilities for Smartphone and Smart devices in India under Make in India initiative. Optiemus is also the brand licensee for BlackBerry Smartphones for Indian subcontinent and under the agreement manufactures, distributes, markets & provides post sales services. The Group has an extensive presence in telecom retail business with stores across India under the Mobility World and Univercell brands. The group’s flagship company, Optiemus Infracom is listed across all the major stock exchanges in the country, including BSE, NSE.</p>
-</div>
-</div>-->
+                <h4>Exporter Responsibility :</h4>
+                <ul>
+                    <li>To inform the details of the premises (factory or warehouse or any other place), where container stuffing is to be carried out, to the jurisdictional customs officer.</li>
+                    <li>The exporter should be registered under the GST.</li>
+                    <li>Declare the physical serial number of <b>the E-Seal</b> at the time of filling the online integrated shipping bill.</li>
+                    <li>Exporter shall directly procure the <b>RFID tamper proof one time bolt seal</b>bearing unique number from <b>brand vendors</b> (Brand in format ABCD XXXX XXXX) where ABCD stand for brand of vendor and 8X stand for numeric value.</li>
+                </ul>
 
-<!--<div class="row web-inner-top">
-<div class="col-md-9 col-sm-9 col-xs-12 about-us">
-<p>Optiemus Telematics Pvt. Ltd marks the entry of Sri Sai Ganesh Associates into the field of telematics, bringing to this industry its core philosophy of always introducing world class technology with speed and scalability. Optiemus Telematics welcomes its customers to a new era in B2B transactions with end to end digital experience starting from online procurement to easy to use cloud hosted applications, all customized to provide you with agility, visibility and security in your logistics operations.</p>
-</div>
-<div class="col-md-3 col-sm-3 col-xs-12 abt-img">
-<img src="images/eseal1.jpg" alt="" title="" class="img-responsive img-circle">
-</div>
+                <h4>Procedure for Permission of self-sealing :</h4>
+                <ul>
+                    <li>Exporter shall inform the jurisdictional Custom Superintendent or Appraiser of Customs, <b>at least 15 days before the first planned movement of a consignment,</b> about the intention to follow self- sealing procedure for export goods from the factory premises or warehouse.</li>
+                    <li>The jurisdictional Superintendent or an Appraiser or an Inspector of Customs shall visit the premises from where the export goods will be stuffed & sealed for export.</li>
+                    <li>The Superintendent/Inspector of Customs shall inspect the premises with regard to viability of stuffing of container in the premises and submit a report to the jurisdictional Deputy/ Assistant Commissioner of Customs within 48 hours.</li>
+                    <li>The jurisdictional Deputy/Assistant Commissioner of Customs shall forward the proposal, in this regard to the Principal Commissioner/Commissioner of Customs who would grant permission for self-sealing at the approved premises.</li>
+                    <li>Once the permission is granted, the exporter shall furnish <b>only intimation to the jurisdictional Superintendent or Customs each time self-sealing</b> is carried out at approved premises.</li>
+                    <li>Self-Sealing permission once given by a Principal Commissioner/Commissioner of Customs shall be <b>valid for export at all the customs stations.</b></li>
+                    <li>The customs formation granting the self-sealing permission shall circulate the permission along with <b class="blue">GSTIN</b> of the exporter to all Custom Houses/Station concerned.</li>
+                    <li>Transport document for movement of self-sealed container by an exporter from factory or warehouse shall be same as the transport document prescribed under the <b class="blue">GST Laws.</b></li>
+                    <li>The exporter shall seal the container with the <b>tamper proof electronic-seal of standard specification.</b> The electronic seal should have a unique number which should be declared in the Shipping Bill</li>
+                    <li>Before sealing the container, the exporter shall feed the data such as name of the exporter, IEC code, GSTIN number, description of the goods, tax invoice number name of the authorized signatory (for
+                        Affixing the e-seal) and Shipping Bill number in the electronic seal. Thereafter, container shall be sealed with the same electronic seal before leaving the premises.</li>
 
-</div>--><!-- Row -->
+                </ul>
+
+                <h4>Following category of exporter don no required fresh permission (i.e. no need to follow the procedure for permission)</h4>
+                <ul>
+                    <li>The exporters who were availing sealing at their factory premises under system of supervised factory stuffing, will be automatically entitled for self-sealing procedure.</li>
+                    <li>All Exporter AEOs(Authorized economic operators)</li>
+                </ul>
+
+
+                <h4></h4>
+                <p></p>
+
+
+                <h4></h4>
+                <p></p>
+
+
+                <h4></h4>
+                <p></p>
+
+
+                <h4></h4>
+                <p></p>
+
+
+                <h4></h4>
+                <p></p>
+
+
+                <h4></h4>
+                <p></p>
+
+            </div>
+
+        </div>
+
+        <!--<div class="row web-inner-top">
+        <div class="col-md-3 col-sm-3 col-xs-12 abt-img">
+        <img src="images/eseal1.jpg" alt="" title="" class="img-responsive img-circle">
+        </div>
+
+        <div class="col-md-9 col-sm-9 col-xs-12 about-us">
+        <p>To our credit we sold the first official mobile handset in India in 1995 and have since been instrumental in evolution of mobile industry in the country. In 2015, we entered into a joint venture with Wistron Corporation of Taiwan to set up world class manufacturing facilities for Smartphone and Smart devices in India under Make in India initiative. Optiemus is also the brand licensee for BlackBerry Smartphones for Indian subcontinent and under the agreement manufactures, distributes, markets & provides post sales services. The Group has an extensive presence in telecom retail business with stores across India under the Mobility World and Univercell brands. The group’s flagship company, Optiemus Infracom is listed across all the major stock exchanges in the country, including BSE, NSE.</p>
+        </div>
+        </div>-->
+
+        <!--<div class="row web-inner-top">
+        <div class="col-md-9 col-sm-9 col-xs-12 about-us">
+        <p>Optiemus Telematics Pvt. Ltd marks the entry of Sri Sai Ganesh Associates into the field of telematics, bringing to this industry its core philosophy of always introducing world class technology with speed and scalability. Optiemus Telematics welcomes its customers to a new era in B2B transactions with end to end digital experience starting from online procurement to easy to use cloud hosted applications, all customized to provide you with agility, visibility and security in your logistics operations.</p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12 abt-img">
+        <img src="images/eseal1.jpg" alt="" title="" class="img-responsive img-circle">
+        </div>
+
+        </div>--><!-- Row -->
+    </div><!-- Container -->
+</div><!-- Home About -->
+
+
+
+<!-- Row -->
 </div><!-- Container -->
 </div><!-- Home About -->
 
