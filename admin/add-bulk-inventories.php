@@ -34,6 +34,14 @@ while($row = mysql_fetch_assoc($prod_exe)) {
     array_push($prod_results, $row);
 }
 
+$seal_sql="SELECT max(product_sealcode) as maxCode from product_info";
+$seal_exe=mysql_query($seal_sql);
+$seal_fet=mysql_fetch_array($seal_exe);
+$code = $seal_fet['maxCode'];
+$seal = str_replace('SSGA', '', $code);
+$maxseal =  $seal + 1;
+$sealcode = 'SSGA' . $maxseal;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -98,19 +106,26 @@ while($row = mysql_fetch_assoc($prod_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">How many E-Seals?</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="number" name="eseal" id="eseal" min="1" value="" />
+                                            <input class="form-control" type="number" name="noofeseal" id="noofeseal" min="1" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Starting E-Seal Number</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="startsealcode" id="startsealcode" value="" />
+                                            <input class="form-control" type="text" name="startsealcode" id="startsealcode" value="<?php echo $sealcode; ?>" />
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-12 hidden">
                                         <label class="col-sm-3 control-label">Ending E-Seal Number</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="endsealcode" id="endsealcode" value="" readonly/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12 hidden">
+                                        <label class="col-sm-3 control-label">Product Sale Price</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control"  type="number" name="productPrice" id="productPrice" value="0" />
+                                            <div id="errProdPrice" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">

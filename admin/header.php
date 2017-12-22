@@ -77,10 +77,10 @@
             </li> 
 			<li class="treeview">
               <a href="inventorieslist.php">
-                <i class="ion ion-android-clipboard"></i> <span>Product Inventories</span>
+                <i class="ion ion-android-clipboard"></i> <span> Inventory Status</span>
               </a>
             </li>
-              <li class="treeview">
+              <li class="treeview hidden">
                   <a href="buy-product.php">
                       <i class="ion ion-android-contact"></i> <span>Buy Product</span>
                   </a>

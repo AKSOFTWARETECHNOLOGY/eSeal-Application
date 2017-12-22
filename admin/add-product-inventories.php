@@ -119,7 +119,7 @@ $sealcode = 'SSGA' . $maxseal;
                                     <div class="form-group col-md-12 hidden">
                                         <label class="col-sm-3 control-label">Product Sale Price</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control"  type="number" name="salePrice" id="salePrice" value="" />
+                                            <input class="form-control"  type="number" name="salePrice" id="salePrice" value="0" />
                                             <div id="errProdPrice" style="color:red"></div>
                                         </div>
                                     </div>
