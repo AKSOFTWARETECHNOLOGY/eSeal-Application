@@ -62,7 +62,7 @@ $user_email=$_SESSION['adminuseremail'];
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="productName" id="productName" value="" />
+                                            <input class="form-control" type="text" name="productName" id="productName" value="" required/>
                                             <div id="errProdName" style="color:red"></div>
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@ $user_email=$_SESSION['adminuseremail'];
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Price<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="number" name="productPrice" id="productPrice" value="" />
+                                            <input class="form-control" type="number" name="productPrice" id="productPrice" value="" required/>
                                             <div id="errProdPrice" style="color:red"></div>
                                         </div>
                                     </div>
