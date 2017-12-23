@@ -125,6 +125,9 @@ else
     <?php include "head1.php"; ?>
     <style>
         .other-fields{border:1px dotted black; padding:10px;margin: 10px;}
+        .req{
+            color : red;
+        }
     </style>
 </head>
 <body class="skin-blue sidebar-mini">
@@ -305,6 +308,42 @@ else
                                 </tr>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div class="row other-fields">
+                            <div class="row">
+                                <div class="col-md-12"><h4 style="font-weight: bold;">Update Order Status</h4></div>
+                            </div>
+                            <div class="col-md-3">   </div>
+                            <div class="col-md-6">
+                                <form action="doupdateorderstatus.php?order_id=<?php echo $order_id; ?>" method="post">
+                                    <div class="row">
+                                        <div class="col-md-3"><label>Order Status <span class="req">*</span></label></div>
+                                        <div class="col-md-9">
+                                            <select name="orderStatus" class="form-control" required>
+                                                <option>Select Order Status</option>
+                                                <option value="0" <?php if($product_fet['product_order_status'] == 0){echo 'selected'; } ?> >Order Placed</option>
+                                                <option value="1" <?php if($product_fet['product_order_status'] == 1){echo 'selected'; } ?> >Order Confirmed</option>
+                                                <option value="2" <?php if($product_fet['product_order_status'] == 2){echo 'selected'; } ?> >Order Packed</option>
+                                                <option value="3" <?php if($product_fet['product_order_status'] == 3){echo 'selected'; } ?> >Order Intransit</option>
+                                                <option value="4" <?php if($product_fet['product_order_status'] == 4){echo 'selected'; } ?> >Order Delivered</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3"><label>Comments</label></div>
+                                        <div class="col-md-9">
+                                            <textarea name="comments" class="form-control"><?php echo $product_fet['product_order_note']; ?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-6"><button type="submit" class="btn btn-info form-control">Save</button></div>
+                                        <div class="col-md-3"></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-3"></div>
                         </div>
                     </div><!-- /.box -->
                 </div><!--/.col (left) -->
