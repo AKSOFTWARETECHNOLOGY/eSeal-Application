@@ -15,7 +15,7 @@
         }
     }
 
-     .main-header {background: #4E4E4E; }
+    .main-header {background: #4E4E4E; }
 
     .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
         color: #00bfff;

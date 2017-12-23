@@ -1,4 +1,3 @@
-
 <div class="banner">
     <ul class="bxslider">
         <li><img src="images/bg1.jpg"></li>

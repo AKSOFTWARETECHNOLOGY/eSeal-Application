@@ -29,18 +29,18 @@
             </div><!-- Column 12 -->
 			
 			<div class="col-md-4 col-sm-4 col-xs-12 login-account">
-                <img src="images/login-account.jpg" alt="" title="" class="img-responsive" />
+                <img src="images/login-account.png" alt="" title="" class="img-responsive" />
 				<h4>Login into your account</h4>
             </div><!-- Column 4 -->
 			
 		<div class="col-md-4 col-sm-4 col-xs-12 login-account">
-                <img src="images/login-account.jpg" alt="" title="" class="img-responsive" />
+                <img src="images/eseal-product.png" alt="" title="" class="img-responsive" />
 				<h4>Get your E-Seal Product</h4>
             </div><!-- Column 4 -->
 			
 			
 		<div class="col-md-4 col-sm-4 col-xs-12 login-account">
-                <img src="images/delivery-truck.jpg" alt="" title="" class="img-responsive" />
+                <img src="images/delivery-truck.png" alt="" title="" class="img-responsive" />
 				<h4>Get Doorstep Delivery</h4>
             </div><!-- Column 4 -->
 			
