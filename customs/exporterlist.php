@@ -48,7 +48,7 @@ $export_cnt=@mysql_num_rows($export_exe);
                 Exporters List
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
 
                 <li class="active">Exporters List</li>
             </ol>
@@ -75,8 +75,7 @@ $export_cnt=@mysql_num_rows($export_exe);
                                         <th>Exporter Name</th>
                                         <th>Mobile</th>
                                         <th>Email</th>
-                                        <th>GstIn</th>
-                                        <th>Pan Number</th>
+                                        <th>Location</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -93,8 +92,7 @@ $export_cnt=@mysql_num_rows($export_exe);
                                             <td><?php echo $export_fet['name_exporter']; ?></td>
                                             <td><?php echo $export_fet['mobile']; ?></td>
                                             <td><?php echo $export_fet['email']; ?></td>
-                                            <td><?php echo $export_fet['gstin']; ?></td>
-                                            <td><?php echo $export_fet['pan_number']; ?></td>
+                                            <td><?php echo $export_fet['city_name']; ?></td>
                                             <td>
                                                 <a href="exporterview.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                             </td>

@@ -25,7 +25,7 @@ FROM `product_order_info` AS `poi`
 LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
 LEFT JOIN `products` ON products.id = poi.product_id
 LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
-WHERE `poi`.iec_no IS NOT NULL";
+WHERE poi.product_item_status = 1";
 //echo $order_sql;
 $order_exe=mysql_query($order_sql);
 $order_cnt=@mysql_num_rows($order_exe);
@@ -49,7 +49,7 @@ $order_cnt=@mysql_num_rows($order_exe);
                 Eseal List
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
 
                 <li class="active">Eseal List</li>
             </ol>
@@ -72,8 +72,10 @@ $order_cnt=@mysql_num_rows($order_exe);
                                     <thead>
                                     <tr>
                                         <th>Sl.No</th>
-                                        <th>Product Unicode</th>
-                                        <th>Product SealCode</th>
+                                        <th>Exporter Name</th>
+                                        <th>Eseal Number</th>
+                                        <th>Date of Sealing</th>
+                                        <th>E-Seal Status</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -86,8 +88,21 @@ $order_cnt=@mysql_num_rows($order_exe);
                                         ?>
                                         <tr>
                                             <td><?php echo $sl; ?></td>
-                                            <td><?php echo $order_fet['product_unicode']; ?></td>
+                                            <td><?php echo $order_fet['name_exporter']; ?></td>
                                             <td><?php echo $order_fet['product_sealcode']; ?></td>
+                                            <td><?php echo $order_fet['sealing_date']; ?></td>
+                                            <td>
+                                                <?php
+                                                if($order_fet['customs_approve_status']==0) { ?>
+                                                    <button type="button" class="btn btn-warning btn-xs">Pending</button>
+                                                <?php
+                                                }
+                                                else if($order_fet['customs_approve_status']==1) { ?>
+                                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                                <?php }
+                                                else if($order_fet['customs_approve_status']==2) { ?>
+                                                    <button type="button" class="btn btn-danger btn-xs">Tampered</button>
+                                                <?php }?></td>
                                             <td>
                                                 <a href="esealview.php?eseal_id=<?php echo $order_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                             </td>

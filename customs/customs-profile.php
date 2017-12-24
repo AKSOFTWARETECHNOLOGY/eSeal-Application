@@ -33,7 +33,7 @@ $user_email=$_SESSION['adminuseremail'];
                 Customs Profile
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
 
                 <li class="active">Customs Profile</li>
             </ol>
