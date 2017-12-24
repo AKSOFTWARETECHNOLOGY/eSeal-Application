@@ -37,12 +37,12 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Enquiry List
+                Complaint List
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
 
-                <li class="active">Enquiry List</li>
+                <li class="active">Complaint List</li>
             </ol>
         </section>
 
@@ -52,7 +52,7 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" style="line-height:30px;">Enquiry List</h3>
+                            <h3 class="box-title" style="line-height:30px;">Complaint List</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <?php
@@ -79,7 +79,7 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
                                             <td><?php echo $complaint_fet['name']; ?></td>
                                             <td><?php echo $complaint_fet['subject']; ?></td>
                                             <td>
-                                                <a href="enquiryview.php?enquiry_id=<?php echo $complaint_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
+                                                <a href="complaintview.php?enquiry_id=<?php echo $complaint_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                             </td>
                                         </tr>
                                     <?php

@@ -23,7 +23,10 @@ else
     exit;
 }
 
-$product_sql="SELECT product_info.*, products.product_name FROM `product_info` LEFT JOIN `products` ON products.id = product_info.product_id WHERE `product_info`.id = $inventory_id ";
+$product_sql="SELECT product_info.*, products.product_name, exporter_info.name_exporter FROM `product_info`
+LEFT JOIN `products` ON products.id = product_info.product_id
+ LEFT JOIN `exporter_info` ON exporter_info.id = product_info.product_exporter_id
+WHERE `product_info`.id = $inventory_id ";
 $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);
 $product_fet=mysql_fetch_array($product_exe);
@@ -47,7 +50,7 @@ $product_fet=mysql_fetch_array($product_exe);
                 View Product Inventory
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">View Product Inventory</li>
             </ol>
         </section>
@@ -69,14 +72,16 @@ $product_fet=mysql_fetch_array($product_exe);
                                 <div class="col-md-12">
                                     <style>.control-label{line-height:32px;} .form-group{line-height:32px;}</style>
                                     <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Exporter Name</label>
+                                        <div class="col-sm-9">
+                                            <div class=""><?php echo $product_fet['name_exporter']; ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Name</label>
                                         <div class="col-sm-9">
                                             <div class=""><?php echo $product_fet['product_name']; ?></div>
                                         </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Code</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $product_fet['product_unicode']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">E-Seal Number</label>

@@ -25,11 +25,11 @@ VALUES ('2','$receiverId', '$subject', '$message','$enquiryId','$username','$use
             WHERE `complaint_enquiry`.`id` = '$enquiryId'";
     $exe = mysql_query($sql);
 
-    header("Location: enquirylist.php?succ=1&msg=all");
+    header("Location: complaintlist.php?succ=1&msg=all");
 }
 
 else{
-    header("Location: enquirylist.php?err=1&msg=all");
+    header("Location: complaintlist.php?err=1&msg=all");
 }
 
 

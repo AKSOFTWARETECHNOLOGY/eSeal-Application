@@ -52,7 +52,7 @@ $terminal_fet=mysql_fetch_array($terminal_exe);
                 Edit Terminal
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">Edit Terminal</li>
             </ol>
         </section>

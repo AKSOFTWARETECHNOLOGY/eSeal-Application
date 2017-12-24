@@ -19,7 +19,7 @@ LEFT JOIN `products` ON products.id = product_order.product_id
 LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
 WHERE `product_order`.user_id = $user_id";
 
-$product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter FROM `product_order`
+$product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
 LEFT JOIN `products` ON products.id = product_order.product_id
 LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id";
 $product_exe=mysql_query($product_sql);
@@ -45,7 +45,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                 Product Order List
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
 
                 <li class="active">Product Order List</li>
             </ol>
@@ -68,6 +68,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                                     <thead>
                                     <tr>
                                         <th>Exporter Name</th>
+                                        <th>IEC Code</th>
                                         <th>Product Order Id</th>
                                         <th>Product Quantity</th>
                                         <th>Product Sale Total</th>
@@ -83,6 +84,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                                         ?>
                                         <tr>
                                             <td><?php echo $product_fet['name_exporter']; ?></td>
+                                            <td><?php echo $product_fet['iec_code']; ?></td>
                                             <td><?php echo $product_fet['product_order_id']; ?></td>
                                             <td><?php echo $product_fet['product_sale_quantity']; ?></td>
                                             <td><?php echo $product_fet['product_sale_total']; ?></td>

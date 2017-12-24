@@ -54,7 +54,7 @@ $custom_fet=mysql_fetch_array($custom_exe);
                 View Customs
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">View Customs</li>
             </ol>
         </section>

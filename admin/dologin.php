@@ -41,7 +41,7 @@ if($num>0)
 	$_SESSION['adminuseremail']=$fet['email'];
 	$_SESSION['adminuserrole']=$role_id;
 	
-	header("Location: productlist.php");
+	header("Location: dashboard.php");
 	}
 	else
 	{

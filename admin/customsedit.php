@@ -93,7 +93,7 @@ while($terminalrow = mysql_fetch_assoc($terminal_exe)) {
                 Edit Customs
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">Edit Customs</li>
             </ol>
         </section>

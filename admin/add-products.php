@@ -38,7 +38,7 @@ $user_email=$_SESSION['adminuseremail'];
                 Add New Product
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">Add Product</li>
             </ol>
         </section>
@@ -75,7 +75,7 @@ $user_email=$_SESSION['adminuseremail'];
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Price<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="number" name="productPrice" id="productPrice" value="" required/>
+                                            <input class="form-control" type="number" step="0.01" name="productPrice" id="productPrice" value="" required/>
                                             <div id="errProdPrice" style="color:red"></div>
                                         </div>
                                     </div>

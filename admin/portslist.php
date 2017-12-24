@@ -43,7 +43,7 @@ $port_cnt=@mysql_num_rows($port_exe);
                 Ports List
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
 
                 <li class="active">Ports List</li>
             </ol>

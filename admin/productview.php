@@ -46,7 +46,7 @@ $product_fet=mysql_fetch_array($product_exe);
                 View Product
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">View Product</li>
             </ol>
         </section>
@@ -100,7 +100,8 @@ $product_fet=mysql_fetch_array($product_exe);
                         <div class="box-body">
                             <div class="form-group col-md-12">
                                 <a href="productlist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Products List</button></a>
-                                <a href="productedit.php?product_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger col-md-12"><i class="fa fa-pencil"></i> Edit</button></a>
+                                <a href="productedit.php?product_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger col-md-12"  style="margin-bottom:10px;"><i class="fa fa-pencil"></i> Edit</button></a>
+                                <a href="product-delete.php?disable=1&product_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to disable this product?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Disable</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->

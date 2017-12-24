@@ -52,7 +52,7 @@ $port_fet=mysql_fetch_array($port_exe);
                 Edit Port
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">Edit Port</li>
             </ol>
         </section>

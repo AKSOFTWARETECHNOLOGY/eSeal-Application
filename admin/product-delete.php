@@ -13,7 +13,7 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-if(isset($_REQUEST['delete']))
+if(isset($_REQUEST['disable']))
 {
     $prodId=$_REQUEST['product_id'];
     $user_date=date("Y-m-d");
@@ -22,11 +22,11 @@ if(isset($_REQUEST['delete']))
             WHERE `products`.`id` = '$prodId'";
     $delete = mysql_query($sql);
 
-    header("Location: productlist.php?succ=1&msg=all");
+    header("Location: productlist.php?succ=1");
 }
 else
 {
-    header("Location: productlist.php?err=1&msg=all");
+    header("Location: productlist.php?err=1");
 }
 
 ?>

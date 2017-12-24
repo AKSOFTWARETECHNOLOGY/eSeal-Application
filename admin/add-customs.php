@@ -70,10 +70,10 @@ $user_email=$_SESSION['adminuseremail'];
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Add New Exporter
+                Add New Customs
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">Add Customs</li>
             </ol>
         </section>

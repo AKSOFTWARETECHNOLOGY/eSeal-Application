@@ -52,7 +52,7 @@ $product_fet=mysql_fetch_array($product_exe);
                 Edit Product
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">Edit Product</li>
             </ol>
         </section>
@@ -80,7 +80,7 @@ $product_fet=mysql_fetch_array($product_exe);
                                             <div id="errProdName" style="color:red"></div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-12 hidden">
                                         <label class="col-sm-3 control-label">Product Code</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="unicode" id="unicode" value="<?php echo $product_fet['product_unicode']; ?>"/>
@@ -100,7 +100,7 @@ $product_fet=mysql_fetch_array($product_exe);
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-block btn-flat save-prod">Save Changes</button>
+                                        <button type="submit" class="btn btn-primary btn-block btn-flat save-prod" onclick="return confirm('Are you sure you want to save the changes?');">Save Changes</button>
                                     </div>
                                 </div>
                                 <div class="col-md-1"></div>

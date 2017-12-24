@@ -79,7 +79,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                 Edit Exporter
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">Edit Exporter</li>
             </ol>
         </section>

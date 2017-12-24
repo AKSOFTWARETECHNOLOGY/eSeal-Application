@@ -46,7 +46,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                 Product Inventories List
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
 
                 <li class="active">Product Inventories List</li>
             </ol>
@@ -57,9 +57,6 @@ $product_cnt=@mysql_num_rows($product_exe);
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title" style="line-height:30px;">Product Inventories List</h3>
-                        </div><!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
                                 <a href="add-product-inventories.php?inventory_id=1" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom: 10px;">Add Product Inventories</button></a>
@@ -77,6 +74,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                                         <th>Product Name</th>
                                         <th class="hidden">Product Code</th>
                                         <th>E-Seal Number</th>
+                                        <th>Date of Product Added</th>
                                         <th>Status</th>
                                         <th></th>
                                     </tr>
@@ -87,12 +85,14 @@ $product_cnt=@mysql_num_rows($product_exe);
                                     while($product_fet=mysql_fetch_array($product_exe))
                                     {
                                         $sl++;
+                                        $added_date = substr($product_fet['created_at'], 0, 10);
                                         ?>
                                         <tr>
                                             <td><?php echo $sl; ?></td>
                                             <td><?php echo $product_fet['product_name']; ?></td>
                                             <td class="hidden"><?php echo $product_fet['product_unicode']; ?></td>
                                             <td><?php echo $product_fet['product_sealcode']; ?></td>
+                                            <td><?php echo $added_date; ?></td>
                                             <td>
                                                 <?php if($product_fet['product_sale_status'] == 0){
                                                     ?>
