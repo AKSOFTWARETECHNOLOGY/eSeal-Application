@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 *{margin:0; padding:0;}
 /*----------------------------------------------------Top Bar----------------------------------------------------*/
-.top-bar{width:100%; float:left; padding:10px 0; background:#00bfff; display:none;}
+.top-bar{width:100%; float:left; padding:10px 0; background:#a4c334; display:none;}
 .top-bar .container-fluid{padding:0 40px;}
 .mail-link{text-align:right; font-family: 'Source Sans Pro', sans-serif;}
 .mail-link ul{margin:0; padding:0;}
@@ -16,13 +16,16 @@
 .banner-overlay{width:100%; float:left; background:rgba(0, 0, 0, 0.1); height:350px;}
 /*----------------------------------------------------Banner----------------------------------------------------*/
 /*----------------------------------------------------Main Header----------------------------------------------------*/
-.main-header{width:100%; float:left; border-bottom:0 solid #ddd; padding:15px 0; background:#32b4d8; }
+.main-header{width:100%; float:left; border-bottom:0 solid #ddd; padding:15px 0; background: -moz-linear-gradient(top, #6e6e6d 0%, #0f0f0f 100%) !important;
+    background: -webkit-linear-gradient(top, #6e6e6d 0%,#0f0f0f 100%) !important;
+    background: linear-gradient(to bottom, #6e6e6d 0%,#0f0f0f 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6e6e6d', endColorstr='#0f0f0f',GradientType=0 ) !important;}
 .logo h3{margin:0px 0 5px 0; font-size:26px; font-weight:bold; line-height:25px; color:#e03912;}
 .logo h3 a{color:#e03912; text-shadow:0 2px 3px rgba(0, 0, 0, 0.3);}
-.logo p{text-align:center; margin:10px 0 0 0; color:#00bfff; font-size:18px; position:relative;}
-.logo p::before{position:absolute; content:""; background:#00bfff; width:100px; height:2px; border-radius:50%; top:13px; left:50px;}
-.logo p::after{position:absolute; content:""; background:#00bfff; width:100px; height:2px; border-radius:50%; top:13px; right:50px;}
-.logo p a:hover, .logo p a:focus{color:#00bfff;}
+.logo p{text-align:center; margin:10px 0 0 0; color:#a4c334; font-size:18px; position:relative;}
+.logo p::before{position:absolute; content:""; background:#a4c334; width:100px; height:2px; border-radius:50%; top:13px; left:50px;}
+.logo p::after{position:absolute; content:""; background:#a4c334; width:100px; height:2px; border-radius:50%; top:13px; right:50px;}
+.logo p a:hover, .logo p a:focus{color:#a4c334;}
 .logo img{max-width:50%;}
 .main-header .nav.navbar-nav{margin:5px 0 0 15px;}
 .main-header .navbar-nav > li > a{position:relative;}
@@ -106,14 +109,15 @@
 /*----------------------------------------------------Testimonial----------------------------------------------------*/
 
 /*----------------------------------------------------Footer----------------------------------------------------*/
-.footer{width:100%; float:left; background:#141414 ; padding:3em 0;}
+.footer{width:100%; float:left; background:url(../images/footer-bg.jpg) no-repeat center center;  height:384px; background-size:cover;}
+.footer-overlay{width:100%; float:left; background:rgba(0, 0, 0, 0.8); height:384px; padding:3em 0;}
 .footer h3{color:#FFF; font-size:18px; font-weight:bold;}
 .footer p{color:#FFF; line-height:25px;}
 .account ul{margin:0; padding:0;}
 .account ul li{line-height:30px; list-style:circle; margin-left:0;}
 .account ul li a{color:#FFF;  transition:all 1s ease;}
 .account ul li a:hover{color:#05b1ed; padding-left:8px; transition:all 1s ease;}
-.footer-bottom{background:#141414; border-top:1px solid #3a3a3a; width:100%; float:left; padding:20px 0;}
+.footer-bottom{width:100%; float:left; padding:20px 0;}
 .footer-bottom p{text-align:center; color:#FFF;}
 .footer-bottom a{color:#FFF;}
 .footer-bottom a:hover{color:#05b1ed;}

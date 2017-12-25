@@ -36,7 +36,7 @@
 <div class="row">
 <div class="col-md-4 col-sm-4 col-xs-12 logo">
 <h3><a href="index.php">
-        <img src="images/logo.png" alt="Sri Sai Ganesh Associates" title="Sri Sai Ganesh Associates" class="img-responsive">
+        <img src="images/logo-blue.png" alt="Sri Sai Ganesh Associates" title="Sri Sai Ganesh Associates" class="img-responsive">
     </a>
 </h3>
 </div>

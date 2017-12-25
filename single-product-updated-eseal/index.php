@@ -47,18 +47,18 @@ $(document).ready(function() {
                   }
                 }
               })
-			  
-			  $('.bxslider').bxSlider({
-			mode: 'horizontal',
-			moveSlides:1,
-			slideMargin: 40,
-			infiniteLoop: true,
-			minSlides:1,
-			maxSlides: 1,
-			speed: 2000,
-			auto:true,
-		});
-			  
+
+
+    $('.bxslider').bxSlider({
+        mode: 'fade',
+        moveSlides:1,
+        infiniteLoop: true,
+        minSlides:1,
+        maxSlides: 1,
+        speed:3000,
+        auto:true,
+    });
+
 			  
 	$(window).scroll(function(){
   var sticky = $('.main-header'),

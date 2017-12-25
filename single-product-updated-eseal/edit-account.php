@@ -436,8 +436,8 @@ $(document).ready(function() {
                 mobile: {
                     required: true,
                     number: true,
-                    minlength: 11,
-                    maxlength: 11
+                    minlength: 10,
+                    maxlength: 10
                 },
                 telephone: {
                     number: true,
@@ -446,8 +446,8 @@ $(document).ready(function() {
                 },
                 pincode: {
                     number: true,
-                    minlength: 11,
-                    maxlength: 11
+                    minlength: 6,
+                    maxlength: 6
                 },
                 city: "required",
                 state: "required",
