@@ -180,6 +180,15 @@ $(document).ready(function() {
             <p style="color:red;font-weight:bold"> Your Address Changes Not Updated.</p>
         <?php } ?>
     <?php } ?>
+    <?php if(isset($_REQUEST['insert'])) { ?>
+        <?php if(isset($_REQUEST['success'])) { ?>
+            <p style="color:green;font-weight:bold"> Your Address Added Successfully!</p>
+        <?php } ?>
+
+        <?php if(isset($_REQUEST['error'])) { ?>
+            <p style="color:red;font-weight:bold"> Invalid Details.</p>
+        <?php } ?>
+    <?php } ?>
 
 
     <div class="submit-btn">
@@ -258,15 +267,6 @@ $(document).ready(function() {
     <form name="addressform" id="addressform" action="doupdateaddress.php" method="post">
         <div class="col-md-12 col-sm-12 col-xs-12 address">
             <div class="account-register">
-                <?php if(isset($_REQUEST['insert'])) { ?>
-                    <?php if(isset($_REQUEST['success'])) { ?>
-                        <p style="color:green;font-weight:bold"> Your Address Added Successfully!</p>
-                    <?php } ?>
-
-                    <?php if(isset($_REQUEST['error'])) { ?>
-                        <p style="color:red;font-weight:bold"> Invalid Details.</p>
-                    <?php } ?>
-                <?php } ?>
 
                 <div class="other-fields">
                     <div class="row">

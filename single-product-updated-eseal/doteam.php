@@ -61,7 +61,7 @@ $joindate=date("Y-m-d");
 
 
                 $insert_exporter_sq1 = "INSERT INTO `brancher_info` (user_id, exporter_id, name_person, address, city, state, country, pincode, telephone, mobile, email, created_by, updated_by, created_at, updated_at)
-VALUES ('$brancer_id','$user_id','$personName','$address','$cityId','$state','$countryId','$pincode','$telephone','$mobile','$email','$username','$username','$date','$date')";
+VALUES ('$brancer_id','$user_id','$personName','$address','$cityId','$state','$countryId','$pincode','$mobile','$mobile','$email','$username','$username','$date','$date')";
 
                 $insert_exporter_exe = mysql_query($insert_exporter_sq1);
 

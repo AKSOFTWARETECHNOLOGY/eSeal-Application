@@ -169,26 +169,16 @@ $(document).ready(function() {
     <div class="order-history">
 <h3><i class="fa fa-address-book" aria-hidden="true"></i> View Team Members</h3>
 
-        <div id="successMessage">
-        <?php if(isset($_REQUEST['delete'])) { ?>
-            <?php if(isset($_REQUEST['success'])) { ?>
-                <p style="color:green;font-weight:bold"> Your Team Member Status Updated Successfully!.</p>
-            <?php } ?>
 
-            <?php if(isset($_REQUEST['error'])) { ?>
-                <p style="color:red;font-weight:bold"> Your Team Member Status Not Updated.</p>
-            <?php } ?>
+    <?php if(isset($_REQUEST['delete'])) { ?>
+        <?php if(isset($_REQUEST['success'])) { ?>
+            <p style="color:green;font-weight:bold"> Your Account Status Updated Successfully!.</p>
         <?php } ?>
 
-        <?php if(isset($_REQUEST['insert'])) { ?>
-            <?php if(isset($_REQUEST['success'])) { ?>
-                <p style="color:green;font-weight:bold"> Your Team Member Added Successfully!</p>
-            <?php } ?>
-
-            <?php if(isset($_REQUEST['error'])) { ?>
-                <p style="color:red;font-weight:bold"> Invalid Details.</p>
-            <?php } ?>
+        <?php if(isset($_REQUEST['error'])) { ?>
+            <p style="color:red;font-weight:bold"> Your Account Status Not Updated.</p>
         <?php } ?>
+    <?php } ?>
 
         <?php if(isset($_REQUEST['update'])) { ?>
             <?php if(isset($_REQUEST['success'])) { ?>
@@ -199,8 +189,6 @@ $(document).ready(function() {
                 <p style="color:red;font-weight:bold"> Your Team Member Details Not Updated.</p>
             <?php } ?>
         <?php } ?>
-        </div>
-
 
     <div class="submit-btn">
         <ul>
@@ -275,54 +263,25 @@ $(document).ready(function() {
                 <style>
                     div.form-group label { width: 150px; font-weight: bold; }
                 </style>
-        <form name="addressform" id="addressform" action="doteam.php" method="post">
+        <form name="addressform" id="addressform" action="doupdateteam.php" method="post">
             <div class="col-md-12 col-sm-12 col-xs-12 address">
                 <div class="account-register">
 
                     <div class="other-fields">
-                        <div class="row">
 
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label style="float: left; ">Account Status :: </label>
-                                    <input type="hidden" name="status" class="register-input" value="<?php echo $user_brancher_fet['status']; ?>" placeholder="Name Of Contact Person" required />
-                                    <?php if($user_brancher_fet['status']==1) { ?>
-                                        <span style="color:green;font-weight: bold;float: left;"> ACTIVE </span>
-                                    <?php } else { ?>
-                                        <span style="color:red;font-weight: bold;float: left;"> INACTIVE </span>
-                                    <?php } ?>
-                                    <br/>
-                                </div>
-                            </div><!-- Inner Column -->
-
-
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Email Id :: </label>
-                                    <input type="hidden" name="email" id="email" class="register-input" value="<?php echo $user_brancher_fet['email']; ?>" required />
-                                    <?php echo $user_brancher_fet['email']; ?>
-                                    <span id="emailstatus"></span>
-                                    <span class="hidden">(This will become your default registered email)</span>
-                                </div>
-                            </div><!-- Inner Column -->
-
-                        </div><!-- Inner Row -->
                         <div class="row">
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label>Name Of Member ::</label>
-                                    <input type="hidden" name="personName" id="personName" class="register-input" value="<?php echo $user_brancher_fet['name_person']; ?>" placeholder="Name Of Member" required />
-                                    <?php echo $user_brancher_fet['name_person']; ?>
+                                    <input type="text" name="personName" id="personName" class="register-input" value="<?php echo $user_brancher_fet['name_person']; ?>" placeholder="Name Of Member" required />
                                 </div>
                             </div><!-- Inner Column -->
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label>Mobile No ::</label>
-                                    <input type="hidden" name="mobile" id="mobile" class="register-input" value="<?php echo $user_brancher_fet['mobile']; ?>" maxlength="10" required />
-                                    <?php echo $user_brancher_fet['mobile']; ?>
+                                    <input type="text" name="mobile" id="mobile" class="register-input" value="<?php echo $user_brancher_fet['mobile']; ?>" maxlength="10" required />
                                 </div>
                             </div><!-- Inner Column -->
                         </div><!-- Inner Row -->
@@ -333,8 +292,7 @@ $(document).ready(function() {
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Address ::</label>
-                                    <textarea name="address" id="address" placeholder="Address" class="register-input hidden" required><?php echo $user_brancher_fet['address']; ?></textarea>
-                                    <?php echo $user_brancher_fet['address']; ?>
+                                    <textarea name="address" id="address" placeholder="Address" class="register-input" required><?php echo $user_brancher_fet['address']; ?></textarea>
                                 </div>
                             </div><!-- Inner Column -->
 
@@ -347,13 +305,11 @@ $(document).ready(function() {
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label>City ::</label>
-                                    <?php echo $city_name; ?>
-
-                                    <select class="register-input hidden" name="cityId" id="cityId" required>
+                                    <select class="register-input" name="cityId" id="cityId" required>
                                         <option value="">Select City</option>
                                         <?php
                                         foreach($city_results as $key => $value){ ?>
-                                            <option value="<?php echo $value['id']; ?>"><?php echo $value['city_name']; ?></option>
+                                            <option value="<?php echo $value['id']; ?>" <?php if($value['id']==$user_brancher_fet['city']) { echo "selected"; } ?>><?php echo $value['city_name']; ?></option>
                                         <?php
                                         }
                                         ?>
@@ -365,13 +321,11 @@ $(document).ready(function() {
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label>State ::</label>
-                                    <?php echo $state_name; ?>
-
-                                    <select class="register-input hidden" name="state" id="state" required>
+                                    <select class="register-input" name="state" id="state" required>
                                         <option value="">Select State</option>
                                         <?php
                                         foreach($state_results as $key => $value){ ?>
-                                            <option value="<?php echo $value['id']; ?>"><?php echo strtoupper($value['state_name']); ?></option>
+                                            <option value="<?php echo $value['id']; ?>" <?php if($value['id']==$user_brancher_fet['state']) { echo "selected"; } ?>><?php echo strtoupper($value['state_name']); ?></option>
                                         <?php
                                         }
                                         ?>
@@ -383,13 +337,11 @@ $(document).ready(function() {
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label>Country ::</label>
-                                    <?php echo $country_name; ?>
-
-                                    <select class="register-input hidden" name="countryId" id="countryId" required >
+                                    <select class="register-input" name="countryId" id="countryId" required >
                                         <option value="">Select Country</option>
                                         <?php
                                         foreach($country_results as $key => $value){ ?>
-                                            <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
+                                            <option value="<?php echo $value['id']; ?>" <?php if($value['id']==$user_brancher_fet['country']) { echo "selected"; } ?>><?php echo $value['name']; ?></option>
                                         <?php
                                         }
                                         ?>
@@ -400,8 +352,7 @@ $(document).ready(function() {
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label>Pincode ::</label>
-                                    <input type="hidden" name="pincode" id="pincode" class="register-input" value="<?php echo $user_brancher_fet['mobile']; ?>" maxlength="6" required />
-                                    <?php echo $user_brancher_fet['pincode']; ?>
+                                    <input type="text" name="pincode" id="pincode" class="register-input" value="<?php echo $user_brancher_fet['mobile']; ?>" maxlength="6" required />
                                 </div>
                             </div><!-- Inner Column -->
 
@@ -422,9 +373,10 @@ $(document).ready(function() {
 
 
 
-                    <div class="row hidden">
+                    <div class="row">
 
                         <div class="form-group last-otp">
+                            <input type="hidden" name="id" id="id" class="register-input" value="<?php echo $user_brancher_fet['user_id']; ?>" required />
                             <input type="submit" name="addteam" value="Submit">
                         </div>
 
@@ -434,9 +386,9 @@ $(document).ready(function() {
         </form>
 
 
-        <div class="submit-btn hiddenX">
+        <div class="submit-btn hidden">
             <ul>
-                <li><a class="btn btn-info hiddenX" href="edit-team.php?id=<?php echo $user_brancher_fet['user_id']; ?>">Edit</a></li>
+                <li><a class="btn btn-info hiddenX" href="#edit-address-book.php?id=<?php echo $user_brancher_fet['user_id']; ?>">Edit</a></li>
                 <?php if($user_brancher_fet['status']==1) { ?>
                     <li><a class="btn btn-warning hiddenX" href="delete-team.php?delete=0&id=<?php echo $user_brancher_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to disable this item?');">Disable</a></li>
                 <?php } else { ?>

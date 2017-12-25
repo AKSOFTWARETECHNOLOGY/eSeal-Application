@@ -183,25 +183,35 @@ $(document).ready(function() {
 <h3><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</h3>
 
     <div id="successMessage">
-    <?php if(isset($_REQUEST['update'])) { ?>
-        <?php if(isset($_REQUEST['success'])) { ?>
-            <p style="color:green;font-weight:bold"> Your Address Change Updated Successfully!.</p>
+        <?php if(isset($_REQUEST['insert'])) { ?>
+            <?php if(isset($_REQUEST['success'])) { ?>
+                <p style="color:green;font-weight:bold"> Your Address Added Updated Successfully!.</p>
+            <?php } ?>
+
+            <?php if(isset($_REQUEST['error'])) { ?>
+                <p style="color:red;font-weight:bold"> Your Address Not Added.</p>
+            <?php } ?>
         <?php } ?>
 
-        <?php if(isset($_REQUEST['error'])) { ?>
-            <p style="color:red;font-weight:bold"> Your Address Changes Not Updated.</p>
-        <?php } ?>
-    <?php } ?>
+        <?php if(isset($_REQUEST['update'])) { ?>
+            <?php if(isset($_REQUEST['success'])) { ?>
+                <p style="color:green;font-weight:bold"> Your Address Change Updated Successfully!.</p>
+            <?php } ?>
 
-    <?php if(isset($_REQUEST['delete'])) { ?>
-        <?php if(isset($_REQUEST['success'])) { ?>
-            <p style="color:green;font-weight:bold"> Your Address Status Changed Successfully!.</p>
+            <?php if(isset($_REQUEST['error'])) { ?>
+                <p style="color:red;font-weight:bold"> Your Address Changes Not Updated.</p>
+            <?php } ?>
         <?php } ?>
 
-        <?php if(isset($_REQUEST['error'])) { ?>
-            <p style="color:red;font-weight:bold"> Your Address Status Not Changed.</p>
+        <?php if(isset($_REQUEST['delete'])) { ?>
+            <?php if(isset($_REQUEST['success'])) { ?>
+                <p style="color:green;font-weight:bold"> Your Address Status Changed Successfully!.</p>
+            <?php } ?>
+
+            <?php if(isset($_REQUEST['error'])) { ?>
+                <p style="color:red;font-weight:bold"> Your Address Status Not Changed.</p>
+            <?php } ?>
         <?php } ?>
-    <?php } ?>
     </div>
 
 

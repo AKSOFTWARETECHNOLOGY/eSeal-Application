@@ -55,6 +55,12 @@ $product_info_order_sql="SELECT * FROM `product_order_info` WHERE `id`='$product
 $product_info_order_exe=mysql_query($product_info_order_sql);
 $product_info_order_fet=mysql_fetch_array($product_info_order_exe);
 //print_r($product_info_order_fet);
+
+//$product_info_order_id = $product_info_order_fet['id'];
+
+$attachment_sql="SELECT * FROM `eseal_attachment` WHERE `eseal_id`='$product_info_order_id' AND `eseal_attachment_status`='1'";
+$attachment_exe=mysql_query($attachment_sql);
+$attachment_cnt=mysql_num_rows($attachment_exe);
 ?>
 <!doctype html>
 <html>
@@ -405,7 +411,7 @@ $(document).ready(function() {
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label>Notes *</label>
+                                <label>GOODS Type *</label>
                                 <span class="account-input">
                                  <?php echo $product_info_order_fet['notes']; ?>
                                  </span>
@@ -413,6 +419,26 @@ $(document).ready(function() {
                         </div><!-- Inner Column -->
 
                     </div><!-- Inner Row -->
+
+
+                     <div class="row">
+
+                         <div class="col-md-12 col-sm-12 col-xs-12">
+                             <div class="form-group">
+                                 <label>Documents</label>
+                                <span class="account-input">
+                                 <?php if($attachment_cnt>0) { ?>
+
+                                     <?php while($attachment_fet=mysql_fetch_array($attachment_exe)) { ?>
+                                        <a href="<?php echo $attachment_fet['eseal_attachment_path']; ?>" target="_blank"><?php echo $attachment_fet['eseal_attachment_name']; ?></a><br/>
+                                     <?php } ?>
+
+                                 <?php } ?>
+                                 </span>
+                             </div>
+                         </div><!-- Inner Column -->
+
+                     </div><!-- Inner Row -->
 
 
 

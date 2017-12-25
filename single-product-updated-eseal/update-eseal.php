@@ -183,7 +183,7 @@ $(document).ready(function() {
 <div class="row">
 
 
-    <form name="sealform" id="sealform" action="doeseal.php" method="post" onsubmit="return validate(this);">
+    <form name="sealform" id="sealform" action="doeseal.php" method="post" enctype="multipart/form-data" onsubmit="return validate(this);">
         <div class="col-md-12 col-sm-12 col-xs-12 address">
             <div class="account-register" style="padding: 0px;">
                 <?php if(isset($_REQUEST['insert'])) { ?>
@@ -412,7 +412,7 @@ $(document).ready(function() {
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label>Notes *</label>
+                                <label>GOODS Type *</label>
                                 <textarea name="notes" id="notes" placeholder="Notes" class="register-input" required></textarea>
                             </div>
                         </div><!-- Inner Column -->
@@ -420,6 +420,18 @@ $(document).ready(function() {
                     </div><!-- Inner Row -->
 
 
+                     <div class="row">
+                         <div class="col-md-12 col-sm-12 col-xs-12">
+                             <div class="form-group">
+                                 <label>Documents : Support File Format [jpeg, jpg, png, pdf, doc, docx]</label>
+
+                                 <div id="filediv"><input name="file[]" type="file" id="file"/></div><br/>
+
+                                 <input type="button" id="add_more" class="upload" value="Add More Files"/>
+                                 <input type="submit" value="Upload File" name="submit" id="upload" class="upload hidden"/>                             </div>
+                         </div><!-- Inner Column -->
+
+                     </div><!-- Inner Row -->
 
 
 
@@ -436,7 +448,7 @@ $(document).ready(function() {
                   <div class="form-group last-otp">
                       <input type="hidden" name="id" id="id" class="register-input" value="<?php echo $product_info_order_fet['id']; ?>" required />
 
-                    <input type="submit" name="addseal" id="addseal" value="Submit">
+                    <input type="submit" name="addseal" id="upload" value="Submit">
                 </div>
 
 
@@ -465,6 +477,11 @@ $(document).ready(function() {
 <?php include "footer.php"; ?>
 
 <?php include "bottom_footer.php"; ?>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="multiple_image_upload/script.js"></script>
+<!-------Including CSS File------>
+<link rel="stylesheet" type="text/css" href="multiple_image_upload/style.css">
 
 <script>
     function sealtype(TypeValue)
