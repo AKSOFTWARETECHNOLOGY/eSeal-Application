@@ -33,18 +33,42 @@ if($num>0)
 	$role_sql="SELECT * FROM `role_user` WHERE `user_id`='$user_id'";
 	$role_exe=mysql_query($role_sql);	
 	$role_fet=@mysql_fetch_array($role_exe);
-	$role_id=$role_fet['role_id'];
-	
-	
-	$_SESSION['exporteruserid']=$user_id;
-	$_SESSION['exporterusername']=$fet['name'];
-	
-	$_SESSION['exporteruseremail']=$fet['email'];
-	$_SESSION['exporteruserrole']=$role_id;
+    if($role_fet['role_id']==3)
+    {
 
-    //header("Location: product-buy.php");
+        $role_id=$role_fet['role_id'];
 
-	header("Location: dashboard.php");
+
+        $_SESSION['exporteruserid']=$user_id;
+        $_SESSION['exporterusername']=$fet['name'];
+
+        $_SESSION['exporteruseremail']=$fet['email'];
+        $_SESSION['exporteruserrole']=$role_id;
+
+        //header("Location: product-buy.php");
+
+        header("Location: dashboard.php");
+
+    }
+	else
+    {
+        echo "This Login is Inprocess";
+        exit;
+
+        $role_id=$role_fet['role_id'];
+
+
+        $_SESSION['exporteruserid']=$user_id;
+        $_SESSION['exporterusername']=$fet['name'];
+
+        $_SESSION['exporteruseremail']=$fet['email'];
+        $_SESSION['exporteruserrole']=$role_id;
+
+        //header("Location: product-buy.php");
+
+        header("Location: dashboard.php");
+    }
+
 
 	}
 	else

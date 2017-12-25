@@ -28,7 +28,7 @@ FROM `product_order_info` AS `poi`
 LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
 LEFT JOIN `products` ON products.id = poi.product_id
 LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
-where poi.product_sealcode = $eseal_id AND poi.iec_no IS NOT NULL";
+where poi.product_sealcode = '$eseal_id' AND poi.product_item_status = '1'";
 $order_exe=mysql_query($order_sql);
 $order_cnt=@mysql_num_rows($order_exe);
 if($order_cnt>0)

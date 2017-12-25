@@ -266,8 +266,9 @@ $(document).ready(function() {
                         </td>
                         <td><?php echo $user_brancher_fet['mobile']; ?></td>
                         <td>
+                            <a href="view-team.php?id=<?php echo $user_brancher_fet['user_id']; ?>">View</a>
                             <a class="hidden" href="javascript:void(0);">Edit</a>
-                            <a href="delete-team.php?delete=1&id=<?php echo $user_brancher_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                            <a class="hidden" href="delete-team.php?delete=1&id=<?php echo $user_brancher_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
 
                         </td>
                     </tr>

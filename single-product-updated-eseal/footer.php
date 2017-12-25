@@ -4,11 +4,19 @@
 
       <div class="col-md-3 col-sm-3 col-xs-12 account">
         <h3>My Account</h3>
-        <ul>
-		  <li><a href="login.php">Login</a></li>
-          <li><a href="user-registration.php">Registration</a></li>
-          <li><a href="javascript:void(0);">View Cart</a></li>
-        </ul>
+          <?php if(isset($_SESSION['exporteruserid'])){ ?>
+            <ul>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="logout.php">Logout</a></li>
+              <li class="hidden"><a href="javascript:void(0);">View Cart</a></li>
+            </ul>
+          <?php } else { ?>
+              <ul>
+                  <li><a href="login.php">Login</a></li>
+                  <li><a href="user-registration.php">Registration</a></li>
+                  <li class="hidden"><a href="javascript:void(0);">View Cart</a></li>
+              </ul>
+          <?php } ?>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-12 account">
         <h3>Policy</h3>

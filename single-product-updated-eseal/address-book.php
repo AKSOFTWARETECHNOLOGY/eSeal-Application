@@ -185,9 +185,9 @@ $(document).ready(function() {
         <table id="myTable" class="display table">
             <thead>
             <th>Name</th>
-            <th>Address</th>
-            <th>City</th>
             <th>Mobile</th>
+            <th>Address</th>
+            <th>Status</th>
             <th></th>
             </thead>
             <tbody>
@@ -256,15 +256,24 @@ $(document).ready(function() {
                     ?>
                     <tr>
                         <td><?php echo $useraddress_fet['name']; ?></td>
-                        <td><?php echo $useraddress_fet['address']; ?></td>
-                        <td>
+                        <td><?php echo $useraddress_fet['mobile']; ?></td>
+                        <td><?php echo $useraddress_fet['address']; ?>
                             <?php echo $city_name; ?>,<?php echo $state_name; ?>,<br/>
                             <?php echo $country_name; ?> - <?php echo $useraddress_fet['pincode']; ?>
                         </td>
-                        <td><?php echo $useraddress_fet['mobile']; ?></td>
                         <td>
+                            <?php if($useraddress_fet['status']==1) { ?>
+                            <span style="color:green;font-weight: bold"> ACTIVE </span>
+                            <?php } else { ?>
+                            <span style="color:red;font-weight: bold"> INACTIVE </span>
+                            <?php } ?>
+
+                        </td>
+                        <td>
+
+                            <a class="" href="view-address-book.php?id=<?php echo $useraddress_fet['id']; ?>">View</a>
                             <a class="hidden" href="javascript:void(0);">Edit</a>
-                            <a href="delete-address.php?delete=1&id=<?php echo $useraddress_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                            <a class="hidden" href="delete-address.php?delete=1&id=<?php echo $useraddress_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
 
                         </td>
                     </tr>

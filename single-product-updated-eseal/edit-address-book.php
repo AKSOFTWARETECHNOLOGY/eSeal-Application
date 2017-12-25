@@ -6,6 +6,10 @@ if(!isset($_SESSION['exporteruserid']))
     header("Location: login.php");
 }
 
+/*
+$_SESSION['scaleuppuser']="1";
+header("Location: index.php");
+*/
 include "config.php";
 
 
@@ -13,6 +17,16 @@ $user_id=$_SESSION['exporteruserid'];
 $user_role=$_SESSION['exporteruserrole'];
 $user_name=$_SESSION['exporterusername'];
 $user_email=$_SESSION['exporteruseremail'];
+
+if(isset($_REQUEST['id']))
+{
+    $address_id=$_REQUEST['id'];
+}
+else
+{
+    exit;
+}
+
 
 
 $city_sql="SELECT * FROM `cities` where `city_status`=1";
@@ -42,7 +56,7 @@ $userinfo_exe=mysql_query($userinfo_sql);
 $userinfo=mysql_fetch_array($userinfo_exe);
 
 
-$useraddress_sql="SELECT * FROM `exporter_address` WHERE `user_id`='$user_id'";
+$useraddress_sql="SELECT * FROM `exporter_address` WHERE `user_id`='$user_id' AND `id`='$address_id'";
 $useraddress_exe=mysql_query($useraddress_sql);
 
 
@@ -52,7 +66,7 @@ $useraddress_exe=mysql_query($useraddress_sql);
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Add Address Book</title>
+<title>View Address Book</title>
 <link href="images/favicon.png" type="image/png" rel="shortcut icon">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -154,47 +168,122 @@ $(document).ready(function() {
 </div><!--Column 6-->
 
 <div class="col-md-9 col-sm-9 col-xs-12">
+<div class="order-history">
+<h3><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</h3>
+
+    <?php if(isset($_REQUEST['delete'])) { ?>
+        <?php if(isset($_REQUEST['success'])) { ?>
+            <p style="color:green;font-weight:bold"> Your Address Changes Updated Successfully!.</p>
+        <?php } ?>
+
+        <?php if(isset($_REQUEST['error'])) { ?>
+            <p style="color:red;font-weight:bold"> Your Address Changes Not Updated.</p>
+        <?php } ?>
+    <?php } ?>
+
+
     <div class="submit-btn">
         <ul>
-            <li><a class="hidden" href="#">New Complaint</a></li>
-            <li><a class="" href="address-book.php">Back</a></li>
+            <li><a class="hidden" href="javascript:void(0);">Back to List</a></li>
+            <li><a href="address-book.php">Back to List</a></li>
         </ul>
     </div><!--Form Btn-->
-<div class="my-account">
-<h3><i class="fa fa-address-book" aria-hidden="true"></i> Address Book Entries</h3>
-<div class="address-bar">
-<div class="row">
+    <?php if(mysql_num_rows($useraddress_exe)>0) { ?>
+    <?php while($useraddress_fet=mysql_fetch_array($useraddress_exe)) { ?>
+    <?php
+    $city_value = $useraddress_fet['city'];
+    $cityArray_values = array_filter($city_results, function($e) use ($city_value){
 
+        if($e['id'] == $city_value)
+        { return true; }
+        else
+        { return false; }
 
-    <form name="addressform" id="addressform" action="doaddress.php" method="post">
+    });
+
+    if(count($cityArray_values))
+    {
+        $cityArray_values_key = key($cityArray_values);
+        $city_name = $cityArray_values[$cityArray_values_key]['city_name'];
+    }
+    else
+    {
+        $city_name = "";
+    }
+
+    $state_value = $useraddress_fet['state'];
+    $stateArray_values = array_filter($state_results, function($e) use ($state_value){
+
+        if($e['id'] == $state_value)
+        { return true; }
+        else
+        { return false; }
+
+    });
+
+    if(count($stateArray_values))
+    {
+        $stateArray_values_key = key($stateArray_values);
+        $state_name = $stateArray_values[$stateArray_values_key]['state_name'];
+    }
+    else
+    {
+        $state_name = "";
+    }
+
+    $country_value = $useraddress_fet['country'];
+    $countryArray_values = array_filter($country_results, function($e) use ($country_value){
+
+        if($e['id'] == $country_value)
+        { return true; }
+        else
+        { return false; }
+
+    });
+
+    if(count($countryArray_values))
+    {
+        $countryArray_values_key = key($countryArray_values);
+        $country_name = $countryArray_values[$countryArray_values_key]['name'];
+    }
+    else
+    {
+        $country_name = "";
+    }
+    ?>
+
+            <style>
+                div.form-group label { width: 120px; font-weight: bold; }
+            </style>
+    <form name="addressform" id="addressform" action="doupdateaddress.php" method="post">
         <div class="col-md-12 col-sm-12 col-xs-12 address">
             <div class="account-register">
                 <?php if(isset($_REQUEST['insert'])) { ?>
-                <?php if(isset($_REQUEST['success'])) { ?>
-                    <p style="color:green;font-weight:bold"> Your Address Added Successfully!</p>
+                    <?php if(isset($_REQUEST['success'])) { ?>
+                        <p style="color:green;font-weight:bold"> Your Address Added Successfully!</p>
+                    <?php } ?>
+
+                    <?php if(isset($_REQUEST['error'])) { ?>
+                        <p style="color:red;font-weight:bold"> Invalid Details.</p>
+                    <?php } ?>
                 <?php } ?>
 
-                <?php if(isset($_REQUEST['error'])) { ?>
-                    <p style="color:red;font-weight:bold"> Invalid Details.</p>
-                <?php } ?>
-                <?php } ?>
-
-                 <div class="other-fields">
+                <div class="other-fields">
                     <div class="row">
 
 
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Name Of Contact Person *</label>
-                                <input type="text" name="personName" class="register-input" value="" placeholder="Name Of Contact Person" required />
+                                <label>Contact Person :: </label>
+                                <input type="text" name="personName" class="register-input" value="<?php echo $useraddress_fet['name']; ?>" placeholder="Name Of Contact Person" required />
                             </div>
                         </div><!-- Inner Column -->
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Mobile No.*</label>
-                                <input type="text" name="mobile" id="mobile" class="register-input" value="" maxlength="10" required />
+                                <label>Mobile No :: </label>
+                                <input type="text" name="mobile" id="mobile" class="register-input" value="<?php echo $useraddress_fet['mobile']; ?>" maxlength="10" required />
                             </div>
                         </div><!-- Inner Column -->
                     </div><!-- Inner Row -->
@@ -204,8 +293,8 @@ $(document).ready(function() {
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label>Address *</label>
-                                <textarea name="address" id="address" placeholder="Address" class="register-input" required></textarea>
+                                <label>Address :: </label>
+                                <textarea name="address" id="address" placeholder="Address" class="register-input" required><?php echo $useraddress_fet['address']; ?></textarea>
                             </div>
                         </div><!-- Inner Column -->
 
@@ -217,12 +306,12 @@ $(document).ready(function() {
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>City *</label>
+                                <label>City :: </label>
                                 <select class="register-input" name="cityId" id="cityId" required>
                                     <option value="">Select City</option>
                                     <?php
                                     foreach($city_results as $key => $value){ ?>
-                                        <option value="<?php echo $value['id']; ?>"><?php echo $value['city_name']; ?></option>
+                                        <option value="<?php echo $value['id']; ?>" <?php if($useraddress_fet['city']==$value['id']) { echo "selected"; } ?> ><?php echo $value['city_name']; ?></option>
                                     <?php
                                     }
                                     ?>
@@ -233,14 +322,12 @@ $(document).ready(function() {
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>State *</label>
-
-
+                                <label>State :: </label>
                                 <select class="register-input" name="state" id="state" required>
                                     <option value="">Select State</option>
                                     <?php
                                     foreach($state_results as $key => $value){ ?>
-                                        <option value="<?php echo $value['id']; ?>"><?php echo strtoupper($value['state_name']); ?></option>
+                                        <option value="<?php echo $value['id']; ?>" <?php if($useraddress_fet['state']==$value['id']) { echo "selected"; } ?> ><?php echo strtoupper($value['state_name']); ?></option>
                                     <?php
                                     }
                                     ?>
@@ -251,12 +338,12 @@ $(document).ready(function() {
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Country *</label>
+                                <label>Country :: </label>
                                 <select class="register-input" name="countryId" id="countryId" required >
                                     <option value="">Select Country</option>
                                     <?php
                                     foreach($country_results as $key => $value){ ?>
-                                        <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
+                                        <option value="<?php echo $value['id']; ?>" <?php if($useraddress_fet['country']==$value['id']) { echo "selected"; } ?> ><?php echo $value['name']; ?></option>
                                     <?php
                                     }
                                     ?>
@@ -266,8 +353,8 @@ $(document).ready(function() {
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Pincode *</label>
-                                <input type="text" name="pincode" id="pincode" class="register-input" value="" maxlength="6" required />
+                                <label>Pincode :: </label>
+                                <input type="text" name="pincode" id="pincode" class="register-input" value="<?php echo $useraddress_fet['pincode']; ?>" maxlength="6" required />
                             </div>
                         </div><!-- Inner Column -->
 
@@ -283,32 +370,29 @@ $(document).ready(function() {
 
                 </div>
 
-
-
-
-
-
                 <div class="row">
 
-                  <div class="form-group last-otp">
-                    <input type="submit" name="addaddress" value="Submit">
+                    <div class="form-group last-otp">
+                        <input type="hidden" name="id" id="id" class="register-input" value="<?php echo $useraddress_fet['id']; ?>" required />
+                        <input type="submit" name="addaddress" value="Submit">
+                    </div>
+
+
                 </div>
 
-
             </div>
-        </div>
     </form>
 
+        <?php } ?>
+    <?php } ?>
+ 
 
-
-</div><!--Inner Row-->
-</div><!--Address Bar-->
 </div><!--My Account-->
 
 <div class="submit-btn hidden">
 <ul>
-<li><a href="javascript:void(0);">Back</a></li>
-<li><a href="javascript:void(0);">New Address</a></li>
+<li><a class="hidden" href="javascript:void(0);">Back</a></li>
+<li><a href="add-address-book.php">New Address</a></li>
 </ul>
 </div><!--Form Btn-->
 
@@ -321,67 +405,26 @@ $(document).ready(function() {
 
 <?php include "bottom_footer.php"; ?>
 
-
-
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" />
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script>
-    // Wait for the DOM to be ready
-    $(function() {
-
-        jQuery.validator.addMethod("lettersonly", function(value, element) {
-            return this.optional(element) || /^[a-z\s]+$/i.test(value);
-        });
-
-        // Initialize form validation on the registration form.
-        // It has the name attribute "registration"
-        $("form#addressform").validate({
-            // Specify validation rules
-            rules: {
-                personName: {
-                    required: true,
-                    lettersonly: true
-                },
-                mobile: {
-                    required: true,
-                    number: true,
-                    minlength: 10,
-                    maxlength: 11
-                },
-                pincode: "required",
-                cityId: "required",
-                state: "required",
-                countryId: "required",
-                address: "required",
-            },
-            // Specify validation error messages
-            messages: {
-                personName: {
-                    required: "Please enter your name",
-                    lettersonly: "Your name must be characters"
-                },
-                mobile: {
-                    required: "Please provide a valid mobile number",
-                    minlength: "Your mobile number must be 10 characters long",
-                    maxlength: "Your mobile number must be 11 characters long"
-                },
-                pincode: "Please enter your Pincode",
-                cityId: "Please choose your City",
-                state: "Please choose your State",
-                countryId: "Please choose your Country",
-                address: "Please enter your Address",
-            },
-            // Make sure the form is submitted to the destination defined
-            // in the "action" attribute of the form when valid
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
+    $(document).ready(function(){
+        $('#myTable').DataTable();
     });
+
 </script>
 <style>
-    label.error { color: red; }
+    .table-responsive {
+        min-height: .01%;
+        overflow-x: visible;
+    }
+    div#myTable_length,  div#myTable_info{
+        width: 50%;
+        float: left;
+    }
+    div#myTable_filter, div#myTable_paginate{
+        float: right;
+    }
 </style>
-
 </body>
 </html>

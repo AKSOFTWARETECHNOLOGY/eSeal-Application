@@ -180,27 +180,27 @@ $(document).ready(function() {
 </style>
 
     <div class="col-md-12 conversationhead">
-        <div class="col-md-6">
-            <div class="form-group col-md-12">
+        <div class="col-md-12">
+            <div class="form-group col-md-6">
                 <label class="col-sm-6 control-label">Exporter Name</label>
                 <div class="col-sm-6">
                     <div class=""><?php echo $complaint_fet['name_exporter']; ?></div>
                 </div>
             </div>
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label class="col-sm-6 control-label">IEC Code</label>
                 <div class="col-sm-6"><div class="" ><?php echo $complaint_fet['iec_code']; ?></div></div>
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="form-group col-md-12">
+        <div class="col-md-12 hidden">
+            <div class="form-group col-md-6">
                 <label class="col-sm-6 control-label">Vendor Name</label>
                 <div class="col-sm-6">
                     <div class=""><?php echo $complaint_fet['name_vendor']; ?></div>
                 </div>
             </div>
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label class="col-sm-6 control-label">Vendor Code</label>
                 <div class="col-sm-6"><div class="" ><?php echo $complaint_fet['vendor_code']; ?></div></div>
             </div>
@@ -213,21 +213,20 @@ $(document).ready(function() {
         while($conversation_fet=mysql_fetch_array($conversation_exe)) {
             ?>
             <div class="col-md-12 conversation">
-                <div class="">
+                <div class="col-md-2">
                     <?php
                     if($conversation_fet['sender_id'] == 2)
                     {
-                        echo "<b> Admin says, </b>";
+                        echo "<b> Admin :: </b>";
                     }
                     else{
-                        echo "<b> Exporter says,</b>";
+                        echo "<b> Exporter :: </b>";
                     }
                     ?>
                 </div>
-                <div class="">
+                <div class="col-md-10">
                     <h4 class="control-label"><?php echo $conversation_fet['subject']; ?></h4>
-                </div>
-                <div class="">
+
                     <p><?php echo $conversation_fet['message']; ?></p>
                 </div>
             </div>
@@ -236,11 +235,11 @@ $(document).ready(function() {
     }
     ?>
 
+    <div class="col-md-12"><br/></div>
     <div class="col-md-12">
-        <div class="col-md-2"> </div>
 
         <form role="form" action="doreplyenquiry.php?enquiry_id=<?php echo $complaint_fet['id']; ?>" method="post">
-            <div class="col-md-8 other-fields">
+            <div class="col-md-12 other-fields">
                 <div class="form-group col-md-12">
                     <input class="form-control" type="text" value="<?php echo "Re:" . $complaint_fet['subject']; ?>"  readonly/>
                 </div>
@@ -255,7 +254,6 @@ $(document).ready(function() {
             </div>
         </form>
 
-        <div class="col-md-2"> </div>
     </div>
 
 

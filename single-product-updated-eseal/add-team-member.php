@@ -48,83 +48,83 @@ $userinfo=mysql_fetch_array($userinfo_exe);
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Address Book</title>
-<link href="images/favicon.png" type="image/png" rel="shortcut icon">
-<link href="css/style.css" type="text/css" rel="stylesheet">
-<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-<link href="css/font-awesome.min.css" type="text/css" rel="stylesheet">
-<link href="css/owl.carousel.css" type="text/css" rel="stylesheet">
-<link href="css/jquery.bxslider.min.css" type="text/css" rel="stylesheet">
-<link href="css/jquery.accordion.css" type="text/css" rel="stylesheet">
-<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/owl.carousel.js" type="text/javascript"></script>
-<script src="js/jquery.bxslider.min.js" type="text/javascript"></script>
-<script src="js/jquery.accordion.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-              $('.owl-carousel').owlCarousel({
+<title>Add Team Member</title>
+    <link href="images/favicon.png" type="image/png" rel="shortcut icon">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="css/owl.carousel.css" type="text/css" rel="stylesheet">
+    <link href="css/jquery.bxslider.min.css" type="text/css" rel="stylesheet">
+    <link href="css/jquery.accordion.css" type="text/css" rel="stylesheet">
+    <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/owl.carousel.js" type="text/javascript"></script>
+    <script src="js/jquery.bxslider.min.js" type="text/javascript"></script>
+    <script src="js/jquery.accordion.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.owl-carousel').owlCarousel({
                 loop: true,
                 margin: 10,
                 responsiveClass: true,
-				autoplay:true,
+                autoplay:true,
                 responsive: {
-                  0: {
-                    items: 1,
-                    nav: true,
-					navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
-                  },
-                  600: {
-                    items:2,
-                    nav: true,
-					navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
-                  },
-                  1000: {
-                    items: 2,
-                    nav: true,
-                    loop: false,
-                    margin: 20,
-					navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
-                  }
+                    0: {
+                        items: 1,
+                        nav: true,
+                        navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
+                    },
+                    600: {
+                        items:2,
+                        nav: true,
+                        navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
+                    },
+                    1000: {
+                        items: 2,
+                        nav: true,
+                        loop: false,
+                        margin: 20,
+                        navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
+                    }
                 }
-              })
-			  
-			  $('.bxslider').bxSlider({
-			mode: 'horizontal',
-			moveSlides: 1,
-			slideMargin: 40,
-			infiniteLoop: true,
-			slideWidth:550,
-			minSlides:1,
-			maxSlides:2,
-			speed: 800,
-			//auto:true,
-		});
-			  
-			  
-	$(window).scroll(function(){
-  var sticky = $('.main-header'),
-      scroll = $(window).scrollTop();
+            })
 
-  if (scroll >= 100) sticky.addClass('fixed');
-  else sticky.removeClass('fixed');
-});
-
-
-        $('#only-one [data-accordion]').accordion();
-
-        $('#multiple [data-accordion]').accordion({
-          singleOpen: false
-        });
-
-        $('#single[data-accordion]').accordion({
-          transitionEasing: 'cubic-bezier(0.455, 0.030, 0.515, 0.955)',
-          transitionSpeed: 200
-        });
-      
-			  
+            $('.bxslider').bxSlider({
+                mode: 'horizontal',
+                moveSlides: 1,
+                slideMargin: 40,
+                infiniteLoop: true,
+                slideWidth:550,
+                minSlides:1,
+                maxSlides:2,
+                speed: 800,
+                //auto:true,
             });
-</script>
+
+
+            $(window).scroll(function(){
+                var sticky = $('.main-header'),
+                    scroll = $(window).scrollTop();
+
+                if (scroll >= 100) sticky.addClass('fixed');
+                else sticky.removeClass('fixed');
+            });
+
+
+            $('#only-one [data-accordion]').accordion();
+
+            $('#multiple [data-accordion]').accordion({
+                singleOpen: false
+            });
+
+            $('#single[data-accordion]').accordion({
+                transitionEasing: 'cubic-bezier(0.455, 0.030, 0.515, 0.955)',
+                transitionSpeed: 200
+            });
+
+
+        });
+    </script>
 </head>
 
 <body>
@@ -167,7 +167,7 @@ $(document).ready(function() {
             <div class="account-register">
                 <?php if(isset($_REQUEST['insert'])) { ?>
                 <?php if(isset($_REQUEST['success'])) { ?>
-                    <p style="color:green;font-weight:bold"> Your Address Added Successfully!</p>
+                    <p style="color:green;font-weight:bold"> Your Team Member Added Successfully!</p>
                 <?php } ?>
 
                 <?php if(isset($_REQUEST['error'])) { ?>
@@ -182,7 +182,8 @@ $(document).ready(function() {
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label>Email Id*</label>
-                                <input type="text" name="email" class="register-input" value="" required />
+                                <input type="text" name="email" id="email" class="register-input" value="" required />
+                                <span id="emailstatus"></span>
                                 <span>(This will become your default registered email)</span>
                             </div>
                         </div><!-- Inner Column -->
@@ -190,7 +191,7 @@ $(document).ready(function() {
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label>Password*</label>
-                                <input type="password" name="password" class="register-input" value="" required />
+                                <input type="password" name="password" id="password" class="register-input" value="" required />
                                 <span>( The password should be atleast 5 charaters long )</span>
                             </div>
                         </div><!-- Inner Column -->
@@ -198,14 +199,14 @@ $(document).ready(function() {
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label>Name Of Member *</label>
-                                <input type="text" name="personName" class="register-input" value="" placeholder="Name Of Member" required />
+                                <input type="text" name="personName" id="personName" class="register-input" value="" placeholder="Name Of Member" required />
                             </div>
                         </div><!-- Inner Column -->
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label>Mobile No.*</label>
-                                <input type="text" name="mobile" id="mobile" class="register-input" value="" required />
+                                <input type="text" name="mobile" id="mobile" class="register-input" value="" maxlength="10" required />
                             </div>
                         </div><!-- Inner Column -->
                     </div><!-- Inner Row -->
@@ -278,7 +279,7 @@ $(document).ready(function() {
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label>Pincode *</label>
-                                <input type="text" name="pincode" id="pincode" class="register-input" value="" required />
+                                <input type="text" name="pincode" id="pincode" class="register-input" value="" maxlength="6" required />
                             </div>
                         </div><!-- Inner Column -->
 
@@ -333,6 +334,52 @@ $(document).ready(function() {
 <?php include "bottom_footer.php"; ?>
 
 
+<script>
+
+    $("input#email").change(function(){
+
+        //alert("The text has been changed.");
+
+        var email = $("input#email").val();
+        var BASEURL = "http://www.ssgaeseal.com/";
+        //var BASEURL = "http://localhost/eSeal-Application/single-product-updated-eseal/";
+        var BASEURL = "";
+        var status = 1;
+        var callurl = BASEURL + 'ajax-check-email.php?email='+email;
+
+        $.ajax({
+            url: callurl,
+            type: "get",
+            data: {"email": email, "status": status},
+            success: function (data) {
+                var obj = JSON.parse(data);
+                //alert(obj.status);
+                if(obj.status==1)
+                {
+
+                    $("#emailstatus").text("");
+                }
+                else if(obj.status==2)
+                {
+                    $("input#email").val("");
+                    $("#emailstatus").text(obj.email+" Email Already Taken!");
+                }
+
+                /*
+                 $("input#DeliveryName").val(obj.name);
+                 $("input#DeliveryMobile").val(obj.mobile);
+                 $("textarea#DeliveryAddress").val(obj.address);
+                 $("select#DeliveryCountry").val(obj.country);
+                 $("select#DeliveryState").val(obj.state);
+                 $("select#DeliveryCity").val(obj.city);
+                 $("input#DeliveryPin").val(obj.pincode);
+                 */
+
+            }
+        });
+
+    });
+</script>
 
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 
@@ -342,6 +389,10 @@ $(document).ready(function() {
 
         jQuery.validator.addMethod("lettersonly", function(value, element) {
             return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        });
+
+        jQuery.validator.addMethod("alphanumeric", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9]+$/.test(value);
         });
 
         // Initialize form validation on the registration form.
@@ -357,9 +408,14 @@ $(document).ready(function() {
                     required: true,
                     number: true,
                     minlength: 10,
-                    maxlength: 11
+                    maxlength: 10
                 },
-                pincode: "required",
+                pincode: {
+                    required: true,
+                    number: true,
+                    minlength: 6,
+                    maxlength: 6
+                },
                 cityId: "required",
                 state: "required",
                 countryId: "required",
@@ -374,9 +430,13 @@ $(document).ready(function() {
                 mobile: {
                     required: "Please provide a valid mobile number",
                     minlength: "Your mobile number must be 10 characters long",
-                    maxlength: "Your mobile number must be 11 characters long"
+                    maxlength: "Your mobile number must be 10 characters long"
                 },
-                pincode: "Please enter your Pincode",
+                pincode: {
+                    required: "Please provide a valid pincode",
+                    minlength: "Your pincode must be 6 characters long",
+                    maxlength: "Your pincode must be 6 characters long"
+                },
                 cityId: "Please choose your City",
                 state: "Please choose your State",
                 countryId: "Please choose your Country",
@@ -390,8 +450,11 @@ $(document).ready(function() {
         });
     });
 </script>
+
 <style>
     label.error { color: red; }
+    span.required { color: red; float: right;  padding: 5px 0px 0px 5px; }
+    span#emailstatus { color: red; }
 </style>
 
 </body>

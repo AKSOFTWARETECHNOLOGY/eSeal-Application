@@ -151,10 +151,10 @@ $(document).ready(function() {
 
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="my-account">
-            <h3><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy Seal Product </h3>
+            <h3 class="hidden"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy Seal Product </h3>
 
             <div class="common-item">
-                <div class="text">
+                <div class="text hidden">
                     <h3><a href="javascript:void(0);">RFID Electronic Seal -  ₹ 299.00 </a></h3>
                 </div>
                 <div class="item">
@@ -319,7 +319,7 @@ $(document).ready(function() {
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label>Pincode *</label>
-                                <input type="text" name="DeliveryPin" id="DeliveryPin" class="register-input" value="" required />
+                                <input type="text" name="DeliveryPin" id="DeliveryPin" class="register-input" maxlength="6" value="" required />
                             </div>
                         </div><!-- Inner Column -->
 
@@ -463,7 +463,12 @@ $(document).ready(function() {
                     minlength: 10,
                     maxlength: 11
                 },
-                DeliveryPin: "required",
+                DeliveryPin: {
+                    required: true,
+                    number: true,
+                    minlength: 6,
+                    maxlength: 6
+                },
                 DeliveryCity: "required",
                 DeliveryState: "required",
                 DeliveryCountry: "required",
@@ -482,7 +487,11 @@ $(document).ready(function() {
                     minlength: "Your mobile number must be 10 characters long",
                     maxlength: "Your mobile number must be 11 characters long"
                 },
-                DeliveryPin: "Please enter your Pincode",
+                DeliveryPin: {
+                    required: "Please provide a valid Pincode",
+                    minlength: "Your Pincode must be 6 characters long",
+                    maxlength: "Your Pincode must be 6 characters long"
+                },
                 DeliveryCity: "Please choose your City",
                 DeliveryState: "Please choose your State",
                 DeliveryCountry: "Please choose your Country",

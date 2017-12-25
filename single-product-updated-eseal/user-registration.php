@@ -170,14 +170,14 @@ $(document).ready(function() {
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label>Mobile No. <span class="required">*</span></label>
-                <input type="text" name="mobile" id="mobile" class="register-input" value="" required />
+                <input type="text" name="mobile" id="mobile" class="register-input" maxlength="10" value="" required />
             </div>
         </div><!-- Inner Column -->
 
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label>Landline Number <span class="required">&nbsp;</span></label>
-                <input type="text" name="telephone" id="telephone" class="register-input " value="" />
+                <input type="text" name="telephone" id="telephone" class="register-input " maxlength="11" value="" />
             </div>
         </div><!-- Inner Column -->
     </div><!-- Inner Row -->
@@ -244,7 +244,7 @@ $(document).ready(function() {
 <div class="col-md-4 col-sm-4 col-xs-12">
 <div class="form-group">
 <label>Pincode <span class="required">*</span></label>
-<input type="text" name="pincode" id="pincode" class="register-input" value="" required />
+<input type="text" name="pincode" id="pincode" class="register-input" maxlength="6" value="" required />
 </div>
 </div><!-- Inner Column -->
 
@@ -310,9 +310,9 @@ $(document).ready(function() {
 <div class="declare">
 <h4>We declare that we are entitled for self-sealing facility as per circular 26/2017 and 36/2017 and belong to one of the following permitted categories:</h4>
 <ul>
-<li>exporters newly granted permission for self-sealing;</li>
-<li>exporters who were already operating under self-sealing procedure;</li>
-<li>exporters who were permitted factory stuffing facility; or</li>
+<li>Exporters newly granted permission for self-sealing;</li>
+<li>Exporters who were already operating under self-sealing procedure;</li>
+<li>Exporters who were permitted factory stuffing facility; or</li>
 <li>Authorized Economic Operator</li>
 </ul>
 </div>
@@ -370,6 +370,7 @@ $(document).ready(function() {
                 }
                 else if(obj.status==2)
                 {
+                    $("input#email").val("");
                     $("#emailstatus").text(obj.email+" Email Already Taken!");
                 }
 
@@ -459,7 +460,11 @@ $(document).ready(function() {
                     minlength: 11,
                     maxlength: 11
                 },
-                pincode: "required",
+                pincode: {
+                    number: true,
+                    minlength: 6,
+                    maxlength: 6
+                },
                 cityId: "required",
                 state: "required",
                 countryId: "required",
@@ -474,8 +479,18 @@ $(document).ready(function() {
                 },
                 icecode: {
                     required: "Please provide a valid ICE Code",
-                    minlength: "Your mobile number must be 10 characters long",
-                    maxlength: "Your mobile number must be 10 characters long"
+                    minlength: "Your IEC Code must be 10 characters long",
+                    maxlength: "Your IEC Code must be 10 characters long"
+                },
+                gstin: {
+                    required: "Please provide a valid GST Number",
+                    minlength: "Your GST Number must be 15 characters long",
+                    maxlength: "Your GST Number must be 15 characters long"
+                },
+                panNumber: {
+                    required: "Please provide a valid Pan Card Details",
+                    minlength: "Your Pan Card must be 10 characters long",
+                    maxlength: "Your Pan Card must be 10 characters long"
                 },
                 personName: {
                     required: "Please enter your name",
@@ -496,7 +511,11 @@ $(document).ready(function() {
                     minlength: "Your Landline number must be 11 characters long",
                     maxlength: "Your Landline number must be 11 characters long"
                 },
-                pincode: "Please enter your Pincode",
+                pincode: {
+                    required: "Please provide a valid Pincode",
+                    minlength: "Your Pincode must be 6 characters long",
+                    maxlength: "Your Pincode must be 6 characters long"
+                },
                 cityId: "Please choose your City",
                 state: "Please choose your State",
                 countryId: "Please choose your Country",

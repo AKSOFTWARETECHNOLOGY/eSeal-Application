@@ -239,7 +239,7 @@ $(document).ready(function() {
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
-            <input type="text" name="gstin" placeholder="GST No" class="account-input" value="<?php echo $userinfo['gstin']; ?>" required />
+            <input type="text" name="gstin" placeholder="GST No" class="account-input" value="<?php echo $userinfo['gstin']; ?>" maxlength="15" required />
 
         </div>
     </div>
@@ -251,7 +251,7 @@ $(document).ready(function() {
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
-            <input type="text" name="pan_number" placeholder="PAN No" class="account-input" value="<?php echo $userinfo['pan_number']; ?>" required />
+            <input type="text" name="pan_number" placeholder="PAN No" class="account-input" value="<?php echo $userinfo['pan_number']; ?>" maxlength="10" required />
 
         </div>
     </div>
@@ -261,7 +261,7 @@ $(document).ready(function() {
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
-            <input type="text" name="name_person" placeholder="PAN No" class="account-input" value="<?php echo $userinfo['name_person']; ?>" />
+            <input type="text" name="name_person" placeholder="Person Name" class="account-input" value="<?php echo $userinfo['name_person']; ?>" />
 
         </div>
     </div>
@@ -341,7 +341,7 @@ $(document).ready(function() {
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
-            <input type="text" name="pincode" placeholder="Pin Code" class="account-input" value="<?php echo $userinfo['pincode']; ?>" required />
+            <input type="text" name="pincode" placeholder="Pin Code" class="account-input" value="<?php echo $userinfo['pincode']; ?>" maxlength="6" required />
 
         </div>
     </div>
@@ -354,7 +354,7 @@ $(document).ready(function() {
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
-            <input type="text" name="mobile" placeholder="Mobile No" class="account-input" value="<?php echo $userinfo['mobile']; ?>" required />
+            <input type="text" name="mobile" placeholder="Mobile No" class="account-input" value="<?php echo $userinfo['mobile']; ?>" maxlength="10" required />
 
         </div>
     </div>
@@ -366,7 +366,7 @@ $(document).ready(function() {
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12">
 
-            <input type="text" name="telephone" placeholder="Phone No" class="account-input" value="<?php echo $userinfo['telephone']; ?>" />
+            <input type="text" name="telephone" placeholder="Phone No" class="account-input" value="<?php echo $userinfo['telephone']; ?>" maxlength="11" />
 
         </div>
     </div>
@@ -444,7 +444,11 @@ $(document).ready(function() {
                     minlength: 11,
                     maxlength: 11
                 },
-                pincode: "required",
+                pincode: {
+                    number: true,
+                    minlength: 11,
+                    maxlength: 11
+                },
                 city: "required",
                 state: "required",
                 country: "required",
@@ -455,6 +459,16 @@ $(document).ready(function() {
                 name_exporter: {
                     required: "Please enter your name",
                     lettersonly: "Your name must be characters"
+                },
+                gstin: {
+                    required: "Please provide a valid GST Number",
+                    minlength: "Your GST Number must be 15 characters long",
+                    maxlength: "Your GST Number must be 15 characters long"
+                },
+                pan_number: {
+                    required: "Please provide a valid Pan Card Details",
+                    minlength: "Your Pan Card must be 10 characters long",
+                    maxlength: "Your Pan Card must be 10 characters long"
                 },
                 name_person: {
                     required: "Please enter your name",
@@ -469,7 +483,11 @@ $(document).ready(function() {
                     minlength: "Your Landline number must be 11 characters long",
                     maxlength: "Your Landline number must be 11 characters long"
                 },
-                pincode: "Please enter your Pincode",
+                pincode: {
+                    required: "Please provide a valid Pincode",
+                    minlength: "Your Pincode must be 6 characters long",
+                    maxlength: "Your Pincode must be 6 characters long"
+                },
                 city: "Please choose your City",
                 state: "Please choose your State",
                 country: "Please choose your Country",
