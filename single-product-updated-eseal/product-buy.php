@@ -51,8 +51,16 @@ $product_count_exe=mysql_query($product_count_sql);
 $product_count_fet=mysql_fetch_array($product_count_exe);
 $product_count_fetch=$product_count_fet['pro_count'];
 
-$useraddress_sql="SELECT * FROM `exporter_address` WHERE `user_id`='$user_id'";
+$useraddress_sql="SELECT * FROM `exporter_address` WHERE `user_id`='$user_id' AND `status`='1'";
 $useraddress_exe=mysql_query($useraddress_sql);
+
+
+$setting_sql="SELECT * FROM `product_setting` WHERE `id`=1";
+$setting_exe=mysql_query($setting_sql);
+$setting_fet=mysql_fetch_array($setting_exe);
+$product_gst=$setting_fet['product_gst'];
+$product_discount=$setting_fet['product_discount'];
+$product_shipping=$setting_fet['product_shipping'];
 
 ?>
 <!doctype html>
@@ -164,7 +172,7 @@ $(document).ready(function() {
 
             <form name="buyform" id="buyform" action="dobuy.php" method="post">
                 <div class="row" style="padding-top:10px; ">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-md-8 col-sm-8 col-xs-12">
                         <div class="form-group">
                             <select class="register-input" name="Product" id="Product" required >
                                 <option value="<?php echo $product_fetch['id']; ?>"><?php echo $product_fetch['product_name']; ?> -  ₹ <?php echo $product_fetch['product_price']; ?></option>
@@ -172,7 +180,7 @@ $(document).ready(function() {
                         </div>
                     </div><!-- Inner Column -->
 
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="form-group">
                             <select class="register-input" name="Quantity" id="Quantity" required onchange="productquantity(this.value);" >
                                 <option value="">Quantity</option>
@@ -210,8 +218,37 @@ $(document).ready(function() {
                         </div>
                     </div><!-- Inner Column -->
 
+                </div>
+                <div class="row" style="padding-top:10px; ">
+
                     <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label> Product Total </label>
                         <div id="total" style="font-weight: bold;">
+                            Rs. 0:00
+                        </div>
+                    </div><!-- Inner Column -->
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        <label> GST (<?php echo $product_gst; ?> %) </label>
+                        <div id="gsttotal" style="font-weight: bold;">
+                            Rs. 0:00
+                        </div>
+                    </div><!-- Inner Column -->
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        <label> Shipping (<?php echo $product_shipping; ?>/Unit)</label>
+                        <div id="shippingtotal" style="font-weight: bold;">
+                            Rs. 0:00
+                        </div>
+                    </div><!-- Inner Column -->
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        <label> Discount (<?php echo $product_discount; ?> %) </label>
+                        <div id="discounttotal" style="font-weight: bold;">
+                            Rs. 0:00
+                        </div>
+                    </div><!-- Inner Column -->
+
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label> Product Grand Total </label>
+                        <div id="grandtotal" style="font-weight: bold;">
                             Rs. 0:00
                         </div>
                     </div><!-- Inner Column -->
@@ -248,7 +285,7 @@ $(document).ready(function() {
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label>Mobile *</label>
-                                <input type="text" name="DeliveryMobile" id="DeliveryMobile" class="register-input" value="" placeholder="Person Mobile" required />
+                                <input type="text" name="DeliveryMobile" id="DeliveryMobile" class="register-input" value="" maxlength="10" placeholder="Person Mobile" required />
                             </div>
                         </div><!-- Inner Column -->
                     </div><!-- Inner Row -->
@@ -334,9 +371,12 @@ $(document).ready(function() {
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label>Payment Type *</label>
+                            <!--
+                            <option value="1"> Online - CCAvenue </option>
+                             -->
                             <select class="register-input" name="PaymentType" id="PaymentType" required>
                                 <option value=""> Select Payment Option </option>
-                                <option value="1"> Online - CCAvenue </option>
+
                                 <option value="2"> Credit - 15 Days </option>
                                 <option value="3"> Credit - 30 Days </option>
                                 <option value="4"> Cash On Delivery </option>
@@ -358,8 +398,14 @@ $(document).ready(function() {
                 <div class="buy-now">
                     <div class="form-group last-otp">
                         <input type="hidden" name="ProductAmount" id="ProductAmount" value="<?php echo $product_fetch['product_price']; ?>" />
-                        <input type="hidden" name="TotalAmount" id="TotalAmount" value="" />
-                        <input type="submit" name="buyproduct" value="Buy Now" />
+
+                        <input type="hidden" name="TotalAmount" id="TotalAmount" value="0" />
+                        <input type="hidden" name="GstAmount" id="GstAmount" value="0" />
+                        <input type="hidden" name="ShippingAmount" id="ShippingAmount" value="0" />
+                        <input type="hidden" name="DiscountAmount" id="DiscountAmount" value="0" />
+                        <input type="hidden" name="GrandAmount" id="GrandAmount" value="0" />
+
+                        <input type="submit" name="buyproduct" id="submitbutton" value="Buy Now" />
                     </div>
                 </div>
 
@@ -379,14 +425,45 @@ $(document).ready(function() {
 <?php include "bottom_footer.php"; ?>
 
 <script>
+
+
+    $("#submitbuttonX").click(function(event){
+        if(!confirm ("your message"))
+            event.preventDefault();
+    });
+
     function productquantity(countValue)
     {
 
         var ProductValue = $("#ProductAmount").val();
         var TotalValue = countValue * ProductValue;
 
-        $("#total").text("Total Amount Rs. "+TotalValue);
-        $("#TotalAmount").val(TotalValue);
+        $("#total").text("Rs. "+TotalValue.toFixed(2));
+        $("#TotalAmount").val(TotalValue.toFixed(2));
+
+        var GstValue = 18;
+        var GstTotalValue = GstValue * (TotalValue/100);
+
+        $("#gsttotal").text("Rs. "+GstTotalValue.toFixed(2));
+        $("#GstAmount").val(GstTotalValue.toFixed(2));
+
+        var ShippingValue = 50;
+        var ShippingTotalValue = countValue * ShippingValue;
+
+        $("#shippingtotal").text("Rs. "+ShippingTotalValue.toFixed(2));
+        $("#ShippingAmount").val(ShippingTotalValue.toFixed(2));
+
+        var DiscountValue = 5;
+        var DiscountTotalValue = DiscountValue * (TotalValue/100);
+
+        $("#discounttotal").text("Rs. "+DiscountTotalValue.toFixed(2));
+        $("#DiscountAmount").val(DiscountTotalValue.toFixed(2));
+
+
+        var GrandTotalValue = ( parseFloat(TotalValue.toFixed(2)) + parseFloat(GstTotalValue.toFixed(2)) + parseFloat(ShippingTotalValue.toFixed(2)) ) - parseFloat(DiscountTotalValue.toFixed(2));
+
+        $("#grandtotal").text("Rs. "+GrandTotalValue.toFixed(2));
+        $("#GrandAmount").val(GrandTotalValue.toFixed(2));
 
     }
 
@@ -502,7 +579,16 @@ $(document).ready(function() {
             // Make sure the form is submitted to the destination defined
             // in the "action" attribute of the form when valid
             submitHandler: function(form) {
-                form.submit();
+
+                if(confirm ("your message"))
+                {
+                    form.submit();
+                }
+                else
+                {
+                    event.preventDefault();
+                }
+
             }
         });
     });

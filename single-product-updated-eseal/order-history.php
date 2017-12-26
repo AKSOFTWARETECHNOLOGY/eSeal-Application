@@ -25,7 +25,13 @@ $userinfo=mysql_fetch_array($userinfo_exe);
 
 
 
-$product_order_sql="SELECT * FROM `product_order` WHERE `product_exporter_id`='$user_id' ORDER BY `id` DESC";
+//$product_order_sql="SELECT * FROM `product_order` WHERE `product_exporter_id`='$user_id' ORDER BY `id` DESC";
+
+$product_order_sql="SELECT `product_order`.*,`products`.`product_name` FROM `product_order`
+LEFT JOIN `products` ON `product_order`.`product_id` = `products`.`id`
+WHERE `product_order`.`product_exporter_id`='$user_id'
+ORDER BY `product_order`.`id` DESC";
+
 $product_order_exe=mysql_query($product_order_sql);
 ?>
 <!doctype html>
@@ -144,9 +150,10 @@ $(document).ready(function() {
 <thead>
 <th>Order ID</th>
 <th>Customer</th>
+<th>Product</th>
 <th>No. of Products</th>
 <th>Status</th>
-<th>Total</th>
+<th>Grand Total</th>
 <th>Date Added</th>
 <th>View</th>
 </thead>
@@ -156,9 +163,10 @@ $(document).ready(function() {
 <tr>
 <td><?php echo $product_order_fet['product_order_id']; ?></td>
 <td><?php echo $product_order_fet['product_delivery_name']; ?></td>
+<td><?php echo $product_order_fet['product_name']; ?></td>
 <td><?php echo $product_order_fet['product_sale_quantity']; ?></td>
 <td><?php echo $product_order_fet['product_sale_status']; ?></td>
-<td>Rs.<?php echo $product_order_fet['product_sale_total']; ?></td>
+<td>Rs.<?php echo $product_order_fet['product_sale_grand_total']; ?></td>
 <td><?php echo $product_order_fet['product_sale_date']; ?></td>
 <td><a href="order-history-details.php?order_id=<?php echo $product_order_fet['id']; ?>"><i class="fa fa-eye"></i></a></td>
 </tr>

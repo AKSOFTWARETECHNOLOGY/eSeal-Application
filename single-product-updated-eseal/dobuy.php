@@ -22,6 +22,11 @@ $Quantity = $_REQUEST['Quantity'];
 
 $ProductAmount = $_REQUEST['ProductAmount'];
 $TotalAmount = $_REQUEST['TotalAmount'];
+$GstAmount = $_REQUEST['GstAmount'];
+$ShippingAmount = $_REQUEST['ShippingAmount'];
+$DiscountAmount = $_REQUEST['DiscountAmount'];
+$GrandAmount = $_REQUEST['GrandAmount'];
+
 
 $DeliveryName = $_REQUEST['DeliveryName'];
 $DeliveryAddress = $_REQUEST['DeliveryAddress'];
@@ -57,14 +62,26 @@ $product_count_fetch=$product_count_fet['pro_count'];
 
     if($product_count_fetch>=$Quantity)
     {
+/*
+ `product_sale_price`
+`product_sale_gst`
+`product_sale_delivery`
+`product_sale_discount`
+`product_sale_total`
+`product_sale_grand_total`
 
+'$GstAmount','$ShippingAmount','$DiscountAmount','$GrandAmount'
+
+ */
         $insert_order_sq1 = "INSERT INTO `product_order` (user_id, product_exporter_id, product_id, product_order_id,
-    product_sale_quantity, product_sale_price, product_sale_total,  product_sale_type, product_sale_status, product_sale_date, product_sale_payment_type, product_sale_payment_notes,
+    product_sale_quantity, product_sale_price, product_sale_total, product_sale_gst, product_sale_delivery, product_sale_discount, product_sale_grand_total,
+    product_sale_type, product_sale_status, product_sale_date, product_sale_payment_type, product_sale_payment_notes,
     product_delivery_name, product_delivery_address, product_delivery_city,  product_delivery_state, product_delivery_country, product_delivery_pincode, product_delivery_mobile,
     product_delivery_type, product_delivery_status, product_delivery_date,
     created_by, updated_by, created_at, updated_at)
     VALUES ('$user_id','$user_id','$Product','$ProductOrder',
-    '$Quantity','$ProductAmount','$TotalAmount','$SaleType','$SaleStatus','$SaleDate','$PaymentType','$PaymentNotes',
+    '$Quantity','$ProductAmount','$TotalAmount','$GstAmount','$ShippingAmount','$DiscountAmount','$GrandAmount',
+    '$SaleType','$SaleStatus','$SaleDate','$PaymentType','$PaymentNotes',
     '$DeliveryName','$DeliveryAddress','$DeliveryCity','$DeliveryState','$DeliveryCountry','$DeliveryPin','$DeliveryMobile',
     '$DeliveryType', '$DeliveryStatus', '$DeliveryDate',
     '$username','$username','$date','$date')";

@@ -315,15 +315,22 @@ $(document).ready(function() {
 
                             <tr>
                                 <td colspan="3"></td>
-                                <td>Flat Shipping Rate</td>
-                                <td>Rs. 0.00</td>
+                                <td>GST Rate(18%)</td>
+                                <td>Rs. <?php echo $product_order_fet['product_sale_gst']; ?></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3"></td>
+                                <td>Shipping Rate(50/Unit)</td>
+                                <td>Rs. <?php echo $product_order_fet['product_sale_delivery']; ?></td>
                                 <td></td>
                             </tr>
 
                             <tr>
                                 <td colspan="3"></td>
                                 <td>Total</td>
-                                <td>Rs. <?php echo $product_order_fet['product_sale_total']; ?></td>
+                                <td>Rs. <?php echo $product_order_fet['product_sale_grand_total']; ?></td>
                                 <td></td>
                             </tr>
                             <tfoot>
