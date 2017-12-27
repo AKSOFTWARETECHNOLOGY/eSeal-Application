@@ -69,6 +69,10 @@ $order_fet=mysql_fetch_array($order_exe);
                         <div class="box-header with-border">
                             <h3 class="box-title">View Eseal Details</h3>
                         </div><!-- /.box-header -->
+                        <div class="form-group col-md-12">
+                            <a href="eseallist.php"><button type="submit" class="btn btn-warning col-md-2" style="margin-bottom:10px;float:right;" >Back to E-Seal List</button></a>
+                        </div>
+
                         <!-- form start -->
                         <form role="form">
                             <div class="box-body">
