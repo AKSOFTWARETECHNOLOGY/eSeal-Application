@@ -16,8 +16,9 @@ $user_email=$_SESSION['adminuseremail'];
 if(isset($_REQUEST['delete']))
 {
     $customs_id = $_REQUEST['customs_id'];
+    $date=date("Y-m-d");
 
-    $sql = "UPDATE `users` SET `delete_status`='0' WHERE `id`='$customs_id'";
+    $sql = "UPDATE `users` SET `delete_status`='0', `updated_at` = '$date'  WHERE `id`='$customs_id'";
     $delete = mysql_query($sql);
 
     header("Location: customslist.php?succ=1&msg=all");

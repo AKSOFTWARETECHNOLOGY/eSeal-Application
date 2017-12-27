@@ -212,8 +212,9 @@ $order_fet=mysql_fetch_array($order_exe);
                                     </fieldset>
                                 </div>
                             </div>
+                        </form>
                     </div><!-- /.box-body -->
-                    </form>
+
                 </div><!-- /.box -->
             </div><!--/.col (left) -->
 

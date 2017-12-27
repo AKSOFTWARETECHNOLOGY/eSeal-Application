@@ -146,7 +146,7 @@ $export_fet=mysql_fetch_array($export_exe);
                                 <a href="exporterlist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Exporters List</button></a>
 
                                 <a href="exporteredit.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-danger col-md-12" style="margin-bottom:10px;"><i class="fa fa-pencil"></i> Edit</button></a>
-                                <a href="exporter-delete.php?delete=1&exporter_id=<?php echo $export_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Delete</button></a>
+                                <a href="exporter-delete.php?delete=1&exporter_id=<?php echo $export_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to disable this item?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Disable</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->

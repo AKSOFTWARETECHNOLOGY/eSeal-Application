@@ -16,8 +16,9 @@ $user_email=$_SESSION['adminuseremail'];
 if(isset($_REQUEST['delete']))
 {
     $exporter_id = $_REQUEST['exporter_id'];
+    $date=date("Y-m-d");
 
-    $sql = "UPDATE `users` SET `delete_status`='0' WHERE `id`='$exporter_id'";
+    $sql = "UPDATE `users` SET `delete_status`='0', `updated_at` = '$date' WHERE `id`='$exporter_id'";
     $delete = mysql_query($sql);
 
     header("Location: exporterlist.php?succ=1&msg=all");

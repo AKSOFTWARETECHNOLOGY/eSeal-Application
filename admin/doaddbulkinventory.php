@@ -30,12 +30,9 @@ $unicode=$sealcode;
 
 $sql = "INSERT INTO `product_info` (user_id, product_id, product_unicode, product_sealcode, product_sale_price, created_by, updated_by, created_at, updated_at)
 VALUES ('$user_id','$prodId','$unicode','$sealcode','$salePrice','$username','$username','$date','$date')";
-
-echo "<hr/>".$sql."<hr/>";
-
 $exe = mysql_query($sql);
 
 
 }
-//header("Location: inventorieslist.php?suc=1");
+header("Location: inventorieslist.php?suc=1");
 ?>

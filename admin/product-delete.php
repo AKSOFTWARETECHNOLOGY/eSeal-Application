@@ -16,7 +16,7 @@ $user_email=$_SESSION['adminuseremail'];
 if(isset($_REQUEST['disable']))
 {
     $prodId=$_REQUEST['product_id'];
-    $user_date=date("Y-m-d");
+    $date=date("Y-m-d");
 
     $sql = "UPDATE `products` SET `product_status` = '0', `updated_by` = '$user_name', `updated_at` = '$date'
             WHERE `products`.`id` = '$prodId'";

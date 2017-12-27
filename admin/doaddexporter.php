@@ -27,7 +27,7 @@ $date = date("Y-m-d");
 
 $pwd = md5('123456');
 
-$sql = "INSERT INTO `users` (name, email, password, confirmed, created_at, updated_at) VALUES ('$exporterName','$email','$pwd','1','$date','$date')";
+$sql = "INSERT INTO `users` (name, email, password, confirmed, delete_status, created_at, updated_at) VALUES ('$exporterName','$email','$pwd','1','1','$date','$date')";
 $exe = mysql_query($sql);
 $last_id = mysql_insert_id();
 
