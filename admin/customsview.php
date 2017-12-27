@@ -100,6 +100,10 @@ $custom_fet=mysql_fetch_array($custom_exe);
                                         <div class="col-sm-9"><div class=""> <?php echo $custom_fet['country_name']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Pincode</label>
+                                        <div class="col-sm-9"><div class=""> <?php echo $custom_fet['pincode']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Telephone</label>
                                         <div class="col-sm-9"><div class="" ><?php echo $custom_fet['telephone']; ?></div></div>
                                     </div>

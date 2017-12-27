@@ -52,7 +52,7 @@ $user_email=$_SESSION['adminuseremail'];
 <html>
 <head>
     <style>
-        .req{
+        .req, .error{
             color : red;
         }
     </style>
@@ -90,7 +90,7 @@ $user_email=$_SESSION['adminuseremail'];
                         </div><!-- /.box-header -->
                         <!-- form start -->
 
-                        <form role="form" action="doaddcustoms.php" method="post">
+                        <form role="form" id="addCustomsForm" action="doaddcustoms.php" method="post">
                             <div class="box-body">
 
                                 <div class="col-md-12">
@@ -100,28 +100,25 @@ $user_email=$_SESSION['adminuseremail'];
                                         <label class="col-sm-3 control-label">Customs Code<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="customscode" id="customscode" value="" maxlength="10" required />
-                                            <div class="err" id="errcustomscode" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Customs Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="customsName" id="customsName" value="" required/>
-                                            <div class="err" id="errCustomsName" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Address<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <textarea class="form-control" name="address" id="address" required></textarea>
-                                            <div class="err" id="errAddress" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">City<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <select class="form-control" name="cityId" id="cityId" required>
-                                                <option value="0">Select City</option>
+                                                <option value="">Select City</option>
                                                 <?php
                                                 foreach($city_results as $key => $value){ ?>
                                                     <option value="<?php echo $value['id']; ?>"><?php echo $value['city_name']; ?></option>
@@ -129,7 +126,6 @@ $user_email=$_SESSION['adminuseremail'];
                                                 }
                                                 ?>
                                             </select>
-                                            <div class="err" id="errCity" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -145,14 +141,13 @@ $user_email=$_SESSION['adminuseremail'];
                                                 }
                                                 ?>
                                             </select>
-                                            <div class="err" id="errState" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Country<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <select class="form-control" name="countryId" id="countryId" required>
-                                                <option value="0">Select Country</option>
+                                                <option value="">Select Country</option>
                                                 <?php
                                                 foreach($country_results as $key => $value){ ?>
                                                     <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
@@ -160,7 +155,12 @@ $user_email=$_SESSION['adminuseremail'];
                                                 }
                                                 ?>
                                             </select>
-                                            <div class="err" id="errCountry" style="color:red"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Pincode<span class="req"> *</span></label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="number" name="pincode" id="pincode" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -179,8 +179,8 @@ $user_email=$_SESSION['adminuseremail'];
                                         <label class="col-sm-3 control-label">Email <span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="email" name="email" id="email" value="" required />
-                                            <div class="err" id="errEmail" style="color:red"></div>
-                                        </div>
+                                            <span class="error" id="emailstatus"></span>
+                                    </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Port</label>
@@ -254,6 +254,129 @@ $user_email=$_SESSION['adminuseremail'];
 <script src="dist/js/app.min.js" type="text/javascript"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js" type="text/javascript"></script>
+
+<script>
+
+    $("input#email").change(function(){
+        var email = $("input#email").val();
+        //var BASEURL = "http://www.ssgaeseal.com/";
+        var BASEURL = "http://localhost/eSeal-Application/admin/";
+        var status = 1;
+        var callurl = BASEURL + 'ajax-check-email.php?email='+email;
+
+        $.ajax({
+            url: callurl,
+            type: "get",
+            data: {"email": email, "status": status},
+            success: function (data) {
+                var obj = JSON.parse(data);
+                if(obj.status==1)
+                {
+                    $("#emailstatus").text("");
+                }
+                else if(obj.status==2)
+                {
+                    $("input#email").val("");
+                    $("#emailstatus").text(obj.email+" Email Already Exists!");
+                }
+            }
+        });
+
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+
+<script>
+    // Wait for the DOM to be ready
+    $(function() {
+
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        });
+
+        jQuery.validator.addMethod("alphanumeric", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9]+$/.test(value);
+        });
+
+        // Initialize form validation on the registration form.
+        // It has the name attribute "registration"
+        $("form#addCustomsForm").validate({
+            // Specify validation rules
+            rules: {
+                customsName: {
+                    required: true,
+                    lettersonly: true
+                },
+                customscode: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                mobile: {
+                    number: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                telephone: {
+                    number: true,
+                    minlength: 11,
+                    maxlength: 11
+                },
+                email: {
+                    required: true
+                },
+                pincode: {
+                    required: true,
+                    number: true,
+                    minlength: 6,
+                    maxlength: 6
+                },
+                cityId: "required",
+                state: "required",
+                countryId: "required",
+                address: "required"
+            },
+            // Specify validation error messages
+            messages: {
+                customsName: {
+                    required: "Please enter your name",
+                    lettersonly: "Your name must be characters"
+                },
+                customscode: {
+                    required: "Please provide a valid IEC code",
+                    minlength: "Your IEC code must be 10 characters long",
+                    maxlength: "Your IEC code must be 10 characters long"
+                },
+                mobile: {
+                    minlength: "Your mobile number must be 10 characters long",
+                    maxlength: "Your mobile number must be 10 characters long"
+                },
+                telephone: {
+                    minlength: "Your Landline number must be 11 characters long",
+                    maxlength: "Your Landline number must be 11 characters long"
+                },
+                email: {
+                    required: "Please provide a valid email"
+                },
+                pincode: {
+                    required: "Please provide a valid Pincode",
+                    minlength: "Your Pincode must be 6 characters long",
+                    maxlength: "Your Pincode must be 6 characters long"
+                },
+                cityId: "Please choose your City",
+                state: "Please choose your State",
+                countryId: "Please choose your Country",
+                address: "Please enter your Address",
+            },
+            // Make sure the form is submitted to the destination defined
+            // in the "action" attribute of the form when valid
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

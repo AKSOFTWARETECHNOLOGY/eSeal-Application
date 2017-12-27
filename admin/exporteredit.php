@@ -58,7 +58,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
 <html>
 <head>
     <style>
-        .req{
+        .req, .error{
             color : red;
         }
     </style>
@@ -95,7 +95,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                             <h3 class="box-title">Edit Exporter Details</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="doupdateexporter.php?exporter_id=<?php echo $export_fet['id']; ?>" method="post">
+                        <form role="form" id="editExporterForm" action="doupdateexporter.php?exporter_id=<?php echo $export_fet['id']; ?>" method="post">
                             <div class="box-body">
 
                                 <div class="col-md-12">
@@ -104,21 +104,18 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                         <label class="col-sm-3 control-label">Exporter Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="exporterName" id="exporterName" value="<?php echo $export_fet['name_exporter']; ?>" />
-                                            <div class="err" id="errExporterName" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Person Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="personName" id="personName" value="<?php echo $export_fet['name_person']; ?>" />
-                                            <div class="err" id="errPersonName" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Address<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <textarea class="form-control" name="address" id="address"><?php echo $export_fet['address']; ?></textarea>
-                                            <div class="err" id="errAddress" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -133,7 +130,6 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                                 }
                                                 ?>
                                             </select>
-                                            <div class="err" id="errCity" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -162,14 +158,12 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                                 }
                                                 ?>
                                             </select>
-                                            <div class="err" id="errCountry" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Pincode<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="number" name="pincode" id="pincode" value="<?php echo $export_fet['pincode']; ?>" />
-                                            <div class="err" id="errPincode" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -188,7 +182,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                         <label class="col-sm-3 control-label">Email <span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="email" name="email" id="email" value="<?php echo $export_fet['email']; ?>" />
-                                            <div class="err" id="errEmail" style="color:red"></div>
+                                            <span class="error" id="emailstatus"></span>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -206,7 +200,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">IEC Code</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="icecode" id="icecode" value="<?php echo $export_fet['iec_code']; ?>" />
+                                            <input class="form-control" type="text" name="ieccode" id="ieccode" value="<?php echo $export_fet['iec_code']; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -255,49 +249,153 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".save-export").click(function(){
-            $("div.err").html( "  " );
-            var expName = $('#exporterName').val();
-            if(!expName){
-                $("div#errExporterName").html( "This field is required" );
-                return false;
+<script>
+
+    $("input#email").change(function(){
+        var email = $("input#email").val();
+        //var BASEURL = "http://www.ssgaeseal.com/";
+        var BASEURL = "http://localhost/eSeal-Application/admin/";
+        var status = 1;
+        var callurl = BASEURL + 'ajax-check-email.php?email='+email;
+
+        $.ajax({
+            url: callurl,
+            type: "get",
+            data: {"email": email, "status": status},
+            success: function (data) {
+                var obj = JSON.parse(data);
+                if(obj.status==1)
+                {
+                    $("#emailstatus").text("");
+                }
+                else if(obj.status==2)
+                {
+                    $("input#email").val("");
+                    $("#emailstatus").text(obj.email+" Email Already Exists!");
+                }
             }
-            var personName = $('#personName').val();
-            if(!personName){
-                $("div#errPersonName").html( "This field is required" );
-                return false;
-            }
-            var address = $('#address').val();
-            if(!address){
-                $("div#errAddress").html( "This field is required" );
-                return false;
-            }
-            var city = $('#cityId').val();
-            if(city == 0){
-                $("div#errCity").html( "This field is required" );
-                return false;
-            }
-            var state = $('#state').val();
-            if(!(state)){
-                $("div#errState").html( "This field is required" );
-                return false;
-            }
-            var country = $('#countryId').val();
-            if(country == 0){
-                $("div#errCountry").html( "This field is required" );
-                return false;
-            }
-            var pincode = $('#pincode').val();
-            if(!pincode){
-                $("div#errPincode").html( "This field is required" );
-                return false;
-            }
-            var email = $('#email').val();
-            if(!email){
-                $("div#errEmail").html( "This field is required" );
-                return false;
+        });
+
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+
+<script>
+    // Wait for the DOM to be ready
+    $(function() {
+
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        });
+
+        jQuery.validator.addMethod("alphanumeric", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9]+$/.test(value);
+        });
+
+        // Initialize form validation on the registration form.
+        // It has the name attribute "registration"
+        $("form#editExporterForm").validate({
+            // Specify validation rules
+            rules: {
+                exporterName: {
+                    required: true,
+                    lettersonly: true
+                },
+                gstin: {
+                    required: true,
+                    minlength: 15,
+                    maxlength: 15
+                },
+                panNumber: {
+                    required: true,
+                    alphanumeric: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                ieccode: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                personName: {
+                    required: true,
+                    lettersonly: true
+                },
+                mobile: {
+                    number: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                telephone: {
+                    number: true,
+                    minlength: 11,
+                    maxlength: 11
+                },
+                email: {
+                    required: true
+                },
+                pincode: {
+                    required: true,
+                    number: true,
+                    minlength: 6,
+                    maxlength: 6
+                },
+                cityId: "required",
+                state: "required",
+                countryId: "required",
+                address: "required"
+            },
+            // Specify validation error messages
+            messages: {
+                exporterName: {
+                    required: "Please enter your name",
+                    lettersonly: "Your name must be characters"
+                },
+                gstin: {
+                    required: "Please provide a valid GST Number",
+                    minlength: "Your GST Number must be 15 characters long",
+                    maxlength: "Your GST Number must be 15 characters long"
+                },
+                panNumber: {
+                    required: "Please provide a valid Pan Card Details",
+                    minlength: "Your Pan Card must be 10 characters long",
+                    maxlength: "Your Pan Card must be 10 characters long"
+                },
+                ieccode: {
+                    required: "Please provide a valid IEC code",
+                    minlength: "Your IEC code must be 10 characters long",
+                    maxlength: "Your IEC code must be 10 characters long"
+                },
+                personName: {
+                    required: "Please enter your name",
+                    lettersonly: "Your name must be characters"
+                },
+                mobile: {
+                    minlength: "Your mobile number must be 10 characters long",
+                    maxlength: "Your mobile number must be 10 characters long"
+                },
+                telephone: {
+                    minlength: "Your Landline number must be 11 characters long",
+                    maxlength: "Your Landline number must be 11 characters long"
+                },
+                email: {
+                    required: "Please provide a valid email"
+                },
+                pincode: {
+                    required: "Please provide a valid Pincode",
+                    minlength: "Your Pincode must be 6 characters long",
+                    maxlength: "Your Pincode must be 6 characters long"
+                },
+                cityId: "Please choose your City",
+                state: "Please choose your State",
+                countryId: "Please choose your Country",
+                address: "Please enter your Address",
+            },
+            // Make sure the form is submitted to the destination defined
+            // in the "action" attribute of the form when valid
+            submitHandler: function(form) {
+                form.submit();
             }
         });
     });

@@ -21,6 +21,7 @@ if(isset($_REQUEST['customs_id'])) {
     $cityId = $_REQUEST['cityId'];
     $state = $_REQUEST['state'];
     $countryId = $_REQUEST['countryId'];
+    $pincode = $_REQUEST['pincode'];
     $telephone = $_REQUEST['telephone'];
     $mobile = $_REQUEST['mobile'];
     $email = $_REQUEST['email'];
@@ -31,7 +32,7 @@ if(isset($_REQUEST['customs_id'])) {
     $date = date("Y-m-d");
 
     $sql = "UPDATE `customs_info` SET `name_customs` = '$customsName', `user_id` = '$userId',`address` = '$address', `city` = '$cityId',
-`state` = '$state',`country` = '$countryId',`mobile` = '$mobile', `email` = '$email',`telephone` = '$telephone',`customs_code` = '$customscode',
+`state` = '$state',`country` = '$countryId',`pincode` = '$pincode', `mobile` = '$mobile', `email` = '$email',`telephone` = '$telephone',`customs_code` = '$customscode',
             `port` = '$port',`terminal` = '$terminal',`updated_by` = '$username', `updated_at` = '$date'
             WHERE `customs_info`.`id` = '$customs_id'";
     $exe = mysql_query($sql);

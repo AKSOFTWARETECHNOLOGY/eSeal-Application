@@ -14,6 +14,7 @@ $address = $_REQUEST['address'];
 $cityId = $_REQUEST['cityId'];
 $state = $_REQUEST['state'];
 $countryId = $_REQUEST['countryId'];
+$pincode = $_REQUEST['pincode'];
 $telephone = $_REQUEST['telephone'];
 $mobile = $_REQUEST['mobile'];
 $email = $_REQUEST['email'];
@@ -32,8 +33,8 @@ $last_id = mysql_insert_id();
 $role_sql = "INSERT INTO `role_user` (user_id, role_id) values ('$last_id', 4)";
 $role_exe = mysql_query($role_sql);
 
-$insert_customs_sq1 = "INSERT INTO `customs_info` (user_id, name_customs, address, city, state, country, telephone, mobile, email, customs_code, port, terminal, created_by, updated_by, created_at, updated_at)
-VALUES ('$last_id','$customsName','$address','$cityId','$state','$countryId','$telephone','$mobile','$email','$customscode','$port','$terminal','$username','$username','$date','$date')";
+$insert_customs_sq1 = "INSERT INTO `customs_info` (user_id, name_customs, address, city, state, country, pincode, telephone, mobile, email, customs_code, port, terminal, created_by, updated_by, created_at, updated_at)
+VALUES ('$last_id','$customsName','$address','$cityId','$state','$countryId','$pincode','$telephone','$mobile','$email','$customscode','$port','$terminal','$username','$username','$date','$date')";
 $insert_customs_exe = mysql_query($insert_customs_sq1);
 
 header("Location: customslist.php?suc=1");
