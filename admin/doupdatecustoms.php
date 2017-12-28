@@ -39,7 +39,7 @@ if(isset($_REQUEST['customs_id'])) {
     header("Location: customslist.php?suc=1");
 }
 else{
-    header("Location: exporterlist.php?err=1");
+    header("Location: customslist.php?err=1");
 }
 
 ?>

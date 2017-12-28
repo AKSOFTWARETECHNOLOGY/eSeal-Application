@@ -150,7 +150,7 @@ $eseal_other_cnt=@mysql_num_rows($eseal_other_exe);
         <section class="content">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-            <div class="col-lg-6 col-xs-6">
+            <div class="col-lg-4 col-xs-4">
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
@@ -164,7 +164,7 @@ $eseal_other_cnt=@mysql_num_rows($eseal_other_exe);
               </div>
             </div><!-- ./col -->
 
-              <div class="col-lg-6 col-xs-6">
+              <div class="col-lg-4 col-xs-4">
                   <!-- small box -->
                   <div class="small-box bg-red">
                       <div class="inner">
@@ -178,17 +178,17 @@ $eseal_other_cnt=@mysql_num_rows($eseal_other_exe);
                   </div>
               </div><!-- ./col -->
 
-              <div class="col-lg-4 col-xs-4 hidden">
+              <div class="col-lg-4 col-xs-4">
                   <!-- small box -->
                   <div class="small-box bg-yellow">
                       <div class="inner">
                           <h3><?php echo $support_cnt;?></h3>
-                          <p>Support</p>
+                          <p>User</p>
                       </div>
                       <div class="icon">
                           <i class="ion ion-android-person"></i>
                       </div>
-                      <a href="customslist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                      <a href="supporterslist.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
               </div><!-- ./col -->
 			
