@@ -80,7 +80,7 @@
                 <i class="ion ion-android-clipboard"></i> <span> Inventory Status</span>
               </a>
             </li>
-              <li class="treeview hidden">
+              <li class="treeview">
                   <a href="buy-product.php">
                       <i class="ion ion-android-contact"></i> <span>Buy Product</span>
                   </a>

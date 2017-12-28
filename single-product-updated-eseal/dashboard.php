@@ -100,6 +100,72 @@ else
     $country_name = "";
 }
 
+$product_order_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1'";
+$product_order_exe=mysql_query($product_order_sql);
+$product_order_cnt=@mysql_num_rows($product_order_exe);
+
+$product_order_placed_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1' and product_order.product_order_status=0";
+$product_order_placed_exe=mysql_query($product_order_placed_sql);
+$product_order_placed_cnt=@mysql_num_rows($product_order_placed_exe);
+
+$product_order_confirmed_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1' and product_order.product_order_status=1";
+$product_order_confirmed_exe=mysql_query($product_order_confirmed_sql);
+$product_order_confirmed_cnt=@mysql_num_rows($product_order_confirmed_exe);
+
+$product_order_packed_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1' and product_order.product_order_status=2";
+$product_order_packed_exe=mysql_query($product_order_packed_sql);
+$product_order_packed_cnt=@mysql_num_rows($product_order_packed_exe);
+
+$product_order_intransit_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1' and product_order.product_order_status=3";
+$product_order_intransit_exe=mysql_query($product_order_intransit_sql);
+$product_order_intransit_cnt=@mysql_num_rows($product_order_intransit_exe);
+
+$product_order_delivered_sql="SELECT * FROM `product_order`
+LEFT JOIN `products` ON products.id = product_order.product_id
+WHERE products.product_status='1' and product_order.product_order_status=4";
+$product_order_delivered_exe=mysql_query($product_order_delivered_sql);
+$product_order_delivered_cnt=@mysql_num_rows($product_order_delivered_exe);
+
+$eseal_sql="SELECT * FROM `product_order_info`
+LEFT JOIN `products` ON products.id = product_order_info.product_id
+WHERE products.product_status='1' and product_order_info.product_item_status=1";
+$eseal_exe=mysql_query($eseal_sql);
+$eseal_cnt=@mysql_num_rows($eseal_exe);
+
+$eseal_pending_sql="SELECT * FROM `product_order_info`
+LEFT JOIN `products` ON products.id = product_order_info.product_id
+WHERE products.product_status='1' and product_order_info.product_item_status=1 and product_order_info.customs_approve_status=0 ";
+$eseal_pending_exe=mysql_query($eseal_pending_sql);
+$eseal_pending_cnt=@mysql_num_rows($eseal_pending_exe);
+
+$eseal_success_sql="SELECT * FROM `product_order_info`
+LEFT JOIN `products` ON products.id = product_order_info.product_id
+WHERE products.product_status='1' and product_order_info.product_item_status=1 and product_order_info.customs_approve_status=1";
+$eseal_success_exe=mysql_query($eseal_success_sql);
+$eseal_success_cnt=@mysql_num_rows($eseal_success_exe);
+
+$eseal_tampered_sql="SELECT * FROM `product_order_info`
+LEFT JOIN `products` ON products.id = product_order_info.product_id
+WHERE products.product_status='1' and product_order_info.product_item_status=1 and product_order_info.customs_approve_status=2";
+$eseal_tampered_exe=mysql_query($eseal_tampered_sql);
+$eseal_tampered_cnt=@mysql_num_rows($eseal_tampered_exe);
+
+$eseal_other_sql="SELECT * FROM `product_order_info`
+LEFT JOIN `products` ON products.id = product_order_info.product_id
+WHERE products.product_status='1' and product_order_info.product_item_status=1 and product_order_info.customs_approve_status=3";
+$eseal_other_exe=mysql_query($eseal_other_sql);
+$eseal_other_cnt=@mysql_num_rows($eseal_other_exe);
+
 ?>
 <!doctype html>
 <html>
@@ -114,6 +180,9 @@ else
 <link href="css/owl.carousel.css" type="text/css" rel="stylesheet">
 <link href="css/jquery.bxslider.min.css" type="text/css" rel="stylesheet">
 <link href="css/jquery.accordion.css" type="text/css" rel="stylesheet">
+    <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/owl.carousel.js" type="text/javascript"></script>
@@ -211,12 +280,52 @@ $(document).ready(function() {
 <div class="my-account">
         <h3><i class="fa fa-user" aria-hidden="true"></i> Dashboard Information</h3>
         <h4>Your Account Details</h4>
+    <div class="row">
+        <div class="col-lg-6 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-orange">
+                <div class="inner">
+                    <h3><?php echo $product_order_cnt;?></h3>
+                    <p>E-Seal Inventory</p>
+                    <p>Placed <b><?php echo $product_order_placed_cnt;?></b></p>
+                    <p>Confirmed <b><?php echo $product_order_confirmed_cnt;?></b></p>
+                    <p>Packed <b><?php echo $product_order_packed_cnt;?></b></p>
+                    <p>Intransit <b><?php echo $product_order_intransit_cnt;?></b></p>
+                    <p>Delivered <b><?php echo $product_order_delivered_cnt;?></b></p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-person"></i>
+                </div>
+                <a href="order-history.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+
+        <div class="col-lg-6 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3><?php echo $eseal_cnt;?></h3>
+                    <p>E-seal Status</p>
+                    <p>Pending <b><?php echo $eseal_pending_cnt;?></b></p>
+                    <p>Success <b><?php echo $eseal_success_cnt;?></b></p>
+                    <p>Tampered <b><?php echo $eseal_tampered_cnt;?></b></p>
+                    <p>Other <b><?php echo $eseal_other_cnt;?></b></p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-person"></i>
+                </div>
+                <a href="my-seal-status.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+
+    </div><!-- /.row -->
 </div>
 
 
 <div class="my-account hidden" style="display:none;">
 <h3><i class="fa fa-user" aria-hidden="true"></i> Dashboard Information</h3>
 <h4>Your Account Details</h4>
+
     <?php
 
     //print_r($userinfo);

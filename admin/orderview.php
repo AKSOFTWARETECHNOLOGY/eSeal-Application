@@ -30,7 +30,7 @@ $product_sql="SELECT product_order_info.*, products.product_name, exporter_info.
  FROM `product_order_info`
 LEFT JOIN `product_order` ON product_order.id = product_order_info.product_order_id
 LEFT JOIN `products` ON products.id = product_order.product_id
-LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
+LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
 WHERE `product_order_info`.product_order_id = $order_id";
 $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);
