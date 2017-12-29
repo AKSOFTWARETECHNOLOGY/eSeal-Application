@@ -36,6 +36,20 @@ $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);
 $product_fet=mysql_fetch_array($product_exe);
 
+
+$product_sql="SELECT product_order_info.*, products.product_name, exporter_info.name_exporter,product_order.product_delivery_name,product_order.product_delivery_address,
+ product_order.product_delivery_city,product_order.product_delivery_state,product_order.product_delivery_country,product_order.product_delivery_pincode,
+ product_order.product_delivery_mobile,product_order.product_delivery_type,
+  product_order.product_order_date,product_order.product_order_status,product_order.product_order_note
+ FROM `product_order_info`
+LEFT JOIN `product_order` ON product_order.id = product_order_info.product_order_id
+LEFT JOIN `products` ON products.id = product_order.product_id
+LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+WHERE `product_order_info`.product_order_id = $order_id";
+$product_exe=mysql_query($product_sql);
+$product_cnt=@mysql_num_rows($product_exe);
+
+
 $city_sql="SELECT * FROM `cities` where `city_status`=1";
 $city_exe=mysql_query($city_sql);
 $city_results = array();
