@@ -479,6 +479,7 @@ $(document).ready(function() {
                 },
                 icecode: {
                     required: "Please provide a valid ICE Code",
+                    number: "IEC Code must be Number",
                     minlength: "Your IEC Code must be 10 characters long",
                     maxlength: "Your IEC Code must be 10 characters long"
                 },

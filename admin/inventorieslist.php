@@ -14,18 +14,26 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-/*
-SELECT a.tutorial_id, a.tutorial_author, b.tutorial_count
-    -> FROM tutorials_tbl a, tcount_tbl b
-    -> WHERE a.tutorial_author = b.tutorial_author;
+if($_REQUEST['sold']){
+    $product_sql="SELECT product_info.*, products.product_name FROM `product_info`
+LEFT JOIN `products` ON products.id = product_info.product_id
+WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 1";
+    $product_exe=mysql_query($product_sql);
+    $product_cnt=@mysql_num_rows($product_exe);
+}
+else if($_REQUEST['instock']){
+    $product_sql="SELECT product_info.*, products.product_name FROM `product_info`
+LEFT JOIN `products` ON products.id = product_info.product_id
+WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 0";
+    $product_exe=mysql_query($product_sql);
+    $product_cnt=@mysql_num_rows($product_exe);
+}
+else{
+    $product_sql="SELECT product_info.*, products.product_name FROM `product_info` LEFT JOIN `products` ON products.id = product_info.product_id WHERE `product_info`.user_id = $user_id";
+    $product_exe=mysql_query($product_sql);
+    $product_cnt=@mysql_num_rows($product_exe);
+}
 
-*/
-$product_sql="SELECT product_info.*, products.product_name FROM `product_info` LEFT JOIN `products` ON products.id = product_info.product_id WHERE `product_info`.user_id = $user_id";
-//echo $product_sql; exit;
-
-$product_exe=mysql_query($product_sql);
-$product_cnt=@mysql_num_rows($product_exe);
-//$product_fet=mysql_fetch_array($product_exe);
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,6 +71,44 @@ $product_cnt=@mysql_num_rows($product_exe);
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="add-bulk-inventories.php?inventory_id=1" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom: 10px;">Add Bulk Inventories</button></a>
                             </div>
+
+                            <div class="row col-sm-4">
+
+                                <div class="row">
+                                    <a href="inventorieslist.php?all=1" style="margin-left: 10px;"><button type="button" class="btn btn-info" style="margin-bottom: 10px;">All</button></a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="inventorieslist.php?sold=1" style="margin-left: 10px;"><button type="button" class="btn btn-info" style="margin-bottom: 10px;">Sold</button></a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="inventorieslist.php?instock=1" style="margin-left: 10px;"><button type="button" class="btn btn-info" style="margin-bottom: 10px;">Instock</button></a>
+                                </div>
+                            </div>
+                            <div class="row col-sm-8">
+                                <form class="datesearch" action="" class="hidden" method="post" style="display:none;">
+                                    <div class="col-sm-1">
+                                        <label>From:</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input class="form-control" type="date" name="fromDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-1"> </div>
+
+                                    <div class="col-sm-1">
+                                        <label>To:</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input class="form-control" type="date" name="toDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-1"> </div>
+
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-warning" name="datesearch" type="submit">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="row" style="line-height: 2px;"></div>
+
+
                             <?php
                             if($product_cnt>0)
                             {

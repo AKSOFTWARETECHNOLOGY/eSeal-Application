@@ -35,7 +35,7 @@
           <p>No.44, MIG, G1/5 Marutham Enclave, 6th Main Road, Mogappair ERI Scheme, Mogappair, Chennai - 600 0037</p>
           <p>(+91) 94880 15119 , (+91) 88256 23258.</p>
           -->
-        <ul class="social">
+        <ul class="social hidden">
           <li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
           <li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
           <li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
