@@ -4,7 +4,7 @@ $id=$_REQUEST['id'];
 $useraddress_sql="SELECT * FROM `exporter_address` WHERE user_id = '$id'";
 $useraddress_exe=mysql_query($useraddress_sql);
 ?>
-<option value="0">Add New Delivery Address / Choose Delivery Address</option>
+<option value="0">Choose Delivery Address</option>
 <?php
 while($useraddress_fet=mysql_fetch_array($useraddress_exe))
 {

@@ -77,7 +77,7 @@ $order_fet=mysql_fetch_array($order_exe);
                         <form role="form">
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="col-sm-6 control-label">Exporter Name</label>
                                             <div class="col-sm-6"><div class=""><?php echo $order_fet['name_exporter']; ?></div></div>
@@ -107,6 +107,10 @@ $order_fet=mysql_fetch_array($order_exe);
                                             <label class="col-sm-6 control-label">Seal Time</label>
                                             <div class="col-sm-6"><div class="" ><?php echo $order_fet['sealing_time']; ?></div></div>
                                         </div>
+
+                                    </div>
+
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="col-sm-6 control-label">Shipping Bill Number</label>
                                             <div class="col-sm-6"><div class=""> <?php echo $order_fet['shipping_no']; ?></div></div>
@@ -119,21 +123,7 @@ $order_fet=mysql_fetch_array($order_exe);
                                             <label class="col-sm-6 control-label">Truck Number</label>
                                             <div class="col-sm-6"><div class="" ><?php echo $order_fet['trailer_truck_no']; ?></div></div>
                                         </div>
-                                        <div class="form-group col-md-12">
-                                            <label class="col-sm-6 control-label">Driver Number</label>
-                                            <div class="col-sm-6"><div class=""> <?php echo $order_fet['driver_number']; ?></div></div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group col-md-12">
-                                            <label class="col-sm-6 control-label">Driver Licence</label>
-                                            <div class="col-sm-6"><div class=""> <?php echo $order_fet['driver_licence']; ?></div></div>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label class="col-sm-6 control-label">Driver Name</label>
-                                            <div class="col-sm-6"><div class=""><?php echo $order_fet['driver_name']; ?></div></div>
-                                        </div>
                                         <div class="form-group col-md-12">
                                             <label class="col-sm-6 control-label">Container Size</label>
                                             <div class="col-sm-6"><div class="" ><?php echo $order_fet['container_size']; ?></div></div>
@@ -149,6 +139,21 @@ $order_fet=mysql_fetch_array($order_exe);
                                         <div class="form-group col-md-12">
                                             <label class="col-sm-6 control-label">Terminal Name</label>
                                             <div class="col-sm-6"><div class=""><?php echo $order_fet['terminals_name']; ?></div></div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-6 control-label">Driver Number</label>
+                                            <div class="col-sm-6"><div class=""> <?php echo $order_fet['driver_number']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-6 control-label">Driver Licence</label>
+                                            <div class="col-sm-6"><div class=""> <?php echo $order_fet['driver_licence']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-6 control-label">Driver Name</label>
+                                            <div class="col-sm-6"><div class=""><?php echo $order_fet['driver_name']; ?></div></div>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label class="col-sm-6 control-label">Form 13 Number</label>

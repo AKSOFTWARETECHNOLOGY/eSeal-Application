@@ -66,35 +66,6 @@ while($row = mysql_fetch_assoc($inv_exe)) {
 }
 
 if($inv_cnt >= $quantity){
-   /* for($i=0; $i<$quantity; $i++) {
-        $id = $inv_results[$i]['id'];
-        $sql = "UPDATE `product_info` as `pi` SET `product_exporter_id` = '$exporterId', `product_sale_status` = '1', `product_sale_date` = '$date',
-            `updated_by` = '$username', `updated_at` = '$date'
-            WHERE `pi`.`id` = '$id'";
-        $exe = mysql_query($sql);
-    }
-
-    $sale_price = $inv_results[0]['product_sale_price'];
-    $sale_total = $quantity * $sale_price;
-
-        $s = "INSERT INTO `product_order` (user_id, product_exporter_id, product_id, product_order_id, product_sale_quantity,
-product_sale_price, product_sale_total, product_sale_type, product_sale_status, product_sale_date, product_sale_payment_type, product_sale_payment_notes,created_by, updated_by, created_at, updated_at)
-values ('$userId', '$exporterId','$prodId','ESO100001', '$quantity','$sale_price','$sale_total','1','1','$date','$payment','$paymentnotes','$username','$username','$date','$date')";
-    $q= mysql_query($s);
-
-    $last_order_id = mysql_insert_id();
-
-    for($i=0; $i<$quantity; $i++) {
-        $unicode =  $inv_results[$i]['product_unicode'];
-        $sealcode = $inv_results[$i]['product_sealcode'];
-
-        $s1 = "INSERT INTO `product_order_info` (user_id, product_id, product_order_id, product_unicode,
-product_sealcode, product_exporter_id, iec_no, gst_no, pan_no, sealing_date)
-values ('$userId','$prodId','$last_order_id', '$unicode','$sealcode','$exporterId','$iec_code','$gst_num','$pan_num','$date')";
-        $q1 = mysql_query($s1);
-    }*/
-
-
     $insert_order_sq1 = "INSERT INTO `product_order` (user_id, product_exporter_id, product_id, product_order_id,
     product_sale_quantity, product_sale_price, product_sale_total, product_sale_gst, product_sale_delivery, product_sale_discount, product_sale_grand_total,
     product_sale_type, product_sale_status, product_sale_date, product_sale_payment_type, product_sale_payment_notes,
@@ -112,8 +83,7 @@ values ('$userId','$prodId','$last_order_id', '$unicode','$sealcode','$exporterI
     $order_id=mysql_insert_id();
 
     if($order_id>0) {
-        $product_info_sql = "SELECT * FROM `product_info` WHERE `product_id`='$productName' AND `product_sale_status`=0 ORDER BY `id` ASC LIMIT $Quantity ";
-        echo $product_info_sql;
+        $product_info_sql = "SELECT * FROM `product_info` WHERE `product_id`='$productName' AND `product_sale_status`=0 ORDER BY `id` ASC LIMIT $quantity ";
         $product_info_exe = mysql_query($product_info_sql);
         while ($product_info_fet = mysql_fetch_array($product_info_exe)) {
             $product_id = $product_info_fet['product_id'];
@@ -125,13 +95,13 @@ values ('$userId','$prodId','$last_order_id', '$unicode','$sealcode','$exporterI
             $product_sale_status = 1;
             $product_sale_date = date("Y-m-d");
 
-
+            //product_info
             $product_info_update_sql = "UPDATE `product_info` SET `product_exporter_id`='$product_exporter_id',`product_sale_status`='$product_sale_status',`product_sale_date`='$product_sale_date' WHERE `id`='$product_info_id' AND `product_id`='$product_id' AND `product_sale_status`=0";
-            //echo $product_info_update_sql;
             $product_info_update_exe = mysql_query($product_info_update_sql);
 
             /*
              INSERT SQL
+            product_order_info
             */
             $product_order_info_sql = "INSERT INTO `product_order_info`
             (`user_id`, `product_id`, `product_order_id`, `product_unicode`, `product_sealcode`, `product_exporter_id`,
@@ -139,18 +109,17 @@ values ('$userId','$prodId','$last_order_id', '$unicode','$sealcode','$exporterI
             VALUES
             ('$exporterId', '$product_id', '$order_id', '$product_unicode', '$product_sealcode','$product_exporter_id',
             '$username', '$username', '$product_sale_date', '$product_sale_date')";
-            //echo $product_order_info_sql;
             $product_order_info_exe = mysql_query($product_order_info_sql);
         }
-        header("Location: productlist.php?suc=1");
+        header("Location: orderlist.php?suc=1");
     }
 
     else{
-        header("Location: productlist.php?err=2");
+        header("Location: orderlist.php?err=2");
     }
 }
 else{
-    header("Location: productlist.php?err=1");
+    header("Location: orderlist.php?err=1");
 }
 
 

@@ -228,7 +228,6 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <select class="form-control" name="Delivery" id="Delivery" required onchange="javascript:deliveryaddress(this.value);">
-                                                    <option value="0"> Choose Delivery Address</option>
                                                 </select>
                                             </div>
                                         </div><!-- Inner Column -->
@@ -332,9 +331,9 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Payment Notes<span class="req"> *</span></label>
+                                        <label class="col-sm-3 control-label">Payment Notes</label>
                                         <div class="col-sm-9">
-                                            <textarea name="PaymentNotes" id="PaymentNotes" placeholder="Payment Notes" class="form-control" required></textarea>
+                                            <textarea name="PaymentNotes" id="PaymentNotes" placeholder="Payment Notes" class="form-control"></textarea>
                                         </div>
                                     </div>
 
