@@ -192,7 +192,7 @@ else
                                 <div class="row">
                                     <fieldset class="form-group col-md-12">
                                         <legend>Customs Details</legend>
-                                        <?php if($order_fet['customs_approve_status'] == 1){ ?>
+                                        <?php if($order_fet['customs_approve_status'] == 1 || $order_fet['customs_approve_status'] == 2){ ?>
                                             <div class="form-group col-md-12">
                                                 <label class="col-sm-3 control-label">Date of Reading</label>
                                                 <div class="col-sm-9"><div class=""> <?php echo $order_fet['customs_approve_date']; ?></div></div>
@@ -229,6 +229,52 @@ else
                                 </div>
                             </div>
                         </form>
+                        <?php if($order_fet['customs_approve_status'] == 0){ ?>
+                            <div class="row">
+                                <div class="col-xs-6">
+
+                                    <form action="doesealupdate.php" method="get">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <div class="form-group has-feedback">
+                                                    <input name="product_sealcode" type="hidden" class="form-control" value="<?php echo $order_fet['product_sealcode']; ?>" required />
+                                                    <input name="customs_approve_status" type="hidden" class="form-control" value="1" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button name="eseal_accept" type="submit" class="btn btn-success btn-block btn-flat">Accept</button>
+                                            </div><!-- /.col -->
+                                            <div class="col-xs-4">
+                                                <div class="form-group has-feedback">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <br/><br/>
+                                </div>
+                                <div class="col-xs-6">
+
+                                    <form action="doesealupdate.php" method="get">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <div class="form-group has-feedback">
+                                                    <input name="product_sealcode" type="hidden" class="form-control" value="<?php echo $order_fet['product_sealcode']; ?>" required />
+                                                    <input name="customs_approve_status" type="hidden" class="form-control" value="2" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button name="eseal_decline" type="submit" class="btn btn-danger btn-block btn-flat">Decline</button>
+                                            </div><!-- /.col -->
+                                            <div class="col-xs-4">
+                                                <div class="form-group has-feedback">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <br/><br/>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div><!-- /.box -->
                 </div><!--/.col (left) -->
 
