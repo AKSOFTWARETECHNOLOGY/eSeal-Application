@@ -23,6 +23,16 @@ if(isset($_REQUEST['delete']))
 
     header("Location: supporterslist.php?succ=1&msg=all");
 }
+else if(isset($_REQUEST['enable']))
+{
+    $support_id = $_REQUEST['support_id'];
+    $date=date("Y-m-d");
+
+    $enable_sql = "UPDATE `users` SET `delete_status`='1', `updated_at` = '$date'  WHERE `id`='$support_id'";
+    $enable_exe = mysql_query($enable_sql);
+
+    header("Location: supporterslist.php?succ=1&msg=all");
+}
 else
 {
     header("Location: supporterslist.php?err=1&msg=all");

@@ -14,14 +14,13 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-$custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name
+$custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name, users.delete_status
 FROM `customs_info` AS `ci`
 LEFT JOIN `users` ON users.id = ci.user_id
 LEFT JOIN `countries` ON countries.id = ci.country
 LEFT JOIN `cities` ON cities.id = ci.city
 LEFT JOIN `ports` ON ports.id = ci.port
-LEFT JOIN `terminals` ON terminals.id = ci.terminal
-WHERE `users`.delete_status = 1";
+LEFT JOIN `terminals` ON terminals.id = ci.terminal";
 $custom_exe=mysql_query($custom_sql);
 $custom_cnt=@mysql_num_rows($custom_exe);
 ?>
@@ -75,6 +74,7 @@ $custom_cnt=@mysql_num_rows($custom_exe);
                                         <th>Email</th>
                                         <th>Port</th>
                                         <th>Terminal</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -92,6 +92,18 @@ $custom_cnt=@mysql_num_rows($custom_exe);
                                             <td><?php echo $custom_fet['email']; ?></td>
                                             <td><?php echo $custom_fet['ports_name']; ?></td>
                                             <td><?php echo $custom_fet['terminals_name']; ?></td>
+                                            <td>
+                                                <?php if($custom_fet['delete_status'] == 1)
+                                                {?>
+                                                    <button type="button" class="btn btn-success btn-xs">Active</button>
+                                                <?php
+                                                }
+                                                else{
+                                                    ?>
+                                                    <button type="button" class="btn btn-danger btn-xs">Inactive</button>
+                                                <?php
+                                                }?>
+                                            </td>
                                             <td>
                                                 <a href="customsview.php?customs_id=<?php echo $custom_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                             </td>

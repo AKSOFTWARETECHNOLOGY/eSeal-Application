@@ -28,7 +28,7 @@ LEFT JOIN `users` ON users.id = ci.user_id
 LEFT JOIN `countries` ON countries.id = ci.country
 LEFT JOIN `cities` ON cities.id = ci.city
 LEFT JOIN `states` ON states.id = ci.state
-WHERE `users`.delete_status = 1 and `ci`.id = $customs_id";
+WHERE `ci`.id = $customs_id";
 $custom_exe=mysql_query($custom_sql);
 $custom_cnt=@mysql_num_rows($custom_exe);
 $custom_fet=mysql_fetch_array($custom_exe);

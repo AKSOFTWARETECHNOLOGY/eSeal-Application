@@ -23,6 +23,16 @@ if(isset($_REQUEST['delete']))
 
     header("Location: customslist.php?succ=1&msg=all");
 }
+else if(isset($_REQUEST['enable']))
+{
+    $customs_id = $_REQUEST['customs_id'];
+    $date=date("Y-m-d");
+
+    $sql = "UPDATE `users` SET `delete_status`='1', `updated_at` = '$date'  WHERE `id`='$customs_id'";
+    $delete = mysql_query($sql);
+
+    header("Location: customslist.php?succ=1&msg=all");
+}
 else
 {
     header("Location: customslist.php?err=1&msg=all");

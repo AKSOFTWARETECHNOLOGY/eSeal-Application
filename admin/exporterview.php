@@ -22,13 +22,13 @@ else
     exit;
 }
 
-$export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, states.state_name
+$export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, states.state_name, users.delete_status
 FROM `exporter_info` AS `ei`
 LEFT JOIN `users` ON users.id = ei.user_id
 LEFT JOIN `countries` ON countries.id = ei.country
 LEFT JOIN `cities` ON cities.id = ei.city
 LEFT JOIN `states` ON states.id = ei.state
-WHERE `users`.delete_status = 1 and `ei`.id = $exporter_id";
+WHERE `ei`.id = $exporter_id";
 $export_exe=mysql_query($export_sql);
 $export_cnt=@mysql_num_rows($export_exe);
 $export_fet=mysql_fetch_array($export_exe);
@@ -125,6 +125,21 @@ $export_fet=mysql_fetch_array($export_exe);
                                         <label class="col-sm-3 control-label">IEC Code</label>
                                         <div class="col-sm-9"><div class=""> <?php echo $export_fet['iec_code']; ?></div></div>
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Status</label>
+                                        <div class="col-sm-9"><div class="">
+                                                <?php if($export_fet['delete_status'] == 1)
+                                                {?>
+                                                    <button type="button" class="btn btn-success btn-xs">Active</button>
+                                                <?php
+                                                }
+                                                else{
+                                                    ?>
+                                                    <button type="button" class="btn btn-danger btn-xs">Inactive</button>
+                                                <?php
+                                                }?>
+                                            </div></div>
+                                    </div>
                                 </div>
                                 <div class="col-md-1"></div>
                             </div><!-- /.box-body -->
@@ -146,7 +161,19 @@ $export_fet=mysql_fetch_array($export_exe);
                                 <a href="exporterlist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Exporters List</button></a>
 
                                 <a href="exporteredit.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-danger col-md-12" style="margin-bottom:10px;"><i class="fa fa-pencil"></i> Edit</button></a>
-                                <a href="exporter-delete.php?delete=1&exporter_id=<?php echo $export_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to disable this item?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Disable</button></a>
+
+                                <?php
+                                if($export_fet['delete_status'] == 1){
+                                    ?>
+                                    <a href="exporter-delete.php?delete=1&exporter_id=<?php echo $export_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to disable this item?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Disable</button></a>
+                                <?php
+                                }
+                                else{
+                                    ?>
+                                    <a href="exporter-delete.php?enable=1&exporter_id=<?php echo $export_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to enable this item?');"><button type="button" class="btn btn-success col-md-12"><i class="ion ion-pie-graph"></i> Enable</button></a>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->

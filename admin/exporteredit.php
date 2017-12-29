@@ -28,7 +28,7 @@ LEFT JOIN `users` ON users.id = ei.user_id
 LEFT JOIN `countries` ON countries.id = ei.country
 LEFT JOIN `cities` ON cities.id = ei.city
 LEFT JOIN `states` ON states.id = ei.state
-WHERE `users`.delete_status = 1 and `ei`.id = $exporter_id";
+WHERE `ei`.id = $exporter_id";
 $export_exe=mysql_query($export_sql);
 $export_cnt=@mysql_num_rows($export_exe);
 $export_fet=mysql_fetch_array($export_exe);

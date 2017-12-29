@@ -28,7 +28,7 @@ LEFT JOIN `users` ON users.id = si.user_id
 LEFT JOIN `countries` ON countries.id = si.country
 LEFT JOIN `cities` ON cities.id = si.city
 LEFT JOIN `states` ON states.id = si.state
-WHERE `users`.delete_status = 1 and `si`.id = $support_id";
+WHERE `si`.id = $support_id";
 $support_exe=mysql_query($support_sql);
 $support_cnt=@mysql_num_rows($support_exe);
 $support_fet=mysql_fetch_array($support_exe);

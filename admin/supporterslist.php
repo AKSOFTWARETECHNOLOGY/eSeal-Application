@@ -14,12 +14,11 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-$support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name
+$support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
 FROM `support_info` AS `si`
 LEFT JOIN `users` ON users.id = si.user_id
 LEFT JOIN `countries` ON countries.id = si.country
-LEFT JOIN `cities` ON cities.id = si.city
-WHERE `users`.delete_status = 1";
+LEFT JOIN `cities` ON cities.id = si.city";
 $support_exe=mysql_query($support_sql);
 $support_cnt=@mysql_num_rows($support_exe);
 ?>
@@ -72,6 +71,7 @@ $support_cnt=@mysql_num_rows($support_exe);
                                         <th>Mobile</th>
                                         <th>Email</th>
                                         <th>Location</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -88,6 +88,18 @@ $support_cnt=@mysql_num_rows($support_exe);
                                             <td><?php echo $support_fet['mobile']; ?></td>
                                             <td><?php echo $support_fet['email']; ?></td>
                                             <td><?php echo $support_fet['city_name']; ?></td>
+                                            <td>
+                                                <?php if($support_fet['delete_status'] == 1)
+                                                {?>
+                                                    <button type="button" class="btn btn-success btn-xs">Active</button>
+                                                <?php
+                                                }
+                                                else{
+                                                    ?>
+                                                    <button type="button" class="btn btn-danger btn-xs">Inactive</button>
+                                                <?php
+                                                }?>
+                                            </td>
                                             <td>
                                                 <a href="supportersview.php?support_id=<?php echo $support_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                             </td>

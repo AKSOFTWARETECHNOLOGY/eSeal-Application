@@ -20,12 +20,11 @@ SELECT a.tutorial_id, a.tutorial_author, b.tutorial_count
     -> WHERE a.tutorial_author = b.tutorial_author;
 
 */
-$export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name
+$export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
 FROM `exporter_info` AS `ei`
 LEFT JOIN `users` ON users.id = ei.user_id
 LEFT JOIN `countries` ON countries.id = ei.country
-LEFT JOIN `cities` ON cities.id = ei.city
-WHERE `users`.delete_status = 1";
+LEFT JOIN `cities` ON cities.id = ei.city";
 $export_exe=mysql_query($export_sql);
 $export_cnt=@mysql_num_rows($export_exe);
 ?>
@@ -78,6 +77,7 @@ $export_cnt=@mysql_num_rows($export_exe);
                                         <th>Exporter Name</th>
                                         <th>Mobile</th>
                                         <th>Email</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -94,6 +94,18 @@ $export_cnt=@mysql_num_rows($export_exe);
                                             <td><?php echo $export_fet['name_exporter']; ?></td>
                                             <td><?php echo $export_fet['mobile']; ?></td>
                                             <td><?php echo $export_fet['email']; ?></td>
+                                            <td>
+                                                <?php if($export_fet['delete_status'] == 1)
+                                                {?>
+                                                    <button type="button" class="btn btn-success btn-xs">Active</button>
+                                                    <?php
+                                                }
+                                                else{
+                                                    ?>
+                                                    <button type="button" class="btn btn-danger btn-xs">Inactive</button>
+                                                <?php
+                                                }?>
+                                            </td>
                                             <td>
                                                 <a href="exporterview.php?exporter_id=<?php echo $export_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                             </td>

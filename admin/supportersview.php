@@ -22,13 +22,13 @@ else
     exit;
 }
 
-$support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, states.state_name
+$support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, states.state_name, users.delete_status
 FROM `support_info` AS `si`
 LEFT JOIN `users` ON users.id = si.user_id
 LEFT JOIN `countries` ON countries.id = si.country
 LEFT JOIN `cities` ON cities.id = si.city
 LEFT JOIN `states` ON states.id = si.state
-WHERE `users`.delete_status = 1 and `si`.id = $support_id";
+WHERE `si`.id = $support_id";
 $support_exe=mysql_query($support_sql);
 $support_cnt=@mysql_num_rows($support_exe);
 $support_fet=mysql_fetch_array($support_exe);
@@ -114,6 +114,21 @@ $support_fet=mysql_fetch_array($support_exe);
                                         <label class="col-sm-3 control-label">Email</label>
                                         <div class="col-sm-9"><div class=""><?php echo $support_fet['email']; ?></div></div>
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Status</label>
+                                        <div class="col-sm-9"><div class="">
+                                                <?php if($support_fet['delete_status'] == 1)
+                                                {?>
+                                                    <button type="button" class="btn btn-success btn-xs">Active</button>
+                                                <?php
+                                                }
+                                                else{
+                                                    ?>
+                                                    <button type="button" class="btn btn-danger btn-xs">Inactive</button>
+                                                <?php
+                                                }?>
+                                            </div></div>
+                                    </div>
                                 </div>
                                 <div class="col-md-1"></div>
                             </div><!-- /.box-body -->
@@ -126,7 +141,7 @@ $support_fet=mysql_fetch_array($support_exe);
                     <!-- Horizontal Form -->
                     <div class="box box-danger" >
                         <div class="box-header with-border">
-                            <h3 class="box-title">Customs</h3>
+                            <h3 class="box-title">Users</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
 
@@ -134,7 +149,20 @@ $support_fet=mysql_fetch_array($support_exe);
                             <div class="form-group col-md-12">
                                 <a href="supporterslist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Users List</button></a>
                                 <a href="supportersedit.php?support_id=<?php echo $support_fet['id']; ?>"><button type="button" class="btn btn-danger col-md-12" style="margin-bottom:10px;"><i class="fa fa-pencil"></i> Edit</button></a>
-                                <a href="supporters-delete.php?delete=1&support_id=<?php echo $support_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to disable this item?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Disable</button></a>
+
+                                <?php
+                                if($support_fet['delete_status'] == 1){
+                                    ?>
+                                    <a href="supporters-delete.php?delete=1&support_id=<?php echo $support_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to disable this item?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Disable</button></a>
+                                <?php
+                                }
+                                else{
+                                    ?>
+                                    <a href="supporters-delete.php?enable=1&support_id=<?php echo $support_fet['user_id']; ?>" onclick="return confirm('Are you sure you want to enable this item?');"><button type="button" class="btn btn-success col-md-12"><i class="ion ion-pie-graph"></i> Enable</button></a>
+                                <?php
+                                }
+                                ?>
+
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
