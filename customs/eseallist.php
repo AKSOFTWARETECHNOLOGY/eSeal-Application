@@ -102,8 +102,6 @@ $order_cnt=@mysql_num_rows($order_exe);
                                         <button class="btn btn-warning" name="datesearch" type="submit" style="margin-top: 25px;">Search</button>
                                     </div>
                                 </form>
-
-
                             </div>
                             <div class="row col-sm-12">
                                 <br/><br/>

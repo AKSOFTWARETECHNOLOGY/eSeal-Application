@@ -341,16 +341,16 @@ $(document).ready(function() {
 
                         <table class="table">
                             <thead>
-                            <th>SSG CODE</th>
-                            <th>SEAL CODE</th>
+                            <th>Sl.No</th>
+                            <th>E-SEAL NUMBER</th>
                             <th>STATUS</th>
                             </thead>
                             <tbody>
-                            <?php if(mysql_num_rows($product_info_order_exe)>0) { ?>
-                            <?php while($product_info_order_fet=mysql_fetch_array($product_info_order_exe)) { ?>
+                            <?php if(mysql_num_rows($product_info_order_exe)>0) { $sl=0; ?>
+                            <?php while($product_info_order_fet=mysql_fetch_array($product_info_order_exe)) { $sl++; ?>
 
                             <tr>
-                                <td><?php echo $product_info_order_fet['product_unicode']; ?></td>
+                                <td><?php //echo $product_info_order_fet['product_unicode']; ?><?php echo $sl; ?></td>
                                 <td><?php echo $product_info_order_fet['product_sealcode']; ?></td>
                                 <td><?php if($product_info_order_fet['seal_type']=="") { echo "Unused"; } else {  echo "Used"; }?></td>
                             </tr>

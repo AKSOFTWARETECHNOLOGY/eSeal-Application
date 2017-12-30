@@ -17,6 +17,13 @@
                   <li class="hidden"><a href="javascript:void(0);">View Cart</a></li>
               </ul>
           <?php } ?>
+
+          <ul class="social">
+              <li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-12 account">
         <h3>Policy</h3>
@@ -35,20 +42,14 @@
           <p>No.44, MIG, G1/5 Marutham Enclave, 6th Main Road, Mogappair ERI Scheme, Mogappair, Chennai - 600 0037</p>
           <p>(+91) 94880 15119 , (+91) 88256 23258.</p>
           -->
-        <ul class="social hidden">
-          <li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-		  <li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-        </ul>
+
       </div>
-	  
-<div class="col-md-3 col-sm-3 col-xs-12 store">
+
+      <div class="col-md-3 col-sm-3 col-xs-12 store">
 <h3>Store Hours</h3>
 <ul>
-<li>Monday - Thursday : <span>10 AM to 7PM</span></li>
-<li>Friday : <span>10 AM to 8PM</span></li>
-<li>Saturday :<span>10 AM to 6PM</span></li>
+<li>Monday - Friday : <span>10 AM to 6PM</span></li>
+<li>Saturday :<span>10 AM to 4PM</span></li>
 <li>Sunday : <span>Holiday</span></li>
         </ul>
 </div>
@@ -59,9 +60,15 @@
 <div class="footer-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <p>SSGA © Copyright 2016-2017 All Rights Reserved.</p>
+            <div class="col-md-6 col-sm-6 col-xs-12" style="float: left;">
+                <p>SSGA &copy; Copyright 2016-2017 All Rights Reserved.</p>
             </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-12" style="float: right;">
+                <p>Design & Developed by <a href="http://www.aramsolutions.com" target="_blank">ARAM</a> </p>
+            </div>
+
+
         </div>
     </div>
 </div>

@@ -29,10 +29,55 @@ WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status =
     $product_cnt=@mysql_num_rows($product_exe);
 }
 else{
-    $product_sql="SELECT product_info.*, products.product_name FROM `product_info` LEFT JOIN `products` ON products.id = product_info.product_id WHERE `product_info`.user_id = $user_id";
+    $product_sql="SELECT product_info.*, products.product_name FROM `product_info`
+LEFT JOIN `products` ON products.id = product_info.product_id
+ WHERE `product_info`.user_id = $user_id";
     $product_exe=mysql_query($product_sql);
     $product_cnt=@mysql_num_rows($product_exe);
 }
+
+/*$fromDate = $_REQUEST['fromDate'];
+$toDate = $_REQUEST['toDate'];
+$saleStatus = $_REQUEST['saleStatus'];
+$date = date("Y-m-d");
+
+if($fromDate){
+    if($toDate) {
+        if ($saleStatus == 1) {
+            $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
+    LEFT JOIN `products` ON products.id = product_info.product_id
+    WHERE `product_info`.user_id = $user_id and product_info.created_at between $fromDate and $toDate";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        } else if ($saleStatus == 2) {
+            $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
+    LEFT JOIN `products` ON products.id = product_info.product_id
+    WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 1 and product_info.created_at between $fromDate and $toDate";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        } else if ($saleStatus == 3) {
+            $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
+    LEFT JOIN `products` ON products.id = product_info.product_id
+    WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 0 and product_info.created_at between $fromDate and $toDate";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        }
+    }
+    else{
+        $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
+    LEFT JOIN `products` ON products.id = product_info.product_id
+    WHERE `product_info`.user_id = $user_id and product_info.created_at between $fromDate and $toDate";
+        $product_exe = mysql_query($product_sql);
+        $product_cnt = @mysql_num_rows($product_exe);
+    }
+}
+else{
+    $product_sql="SELECT product_info.*, products.product_name FROM `product_info`
+LEFT JOIN `products` ON products.id = product_info.product_id
+ WHERE `product_info`.user_id = $user_id";
+    $product_exe=mysql_query($product_sql);
+    $product_cnt=@mysql_num_rows($product_exe);
+}*/
 
 ?>
 <!DOCTYPE html>
@@ -73,7 +118,6 @@ else{
                             </div>
 
                             <div class="row col-sm-4">
-
                                 <div class="row">
                                     <a href="inventorieslist.php?all=1" style="margin-left: 10px;"><button type="button" class="btn btn-info" style="margin-bottom: 10px;">All</button></a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -82,28 +126,33 @@ else{
                                     <a href="inventorieslist.php?instock=1" style="margin-left: 10px;"><button type="button" class="btn btn-info" style="margin-bottom: 10px;">Instock</button></a>
                                 </div>
                             </div>
-                            <div class="row col-sm-8">
-                                <form class="datesearch" action="" class="hidden" method="post" style="display:none;">
-                                    <div class="col-sm-1">
+
+                            <div class="row col-sm-12">
+                                <form class="datesearch" action="" method="get">
+                                    <div class="col-sm-3">
+                                        <label>Sale Status:</label>
+                                        <select class="form-control" name="saleStatus" id="saleStatus" required>
+                                            <option value="1"> All </option>
+                                            <option value="2"> Sold </option>
+                                            <option value="3"> Instock </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
                                         <label>From:</label>
+                                        <input class="form-control" type="date" name="fromDate" id="fromDate" value=""/>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input class="form-control" type="date" name="fromDate" value=""/>
-                                    </div>
-                                    <div class="col-sm-1"> </div>
-
-                                    <div class="col-sm-1">
                                         <label>To:</label>
+                                        <input class="form-control" type="date" name="toDate" id="toDate" value=""/>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input class="form-control" type="date" name="toDate" value=""/>
-                                    </div>
-                                    <div class="col-sm-1"> </div>
-
-                                    <div class="col-sm-2">
-                                        <button class="btn btn-warning" name="datesearch" type="submit">Search</button>
+                                        <label>&nbsp;</label>
+                                        <button class="btn btn-warning datesearch" type="submit" style="margin-top: 25px;">Search</button>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="row col-sm-12">
+                                <br/><br/>
                             </div>
 
                             <div class="row" style="line-height: 2px;"></div>
