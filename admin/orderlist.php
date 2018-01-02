@@ -14,17 +14,73 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-$product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter FROM `product_order`
-LEFT JOIN `products` ON products.id = product_order.product_id
-LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
-WHERE `product_order`.user_id = $user_id";
+$fromDate = isset($_REQUEST['fromDate']) ? $_REQUEST['fromDate'] : null;
+$toDate = isset($_REQUEST['toDate']) ? $_REQUEST['toDate'] : null;
+$orderStatus = isset($_REQUEST['orderStatus']) ? $_REQUEST['orderStatus'] : null;
+$date = date("Y-m-d");
 
-$product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
+if ($orderStatus != 5 && !(is_null($orderStatus))) {
+    if($fromDate != null || $fromDate != 0) {
+        if ($toDate != null || $toDate != 0) {
+            $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
+            LEFT JOIN `products` ON products.id = product_order.product_id
+            LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+            WHERE `product_order`.product_order_status = $orderStatus and product_order.product_sale_date between '$fromDate' and '$toDate'";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        }
+        else{
+            $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
+            LEFT JOIN `products` ON products.id = product_order.product_id
+            LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+            WHERE `product_order`.product_order_status = $orderStatus and product_order.product_sale_date between '$fromDate' and '$date'";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        }
+    }
+    else{
+        $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
+            LEFT JOIN `products` ON products.id = product_order.product_id
+            LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+            WHERE `product_order`.product_order_status = $orderStatus";
+        $product_exe = mysql_query($product_sql);
+        $product_cnt = @mysql_num_rows($product_exe);
+    }
+}
+else if ($orderStatus == 5) {
+    if($fromDate != null || $fromDate != 0) {
+        if ($toDate != null || $toDate != 0) {
+            $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
+            LEFT JOIN `products` ON products.id = product_order.product_id
+            LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+            WHERE product_order.product_sale_date between '$fromDate' and '$toDate'";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        }
+        else{
+            $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
+            LEFT JOIN `products` ON products.id = product_order.product_id
+            LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+            WHERE product_order.product_sale_date between '$fromDate' and '$date'";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        }
+    }
+    else{
+        $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
+            LEFT JOIN `products` ON products.id = product_order.product_id
+            LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id";
+        $product_exe = mysql_query($product_sql);
+        $product_cnt = @mysql_num_rows($product_exe);
+    }
+}
+else{
+    $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
 LEFT JOIN `products` ON products.id = product_order.product_id
 LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id";
-$product_exe=mysql_query($product_sql);
-$product_cnt=@mysql_num_rows($product_exe);
-//$product_fet=mysql_fetch_array($product_exe);
+    $product_exe=mysql_query($product_sql);
+    $product_cnt=@mysql_num_rows($product_exe);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,6 +116,37 @@ $product_cnt=@mysql_num_rows($product_exe);
                             <h3 class="box-title" style="line-height:30px;">Product Order List</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
+                            <div class="row col-sm-12">
+                                <form class="datesearch" action="" method="get">
+                                    <div class="col-sm-3">
+                                        <label>Order Status:</label>
+                                        <select class="form-control" name="orderStatus" id="orderStatus" required>
+                                            <option value="5"> All </option>
+                                            <option value="0"> Order Placed </option>
+                                            <option value="1"> Order Confirmed </option>
+                                            <option value="2"> Order Packed </option>
+                                            <option value="3"> Order In Transit </option>
+                                            <option value="4"> Order Delivered </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>From:</label>
+                                        <input class="form-control" type="date" name="fromDate" id="fromDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>To:</label>
+                                        <input class="form-control" type="date" name="toDate" id="toDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>&nbsp;</label>
+                                        <button class="btn btn-warning datesearch" type="submit" style="margin-top: 25px;">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row col-sm-12">
+                                <br/>
+                            </div>
+
                             <?php
                             if($product_cnt>0)
                             {
@@ -107,7 +194,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                                                 }
                                                 else if($product_fet['product_order_status'] == 3){
                                                     ?>
-                                                    <button type="button" class="btn btn-warning btn-xs"> Order Intransit </button>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Order In Transit </button>
                                                 <?php
                                                 }
                                                 else if($product_fet['product_order_status'] == 4){

@@ -14,70 +14,96 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-if($_REQUEST['sold']){
-    $product_sql="SELECT product_info.*, products.product_name FROM `product_info`
-LEFT JOIN `products` ON products.id = product_info.product_id
-WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 1";
-    $product_exe=mysql_query($product_sql);
-    $product_cnt=@mysql_num_rows($product_exe);
-}
-else if($_REQUEST['instock']){
-    $product_sql="SELECT product_info.*, products.product_name FROM `product_info`
-LEFT JOIN `products` ON products.id = product_info.product_id
-WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 0";
-    $product_exe=mysql_query($product_sql);
-    $product_cnt=@mysql_num_rows($product_exe);
-}
-else{
-    $product_sql="SELECT product_info.*, products.product_name FROM `product_info`
-LEFT JOIN `products` ON products.id = product_info.product_id
- WHERE `product_info`.user_id = $user_id";
-    $product_exe=mysql_query($product_sql);
-    $product_cnt=@mysql_num_rows($product_exe);
-}
-
-/*$fromDate = $_REQUEST['fromDate'];
-$toDate = $_REQUEST['toDate'];
-$saleStatus = $_REQUEST['saleStatus'];
+$fromDate = isset($_REQUEST['fromDate']) ? $_REQUEST['fromDate'] : null;
+$toDate = isset($_REQUEST['toDate']) ? $_REQUEST['toDate'] : null;
+$saleStatus = isset($_REQUEST['saleStatus']) ? $_REQUEST['saleStatus'] : null;
 $date = date("Y-m-d");
 
-if($fromDate){
-    if($toDate) {
-        if ($saleStatus == 1) {
+if ($saleStatus == 1) {
+    if($fromDate != null || $fromDate != 0) {
+        if ($toDate != null || $toDate != 0) {
             $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
-    LEFT JOIN `products` ON products.id = product_info.product_id
-    WHERE `product_info`.user_id = $user_id and product_info.created_at between $fromDate and $toDate";
+            LEFT JOIN `products` ON products.id = product_info.product_id
+            WHERE `product_info`.user_id = $user_id and product_info.product_added_date between '$fromDate' and '$toDate'";
             $product_exe = mysql_query($product_sql);
             $product_cnt = @mysql_num_rows($product_exe);
-        } else if ($saleStatus == 2) {
+        }
+        else{
             $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
-    LEFT JOIN `products` ON products.id = product_info.product_id
-    WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 1 and product_info.created_at between $fromDate and $toDate";
-            $product_exe = mysql_query($product_sql);
-            $product_cnt = @mysql_num_rows($product_exe);
-        } else if ($saleStatus == 3) {
-            $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
-    LEFT JOIN `products` ON products.id = product_info.product_id
-    WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 0 and product_info.created_at between $fromDate and $toDate";
+            LEFT JOIN `products` ON products.id = product_info.product_id
+            WHERE `product_info`.user_id = $user_id and product_info.product_added_date between '$fromDate' and '$date'";
             $product_exe = mysql_query($product_sql);
             $product_cnt = @mysql_num_rows($product_exe);
         }
     }
     else{
         $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
-    LEFT JOIN `products` ON products.id = product_info.product_id
-    WHERE `product_info`.user_id = $user_id and product_info.created_at between $fromDate and $toDate";
+            LEFT JOIN `products` ON products.id = product_info.product_id
+            WHERE `product_info`.user_id = $user_id";
         $product_exe = mysql_query($product_sql);
         $product_cnt = @mysql_num_rows($product_exe);
     }
 }
+
+else if ($saleStatus == 2) {
+    if($fromDate != null || $fromDate != 0) {
+        if ($toDate != null || $toDate != 0) {
+            $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
+            LEFT JOIN `products` ON products.id = product_info.product_id
+            WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 1 and product_info.product_added_date between '$fromDate' and '$toDate'";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        }
+        else{
+            $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
+            LEFT JOIN `products` ON products.id = product_info.product_id
+            WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 1 and product_info.product_added_date between '$fromDate' and '$date'";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        }
+    }
+    else{
+        $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
+            LEFT JOIN `products` ON products.id = product_info.product_id
+            WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 1";
+        $product_exe = mysql_query($product_sql);
+        $product_cnt = @mysql_num_rows($product_exe);
+    }
+}
+
+else if ($saleStatus == 3) {
+    if($fromDate != null || $fromDate != 0) {
+        if ($toDate != null || $toDate != 0) {
+            $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
+            LEFT JOIN `products` ON products.id = product_info.product_id
+            WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 0 and product_info.product_added_date between '$fromDate' and '$toDate'";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        }
+        else{
+            $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
+            LEFT JOIN `products` ON products.id = product_info.product_id
+            WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 0 and product_info.product_added_date between '$fromDate' and '$date'";
+            $product_exe = mysql_query($product_sql);
+            $product_cnt = @mysql_num_rows($product_exe);
+        }
+    }
+    else{
+        $product_sql = "SELECT product_info.*, products.product_name FROM `product_info`
+            LEFT JOIN `products` ON products.id = product_info.product_id
+            WHERE `product_info`.user_id = $user_id and `product_info`.product_sale_status = 0";
+        $product_exe = mysql_query($product_sql);
+        $product_cnt = @mysql_num_rows($product_exe);
+    }
+}
+
 else{
     $product_sql="SELECT product_info.*, products.product_name FROM `product_info`
 LEFT JOIN `products` ON products.id = product_info.product_id
  WHERE `product_info`.user_id = $user_id";
     $product_exe=mysql_query($product_sql);
     $product_cnt=@mysql_num_rows($product_exe);
-}*/
+}
 
 ?>
 <!DOCTYPE html>
@@ -117,7 +143,7 @@ LEFT JOIN `products` ON products.id = product_info.product_id
                                 <a href="add-bulk-inventories.php?inventory_id=1" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom: 10px;">Add Bulk Inventories</button></a>
                             </div>
 
-                            <div class="row col-sm-4">
+                            <div class="row col-sm-4 hidden">
                                 <div class="row">
                                     <a href="inventorieslist.php?all=1" style="margin-left: 10px;"><button type="button" class="btn btn-info" style="margin-bottom: 10px;">All</button></a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -152,11 +178,8 @@ LEFT JOIN `products` ON products.id = product_info.product_id
                                 </form>
                             </div>
                             <div class="row col-sm-12">
-                                <br/><br/>
+                                <br/>
                             </div>
-
-                            <div class="row" style="line-height: 2px;"></div>
-
 
                             <?php
                             if($product_cnt>0)
@@ -180,14 +203,13 @@ LEFT JOIN `products` ON products.id = product_info.product_id
                                     while($product_fet=mysql_fetch_array($product_exe))
                                     {
                                         $sl++;
-                                        $added_date = substr($product_fet['created_at'], 0, 10);
                                         ?>
                                         <tr>
                                             <td><?php echo $sl; ?></td>
                                             <td><?php echo $product_fet['product_name']; ?></td>
                                             <td class="hidden"><?php echo $product_fet['product_unicode']; ?></td>
                                             <td><?php echo $product_fet['product_sealcode']; ?></td>
-                                            <td><?php echo $added_date; ?></td>
+                                            <td><?php echo $product_fet['product_added_date'];; ?></td>
                                             <td>
                                                 <?php if($product_fet['product_sale_status'] == 0){
                                                     ?>
