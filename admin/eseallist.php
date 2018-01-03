@@ -14,21 +14,20 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-/*
-SELECT a.tutorial_id, a.tutorial_author, b.tutorial_count
-    -> FROM tutorials_tbl a, tcount_tbl b
-    -> WHERE a.tutorial_author = b.tutorial_author;
-
-*/
 $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
 FROM `product_order_info` AS `poi`
 LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
 LEFT JOIN `products` ON products.id = poi.product_id
-LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
+LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
 WHERE poi.product_item_status = 1";
 //echo $order_sql;
 $order_exe=mysql_query($order_sql);
 $order_cnt=@mysql_num_rows($order_exe);
+
+$export_sql="SELECT ei.*, users.delete_status
+FROM `exporter_info` AS `ei`
+LEFT JOIN `users` ON users.id = ei.user_id";
+$export_exe=mysql_query($export_sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,6 +63,47 @@ $order_cnt=@mysql_num_rows($order_exe);
                             <h3 class="box-title" style="line-height:30px;">Eseal List</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
+                            <div class="row col-sm-12 hidden">
+                                <form class="datesearch" action="" method="get">
+                                    <div class="col-sm-3">
+                                        <label>Exporter Name:</label>
+                                        <select class="form-control" name="exporterName" id="exporterName">
+                                            <option value="0"> Select Exporter </option>
+                                            <?php
+                                            while($export_fet=mysql_fetch_array($export_exe))
+                                            {
+                                                ?>
+                                                <option value="<?php echo $export_fet['user_id']; ?>"> <?php echo $export_fet['name_exporter']; ?> </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>E-Seal Status:</label>
+                                        <select class="form-control" name="esealStatus" id="esealStatus" required>
+                                            <option value="3"> All </option>
+                                            <option value="0"> Pending </option>
+                                            <option value="1"> Success </option>
+                                            <option value="2"> Tampered </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label>From:</label>
+                                        <input class="form-control" type="date" name="fromDate" id="fromDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label>To:</label>
+                                        <input class="form-control" type="date" name="toDate" id="toDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label>&nbsp;</label>
+                                        <button class="btn btn-warning datesearch" type="submit" style="margin-top: 25px;">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row col-sm-12">
+                                <br/>
+                            </div>
+
                             <?php
                             if($order_cnt>0)
                             {
@@ -72,6 +112,7 @@ $order_cnt=@mysql_num_rows($order_exe);
                                     <thead>
                                     <tr>
                                         <th>Sl.No</th>
+                                        <th>Exporter Name</th>
                                         <th>E-seal Number</th>
                                         <th>E-seal Status</th>
                                         <th></th>
@@ -86,6 +127,7 @@ $order_cnt=@mysql_num_rows($order_exe);
                                         ?>
                                         <tr>
                                             <td><?php echo $sl; ?></td>
+                                            <td><?php echo $order_fet['name_exporter']; ?></td>
                                             <td><?php echo $order_fet['product_sealcode']; ?></td>
                                             <td>
                                                 <?php
