@@ -367,22 +367,56 @@ $(document).ready(function() {
                             </tbody>
                         </table>
 
-                        <h3>Order Delivery</h3>
+                        <div class="other-fields">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th colspan="3">Order Summary</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Comment</th>
+                                </tr>
 
-                        <table class="table">
-                            <thead>
-                            <th>Date Added</th>
-                            <th>Status</th>
-                            <th>Comment</th>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>07/12/2017</td>
-                                <td>Pending</td>
-                                <td></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                                <tr>
+                                    <td><?php echo $product_order_fet['product_order_date']; ?></td>
+                                    <td>
+                                        <?php if($product_order_fet['product_order_status'] == 0){
+                                            ?>
+                                            <button type="button" class="btn btn-warning btn-xs"> Order Placed </button>
+                                        <?php
+                                        }
+                                        else if($product_order_fet['product_order_status'] == 1){
+                                            ?>
+                                            <button type="button" class="btn btn-info btn-xs"> Order Confirmed </button>
+                                        <?php
+                                        }
+                                        else if($product_order_fet['product_order_status'] == 2){
+                                            ?>
+                                            <button type="button" class="btn btn-info btn-xs"> Order Packed </button>
+                                        <?php
+                                        }
+                                        else if($product_order_fet['product_order_status'] == 3){
+                                            ?>
+                                            <button type="button" class="btn btn-info btn-xs"> Order Intransit </button>
+                                        <?php
+                                        }
+                                        else if($product_order_fet['product_order_status'] == 4){
+                                            ?>
+                                            <button type="button" class="btn btn-success btn-xs"> Order Delivered </button>
+                                        <?php
+                                        }?>
+                                    </td>
+                                    <td><?php echo $product_order_fet['product_order_note']; ?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
 
                     </div><!--Table Responsive-->
                     <div class="con-btn">

@@ -11,6 +11,7 @@
 <ul>
 <li><a href="dashboard.php"><i class="fa fa-asterisk" aria-hidden="true"></i> Dashboard</a></li>
 <li><a href="product-buy.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy eSeal</a></li>
+<li><a href="eseal-procedure.php"><i class="fa fa-dashboard"></i> eSeal Procedure</a></li>
 <li><a href="my-seal.php"><i class="fa fa-refresh" aria-hidden="true"></i> Update eSeal</a></li>
 <li><a href="my-seal-status.php"><i class="fa fa-refresh" aria-hidden="true"></i> eSeal Status</a></li>
 <li><a href="order-history.php"><i class="fa fa-history" aria-hidden="true"></i> Order History</a></li>

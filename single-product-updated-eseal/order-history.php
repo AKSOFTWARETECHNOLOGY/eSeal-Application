@@ -167,7 +167,33 @@ $(document).ready(function() {
 <td><?php echo $product_order_fet['product_delivery_name']; ?></td>
 <td><?php echo $product_order_fet['product_name']; ?></td>
 <td><?php echo $product_order_fet['product_sale_quantity']; ?></td>
-<td><?php echo $product_order_fet['product_sale_status']; ?></td>
+<td><?php //echo $product_order_fet['product_sale_status']; ?>
+    <?php if($product_order_fet['product_order_status'] == 0){
+        ?>
+        <button type="button" class="btn btn-warning btn-xs"> Order Placed </button>
+    <?php
+    }
+    else if($product_order_fet['product_order_status'] == 1){
+        ?>
+        <button type="button" class="btn btn-info btn-xs"> Order Confirmed </button>
+    <?php
+    }
+    else if($product_order_fet['product_order_status'] == 2){
+        ?>
+        <button type="button" class="btn btn-info btn-xs"> Order Packed </button>
+    <?php
+    }
+    else if($product_order_fet['product_order_status'] == 3){
+        ?>
+        <button type="button" class="btn btn-info btn-xs"> Order Intransit </button>
+    <?php
+    }
+    else if($product_order_fet['product_order_status'] == 4){
+        ?>
+        <button type="button" class="btn btn-success btn-xs"> Order Delivered </button>
+    <?php
+    }?>
+</td>
 <td>Rs.<?php echo $product_order_fet['product_sale_grand_total']; ?></td>
 <td><?php echo $product_order_fet['product_sale_date']; ?></td>
 <td><a href="order-history-details.php?order_id=<?php echo $product_order_fet['id']; ?>"><i class="fa fa-eye"></i></a></td>
