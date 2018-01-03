@@ -76,27 +76,32 @@ $conversation_cnt=@mysql_num_rows($conversation_exe);
                 <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="box box-primary">
-                        <div class="box-header with-border">
+                        <div class="box-header with-border hidden">
                             <h3 class="box-title">View Complaint Details</h3>
                         </div><!-- /.box-header -->
 
                         <div class="box-body">
 
                             <div class="col-md-12">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
+
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-6 control-label">Exporter Name</label>
-                                        <div class="col-sm-6">
-                                            <div class=""><?php echo $complaint_fet['name_exporter']; ?></div>
-                                        </div>
+                                        <label class="col-sm-3 control-label">Subject</label>
+                                        <div class="col-sm-9"><div class="" ><?php echo $complaint_fet['subject']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Exporter Name</label>
+                                        <div class="col-sm-9">
+                                            <div class=""><?php echo $complaint_fet['name_exporter']; ?> - (<?php echo $complaint_fet['iec_code']; ?>)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12 hidden">
                                         <label class="col-sm-6 control-label">IEC Code</label>
                                         <div class="col-sm-6"><div class="" ><?php echo $complaint_fet['iec_code']; ?></div></div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6 hidden">
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-6 control-label">Vendor Name</label>
                                         <div class="col-sm-6">
@@ -116,21 +121,22 @@ $conversation_cnt=@mysql_num_rows($conversation_exe);
                             while($conversation_fet=mysql_fetch_array($conversation_exe)) {
                                 ?>
                                 <div class="col-md-12 conversation">
-                                    <div class="">
+                                    <div class="col-md-1">
                                         <?php
                                         if($conversation_fet['sender_id'] == 2)
                                         {
-                                            echo "<b> Admin says, </b>";
+                                            echo "<b> Admin, </b>";
                                         }
-                                        else{
-                                            echo "<b> Exporter says,</b>";
+                                        else
+                                        {
+                                            echo "<b> Exporter,</b>";
                                         }
                                         ?>
                                     </div>
-                                    <div class="">
-                                        <h4 class="control-label"><?php echo $conversation_fet['subject']; ?></h4>
-                                    </div>
-                                    <div class="">
+                                    <div class="col-md-11">
+                                        <br/>
+                                        <h4 class="control-label hidden"><?php echo $conversation_fet['subject']; ?></h4>
+
                                         <p><?php echo $conversation_fet['message']; ?></p>
                                     </div>
                                 </div>

@@ -181,13 +181,16 @@ $(document).ready(function() {
 
     <div class="col-md-12 conversationhead">
         <div class="col-md-12">
-            <div class="form-group col-md-6">
-                <label class="col-sm-6 control-label">Exporter Name</label>
-                <div class="col-sm-6">
-                    <div class=""><?php echo $complaint_fet['name_exporter']; ?></div>
-                </div>
+            <br/>
+            <div class="form-group col-md-12">
+                <label class="col-sm-6 control-label">Subject</label>
+                <div class="col-sm-6"><div class="" ><?php echo $complaint_fet['subject']; ?></div></div>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12 hidden">
+                <label class="col-sm-6 control-label">Exporter Name</label>
+                <div class="col-sm-6"><div class=""><?php echo $complaint_fet['name_exporter']; ?></div></div>
+            </div>
+            <div class="form-group col-md-12 hidden">
                 <label class="col-sm-6 control-label">IEC Code</label>
                 <div class="col-sm-6"><div class="" ><?php echo $complaint_fet['iec_code']; ?></div></div>
             </div>
@@ -212,21 +215,23 @@ $(document).ready(function() {
     {
         while($conversation_fet=mysql_fetch_array($conversation_exe)) {
             ?>
-            <div class="col-md-12 conversation">
-                <div class="col-md-2">
+            <div class="col-md-12 conversation"  style="min-height: 50px;">
+                <br/>
+                <div class="col-md-1" style='text-align: right;'>
                     <?php
+                    //print_r($conversation_fet);
                     if($conversation_fet['sender_id'] == 2)
                     {
-                        echo "<b> Admin :: </b>";
+                        echo "<b>Admin::</b>";
                     }
                     else{
-                        echo "<b> Exporter :: </b>";
+                        echo "<b>Exporter::</b>";
                     }
                     ?>
                 </div>
-                <div class="col-md-10">
-                    <h4 class="control-label"><?php echo $conversation_fet['subject']; ?></h4>
-
+                <div class="col-md-11">
+                    <br/>
+                    <h4 class="control-label hidden"><?php echo $conversation_fet['subject']; ?></h4>
                     <p><?php echo $conversation_fet['message']; ?></p>
                 </div>
             </div>

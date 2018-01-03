@@ -180,7 +180,7 @@ $eseal_other_cnt=@mysql_num_rows($eseal_other_exe);
 <link href="css/owl.carousel.css" type="text/css" rel="stylesheet">
 <link href="css/jquery.bxslider.min.css" type="text/css" rel="stylesheet">
 <link href="css/jquery.accordion.css" type="text/css" rel="stylesheet">
-    <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    <link href="css/AdminLTEXXX.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
@@ -283,8 +283,8 @@ $(document).ready(function() {
     <div class="row">
         <div class="col-lg-6 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-orange">
-                <div class="inner">
+            <div class="small-box bg-orange" style="background: orange;padding: 17px;height: 240px;">
+                <div class="inner col-lg-6 col-xs-6">
                     <h3><?php echo $product_order_cnt;?></h3>
                     <p>E-Seal Inventory</p>
                     <p>Placed <b><?php echo $product_order_placed_cnt;?></b></p>
@@ -293,8 +293,8 @@ $(document).ready(function() {
                     <p>Intransit <b><?php echo $product_order_intransit_cnt;?></b></p>
                     <p>Delivered <b><?php echo $product_order_delivered_cnt;?></b></p>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-android-person"></i>
+                <div class="icon col-lg-6 col-xs-6">
+                    <i class="ion ion-android-person" style="font-size:200px;"></i>
                 </div>
                 <a href="order-history.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -302,8 +302,8 @@ $(document).ready(function() {
 
         <div class="col-lg-6 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-aqua">
-                <div class="inner">
+            <div class="small-box bg-aqua" style="background: aqua;padding: 17px;height: 240px;">
+                <div class="inner col-lg-6 col-xs-6">
                     <h3><?php echo $eseal_cnt;?></h3>
                     <p>E-seal Status</p>
                     <p>Pending <b><?php echo $eseal_pending_cnt;?></b></p>
@@ -311,8 +311,8 @@ $(document).ready(function() {
                     <p>Tampered <b><?php echo $eseal_tampered_cnt;?></b></p>
                     <p>Other <b><?php echo $eseal_other_cnt;?></b></p>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-android-person"></i>
+                <div class="icon col-lg-6 col-xs-6">
+                    <i class="ion ion-android-person" style="font-size:200px;"></i>
                 </div>
                 <a href="my-seal-status.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
