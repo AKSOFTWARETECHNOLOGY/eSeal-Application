@@ -70,7 +70,8 @@ $useraddress_exe=mysql_query($useraddress_sql);
 <script src="js/jquery.bxslider.min.js" type="text/javascript"></script>
 <script src="js/jquery.accordion.js" type="text/javascript"></script>
 <script type="text/javascript">
-$(document).ready(function() {
+/*
+    $(document).ready(function() {
               $('.owl-carousel').owlCarousel({
                 loop: true,
                 margin: 10,
@@ -132,15 +133,17 @@ $(document).ready(function() {
       
 			  
             });
+*/
 </script>
 </head>
 
 <body>
 
-<?php include "top_header.php"; ?>
+<?php //include "top_header.php"; ?>
 
-<?php include "header.php"; ?>
+<?php //include "header.php"; ?>
 
+<?php include "header-app.php"; ?>
 
 <div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
@@ -306,9 +309,11 @@ $(document).ready(function() {
 </div><!-- Container -->
 </div><!-- Dash Board -->
 
-<?php include "footer.php"; ?>
+<?php //include "footer.php"; ?>
 
-<?php include "bottom_footer.php"; ?>
+<?php //include "bottom_footer.php"; ?>
+
+<?php include "footer-app.php"; ?>
 
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" />
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>

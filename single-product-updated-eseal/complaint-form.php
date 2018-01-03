@@ -106,11 +106,11 @@ $userinfo=mysql_fetch_array($userinfo_exe);
 
 <body>
 
-<?php include "top_header.php"; ?>
+<?php //include "top_header.php"; ?>
 
-<?php include "header.php"; ?>
+<?php //include "header.php"; ?>
 
-
+<?php include "header-app.php"; ?>
 
 <div class="home-about-banner hidden">
     <div class="home-about-banner-overlay">
@@ -180,10 +180,11 @@ $userinfo=mysql_fetch_array($userinfo_exe);
     </div><!-- Container Fluid -->
 </div><!-- Product category -->
 
+<?php //include "footer.php"; ?>
 
-<?php include "footer.php"; ?>
+<?php //include "bottom_footer.php"; ?>
 
-<?php include "bottom_footer.php"; ?>
+<?php include "footer-app.php"; ?>
 
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 

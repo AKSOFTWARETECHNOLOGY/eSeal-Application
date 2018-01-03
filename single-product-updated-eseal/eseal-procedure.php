@@ -21,6 +21,7 @@ include "config.php";
 <script src="js/owl.carousel.js" type="text/javascript"></script>
 <script src="js/jquery.bxslider.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+/*
 $(document).ready(function() {
               $('.owl-carousel').owlCarousel({
                 loop: true,
@@ -70,15 +71,17 @@ $(document).ready(function() {
 });
 			  
             });
+*/
 </script>
 </head>
 
 <body>
 
-<?php include "top_header.php"; ?>
+<?php //include "top_header.php"; ?>
 
-<?php include "header.php"; ?>
+<?php //include "header.php"; ?>
 
+<?php include "header-app.php"; ?>
 
 <div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
@@ -87,8 +90,17 @@ $(document).ready(function() {
 </div>
 
 
-<div class="home-about">
-    <div class="container">
+<div class="dashboard">
+<div class="container-fluid">
+<div class="row">
+
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <?php include "sidebar.php"; ?>
+        </div><!--Column 3-->
+
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+
         <div class="row web-inner-top">
             <h3>E-Seal Procedure</h3>
             <p><i>Electronic Sealing of Container by exporter under self-sealing procedure WEF 01.10.2017</i></p>
@@ -179,14 +191,13 @@ $(document).ready(function() {
         </div>
 
         </div>--><!-- Row -->
-    </div><!-- Container -->
-</div><!-- Home About -->
 
+        </div><!-- Column 9 -->
 
-
-<!-- Row -->
+</div><!-- Row -->
 </div><!-- Container -->
-</div><!-- Home About -->
+</div><!-- Dashboard -->
+
 
 
 
@@ -200,10 +211,11 @@ $(document).ready(function() {
 
 <?php //include "testimonial.php"; ?>
 
-<?php include "footer.php"; ?>
+<?php //include "footer.php"; ?>
 
-<?php include "bottom_footer.php"; ?>
+<?php //include "bottom_footer.php"; ?>
 
- 
+<?php include "footer-app.php"; ?>
+
 </body>
 </html>

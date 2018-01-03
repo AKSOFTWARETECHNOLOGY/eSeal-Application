@@ -81,6 +81,7 @@ $attachment_cnt=mysql_num_rows($attachment_exe);
 <script src="js/jquery.bxslider.min.js" type="text/javascript"></script>
 <script src="js/jquery.accordion.js" type="text/javascript"></script>
 <script type="text/javascript">
+    /*
 $(document).ready(function() {
               $('.owl-carousel').owlCarousel({
                 loop: true,
@@ -143,15 +144,17 @@ $(document).ready(function() {
       
 			  
             });
+*/
 </script>
 </head>
 
 <body>
 
-<?php include "top_header.php"; ?>
+<?php //include "top_header.php"; ?>
 
-<?php include "header.php"; ?>
+<?php //include "header.php"; ?>
 
+<?php include "header-app.php"; ?>
 
 <div class="home-about-banner hidden">
 <div class="home-about-banner-overlay">
@@ -441,7 +444,44 @@ $(document).ready(function() {
                      </div><!-- Inner Row -->
 
 
-
+                     <div class="row">
+                         <fieldset class="form-group col-md-12">
+                             <legend>Customs Details</legend>
+                             <?php if($product_info_order_fet['customs_approve_status'] == 1){ ?>
+                                 <div class="form-group col-md-12">
+                                     <label class="col-sm-3 control-label">Date of Reading</label>
+                                     <div class="col-sm-9"><div class=""> <?php echo $product_info_order_fet['customs_approve_date']; ?></div></div>
+                                 </div>
+                                 <div class="form-group col-md-12">
+                                     <label class="col-sm-3 control-label">Time of Reading</label>
+                                     <div class="col-sm-9"><div class="" ><?php echo $product_info_order_fet['customs_approve_time'] ?></div></div>
+                                 </div>
+                                 <div class="form-group col-md-12">
+                                     <label class="col-sm-3 control-label">E-Seal Status</label>
+                                     <div class="col-sm-9"><div class=""><?php
+                                             if($product_info_order_fet['customs_approve_status']==0) { ?>
+                                                 <button type="button" class="btn btn-warning btn-xs">Pending</button>
+                                             <?php
+                                             }
+                                             else if($product_info_order_fet['customs_approve_status']==1) { ?>
+                                                 <button type="button" class="btn btn-success btn-xs">Success</button>
+                                             <?php }
+                                             else if($product_info_order_fet['customs_approve_status']==2) { ?>
+                                                 <button type="button" class="btn btn-danger btn-xs">Tampered</button>
+                                             <?php }?></div></div>
+                                 </div>
+                             <?php
+                             }
+                             else{
+                                 ?>
+                                 <div class="form-group col-md-12">
+                                     <label class="col-sm-12 control-label">Waiting for the Customs Approval</label>
+                                 </div>
+                             <?php
+                             }
+                             ?>
+                         </fieldset>
+                     </div>
 
 
 
@@ -483,9 +523,11 @@ $(document).ready(function() {
 </div><!-- Container -->
 </div><!-- Dash Board -->
 
-<?php include "footer.php"; ?>
+<?php //include "footer.php"; ?>
 
-<?php include "bottom_footer.php"; ?>
+<?php //include "bottom_footer.php"; ?>
+
+<?php include "footer-app.php"; ?>
 
 <script>
     function sealtype(TypeValue)

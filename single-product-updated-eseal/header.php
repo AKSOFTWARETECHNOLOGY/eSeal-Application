@@ -92,7 +92,6 @@
         <li class="active"><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
         <li><a href="about-us.php">About us</a></li>
         <li><a href="product.php">Products</a></li>
-        <li><a href="eseal-procedure.php">E-Seal Procedure</a></li>
         <li><a href="faq.php">FAQ</a></li>
         <li><a href="contact-us.php">Contact Us</a></li> 
       </ul>
