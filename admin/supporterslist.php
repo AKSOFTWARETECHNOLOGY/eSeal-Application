@@ -14,11 +14,96 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-$support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+if(isset($_REQUEST['fromDate'])){
+    if($_REQUEST['fromDate'] != null){
+        $fromDate = $_REQUEST['fromDate'] . ' 00:00:00';
+    }
+    else{
+        $fromDate = null;
+    }
+}
+else{
+    $fromDate = null;
+}
+
+if(isset($_REQUEST['toDate'])){
+    if($_REQUEST['toDate'] != null){
+        $toDate = $_REQUEST['toDate'] . ' 00:00:00';
+    }
+    else{
+        $toDate = null;
+    }
+}
+else{
+    $toDate = null;
+}
+
+$supportStatus = isset($_REQUEST['supportStatus']) ? $_REQUEST['supportStatus'] : null;
+$date = date("Y-m-d"). ' 00:00:00';
+
+if ($supportStatus != 2 && !(is_null($supportStatus))) {
+    if($fromDate != null) {
+        if ($toDate != null) {
+            $support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `support_info` AS `si`
+LEFT JOIN `users` ON users.id = si.user_id
+LEFT JOIN `countries` ON countries.id = si.country
+LEFT JOIN `cities` ON cities.id = si.city
+WHERE `users`.delete_status = $supportStatus and si.created_at between '$fromDate' and '$toDate'";
+        }
+        else{
+            $support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `support_info` AS `si`
+LEFT JOIN `users` ON users.id = si.user_id
+LEFT JOIN `countries` ON countries.id = si.country
+LEFT JOIN `cities` ON cities.id = si.city
+WHERE `users`.delete_status = $supportStatus and si.created_at between '$fromDate' and '$date'";
+        }
+    }
+    else{
+        $support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `support_info` AS `si`
+LEFT JOIN `users` ON users.id = si.user_id
+LEFT JOIN `countries` ON countries.id = si.country
+LEFT JOIN `cities` ON cities.id = si.city
+WHERE `users`.delete_status = $supportStatus";
+    }
+}
+else if ($supportStatus == 2) {
+    if($fromDate != null || $fromDate != 0) {
+        if ($toDate != null || $toDate != 0) {
+            $support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `support_info` AS `si`
+LEFT JOIN `users` ON users.id = si.user_id
+LEFT JOIN `countries` ON countries.id = si.country
+LEFT JOIN `cities` ON cities.id = si.city
+WHERE si.created_at between '$fromDate' and '$toDate'";
+        }
+        else{
+            $support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `support_info` AS `si`
+LEFT JOIN `users` ON users.id = si.user_id
+LEFT JOIN `countries` ON countries.id = si.country
+LEFT JOIN `cities` ON cities.id = si.city
+WHERE si.created_at between '$fromDate' and '$date'";
+        }
+    }
+    else{
+        $support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
 FROM `support_info` AS `si`
 LEFT JOIN `users` ON users.id = si.user_id
 LEFT JOIN `countries` ON countries.id = si.country
 LEFT JOIN `cities` ON cities.id = si.city";
+    }
+}
+else{
+    $support_sql="SELECT si.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `support_info` AS `si`
+LEFT JOIN `users` ON users.id = si.user_id
+LEFT JOIN `countries` ON countries.id = si.country
+LEFT JOIN `cities` ON cities.id = si.city";
+}
+
 $support_exe=mysql_query($support_sql);
 $support_cnt=@mysql_num_rows($support_exe);
 ?>
@@ -59,6 +144,35 @@ $support_cnt=@mysql_num_rows($support_exe);
                             <div class="row">
                                 <a href="add-supporters.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom:10px;">Add Users</button></a>
                             </div>
+
+                            <div class="row col-sm-12">
+                                <form class="datesearch" action="" method="get">
+                                    <div class="col-sm-3">
+                                        <label>User Status:</label>
+                                        <select class="form-control" name="supportStatus" id="supportStatus" required>
+                                            <option value="2"> All </option>
+                                            <option value="1"> Active </option>
+                                            <option value="0"> Inactive </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>From:</label>
+                                        <input class="form-control" type="date" name="fromDate" id="fromDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>To:</label>
+                                        <input class="form-control" type="date" name="toDate" id="toDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>&nbsp;</label>
+                                        <button class="btn btn-warning datesearch" type="submit" style="margin-top: 25px;">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row col-sm-12">
+                                <br/>
+                            </div>
+
                             <?php
                             if($support_cnt>0)
                             {

@@ -143,16 +143,6 @@ LEFT JOIN `products` ON products.id = product_info.product_id
                                 <a href="add-bulk-inventories.php?inventory_id=1" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom: 10px;">Add Bulk Inventories</button></a>
                             </div>
 
-                            <div class="row col-sm-4 hidden">
-                                <div class="row">
-                                    <a href="inventorieslist.php?all=1" style="margin-left: 10px;"><button type="button" class="btn btn-info" style="margin-bottom: 10px;">All</button></a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="inventorieslist.php?sold=1" style="margin-left: 10px;"><button type="button" class="btn btn-info" style="margin-bottom: 10px;">Sold</button></a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="inventorieslist.php?instock=1" style="margin-left: 10px;"><button type="button" class="btn btn-info" style="margin-bottom: 10px;">Instock</button></a>
-                                </div>
-                            </div>
-
                             <div class="row col-sm-12">
                                 <form class="datesearch" action="" method="get">
                                     <div class="col-sm-3">

@@ -14,13 +14,110 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-$custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name, users.delete_status
+if(isset($_REQUEST['fromDate'])){
+    if($_REQUEST['fromDate'] != null){
+        $fromDate = $_REQUEST['fromDate'] . ' 00:00:00';
+    }
+    else{
+        $fromDate = null;
+    }
+}
+else{
+    $fromDate = null;
+}
+
+if(isset($_REQUEST['toDate'])){
+    if($_REQUEST['toDate'] != null){
+        $toDate = $_REQUEST['toDate'] . ' 00:00:00';
+    }
+    else{
+        $toDate = null;
+    }
+}
+else{
+    $toDate = null;
+}
+
+$customsStatus = isset($_REQUEST['customsStatus']) ? $_REQUEST['customsStatus'] : null;
+$date = date("Y-m-d"). ' 00:00:00';
+
+if ($customsStatus != 2 && !(is_null($customsStatus))) {
+    if($fromDate != null) {
+        if ($toDate != null) {
+            $custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name, users.delete_status
+FROM `customs_info` AS `ci`
+LEFT JOIN `users` ON users.id = ci.user_id
+LEFT JOIN `countries` ON countries.id = ci.country
+LEFT JOIN `cities` ON cities.id = ci.city
+LEFT JOIN `ports` ON ports.id = ci.port
+LEFT JOIN `terminals` ON terminals.id = ci.terminal
+WHERE `users`.delete_status = $customsStatus and ci.created_at between '$fromDate' and '$toDate'";
+        }
+        else{
+            $custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name, users.delete_status
+FROM `customs_info` AS `ci`
+LEFT JOIN `users` ON users.id = ci.user_id
+LEFT JOIN `countries` ON countries.id = ci.country
+LEFT JOIN `cities` ON cities.id = ci.city
+LEFT JOIN `ports` ON ports.id = ci.port
+LEFT JOIN `terminals` ON terminals.id = ci.terminal
+WHERE `users`.delete_status = $customsStatus and ci.created_at between '$fromDate' and '$date'";
+        }
+    }
+    else{
+        $custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name, users.delete_status
+FROM `customs_info` AS `ci`
+LEFT JOIN `users` ON users.id = ci.user_id
+LEFT JOIN `countries` ON countries.id = ci.country
+LEFT JOIN `cities` ON cities.id = ci.city
+LEFT JOIN `ports` ON ports.id = ci.port
+LEFT JOIN `terminals` ON terminals.id = ci.terminal
+WHERE `users`.delete_status = $customsStatus";
+    }
+}
+else if ($customsStatus == 2) {
+    if($fromDate != null || $fromDate != 0) {
+        if ($toDate != null || $toDate != 0) {
+            $custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name, users.delete_status
+FROM `customs_info` AS `ci`
+LEFT JOIN `users` ON users.id = ci.user_id
+LEFT JOIN `countries` ON countries.id = ci.country
+LEFT JOIN `cities` ON cities.id = ci.city
+LEFT JOIN `ports` ON ports.id = ci.port
+LEFT JOIN `terminals` ON terminals.id = ci.terminal
+WHERE ci.created_at between '$fromDate' and '$toDate'";
+        }
+        else{
+            $custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name, users.delete_status
+FROM `customs_info` AS `ci`
+LEFT JOIN `users` ON users.id = ci.user_id
+LEFT JOIN `countries` ON countries.id = ci.country
+LEFT JOIN `cities` ON cities.id = ci.city
+LEFT JOIN `ports` ON ports.id = ci.port
+LEFT JOIN `terminals` ON terminals.id = ci.terminal
+WHERE ci.created_at between '$fromDate' and '$date'";
+        }
+    }
+    else{
+        $custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name, users.delete_status
 FROM `customs_info` AS `ci`
 LEFT JOIN `users` ON users.id = ci.user_id
 LEFT JOIN `countries` ON countries.id = ci.country
 LEFT JOIN `cities` ON cities.id = ci.city
 LEFT JOIN `ports` ON ports.id = ci.port
 LEFT JOIN `terminals` ON terminals.id = ci.terminal";
+    }
+}
+else{
+    $custom_sql="SELECT ci.*, `countries`.`name` AS country_name, cities.city_name, terminals.terminals_name, ports.ports_name, users.delete_status
+FROM `customs_info` AS `ci`
+LEFT JOIN `users` ON users.id = ci.user_id
+LEFT JOIN `countries` ON countries.id = ci.country
+LEFT JOIN `cities` ON cities.id = ci.city
+LEFT JOIN `ports` ON ports.id = ci.port
+LEFT JOIN `terminals` ON terminals.id = ci.terminal";
+}
+
 $custom_exe=mysql_query($custom_sql);
 $custom_cnt=@mysql_num_rows($custom_exe);
 ?>
@@ -61,6 +158,35 @@ $custom_cnt=@mysql_num_rows($custom_exe);
                             <div class="row">
                                 <a href="add-customs.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom:10px;">Add Customs</button></a>
                             </div>
+
+                            <div class="row col-sm-12">
+                                <form class="datesearch" action="" method="get">
+                                    <div class="col-sm-3">
+                                        <label>Customs Status:</label>
+                                        <select class="form-control" name="customsStatus" id="customsStatus" required>
+                                            <option value="2"> All </option>
+                                            <option value="1"> Active </option>
+                                            <option value="0"> Inactive </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>From:</label>
+                                        <input class="form-control" type="date" name="fromDate" id="fromDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>To:</label>
+                                        <input class="form-control" type="date" name="toDate" id="toDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>&nbsp;</label>
+                                        <button class="btn btn-warning datesearch" type="submit" style="margin-top: 25px;">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row col-sm-12">
+                                <br/>
+                            </div>
+
                             <?php
                             if($custom_cnt>0)
                             {

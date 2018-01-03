@@ -14,19 +14,99 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-/*
-SELECT a.tutorial_id, a.tutorial_author, b.tutorial_count
-    -> FROM tutorials_tbl a, tcount_tbl b
-    -> WHERE a.tutorial_author = b.tutorial_author;
+if(isset($_REQUEST['fromDate'])){
+    if($_REQUEST['fromDate'] != null){
+       $fromDate = $_REQUEST['fromDate'] . ' 00:00:00';
+    }
+    else{
+        $fromDate = null;
+    }
+}
+else{
+    $fromDate = null;
+}
 
-*/
-$export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+if(isset($_REQUEST['toDate'])){
+    if($_REQUEST['toDate'] != null){
+        $toDate = $_REQUEST['toDate'] . ' 00:00:00';
+    }
+    else{
+        $toDate = null;
+    }
+}
+else{
+    $toDate = null;
+}
+
+$exporterStatus = isset($_REQUEST['exporterStatus']) ? $_REQUEST['exporterStatus'] : null;
+$date = date("Y-m-d"). ' 00:00:00';
+
+if ($exporterStatus != 2 && !(is_null($exporterStatus))) {
+    if($fromDate != null) {
+        if ($toDate != null) {
+            $export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `exporter_info` AS `ei`
+LEFT JOIN `users` ON users.id = ei.user_id
+LEFT JOIN `countries` ON countries.id = ei.country
+LEFT JOIN `cities` ON cities.id = ei.city
+WHERE `users`.delete_status = $exporterStatus and ei.created_at between '$fromDate' and '$toDate'";
+        }
+        else{
+            $export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `exporter_info` AS `ei`
+LEFT JOIN `users` ON users.id = ei.user_id
+LEFT JOIN `countries` ON countries.id = ei.country
+LEFT JOIN `cities` ON cities.id = ei.city
+WHERE `users`.delete_status = $exporterStatus and ei.created_at between '$fromDate' and '$date'";
+        }
+    }
+    else{
+        $export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `exporter_info` AS `ei`
+LEFT JOIN `users` ON users.id = ei.user_id
+LEFT JOIN `countries` ON countries.id = ei.country
+LEFT JOIN `cities` ON cities.id = ei.city
+WHERE `users`.delete_status = $exporterStatus";
+    }
+}
+else if ($exporterStatus == 2) {
+    if($fromDate != null || $fromDate != 0) {
+        if ($toDate != null || $toDate != 0) {
+            $export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `exporter_info` AS `ei`
+LEFT JOIN `users` ON users.id = ei.user_id
+LEFT JOIN `countries` ON countries.id = ei.country
+LEFT JOIN `cities` ON cities.id = ei.city
+WHERE ei.created_at between '$fromDate' and '$toDate'";
+        }
+        else{
+            $export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `exporter_info` AS `ei`
+LEFT JOIN `users` ON users.id = ei.user_id
+LEFT JOIN `countries` ON countries.id = ei.country
+LEFT JOIN `cities` ON cities.id = ei.city
+WHERE ei.created_at between '$fromDate' and '$date'";
+        }
+    }
+    else{
+        $export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
 FROM `exporter_info` AS `ei`
 LEFT JOIN `users` ON users.id = ei.user_id
 LEFT JOIN `countries` ON countries.id = ei.country
 LEFT JOIN `cities` ON cities.id = ei.city";
+    }
+}
+else{
+    $export_sql="SELECT ei.*, `countries`.`name` AS country_name, cities.city_name, users.delete_status
+FROM `exporter_info` AS `ei`
+LEFT JOIN `users` ON users.id = ei.user_id
+LEFT JOIN `countries` ON countries.id = ei.country
+LEFT JOIN `cities` ON cities.id = ei.city";
+}
+
 $export_exe=mysql_query($export_sql);
 $export_cnt=@mysql_num_rows($export_exe);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,6 +145,35 @@ $export_cnt=@mysql_num_rows($export_exe);
                             <div class="row">
                                 <a href="add-exporter.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs" style="margin-bottom:10px;">Add Exporters</button></a>
                             </div>
+
+                            <div class="row col-sm-12">
+                                <form class="datesearch" action="" method="get">
+                                    <div class="col-sm-3">
+                                        <label>Exporter Status:</label>
+                                        <select class="form-control" name="exporterStatus" id="exporterStatus" required>
+                                            <option value="2"> All </option>
+                                            <option value="1"> Active </option>
+                                            <option value="0"> Inactive </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>From:</label>
+                                        <input class="form-control" type="date" name="fromDate" id="fromDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>To:</label>
+                                        <input class="form-control" type="date" name="toDate" id="toDate" value=""/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>&nbsp;</label>
+                                        <button class="btn btn-warning datesearch" type="submit" style="margin-top: 25px;">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row col-sm-12">
+                                <br/>
+                            </div>
+
                             <?php
                             if($export_cnt>0)
                             {
