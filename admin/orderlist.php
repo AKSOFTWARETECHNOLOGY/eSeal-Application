@@ -124,7 +124,8 @@ $product_cnt = @mysql_num_rows($product_exe);
 
 $export_sql="SELECT ei.*, users.delete_status
 FROM `exporter_info` AS `ei`
-LEFT JOIN `users` ON users.id = ei.user_id";
+LEFT JOIN `users` ON users.id = ei.user_id
+where users.delete_status=1";
 $export_exe=mysql_query($export_sql);
 ?>
 <!DOCTYPE html>

@@ -14,19 +14,145 @@ $user_role=$_SESSION['adminuserrole'];
 $user_name=$_SESSION['adminusername'];
 $user_email=$_SESSION['adminuseremail'];
 
-$order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
-FROM `product_order_info` AS `poi`
-LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
-LEFT JOIN `products` ON products.id = poi.product_id
-LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-WHERE poi.product_item_status = 1";
-//echo $order_sql;
+$fromDate = isset($_REQUEST['fromDate']) ? $_REQUEST['fromDate'] : null;
+$toDate = isset($_REQUEST['toDate']) ? $_REQUEST['toDate'] : null;
+$esealStatus = isset($_REQUEST['esealStatus']) ? $_REQUEST['esealStatus'] : null;
+$exporterName = isset($_REQUEST['exporter']) ? $_REQUEST['exporter'] : null;
+$date = date("Y-m-d");
+
+if ($esealStatus != 3 && !(is_null($esealStatus))) {
+    if($exporterName != 0 && !(is_null($exporterName)) ){
+        if($fromDate != null || $fromDate != 0) {
+            if ($toDate != null || $toDate != 0) {
+                $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                    FROM `product_order_info` AS `poi`
+                    LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                    LEFT JOIN `products` ON products.id = poi.product_id
+                    LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                    WHERE poi.product_item_status = 1 and `poi`.customs_approve_status = $esealStatus and exporter_info.user_id = $exporterName and poi.sealing_date between '$fromDate' and '$toDate'";
+            }
+            else{
+                $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                    FROM `product_order_info` AS `poi`
+                    LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                    LEFT JOIN `products` ON products.id = poi.product_id
+                    LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                    WHERE poi.product_item_status = 1 and `poi`.customs_approve_status = $esealStatus and exporter_info.user_id = $exporterName and poi.sealing_date between '$fromDate' and '$date'";
+            }
+        }
+        else{
+            $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                FROM `product_order_info` AS `poi`
+                LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                LEFT JOIN `products` ON products.id = poi.product_id
+                LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                WHERE poi.product_item_status = 1 and `poi`.customs_approve_status = $esealStatus and exporter_info.user_id = $exporterName";
+        }
+    }
+    else{
+        if($fromDate != null || $fromDate != 0) {
+            if ($toDate != null || $toDate != 0) {
+                $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                    FROM `product_order_info` AS `poi`
+                    LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                    LEFT JOIN `products` ON products.id = poi.product_id
+                    LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                    WHERE poi.product_item_status = 1 and `poi`.customs_approve_status = $esealStatus and poi.sealing_date between '$fromDate' and '$toDate'";
+            }
+            else{
+                $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                    FROM `product_order_info` AS `poi`
+                    LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                    LEFT JOIN `products` ON products.id = poi.product_id
+                    LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                    WHERE poi.product_item_status = 1 and `poi`.customs_approve_status = $esealStatus and poi.sealing_date between '$fromDate' and '$date'";
+            }
+        }
+        else{
+            $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                FROM `product_order_info` AS `poi`
+                LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                LEFT JOIN `products` ON products.id = poi.product_id
+                LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                WHERE poi.product_item_status = 1 and `poi`.customs_approve_status = $esealStatus";
+        }
+    }
+}
+
+else if ($esealStatus == 3) {
+    if($exporterName != 0 && !(is_null($exporterName)) ){
+        if($fromDate != null || $fromDate != 0) {
+            if ($toDate != null || $toDate != 0) {
+                $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                    FROM `product_order_info` AS `poi`
+                    LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                    LEFT JOIN `products` ON products.id = poi.product_id
+                    LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                    WHERE poi.product_item_status = 1 and exporter_info.user_id = $exporterName and poi.sealing_date between '$fromDate' and '$toDate'";
+            }
+            else{
+                $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                    FROM `product_order_info` AS `poi`
+                    LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                    LEFT JOIN `products` ON products.id = poi.product_id
+                    LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                    WHERE poi.product_item_status = 1 and exporter_info.user_id = $exporterName and poi.sealing_date between '$fromDate' and '$date'";
+            }
+        }
+        else{
+            $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                FROM `product_order_info` AS `poi`
+                LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                LEFT JOIN `products` ON products.id = poi.product_id
+                LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                WHERE poi.product_item_status = 1 and exporter_info.user_id = $exporterName";
+        }
+    }
+    else{
+        if($fromDate != null || $fromDate != 0) {
+            if ($toDate != null || $toDate != 0) {
+                $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                    FROM `product_order_info` AS `poi`
+                    LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                    LEFT JOIN `products` ON products.id = poi.product_id
+                    LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                    WHERE poi.product_item_status = 1 and poi.sealing_date between '$fromDate' and '$toDate'";
+            }
+            else{
+                $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                    FROM `product_order_info` AS `poi`
+                    LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                    LEFT JOIN `products` ON products.id = poi.product_id
+                    LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                    WHERE poi.product_item_status = 1 and poi.sealing_date between '$fromDate' and '$date'";
+            }
+        }
+        else{
+            $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+                FROM `product_order_info` AS `poi`
+                LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+                LEFT JOIN `products` ON products.id = poi.product_id
+                LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+                WHERE poi.product_item_status = 1";
+        }
+    }
+}
+
+else{
+    $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
+        FROM `product_order_info` AS `poi`
+        LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+        LEFT JOIN `products` ON products.id = poi.product_id
+        LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+        WHERE poi.product_item_status = 1";
+}
 $order_exe=mysql_query($order_sql);
 $order_cnt=@mysql_num_rows($order_exe);
 
 $export_sql="SELECT ei.*, users.delete_status
 FROM `exporter_info` AS `ei`
-LEFT JOIN `users` ON users.id = ei.user_id";
+LEFT JOIN `users` ON users.id = ei.user_id
+where users.delete_status=1";
 $export_exe=mysql_query($export_sql);
 ?>
 <!DOCTYPE html>
@@ -63,11 +189,11 @@ $export_exe=mysql_query($export_sql);
                             <h3 class="box-title" style="line-height:30px;">Eseal List</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
-                            <div class="row col-sm-12 hidden">
+                            <div class="row col-sm-12">
                                 <form class="datesearch" action="" method="get">
                                     <div class="col-sm-3">
                                         <label>Exporter Name:</label>
-                                        <select class="form-control" name="exporterName" id="exporterName">
+                                        <select class="form-control" name="exporter" id="exporter">
                                             <option value="0"> Select Exporter </option>
                                             <?php
                                             while($export_fet=mysql_fetch_array($export_exe))
