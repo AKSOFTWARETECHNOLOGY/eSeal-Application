@@ -40,12 +40,13 @@ $user_name=$_SESSION['exporterusername'];
 $user_email=$_SESSION['exporteruseremail'];
 
 $product_id = 1;
-$product_sql="SELECT * FROM `products` WHERE `id`='$product_id'";
+//$product_sql="SELECT * FROM `products` WHERE `id`='$product_id'";
+$product_sql="SELECT * FROM `products` WHERE `product_status` = 1";
 $product_exe=mysql_query($product_sql);
 $product_fetch=mysql_fetch_array($product_exe);
 
 $product_count_fetch=0;
-$product_id = 1;
+$product_id = $product_fetch['id'];
 $product_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0";
 $product_count_exe=mysql_query($product_count_sql);
 $product_count_fet=mysql_fetch_array($product_count_exe);

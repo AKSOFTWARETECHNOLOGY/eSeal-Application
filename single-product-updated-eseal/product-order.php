@@ -314,35 +314,44 @@ else
 
                             <tr>
                                 <td colspan="3"></td>
-                                <td>Flat Shipping Rate</td>
-                                <td>Rs. 0.00</td>
+                                <td>GST Rate(18%)</td>
+                                <td>Rs. <?php echo $product_order_fet['product_sale_gst']; ?></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3"></td>
+                                <td>Shipping Rate(50/Unit)</td>
+                                <td>Rs. <?php echo $product_order_fet['product_sale_delivery']; ?></td>
                                 <td></td>
                             </tr>
 
                             <tr>
                                 <td colspan="3"></td>
                                 <td>Total</td>
-                                <td>Rs. <?php echo $product_order_fet['product_sale_total']; ?></td>
+                                <td>Rs. <?php echo $product_order_fet['product_sale_grand_total']; ?></td>
                                 <td></td>
                             </tr>
                             <tfoot>
                             </tfoot>
                         </table>
 
+
                         <h3>Order Items</h3>
+
 
                         <table class="table">
                             <thead>
-                            <th>SSG CODE</th>
-                            <th>SEAL CODE</th>
+                            <th>Sl.No</th>
+                            <th>E-SEAL NUMBER</th>
                             <th>STATUS</th>
                             </thead>
                             <tbody>
-                            <?php if(mysql_num_rows($product_info_order_exe)>0) { ?>
-                                <?php while($product_info_order_fet=mysql_fetch_array($product_info_order_exe)) { ?>
+                            <?php if(mysql_num_rows($product_info_order_exe)>0) { $sl=0; ?>
+                                <?php while($product_info_order_fet=mysql_fetch_array($product_info_order_exe)) { $sl++; ?>
 
                                     <tr>
-                                        <td><?php echo $product_info_order_fet['product_unicode']; ?></td>
+                                        <td><?php //echo $product_info_order_fet['product_unicode']; ?><?php echo $sl; ?></td>
                                         <td><?php echo $product_info_order_fet['product_sealcode']; ?></td>
                                         <td><?php if($product_info_order_fet['seal_type']=="") { echo "Unused"; } else {  echo "Used"; }?></td>
                                     </tr>

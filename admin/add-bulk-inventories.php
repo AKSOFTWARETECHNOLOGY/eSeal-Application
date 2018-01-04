@@ -39,8 +39,19 @@ $seal_exe=mysql_query($seal_sql);
 $seal_fet=mysql_fetch_array($seal_exe);
 $code = $seal_fet['maxCode'];
 $seal = str_replace('SSGA', '', $code);
-$maxseal =  $seal + 1;
-$sealcode = 'SSGA' . $maxseal;
+
+if($seal=="")
+{
+    $maxseal =  10000001;
+    $sealcode = 'SSGA' . $maxseal;
+}
+else
+{
+    $maxseal =  $seal + 1;
+    $sealcode = 'SSGA' . $maxseal;
+}
+//$maxseal =  $seal + 1;
+//$sealcode = 'SSGA' . $maxseal;
 
 ?>
 <!DOCTYPE html>

@@ -39,8 +39,16 @@ $seal_exe=mysql_query($seal_sql);
 $seal_fet=mysql_fetch_array($seal_exe);
 $code = $seal_fet['maxCode'];
 $seal = str_replace('SSGA', '', $code);
-$maxseal =  $seal + 1;
-$sealcode = 'SSGA' . $maxseal;
+if($seal=="")
+{
+    $maxseal =  10000001;
+    $sealcode = 'SSGA' . $maxseal;
+}
+else
+{
+    $maxseal =  $seal + 1;
+    $sealcode = 'SSGA' . $maxseal;
+}
 
 ?>
 <!DOCTYPE html>
@@ -113,7 +121,7 @@ $sealcode = 'SSGA' . $maxseal;
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">E-Seal Number</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="sealcode" id="unicode" value="<?php echo $sealcode; ?>" readonly/>
+                                            <input class="form-control" type="text" name="sealcode" id="unicode" value="<?php echo $sealcode; ?>" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12 hidden">
