@@ -57,7 +57,7 @@ if($order_id>0)
         $product_sale_date = date("Y-m-d");
 
 
-        $product_info_update_sql = "UPDATE `product_info` SET `product_exporter_id`='$product_exporter_id',`product_sale_status`='$product_sale_status',`product_sale_date`='$product_sale_date' WHERE `id`='$product_info_id' AND `product_id`='$product_id' AND `product_sale_status`=0";
+        $product_info_update_sql = "UPDATE `product_info` SET `product_exporter_id`='$product_exporter_id',`product_sale_price`='$product_sale_price',`product_sale_status`='$product_sale_status',`product_sale_date`='$product_sale_date' WHERE `id`='$product_info_id' AND `product_id`='$product_id' AND `product_sale_status`=0";
         //echo $product_info_update_sql;
         $product_info_update_exe = mysql_query($product_info_update_sql);
 
