@@ -51,7 +51,8 @@ if($order_id>0)
         $product_info_id = $product_info_fet['id'];
         $product_unicode = $product_info_fet['product_unicode'];
         $product_sealcode = $product_info_fet['product_sealcode'];
-        $product_sale_price = $product_info_fet['product_sale_price'];
+
+        $product_sale_price = $product_order_fet['product_sale_price'];
         $product_exporter_id = $user_id;
         $product_sale_status = 1;
         $product_sale_date = date("Y-m-d");
