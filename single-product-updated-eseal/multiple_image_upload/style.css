@@ -14,9 +14,11 @@ form{
     text-align: center;
 }
 form{
+    /*
     padding: 40px 20px;
     box-shadow: 0px 0px 10px;
     border-radius: 2px;
+    */
 }
 h2{
     margin-left: 30px;

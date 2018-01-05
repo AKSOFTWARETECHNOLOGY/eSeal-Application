@@ -45,6 +45,14 @@ while($row1 = mysql_fetch_assoc($port_exe)) {
 }
 
 
+$terminal_sql="SELECT * FROM `terminals` where `terminals_status`=1";
+$terminal_exe=mysql_query($terminal_sql);
+$terminal_results = array();
+while($row2 = mysql_fetch_assoc($terminal_exe)) {
+    array_push($terminal_results, $row2);
+}
+
+
 $userinfo_sql="SELECT * FROM `exporter_info` WHERE `user_id`='$user_id'";
 $userinfo_exe=mysql_query($userinfo_sql);
 $userinfo=mysql_fetch_array($userinfo_exe);
@@ -215,7 +223,7 @@ $(document).ready(function() {
 
                          <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>IEC Code *</label>
+                                 <label>IEC Code </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['iec_no']; ?>
                                  </span>
@@ -223,7 +231,7 @@ $(document).ready(function() {
                          </div><!-- Inner Column -->
                          <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Pan Number *</label>
+                                 <label>Pan Number </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['pan_no']; ?>
                                  </span>
@@ -232,7 +240,7 @@ $(document).ready(function() {
 
                          <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>GST Number *</label>
+                                 <label>GST Number </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['gst_no']; ?>
                                  </span>
@@ -242,7 +250,7 @@ $(document).ready(function() {
                      <div class="row">
                          <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>E-Seal Number *</label>
+                                 <label>E-Seal Number </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['product_sealcode']; ?>
                                  </span>
@@ -250,7 +258,7 @@ $(document).ready(function() {
                          </div><!-- Inner Column -->
                          <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
-                                <label>Seal Date *</label>
+                                <label>Seal Date </label>
                                 <span class="account-input">
                                  <?php echo $product_info_order_fet['sealing_date']; ?>
                                  </span>
@@ -259,7 +267,7 @@ $(document).ready(function() {
 
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
-                                <label>Seal Time *</label>
+                                <label>Seal Time </label>
                                 <span class="account-input">
                                  <?php echo $product_info_order_fet['sealing_time']; ?>
                                  </span>
@@ -267,58 +275,59 @@ $(document).ready(function() {
                         </div><!-- Inner Column -->
                     </div><!-- Inner Row -->
                      <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Shipping Bill Number *</label>
+                                 <label>Shipping Bill Number </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['shipping_no']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
 
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Shipping Bill Date *</label>
+                                 <label>Shipping Bill Date </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['shipping_date']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
-                     </div><!-- Inner Row -->
 
-
-                     <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Truck Number *</label>
+                                 <label>Truck Number </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['trailer_truck_no']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
+                     </div><!-- Inner Row -->
 
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+
+                     <div class="row">
+
+
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Driver Number *</label>
+                                 <label>Driver Number </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['driver_number']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
-                     </div><!-- Inner Row -->
-                     <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Driver Licence *</label>
+                                 <label>Driver Licence </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['driver_licence']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
 
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Driver Name *</label>
+                                 <label>Driver Name </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['driver_name']; ?>
                                  </span>
@@ -327,60 +336,76 @@ $(document).ready(function() {
                      </div><!-- Inner Row -->
 
                      <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Container Size *</label>
+                                 <label>Container Size </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['container_size']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
 
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Container Number *</label>
+                                 <label>Container Number </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['container_no']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
-                     </div><!-- Inner Row -->
 
-
-                     <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Destination Customs Station *</label>
+                                 <label>Destination Customs Station </label>
                                  <span class="account-input">
-                                 <?php echo $product_info_order_fet['destination_port']; ?>
+                                 <?php //echo $product_info_order_fet['destination_port']; ?>
+                                     <?php
+                                     foreach($port_results as $key => $value)
+                                     {
+                                         if($product_info_order_fet['destination_port']==$value['id']) {
+                                             echo $value['ports_name'];
+                                         }
+                                     }
+                                     ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
 
-                         <div class="col-md-6 col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                 <label>Terminal Name *</label>
-                                 <span class="account-input">
-                                 <?php echo $product_info_order_fet['terminal_name']; ?>
-                                 </span>
-                             </div>
-                         </div><!-- Inner Column -->
                      </div><!-- Inner Row -->
 
 
                      <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+
+
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Form 13 Number *</label>
+                                 <label>Terminal Name </label>
+                                 <span class="account-input">
+                                 <?php //echo $product_info_order_fet['terminal_name']; ?>
+                                 <?php
+                                 foreach($terminal_results as $key => $value)
+                                 {
+                                     if($product_info_order_fet['terminal_name']==$value['id']) {
+                                         echo $value['terminals_name'];
+                                     }
+                                 }
+                                 ?>
+                                 </span>
+                             </div>
+                         </div><!-- Inner Column -->
+
+                         <div class="col-md-4 col-sm-4 col-xs-12">
+                             <div class="form-group">
+                                 <label>Form 13 Number </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['form_no']; ?>
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
 
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>e-Way Bill Number *</label>
+                                 <label>e-Way Bill Number </label>
                                  <span class="account-input">
                                  <?php echo $product_info_order_fet['eway_no']; ?>
                                  </span>
@@ -390,9 +415,9 @@ $(document).ready(function() {
 
 
                      <div class="row">
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
-                                 <label>Seal Type *</label>
+                                 <label>Seal Type </label>
                                  <span class="account-input">
                                  <?php if($product_info_order_fet['seal_type']==1) { echo "Direct2Port"; } else { echo "CFS ICD"; }?>
                                  </span>
@@ -400,7 +425,7 @@ $(document).ready(function() {
                              </div>
                          </div><!-- Inner Column -->
 
-                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="col-md-4 col-sm-4 col-xs-12">
                              <div class="form-group">
                                  <label>CFS Reach Time </label>
                                  <span class="account-input">
@@ -408,13 +433,10 @@ $(document).ready(function() {
                                  </span>
                              </div>
                          </div><!-- Inner Column -->
-                     </div><!-- Inner Row -->
 
-                     <div class="row">
-
-                        <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
-                                <label>GOODS Type *</label>
+                                <label>GOODS Type </label>
                                 <span class="account-input">
                                  <?php echo $product_info_order_fet['notes']; ?>
                                  </span>
@@ -458,24 +480,84 @@ $(document).ready(function() {
                                  </div>
                                  <div class="form-group col-md-12">
                                      <label class="col-sm-3 control-label">E-Seal Status</label>
-                                     <div class="col-sm-9"><div class=""><?php
-                                             if($product_info_order_fet['customs_approve_status']==0) { ?>
+                                     <div class="col-sm-9"><div class="">
+                                             <?php
+                                             if($product_info_order_fet['customs_approve_status']==0)
+                                             {
+                                             ?>
                                                  <button type="button" class="btn btn-warning btn-xs">Pending</button>
                                              <?php
                                              }
-                                             else if($product_info_order_fet['customs_approve_status']==1) { ?>
+                                             else if($product_info_order_fet['customs_approve_status']==1)
+                                             {
+                                             ?>
                                                  <button type="button" class="btn btn-success btn-xs">Success</button>
-                                             <?php }
-                                             else if($product_info_order_fet['customs_approve_status']==2) { ?>
+                                             <?php
+                                             }
+                                             else if($product_info_order_fet['customs_approve_status']==2)
+                                             {
+                                             ?>
                                                  <button type="button" class="btn btn-danger btn-xs">Tampered</button>
-                                             <?php }?></div></div>
+                                             <?php
+                                             }
+                                             ?>
+                                     </div></div>
+                                 </div>
+                             <?php } else if($product_info_order_fet['customs_approve_status'] == 2){ ?>
+                                 <div class="form-group col-md-12">
+                                     <label class="col-sm-3 control-label">Date of Reading</label>
+                                     <div class="col-sm-9"><div class=""> <?php echo $product_info_order_fet['customs_approve_date']; ?></div></div>
+                                 </div>
+                                 <div class="form-group col-md-12">
+                                     <label class="col-sm-3 control-label">Time of Reading</label>
+                                     <div class="col-sm-9"><div class="" ><?php echo $product_info_order_fet['customs_approve_time'] ?></div></div>
+                                 </div>
+                                 <div class="form-group col-md-12">
+                                     <label class="col-sm-3 control-label">E-Seal Status</label>
+                                     <div class="col-sm-9"><div class="">
+                                             <?php
+                                             if($product_info_order_fet['customs_approve_status']==0)
+                                             {
+                                                 ?>
+                                                 <button type="button" class="btn btn-warning btn-xs">Pending</button>
+                                             <?php
+                                             }
+                                             else if($product_info_order_fet['customs_approve_status']==1)
+                                             {
+                                                 ?>
+                                                 <button type="button" class="btn btn-success btn-xs">Success</button>
+                                             <?php
+                                             }
+                                             else if($product_info_order_fet['customs_approve_status']==2)
+                                             {
+                                                 ?>
+                                                 <button type="button" class="btn btn-danger btn-xs">Tampered</button>
+                                             <?php
+                                             }
+                                             ?>
+                                     </div></div>
                                  </div>
                              <?php
                              }
-                             else{
+                             else
+                             {
                                  ?>
                                  <div class="form-group col-md-12">
                                      <label class="col-sm-12 control-label">Waiting for the Customs Approval</label>
+                                     <br/><br/>
+                                     <label class="col-sm-3 control-label">E-Seal Status</label>
+                                     <div class="col-sm-9"><div class="">
+                                     <?php
+                                     if($product_info_order_fet['customs_approve_status']==0)
+                                     {
+                                         ?>
+                                         <button type="button" class="btn btn-warning btn-xs">Pending</button>
+                                         &nbsp;&nbsp;&nbsp;
+                                         <a href="edit-eseal.php?id=<?php echo $product_info_order_fet['id']; ?>">Edit eSeal</a>
+                                     <?php
+                                     }
+                                     ?>
+
                                  </div>
                              <?php
                              }

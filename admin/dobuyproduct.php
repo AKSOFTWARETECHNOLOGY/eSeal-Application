@@ -46,7 +46,12 @@ $DeliveryDate = "0";
 $username = $_SESSION['adminusername'];
 $date = date("Y-m-d");
 
-$ProductOrder="10000000".time();
+//$ProductOrder="10000000".time();
+$product_last_order_sql="SELECT `id` FROM `product_order` ORDER BY `id` DESC";
+$product_last_order_exe=mysql_query($product_last_order_sql);
+$product_last_order_fet=mysql_fetch_array($product_last_order_exe);
+$product_next_order = $product_last_order_fet['id']+1;
+$ProductOrder=1000000000+$product_next_order;
 
 $exp_sql="SELECT * FROM `exporter_info` as `ei` WHERE `ei`.id = '$exporterId'";
 $exp_exe=mysql_query($exp_sql);

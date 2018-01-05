@@ -381,7 +381,7 @@ $(document).ready(function() {
                              -->
                             <select class="register-input" name="PaymentType" id="PaymentType" required>
                                 <option value=""> Select Payment Option </option>
-
+                                <option value="1"> Online </option>
                                 <option value="2"> Credit - 15 Days </option>
                                 <option value="3"> Credit - 30 Days </option>
                                 <option value="4"> Cash On Delivery </option>

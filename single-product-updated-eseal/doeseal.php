@@ -63,7 +63,7 @@ $date = date("Y-m-d");
 $ProductOrder="10000000".time();
 
 $product_order_info_count_fetch=0;
-$product_order_info_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_order_info` WHERE `id`='$id' AND `product_exporter_id`='$user_id' AND `product_item_status`='0'";
+$product_order_info_count_sql="SELECT COUNT(*) AS `pro_count` FROM `product_order_info` WHERE `id`='$id' AND `product_exporter_id`='$user_id' AND `customs_approve_status`='0'";
 $product_order_info_count_exe=mysql_query($product_order_info_count_sql);
 $product_order_info_count_fet=mysql_fetch_array($product_order_info_count_exe);
 $product_order_info_count_fetch=$product_order_info_count_fet['pro_count'];
@@ -86,7 +86,7 @@ $product_order_info_count_fetch=$product_order_info_count_fet['pro_count'];
                                         `form_no`='$form_no',`eway_no`='$eway_no',
                                         `seal_type`='$seal_type',`cfs_reach_time`='$cfs_reach_time',
                                         `product_item_status`='$product_item_status',`notes`='$notes'
-                                        WHERE `id`='$id' AND `product_exporter_id`='$user_id' AND `product_item_status`='0'";
+                                        WHERE `id`='$id' AND `product_exporter_id`='$user_id' AND `customs_approve_status`='0'";
             //echo $product_order_info_update_sql;
             $product_order_info_update_exe=mysql_query($product_order_info_update_sql);
 
@@ -136,7 +136,7 @@ $product_order_info_count_fetch=$product_order_info_count_fet['pro_count'];
         }
         /* END UPLOAD */
 
-        header("Location: my-seal.php?success=1&msg=all");
+        header("Location: my-seal-status.php?success=1&msg=all");
     }
     else
     {

@@ -25,7 +25,7 @@ else
 
 $product_sql="SELECT product_info.*, products.product_name, exporter_info.name_exporter FROM `product_info`
 LEFT JOIN `products` ON products.id = product_info.product_id
- LEFT JOIN `exporter_info` ON exporter_info.id = product_info.product_exporter_id
+ LEFT JOIN `exporter_info` ON exporter_info.user_id = product_info.product_exporter_id
 WHERE `product_info`.id = $inventory_id ";
 $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);

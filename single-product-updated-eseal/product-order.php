@@ -256,9 +256,35 @@ else
                                     <b>Date Added:</b> <?php echo $product_order_fet['product_sale_date']; ?>
                                 </td>
                                 <td>
-                                    <b>Order Method: </b> <?php echo $product_order_fet['product_sale_type']; ?> <br>
-                                    <b>Payment Method: </b> <?php echo $product_order_fet['product_sale_payment_type']; ?> <br>
+                                    <b>Order Method: </b>
+                                    <?php
+                                    if($product_order_fet['product_sale_type']==1)
+                                    { echo "Direct Online"; }
+                                    else if($product_order_fet['product_sale_type']==1)
+                                    { echo "Vendor"; }
+                                    ?>
+                                    <?php //echo $product_order_fet['product_sale_type']; ?> <br>
+                                    <b>Payment Method: </b>
+                                    <?php
+                                    if($product_order_fet['product_sale_payment_type']==1)
+                                    { echo "CCAVENUE"; }
+                                    else if($product_order_fet['product_sale_payment_type']==2)
+                                    { echo "Credit - 15 Days"; }
+                                    else if($product_order_fet['product_sale_payment_type']==3)
+                                    { echo "Credit - 30 Days"; }
+                                    else if($product_order_fet['product_sale_payment_type']==4)
+                                    { echo "Cash On Delivery"; }
+                                    else if($product_order_fet['product_sale_payment_type']==5)
+                                    { echo "NEFT"; }
+                                    else if($product_order_fet['product_sale_payment_type']==6)
+                                    { echo "Cheque/DD"; }
+                                    ?>
+                                    <?php //echo $product_order_fet['product_sale_payment_type']; ?>
+
+                                    <br>
+                                    <!--
                                     <b>Shipping Method:</b> <?php echo $product_order_fet['product_delivery_type']; ?>
+                                    -->
                                 </td>
                             </tr>
                             </tbody>
@@ -335,6 +361,8 @@ else
                             <tfoot>
                             </tfoot>
                         </table>
+
+
 
 
                         <h3>Order Items</h3>

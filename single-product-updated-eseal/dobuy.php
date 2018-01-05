@@ -50,7 +50,11 @@ $DeliveryDate = "0";
 $username = "User";
 $date = date("Y-m-d");
 
-$ProductOrder="10000000".time();
+$product_last_order_sql="SELECT `id` FROM `product_order` ORDER BY `id` DESC";
+$product_last_order_exe=mysql_query($product_last_order_sql);
+$product_last_order_fet=mysql_fetch_array($product_last_order_exe);
+$product_next_order = $product_last_order_fet['id']+1;
+$ProductOrder=1000000000+$product_next_order;
 
 $product_count_fetch=0;
 $product_id = $Product;
@@ -92,6 +96,8 @@ $product_count_fetch=$product_count_fet['pro_count'];
 
         if($order_id>0)
         {
+
+        /*
         $product_info_sql="SELECT * FROM `product_info` WHERE `product_id`='$product_id' AND `product_sale_status`=0 ORDER BY `id` ASC LIMIT $Quantity ";
         //echo $product_info_sql;
         $product_info_exe=mysql_query($product_info_sql);
@@ -110,9 +116,7 @@ $product_count_fetch=$product_count_fet['pro_count'];
             //echo $product_info_update_sql;
             $product_info_update_exe = mysql_query($product_info_update_sql);
 
-            /*
-             INSERT SQL
-            */
+
             $product_order_info_sql = "INSERT INTO `product_order_info`
             (`user_id`, `product_id`, `product_order_id`, `product_unicode`, `product_sealcode`, `product_exporter_id`,
             `created_by`, `updated_by`, `created_at`, `updated_at`)
@@ -123,12 +127,12 @@ $product_count_fetch=$product_count_fet['pro_count'];
             $product_order_info_exe = mysql_query($product_order_info_sql);
 
         }
-
-            if($PaymentType=="Online")
+        */
+            if($PaymentType=="1")
             {
 
                 //exit;
-                header("Location: product-order.php?order_id=$order_id");
+                header("Location: product-buy-online.php?order_id=$order_id");
 
                 //header("Location: http://www.ccavenue.com");
 
@@ -136,7 +140,7 @@ $product_count_fetch=$product_count_fet['pro_count'];
             else
             {
                 //exit;
-                header("Location: product-order.php?order_id=$order_id");
+                header("Location: product-buy-confirm.php?order_id=$order_id");
 
             }
 
