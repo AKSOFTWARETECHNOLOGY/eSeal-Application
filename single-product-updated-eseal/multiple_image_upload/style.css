@@ -88,3 +88,17 @@ b{
     margin-left: -20px;
     margin-bottom: 91px;
 }
+
+/* BY VIMAL */
+
+.abcd {
+    text-align: left !important;
+}
+
+#img {
+    width: 25px !important;
+    border: none !important;
+    height: 25px !important;
+    margin-left: 10px !important;
+    margin-bottom: 5px !important;
+}
