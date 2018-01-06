@@ -226,32 +226,32 @@ $(document).ready(function() {
                 </div>
                 <div class="row" style="padding-top:10px; ">
 
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
                         <label> Product Total </label>
                         <div id="total" style="font-weight: bold;">
                             Rs. 0:00
                         </div>
                     </div><!-- Inner Column -->
-                    <div class="col-md-2 col-sm-2 col-xs-12">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
                         <label> GST (<?php echo $product_gst; ?> %) </label>
                         <div id="gsttotal" style="font-weight: bold;">
                             Rs. 0:00
                         </div>
                     </div><!-- Inner Column -->
-                    <div class="col-md-2 col-sm-2 col-xs-12">
+                    <div class="col-md-2 col-sm-2 col-xs-12 hidden">
                         <label> Shipping (<?php echo $product_shipping; ?>/Unit)</label>
                         <div id="shippingtotal" style="font-weight: bold;">
                             Rs. 0:00
                         </div>
                     </div><!-- Inner Column -->
-                    <div class="col-md-2 col-sm-2 col-xs-12">
+                    <div class="col-md-2 col-sm-2 col-xs-12 hidden">
                         <label> Discount (<?php echo $product_discount; ?> %) </label>
                         <div id="discounttotal" style="font-weight: bold;">
                             Rs. 0:00
                         </div>
                     </div><!-- Inner Column -->
 
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
                         <label> Product Grand Total </label>
                         <div id="grandtotal" style="font-weight: bold;">
                             Rs. 0:00
@@ -372,13 +372,15 @@ $(document).ready(function() {
 
                 </div>
 
-                <div class="row">
+                <div class="row hidden">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label>Payment Type *</label>
+                            <input type="hidden" name="PaymentType" id="PaymentType" value="1" /> ONLINE
                             <!--
                             <option value="1"> Online - CCAvenue </option>
                              -->
+                            <!--
                             <select class="register-input" name="PaymentType" id="PaymentType" required>
                                 <option value=""> Select Payment Option </option>
                                 <option value="1"> Online </option>
@@ -388,13 +390,13 @@ $(document).ready(function() {
                                 <option value="5"> NEFT </option>
                                 <option value="6"> Cheque/DD </option>
                             </select>
-
+                            -->
                         </div>
                     </div><!-- Inner Column -->
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label>Payment Notes *</label>
-                            <textarea name="PaymentNotes" id="PaymentNotes" placeholder="Payment Notes" class="register-input" required></textarea>
+                            <textarea name="PaymentNotes" id="PaymentNotes" placeholder="Payment Notes" class="register-input" required>NONE</textarea>
 
                         </div>
                     </div><!-- Inner Column -->
@@ -453,13 +455,13 @@ $(document).ready(function() {
         $("#gsttotal").text("Rs. "+GstTotalValue.toFixed(2));
         $("#GstAmount").val(GstTotalValue.toFixed(2));
 
-        var ShippingValue = 50;
+        var ShippingValue = 0;
         var ShippingTotalValue = countValue * ShippingValue;
 
         $("#shippingtotal").text("Rs. "+ShippingTotalValue.toFixed(2));
         $("#ShippingAmount").val(ShippingTotalValue.toFixed(2));
 
-        var DiscountValue = 5;
+        var DiscountValue = 0;
         var DiscountTotalValue = DiscountValue * (TotalValue/100);
 
         $("#discounttotal").text("Rs. "+DiscountTotalValue.toFixed(2));
@@ -586,7 +588,7 @@ $(document).ready(function() {
             // in the "action" attribute of the form when valid
             submitHandler: function(form) {
 
-                if(confirm ("your message"))
+                if(confirm ("Confirm Buy"))
                 {
                     form.submit();
                 }

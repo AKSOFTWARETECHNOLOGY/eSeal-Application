@@ -87,19 +87,52 @@ $(document).ready(function() {
 </div>
 
 
-<div class="home-about grey-bg">
+
+<div class="products-category">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2>About Us</h2>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-12 freedom-list">
+                <ul>
+                    <li style="font-size: 15px;line-height: 30px;text-align: justify;">
+                        Head quartered in Thanjavur District, Tamil Nadu, SSG Groupis a major player in Tamil Nadu and the flagship company . With a rich heritage and an exhaustive and diverse portfolio of successfully completed projects across industry sectors, the company is poised for the next era of growth. The key factors to its robust and stable growth are its client focus, its leadership, the adoption of the latest technology and its work force orientation. SSG Group brings a host of capabilities to major  projects through an integrated approach that spans the life cycle of infrastructure, Education and Training, Media and Entertainment and Logistic Solutions to professional & support services are been Headed by Mr.Sridharan, along with the energetic team of professionals.
+                    </li>
+                </ul>
+
+            </div><!-- Column 6 -->
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="common-item">
+                    <div class="item">
+                        <a href="javascript:void(0);"><img src="images/seal.jpg" alt="" title="" class="img-responsive"></a>
+                    </div><!-- Item -->
+
+                </div><!-- Common Item -->
+            </div><!-- Column 6 -->
+
+
+        </div><!-- Row -->
+    </div><!-- Container Fluid -->
+</div><!-- Product category -->
+
+<div class="home-about grey-bg hidden">
 <div class="container">
 <div class="row web-inner-top">
 <h3>About Us</h3>
 <br/>
-<div class="col-md-8 col-sm-8 col-xs-12 about-us">
+<div class="col-md-6 col-sm-6 col-xs-12 about-us">
 
 <p>Head quartered in Thanjavur District, Tamil Nadu, SSG Groupis a major player in Tamil Nadu and the flagship company . With a rich heritage and an exhaustive and diverse portfolio of successfully completed projects across industry sectors, the company is poised for the next era of growth. The key factors to its robust and stable growth are its client focus, its leadership, the adoption of the latest technology and its work force orientation. SSG Group brings a host of capabilities to major  projects through an integrated approach that spans the life cycle of infrastructure, Education and Training, Media and Entertainment and Logistic Solutions to professional & support services are been Headed by Mr.Sridharan, along with the energetic team of professionals.</p>
 
 </div>
-<div class="col-md-4 col-sm-4 col-xs-12 abt-imgX">
+
+
+<div class="col-md-6 col-sm-6 col-xs-12 abt-imgX">
     <br/><br/>
-<img src="images/eseal-pic.png" alt="" title="" class="img-responsive">
+<img src="images/seal.jpg" alt="" title="" class="img-responsive">
 </div>
 </div>
 

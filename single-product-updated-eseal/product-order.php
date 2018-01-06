@@ -345,7 +345,7 @@ else
                                 <td></td>
                             </tr>
 
-                            <tr>
+                            <tr class="hidden">
                                 <td colspan="3"></td>
                                 <td>Shipping Rate(50/Unit)</td>
                                 <td>Rs. <?php echo $product_order_fet['product_sale_delivery']; ?></td>

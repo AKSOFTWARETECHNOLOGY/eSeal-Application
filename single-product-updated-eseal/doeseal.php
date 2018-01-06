@@ -98,7 +98,7 @@ $product_order_info_count_fetch=$product_order_info_count_fet['pro_count'];
             $target_path = "multiple_image_upload/uploads/"; //Declaring Path for uploaded images
             for ($i = 0; $i < count($_FILES['file']['name']); $i++) {//loop to get individual element from the array
 
-                $validextensions = array("jpeg", "jpg", "png", "pdf", "doc", "docx");  //Extensions which are allowed
+                $validextensions = array("jpeg", "jpg", "png", "pdf", "csv", "doc", "docx", "xls", "xlsx");  //Extensions which are allowed
                 $ext = explode('.', basename($_FILES['file']['name'][$i]));//explode file name from dot(.)
                 $file_extension = end($ext); //store extensions in the variable
 

@@ -455,7 +455,11 @@ $(document).ready(function() {
                                  <?php if($attachment_cnt>0) { ?>
 
                                      <?php while($attachment_fet=mysql_fetch_array($attachment_exe)) { ?>
-                                        <a href="<?php echo $attachment_fet['eseal_attachment_path']; ?>" target="_blank"><?php echo $attachment_fet['eseal_attachment_name']; ?></a><br/>
+                                        <a href="<?php echo $attachment_fet['eseal_attachment_path']; ?>" target="_blank">
+                                            <?php echo $attachment_fet['eseal_attachment_name']; ?>
+                                            <img style="width:20px;" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/699329-icon-57-document-download-128.png" title="Download" alttitle="Download"/>
+                                        </a>
+                                         <br/>
                                      <?php } ?>
 
                                  <?php } ?>

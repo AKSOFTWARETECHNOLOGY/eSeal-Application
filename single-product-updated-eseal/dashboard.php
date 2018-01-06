@@ -102,37 +102,37 @@ else
 
 $product_order_sql="SELECT * FROM `product_order`
 LEFT JOIN `products` ON products.id = product_order.product_id
-WHERE products.product_status='1' AND `product_order`.`product_sale_status`=1 AND product_order.user_id='$user_id'";
+WHERE products.product_status='1' AND `product_order`.`product_sale_status`=1 AND product_order.product_exporter_id='$user_id'";
 $product_order_exe=mysql_query($product_order_sql);
 $product_order_cnt=@mysql_num_rows($product_order_exe);
 
 $product_order_placed_sql="SELECT * FROM `product_order`
 LEFT JOIN `products` ON products.id = product_order.product_id
-WHERE products.product_status='1' AND product_order.product_order_status=0 AND `product_order`.`product_sale_status`=1 AND product_order.user_id='$user_id'";
+WHERE products.product_status='1' AND product_order.product_order_status=0 AND `product_order`.`product_sale_status`=1 AND product_order.product_exporter_id='$user_id'";
 $product_order_placed_exe=mysql_query($product_order_placed_sql);
 $product_order_placed_cnt=@mysql_num_rows($product_order_placed_exe);
 
 $product_order_confirmed_sql="SELECT * FROM `product_order`
 LEFT JOIN `products` ON products.id = product_order.product_id
-WHERE products.product_status='1' AND product_order.product_order_status=1 AND `product_order`.`product_sale_status`=1 AND product_order.user_id='$user_id'";
+WHERE products.product_status='1' AND product_order.product_order_status=1 AND `product_order`.`product_sale_status`=1 AND product_order.product_exporter_id='$user_id'";
 $product_order_confirmed_exe=mysql_query($product_order_confirmed_sql);
 $product_order_confirmed_cnt=@mysql_num_rows($product_order_confirmed_exe);
 
 $product_order_packed_sql="SELECT * FROM `product_order`
 LEFT JOIN `products` ON products.id = product_order.product_id
-WHERE products.product_status='1' AND product_order.product_order_status=2 AND `product_order`.`product_sale_status`=1 AND product_order.user_id='$user_id'";
+WHERE products.product_status='1' AND product_order.product_order_status=2 AND `product_order`.`product_sale_status`=1 AND product_order.product_exporter_id='$user_id'";
 $product_order_packed_exe=mysql_query($product_order_packed_sql);
 $product_order_packed_cnt=@mysql_num_rows($product_order_packed_exe);
 
 $product_order_intransit_sql="SELECT * FROM `product_order`
 LEFT JOIN `products` ON products.id = product_order.product_id
-WHERE products.product_status='1' AND product_order.product_order_status=3 AND `product_order`.`product_sale_status`=1 AND product_order.user_id='$user_id'";
+WHERE products.product_status='1' AND product_order.product_order_status=3 AND `product_order`.`product_sale_status`=1 AND product_order.product_exporter_id='$user_id'";
 $product_order_intransit_exe=mysql_query($product_order_intransit_sql);
 $product_order_intransit_cnt=@mysql_num_rows($product_order_intransit_exe);
 
 $product_order_delivered_sql="SELECT * FROM `product_order`
 LEFT JOIN `products` ON products.id = product_order.product_id
-WHERE products.product_status='1' AND product_order.product_order_status=4 AND `product_order`.`product_sale_status`=1 AND product_order.user_id='$user_id'";
+WHERE products.product_status='1' AND product_order.product_order_status=4 AND `product_order`.`product_sale_status`=1 AND product_order.product_exporter_id='$user_id'";
 $product_order_delivered_exe=mysql_query($product_order_delivered_sql);
 $product_order_delivered_cnt=@mysql_num_rows($product_order_delivered_exe);
 

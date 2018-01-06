@@ -277,6 +277,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
         });
 
     });
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
