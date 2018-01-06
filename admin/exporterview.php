@@ -61,7 +61,7 @@ $export_fet=mysql_fetch_array($export_exe);
         <section class="content">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -70,85 +70,111 @@ $export_fet=mysql_fetch_array($export_exe);
                         <!-- form start -->
                         <form role="form">
                             <div class="box-body">
-
-                                <div class="col-md-12">
-                                    <style>.control-label{line-height:32px;} .form-group{line-height:32px;}</style>
+                                <div class="row">
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Exporter Name</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $export_fet['name_exporter']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Person Name</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $export_fet['name_person']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Address</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $export_fet['address']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">City</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $export_fet['city_name']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">State</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $export_fet['state_name']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Country</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $export_fet['country_name']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Pincode</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $export_fet['pincode']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Telephone</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $export_fet['telephone']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Mobile</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $export_fet['mobile']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Email</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $export_fet['email']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">GstIn</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $export_fet['gstin']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Pan Number</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $export_fet['pan_number']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">IEC Code</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $export_fet['iec_code']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Status</label>
-                                        <div class="col-sm-9"><div class="">
-                                                <?php if($export_fet['delete_status'] == 1)
-                                                {?>
-                                                    <button type="button" class="btn btn-success btn-xs">Active</button>
-                                                <?php
-                                                }
-                                                else{
-                                                    ?>
-                                                    <button type="button" class="btn btn-danger btn-xs">Inactive</button>
-                                                <?php
-                                                }?>
-                                            </div></div>
+                                        <a href="exporterlist.php" style="float: right;margin-right: 10px;"><button type="submit" class="btn btn-warning btn-md" style="margin-bottom:10px;" >Back to Exporters List</button></a>
+                                        <a href="exporteredit.php?exporter_id=<?php echo $export_fet['id']; ?>" style="float: right;margin-right: 10px;"><button type="button" class="btn btn-danger btn-md" style="margin-bottom:10px;"><i class="fa fa-pencil"></i> Edit</button></a>
+                                        <?php
+                                        if($export_fet['delete_status'] == 1){
+                                            ?>
+                                            <a href="exporter-delete.php?delete=1&exporter_id=<?php echo $export_fet['user_id']; ?>" style="float: right;margin-right: 10px;" onclick="return confirm('Are you sure you want to disable this item?');"><button type="button" class="btn btn-warning btn-md"><i class="fa fa-trash-o"></i> Disable</button></a>
+                                        <?php
+                                        }
+                                        else{
+                                            ?>
+                                            <a href="exporter-delete.php?enable=1&exporter_id=<?php echo $export_fet['user_id']; ?>" style="float: right;margin-right: 10px;" onclick="return confirm('Are you sure you want to enable this item?');"><button type="button" class="btn btn-success btn-md"><i class="ion ion-pie-graph"></i> Enable</button></a>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
-                                <div class="col-md-1"></div>
+
+                                <div class="row">
+                                    <style>.control-label{line-height:32px;} .form-group{line-height:32px;}</style>
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Exporter Name</label>
+                                            <div class="col-sm-7"><div class=""><?php echo $export_fet['name_exporter']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Person Name</label>
+                                            <div class="col-sm-7"><div class="" ><?php echo $export_fet['name_person']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Address</label>
+                                            <div class="col-sm-7"><div class=""> <?php echo $export_fet['address']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">City</label>
+                                            <div class="col-sm-7"><div class=""><?php echo $export_fet['city_name']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">State</label>
+                                            <div class="col-sm-7"><div class="" ><?php echo $export_fet['state_name']; ?></div></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Country</label>
+                                            <div class="col-sm-7"><div class=""> <?php echo $export_fet['country_name']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Pincode</label>
+                                            <div class="col-sm-7"><div class=""><?php echo $export_fet['pincode']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Telephone</label>
+                                            <div class="col-sm-7"><div class="" ><?php echo $export_fet['telephone']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Mobile</label>
+                                            <div class="col-sm-7"><div class=""> <?php echo $export_fet['mobile']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Email</label>
+                                            <div class="col-sm-7"><div class=""><?php echo $export_fet['email']; ?></div></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">GstIn</label>
+                                            <div class="col-sm-7"><div class="" ><?php echo $export_fet['gstin']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Pan Number</label>
+                                            <div class="col-sm-7"><div class=""> <?php echo $export_fet['pan_number']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">IEC Code</label>
+                                            <div class="col-sm-7"><div class=""> <?php echo $export_fet['iec_code']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Status</label>
+                                            <div class="col-sm-7"><div class="">
+                                                    <?php if($export_fet['delete_status'] == 1)
+                                                    {?>
+                                                        <button type="button" class="btn btn-success btn-xs">Active</button>
+                                                    <?php
+                                                    }
+                                                    else{
+                                                        ?>
+                                                        <button type="button" class="btn btn-danger btn-xs">Inactive</button>
+                                                    <?php
+                                                    }?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div><!-- /.box-body -->
                         </form>
                     </div><!-- /.box -->
                 </div><!--/.col (left) -->
 
                 <!-- right column -->
-                <div class="col-md-3">
+                <div class="col-md-3 hidden">
                     <!-- Horizontal Form -->
                     <div class="box box-danger" >
                         <div class="box-header with-border">
