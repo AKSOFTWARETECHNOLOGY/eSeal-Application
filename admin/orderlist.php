@@ -27,20 +27,20 @@ if ($orderStatus != 5 && !(is_null($orderStatus))) {
                 $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE `product_order`.product_order_status = $orderStatus and exporter_info.user_id = $exporterName and product_order.product_sale_date between '$fromDate' and '$toDate'";
+            WHERE `product_order`.`product_sale_status`=1 and `product_order`.product_order_status = $orderStatus and exporter_info.user_id = $exporterName and product_order.product_sale_date between '$fromDate' and '$toDate'";
             }
             else{
                 $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE `product_order`.product_order_status = $orderStatus and exporter_info.user_id = $exporterName and product_order.product_sale_date between '$fromDate' and '$date'";
+            WHERE `product_order`.`product_sale_status`=1 and `product_order`.product_order_status = $orderStatus and exporter_info.user_id = $exporterName and product_order.product_sale_date between '$fromDate' and '$date'";
             }
         }
         else{
             $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE `product_order`.product_order_status = $orderStatus and exporter_info.user_id = $exporterName";
+            WHERE `product_order`.`product_sale_status`=1 and `product_order`.product_order_status = $orderStatus and exporter_info.user_id = $exporterName";
         }
     }
     else{
@@ -49,20 +49,20 @@ if ($orderStatus != 5 && !(is_null($orderStatus))) {
                 $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE `product_order`.product_order_status = $orderStatus and product_order.product_sale_date between '$fromDate' and '$toDate'";
+            WHERE `product_order`.`product_sale_status`=1 and `product_order`.product_order_status = $orderStatus and product_order.product_sale_date between '$fromDate' and '$toDate'";
             }
             else{
                 $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE `product_order`.product_order_status = $orderStatus and product_order.product_sale_date between '$fromDate' and '$date'";
+            WHERE `product_order`.`product_sale_status`=1 and `product_order`.product_order_status = $orderStatus and product_order.product_sale_date between '$fromDate' and '$date'";
             }
         }
         else{
             $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE `product_order`.product_order_status = $orderStatus";
+            WHERE `product_order`.`product_sale_status`=1 and `product_order`.product_order_status = $orderStatus";
         }
     }
 }
@@ -74,20 +74,20 @@ if($exporterName != 0 && !(is_null($exporterName)) ){
             $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE product_order.product_sale_date between '$fromDate' and '$toDate' and exporter_info.user_id = $exporterName";
+            WHERE `product_order`.`product_sale_status`=1 and product_order.product_sale_date between '$fromDate' and '$toDate' and exporter_info.user_id = $exporterName";
         }
         else{
             $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE product_order.product_sale_date between '$fromDate' and '$date' and exporter_info.user_id = $exporterName";
+            WHERE `product_order`.`product_sale_status`=1 and product_order.product_sale_date between '$fromDate' and '$date' and exporter_info.user_id = $exporterName";
         }
     }
     else{
         $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE exporter_info.user_id = $exporterName";
+            WHERE `product_order`.`product_sale_status`=1 and exporter_info.user_id = $exporterName";
     }
 }
     else{
@@ -96,19 +96,20 @@ if($exporterName != 0 && !(is_null($exporterName)) ){
                 $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE product_order.product_sale_date between '$fromDate' and '$toDate'";
+            WHERE `product_order`.`product_sale_status`=1 and product_order.product_sale_date between '$fromDate' and '$toDate'";
             }
             else{
                 $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
             LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
-            WHERE product_order.product_sale_date between '$fromDate' and '$date'";
+            WHERE `product_order`.`product_sale_status`=1 and product_order.product_sale_date between '$fromDate' and '$date'";
             }
         }
         else{
             $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
             LEFT JOIN `products` ON products.id = product_order.product_id
-            LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id";
+            LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+            WHERE `product_order`.`product_sale_status`=1";
         }
     }
 }
@@ -116,7 +117,8 @@ if($exporterName != 0 && !(is_null($exporterName)) ){
 else{
     $product_sql="SELECT product_order.*, products.product_name, exporter_info.name_exporter, exporter_info.iec_code FROM `product_order`
 LEFT JOIN `products` ON products.id = product_order.product_id
-LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id";
+LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+WHERE  `product_order`.`product_sale_status`=1";
 }
 $product_exe = mysql_query($product_sql);
 $product_cnt = @mysql_num_rows($product_exe);

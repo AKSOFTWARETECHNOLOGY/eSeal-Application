@@ -260,7 +260,7 @@ else
                                     <?php
                                     if($product_order_fet['product_sale_type']==1)
                                     { echo "Direct Online"; }
-                                    else if($product_order_fet['product_sale_type']==1)
+                                    else if($product_order_fet['product_sale_type']==2)
                                     { echo "Vendor"; }
                                     ?>
                                     <?php //echo $product_order_fet['product_sale_type']; ?> <br>

@@ -29,7 +29,7 @@ $userinfo=mysql_fetch_array($userinfo_exe);
 
 $product_order_sql="SELECT `product_order`.*,`products`.`product_name` FROM `product_order`
 LEFT JOIN `products` ON `product_order`.`product_id` = `products`.`id`
-WHERE `product_order`.`product_exporter_id`='$user_id'
+WHERE `product_order`.`product_exporter_id`='$user_id' AND `product_order`.`product_sale_status`=1
 ORDER BY `product_order`.`id` DESC";
 
 $product_order_exe=mysql_query($product_order_sql);

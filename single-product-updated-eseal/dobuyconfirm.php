@@ -34,6 +34,11 @@ if($order_id>0)
     $product_order_exe=mysql_query($product_order_sql);
     if(mysql_num_rows($product_order_exe)>0) {
         $product_order_fet=mysql_fetch_array($product_order_exe);
+
+        $product_order_update_sql = "UPDATE `product_order` SET `product_sale_status`='1' WHERE `id`='$order_id' AND `product_exporter_id`='$user_id' AND `product_sale_status`=0";
+        //echo $product_order_update_sql;
+        $product_order_update_exe = mysql_query($product_order_update_sql);
+
     }
     else
     {
@@ -61,6 +66,7 @@ if($order_id>0)
         $product_info_update_sql = "UPDATE `product_info` SET `product_exporter_id`='$product_exporter_id',`product_sale_price`='$product_sale_price',`product_sale_status`='$product_sale_status',`product_sale_date`='$product_sale_date' WHERE `id`='$product_info_id' AND `product_id`='$product_id' AND `product_sale_status`=0";
         //echo $product_info_update_sql;
         $product_info_update_exe = mysql_query($product_info_update_sql);
+
 
         /*
          INSERT SQL

@@ -36,7 +36,7 @@ $PaymentType = $_REQUEST['payment'];
 $PaymentNotes = $_REQUEST['PaymentNotes'];
 
 $SaleType = "1";
-$SaleStatus = "0";
+$SaleStatus = "1";
 $SaleDate = date("Y-m-d");
 
 $DeliveryType = "0";
