@@ -24,9 +24,10 @@ $customscode = $_REQUEST['customscode'];
 $username = $_SESSION['adminusername'];
 $date = date("Y-m-d");
 
-$pwd = md5('123456');
+$pwdtime = time();
+$pwd = md5($pwdtime);
 
-$user_sql = "INSERT INTO `users` (name, email, password, confirmed, delete_status, created_at, updated_at) VALUES ('$customsName','$email','$pwd','1','1', '$date','$date')";
+$user_sql = "INSERT INTO `users` (name, email, password, confirmed, delete_status, created_at, updated_at) VALUES ('$customsName','$email','$pwd','0','1', '$date','$date')";
 $user_exe = mysql_query($user_sql);
 $last_id = mysql_insert_id();
 
@@ -50,7 +51,12 @@ if(!empty($last_id)) {
 								<p style=''>Hi <strong>$customsName</strong>,</p>
 								<p style='text-align:center'>Welcome to SSGA, Thanks for registered with us.</p>
 									<div style='padding: 50px 50px 50px 50px;'>
+											<strong>Login Details</strong><br/>
+									        <p>Email: $email</p>
+									        <p>Password: $pwdtime</p>
+									        <br/>
 											$content
+
 									</div>
 								</td>
 							  </tr>

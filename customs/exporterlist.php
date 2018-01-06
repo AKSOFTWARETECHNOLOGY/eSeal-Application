@@ -60,7 +60,7 @@ $export_cnt=@mysql_num_rows($export_exe);
                 <div class="col-xs-12">
                     <div class="box" style="min-height:600px;">
                         <div class="box-header">
-                            <h3 class="box-title" style="line-height:30px;">Exporters List</h3>
+                            <h3 class="box-title hidden" style="line-height:30px;">Exporters List</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <?php

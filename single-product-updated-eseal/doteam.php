@@ -85,6 +85,11 @@ VALUES ('$user_id','$personName','$address','$cityId','$state','$countryId','$pi
 								<p style=''>Hi <strong>$name</strong>,</p>
 								<p style='text-align:center'>Welcome to SSGA, Thanks for registered with us.</p>
 									<div style='padding: 50px 50px 50px 50px;'>
+
+											<strong>Login Details</strong><br/>
+									        <p>Email: $email</p>
+									        <p>Password: $password</p>
+									        <br/>
 											$content
 									</div>
 								</td>

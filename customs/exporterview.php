@@ -66,10 +66,10 @@ $export_fet=mysql_fetch_array($export_exe);
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">View Exporter Details</h3>
+                            <h3 class="box-title  hidden">View Exporter Details</h3>
                         </div><!-- /.box-header -->
                         <div class="form-group col-md-12">
-                            <a href="exporterlist.php"><button type="submit" class="btn btn-warning col-md-2" style="margin-bottom:10px;float:right;" >Back to Exporters List</button></a>
+                            <a href="exporterlist.php"><button type="button" class="btn btn-info col-md-2" style="margin-bottom:10px;float:right;" >Back to Exporters List</button></a>
                         </div>
                         <!-- form start -->
                         <form role="form">

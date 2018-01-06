@@ -26,7 +26,7 @@ $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
 FROM `product_order_info` AS `poi`
 LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
 LEFT JOIN `products` ON products.id = poi.product_id
-LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
+LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
 LEFT JOIN `ports` ON ports.id = poi.destination_port
 LEFT JOIN `terminals` ON terminals.id = poi.terminal_name
 where poi.id = $eseal_id";
@@ -67,10 +67,10 @@ $order_fet=mysql_fetch_array($order_exe);
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">View Eseal Details</h3>
+                            <h3 class="box-title hidden">View Eseal Details</h3>
                         </div><!-- /.box-header -->
                         <div class="form-group col-md-12">
-                            <a href="eseallist.php"><button type="submit" class="btn btn-warning col-md-2" style="margin-bottom:10px;float:right;" >Back to E-Seal List</button></a>
+                            <a href="eseallist.php"><button type="button" class="btn btn-info col-md-2" style="margin-bottom:10px;float:right;" >Back to E-Seal List</button></a>
                         </div>
 
                         <!-- form start -->
