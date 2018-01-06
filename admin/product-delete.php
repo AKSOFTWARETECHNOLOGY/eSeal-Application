@@ -24,7 +24,17 @@ if(isset($_REQUEST['disable']))
 
     header("Location: productlist.php?succ=1");
 }
-else
+else if(isset($_REQUEST['enable']))
+{
+    $prodId=$_REQUEST['product_id'];
+    $date=date("Y-m-d");
+
+    $sql = "UPDATE `products` SET `product_status` = '1', `updated_by` = '$user_name', `updated_at` = '$date'
+            WHERE `products`.`id` = '$prodId'";
+    $delete = mysql_query($sql);
+
+    header("Location: productlist.php?succ=1");
+}else
 {
     header("Location: productlist.php?err=1");
 }

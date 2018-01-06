@@ -181,7 +181,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Email <span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="email" name="email" id="email" value="<?php echo $export_fet['email']; ?>" />
+                                            <input class="form-control" type="email" name="email" id="email" value="<?php echo $export_fet['email']; ?>" readonly/>
                                             <span class="error" id="emailstatus"></span>
                                         </div>
                                     </div>
@@ -200,7 +200,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">IEC Code</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="ieccode" id="ieccode" value="<?php echo $export_fet['iec_code']; ?>" />
+                                            <input class="form-control" type="text" name="ieccode" id="ieccode" value="<?php echo $export_fet['iec_code']; ?>" readonly/>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -225,7 +225,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
 
                         <div class="box-body">
                             <div class="form-group col-md-12">
-                                <a href="exporterlist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Exporters List</button></a>
+                                <a href="exporterlist.php"><button type="submit" class="btn btn-info col-md-12" style="margin-bottom:10px;" >Back to Exporters List</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->

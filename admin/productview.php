@@ -81,6 +81,17 @@ $product_fet=mysql_fetch_array($product_exe);
                                         <label class="col-sm-3 control-label">Product Price</label>
                                         <div class="col-sm-9"><div class=""> <?php echo $product_fet['product_price']; ?></div></div>
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Product Status</label>
+                                        <div class="col-sm-9"><div class="">
+                                                <?php if($product_fet['product_status']  == 1) { ?>
+                                                    <button type="button" class="btn btn-success btn-xs">Active</button>
+                                                <?php } else { ?>
+                                                    <button type="button" class="btn btn-danger btn-xs">Inactive</button>
+                                                <?php } ?>
+                                        </div></div>
+                                    </div>
+
                                 </div>
                                 <div class="col-md-1"></div>
                             </div><!-- /.box-body -->
@@ -99,9 +110,16 @@ $product_fet=mysql_fetch_array($product_exe);
 
                         <div class="box-body">
                             <div class="form-group col-md-12">
-                                <a href="productlist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Products List</button></a>
-                                <a href="productedit.php?product_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger col-md-12"  style="margin-bottom:10px;"><i class="fa fa-pencil"></i> Edit</button></a>
-                                <a href="product-delete.php?disable=1&product_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to disable this product?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Disable</button></a>
+                                <a href="productlist.php"><button type="button" class="btn btn-info col-md-12" style="margin-bottom:10px;" >Back to List</button></a>
+                                <a href="productedit.php?product_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-warning col-md-12"  style="margin-bottom:10px;"><i class="fa fa-pencil"></i> Edit</button></a>
+
+                                <?php if($product_fet['product_status']  == 1) { ?>
+                                    <a href="product-delete.php?disable=1&product_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to disable this product?');"><button type="button" class="btn btn-danger col-md-12"><i class="fa fa-trash-o"></i> Disable</button></a>
+                                <?php } else { ?>
+                                    <a href="product-delete.php?enable=1&product_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to enable this product?');"><button type="button" class="btn btn-success col-md-12"><i class="fa fa-trash-o"></i> Enable</button></a>
+                                <?php } ?>
+
+
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->

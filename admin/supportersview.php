@@ -61,8 +61,9 @@ $support_fet=mysql_fetch_array($support_exe);
         <!-- Main content -->
         <section class="content">
             <div class="row">
+                <style>.control-label{line-height:32px;} .form-group{line-height:32px;}</style>
                 <!-- left column -->
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -71,73 +72,102 @@ $support_fet=mysql_fetch_array($support_exe);
                         <!-- form start -->
                         <form role="form">
                             <div class="box-body">
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <a href="supporterslist.php" style="float: right;margin-right: 10px;"><button type="button" class="btn btn-info btn-md" style="margin-bottom:10px;" >Back to Users List</button></a>
+                                        <a href="supportersedit.php?support_id=<?php echo $support_fet['id']; ?>" style="float: right;margin-right: 10px;"><button type="button" class="btn btn-warning btn-md" style="margin-bottom:10px;"><i class="fa fa-pencil"></i> Edit</button></a>
 
-                                <div class="col-md-12">
-                                    <style>.control-label{line-height:32px;} .form-group{line-height:32px;}</style>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Users Code</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $support_fet['support_code']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Users Name</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $support_fet['name_support']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Address</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $support_fet['address']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">City</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $support_fet['city_name']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">State</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $support_fet['state_name']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Country</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $support_fet['country_name']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Pincode</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $support_fet['pincode']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Telephone</label>
-                                        <div class="col-sm-9"><div class="" ><?php echo $support_fet['telephone']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Mobile</label>
-                                        <div class="col-sm-9"><div class=""> <?php echo $support_fet['mobile']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Email</label>
-                                        <div class="col-sm-9"><div class=""><?php echo $support_fet['email']; ?></div></div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Status</label>
-                                        <div class="col-sm-9"><div class="">
-                                                <?php if($support_fet['delete_status'] == 1)
-                                                {?>
-                                                    <button type="button" class="btn btn-success btn-xs">Active</button>
-                                                <?php
-                                                }
-                                                else{
-                                                    ?>
-                                                    <button type="button" class="btn btn-danger btn-xs">Inactive</button>
-                                                <?php
-                                                }?>
-                                            </div></div>
+                                        <?php
+                                        if($support_fet['delete_status'] == 1){
+                                            ?>
+                                            <a href="supporters-delete.php?delete=1&support_id=<?php echo $support_fet['user_id']; ?>" style="float: right;margin-right: 10px;" onclick="return confirm('Are you sure you want to disable this item?');"><button type="button" class="btn btn-danger btn-md"><i class="fa fa-trash-o"></i> Disable</button></a>
+                                        <?php
+                                        }
+                                        else{
+                                            ?>
+                                            <a href="supporters-delete.php?enable=1&support_id=<?php echo $support_fet['user_id']; ?>" style="float: right;margin-right: 10px;" onclick="return confirm('Are you sure you want to enable this item?');"><button type="button" class="btn btn-success btn-md"><i class="ion ion-pie-graph"></i> Enable</button></a>
+                                        <?php
+                                        }
+                                        ?>
+
                                     </div>
                                 </div>
-                                <div class="col-md-1"></div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Users Code</label>
+                                            <div class="col-sm-7"><div class=""> <?php echo $support_fet['support_code']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Users Name</label>
+                                            <div class="col-sm-7"><div class=""><?php echo $support_fet['name_support']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Address</label>
+                                            <div class="col-sm-7"><div class=""> <?php echo $support_fet['address']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">City</label>
+                                            <div class="col-sm-7"><div class=""><?php echo $support_fet['city_name']; ?></div></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">State</label>
+                                            <div class="col-sm-7"><div class="" ><?php echo $support_fet['state_name']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Country</label>
+                                            <div class="col-sm-7"><div class=""> <?php echo $support_fet['country_name']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Pincode</label>
+                                            <div class="col-sm-7"><div class=""> <?php echo $support_fet['pincode']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Telephone</label>
+                                            <div class="col-sm-7"><div class="" ><?php echo $support_fet['telephone']; ?></div></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Mobile</label>
+                                            <div class="col-sm-7"><div class=""> <?php echo $support_fet['mobile']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Email</label>
+                                            <div class="col-sm-7"><div class=""><?php echo $support_fet['email']; ?></div></div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-5 control-label">Status</label>
+                                            <div class="col-sm-7">
+                                                <div class="">
+                                                    <?php if($support_fet['delete_status'] == 1)
+                                                    {?>
+                                                        <button type="button" class="btn btn-success btn-xs">Active</button>
+                                                    <?php
+                                                    }
+                                                    else{
+                                                        ?>
+                                                        <button type="button" class="btn btn-danger btn-xs">Inactive</button>
+                                                    <?php
+                                                    }?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div><!-- /.box-body -->
                         </form>
                     </div><!-- /.box -->
                 </div><!--/.col (left) -->
 
                 <!-- right column -->
-                <div class="col-md-3">
+                <div class="col-md-3 hidden">
                     <!-- Horizontal Form -->
                     <div class="box box-danger" >
                         <div class="box-header with-border">

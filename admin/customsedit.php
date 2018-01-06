@@ -117,7 +117,7 @@ while($terminalrow = mysql_fetch_assoc($terminal_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Customs Code<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="customscode" id="customscode" value="<?php echo $custom_fet['customs_code']; ?>" maxlength="10" required />
+                                            <input class="form-control" type="text" name="customscode" id="customscode" value="<?php echo $custom_fet['customs_code']; ?>" maxlength="10" readonly />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -195,7 +195,7 @@ while($terminalrow = mysql_fetch_assoc($terminal_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Email <span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="email" name="email" id="email" value="<?php echo $custom_fet['email']; ?>" required/>
+                                            <input class="form-control" type="email" name="email" id="email" value="<?php echo $custom_fet['email']; ?>" readonly/>
                                             <span class="error" id="emailstatus"></span>
                                         </div>
                                     </div>
@@ -249,7 +249,7 @@ while($terminalrow = mysql_fetch_assoc($terminal_exe)) {
 
                         <div class="box-body">
                             <div class="form-group col-md-12">
-                                <a href="customslist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Customs List</button></a>
+                                <a href="customslist.php"><button type="submit" class="btn btn-info col-md-12" style="margin-bottom:10px;" >Back to Customs List</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
@@ -360,9 +360,9 @@ while($terminalrow = mysql_fetch_assoc($terminal_exe)) {
                     lettersonly: "Your name must be characters"
                 },
                 customscode: {
-                    required: "Please provide a valid IEC code",
-                    minlength: "Your IEC code must be 10 characters long",
-                    maxlength: "Your IEC code must be 10 characters long"
+                    required: "Please provide a valid Customs code",
+                    minlength: "Your Customs code must be 10 characters long",
+                    maxlength: "Your Customs code must be 10 characters long"
                 },
                 mobile: {
                     minlength: "Your mobile number must be 10 characters long",

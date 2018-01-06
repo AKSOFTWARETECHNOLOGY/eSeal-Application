@@ -169,11 +169,11 @@ $custom_cnt=@mysql_num_rows($custom_exe);
                                             <option value="0"> Inactive </option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3 hidden">
                                         <label>From:</label>
                                         <input class="form-control" type="date" name="fromDate" id="fromDate" value=""/>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3 hidden">
                                         <label>To:</label>
                                         <input class="form-control" type="date" name="toDate" id="toDate" value=""/>
                                     </div>

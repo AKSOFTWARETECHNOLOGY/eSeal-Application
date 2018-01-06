@@ -20,7 +20,8 @@ SELECT a.tutorial_id, a.tutorial_author, b.tutorial_count
     -> WHERE a.tutorial_author = b.tutorial_author;
 
 */
-$product_sql="SELECT * FROM `products` WHERE `products`.product_status = 1";
+//$product_sql="SELECT * FROM `products` WHERE `products`.product_status = 1";
+$product_sql="SELECT * FROM `products`";
 $product_exe=mysql_query($product_sql);
 $product_cnt=@mysql_num_rows($product_exe);
 ?>
@@ -55,11 +56,11 @@ $product_cnt=@mysql_num_rows($product_exe);
                 <div class="col-xs-12">
                     <div class="box" style="min-height: 600px;">
                         <div class="box-header">
-                            <h3 class="box-title" style="line-height:30px;">Products List</h3>
+                            <h3 class="box-title hidden" style="line-height:30px;">Products List</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-                                <a href="add-products.php" style="float: right; margin-right: 10px;"><button type="button" class="btn btn-info btn-xs">Add Products</button></a>
+                                <a href="add-products.php" style="float: right; margin-right: 10px;margin-bottom: 10px;"><button type="button" class="btn btn-info btn-xs">Add Products</button></a>
                             </div>
                             <?php
                             if($product_cnt>0)
@@ -72,6 +73,7 @@ $product_cnt=@mysql_num_rows($product_exe);
                                         <th>Product Name</th>
                                         <th>Product Info</th>
                                         <th>Product Price</th>
+                                        <th>Product Status</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -85,6 +87,13 @@ $product_cnt=@mysql_num_rows($product_exe);
                                             <td><?php echo $product_fet['product_name']; ?></td>
                                             <td><?php echo substr($product_fet['product_info'],0,50); ?>...</td>
                                             <td><?php echo $product_fet['product_price']; ?></td>
+                                            <td>
+                                                <?php if($product_fet['product_status']  == 1) { ?>
+                                                    <button type="button" class="btn btn-success btn-xs">Active</button>
+                                                <?php } else { ?>
+                                                    <button type="button" class="btn btn-danger btn-xs">Inactive</button>
+                                                <?php } ?>
+                                            </td>
                                             <td>
                                                 <a href="productview.php?product_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>
                                                 &nbsp;&nbsp;&nbsp;

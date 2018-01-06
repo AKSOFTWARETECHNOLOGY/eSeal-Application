@@ -26,7 +26,7 @@ $order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name
 FROM `product_order_info` AS `poi`
 LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
 LEFT JOIN `products` ON products.id = poi.product_id
-LEFT JOIN `exporter_info` ON exporter_info.id = product_order.product_exporter_id
+LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
 LEFT JOIN `ports` ON ports.id = poi.destination_port
 LEFT JOIN `terminals` ON terminals.id = poi.terminal_name
 where poi.id = $eseal_id";

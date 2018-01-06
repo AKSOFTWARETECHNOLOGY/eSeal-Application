@@ -178,7 +178,7 @@ $export_exe=mysql_query($export_sql);
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <label>Order Status:</label>
                                         <select class="form-control" name="orderStatus" id="orderStatus" required>
                                             <option value="5"> All </option>
@@ -189,17 +189,17 @@ $export_exe=mysql_query($export_sql);
                                             <option value="4"> Order Delivered </option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <label>From:</label>
                                         <input class="form-control" type="date" name="fromDate" id="fromDate" value=""/>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <label>To:</label>
                                         <input class="form-control" type="date" name="toDate" id="toDate" value=""/>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-1">
                                         <label>&nbsp;</label>
-                                        <button class="btn btn-warning datesearch" type="submit" style="margin-top: 25px;">Search</button>
+                                        <button class="btn btn-warning datesearch" type="submit">Search</button>
                                     </div>
                                 </form>
                             </div>

@@ -170,34 +170,34 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     </div>
                                     </div>
 
-                                    <div class="row" style="padding-top:10px; margin-bottom:10px; border: 1px grey solid">
+                                    <div class="row" style="padding-top:10px; padding-left:50px; padding-right:50px; margin-bottom:10px; border: 0px grey solid">
                                         <div class="form-group col-md-12">
-                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
                                             <label> Product Total </label>
                                             <div id="total" style="font-weight: bold;">
                                                 Rs. 0:00
                                             </div>
                                         </div><!-- Inner Column -->
-                                        <div class="col-md-2 col-sm-2 col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
                                             <label> GST (<?php echo $product_gst; ?> %) </label>
                                             <div id="gsttotal" style="font-weight: bold;">
                                                 Rs. 0:00
                                             </div>
                                         </div><!-- Inner Column -->
-                                        <div class="col-md-2 col-sm-2 col-xs-12">
-                                            <label> Shipping (<?php echo $product_shipping; ?>/Unit)</label>
+                                        <div class="col-md-2 col-sm-2 col-xs-12 hidden">
+                                            <label> Shipping (<?php //echo $product_shipping; ?> 0/Unit)</label>
                                             <div id="shippingtotal" style="font-weight: bold;">
                                                 Rs. 0:00
                                             </div>
                                         </div><!-- Inner Column -->
-                                        <div class="col-md-2 col-sm-2 col-xs-12">
-                                            <label> Discount (<?php echo $product_discount; ?> %) </label>
+                                        <div class="col-md-2 col-sm-2 col-xs-12 hidden">
+                                            <label> Discount (<?php //echo $product_discount; ?> 0 %) </label>
                                             <div id="discounttotal" style="font-weight: bold;">
                                                 Rs. 0:00
                                             </div>
                                         </div><!-- Inner Column -->
 
-                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
                                             <label> Product Grand Total </label>
                                             <div id="grandtotal" style="font-weight: bold;">
                                                 Rs. 0:00
@@ -224,7 +224,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     </div>
                                     </div>
 
-                                    <div class="expAddress row" style="padding-top:10px; border: 1px black solid; display: none;">
+                                    <div class="expAddress row" style="padding-top:10px; border: 0px black solid; display: none;">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <select class="form-control" name="Delivery" id="Delivery" required onchange="javascript:deliveryaddress(this.value);">
@@ -448,13 +448,15 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
         $("#gsttotal").text("Rs. "+GstTotalValue.toFixed(2));
         $("#GstAmount").val(GstTotalValue.toFixed(2));
 
-        var ShippingValue = 50;
+        var ShippingValue = <?php echo $product_shipping; ?>;
+        var ShippingValue = 0;
         var ShippingTotalValue = countValue * ShippingValue;
 
         $("#shippingtotal").text("Rs. "+ShippingTotalValue.toFixed(2));
         $("#ShippingAmount").val(ShippingTotalValue.toFixed(2));
 
-        var DiscountValue = 5;
+        var DiscountValue = <?php echo $product_discount; ?>;
+        var DiscountValue = 0;
         var DiscountTotalValue = DiscountValue * (TotalValue/100);
 
         $("#discounttotal").text("Rs. "+DiscountTotalValue.toFixed(2));

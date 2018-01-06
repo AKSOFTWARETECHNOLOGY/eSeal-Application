@@ -103,7 +103,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Users Code<span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="supportcode" id="supportcode" value="<?php echo $support_fet['support_code']; ?>" maxlength="10" required />
+                                            <input class="form-control" type="text" name="supportcode" id="supportcode" value="<?php echo $support_fet['support_code']; ?>" maxlength="10" readonly />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -181,7 +181,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Email <span class="req"> *</span></label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="email" name="email" id="email" value="<?php echo $support_fet['email']; ?>" required/>
+                                            <input class="form-control" type="email" name="email" id="email" value="<?php echo $support_fet['email']; ?>" readonly/>
                                             <span class="error" id="emailstatus"></span>
                                         </div>
                                     </div>
@@ -207,7 +207,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
 
                         <div class="box-body">
                             <div class="form-group col-md-12">
-                                <a href="supporterslist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Users List</button></a>
+                                <a href="supporterslist.php"><button type="submit" class="btn btn-info col-md-12" style="margin-bottom:10px;" >Back to Users List</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
