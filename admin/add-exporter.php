@@ -86,6 +86,7 @@ $user_email=$_SESSION['adminuseremail'];
                                         <label class="col-sm-3 control-label">IEC Code<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="ieccode" id="ieccode" value="" maxlength="10" />
+                                            <span class="error" id="ieccodestatus"></span>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -231,7 +232,6 @@ $user_email=$_SESSION['adminuseremail'];
 <script src="dist/js/demo.js" type="text/javascript"></script>
 
 <script>
-
     $("input#email").change(function(){
         var email = $("input#email").val();
         //var BASEURL = "http://www.ssgaeseal.com/";
@@ -253,6 +253,35 @@ $user_email=$_SESSION['adminuseremail'];
                 {
                     $("input#email").val("");
                     $("#emailstatus").text(obj.email+" Email Already Exists!");
+                }
+            }
+        });
+
+    });
+</script>
+
+<script>
+
+    $("input#ieccode").change(function(){
+        var ieccode = $("input#ieccode").val();
+        var BASEURL = "http://localhost/eSeal-Application/admin/";
+        var status = 1;
+        var callurl = BASEURL + 'ajax-check-ieccode.php?ieccode='+ieccode;
+
+        $.ajax({
+            url: callurl,
+            type: "get",
+            data: {"ieccode": ieccode, "status": status},
+            success: function (data) {
+                var obj = JSON.parse(data);
+                if(obj.status==1)
+                {
+                    $("#ieccodestatus").text("");
+                }
+                else if(obj.status==2)
+                {
+                    $("input#ieccode").val("");
+                    $("#ieccodestatus").text(obj.ieccode+" IEC Code Already Exists!");
                 }
             }
         });
@@ -371,7 +400,7 @@ $user_email=$_SESSION['adminuseremail'];
                 cityId: "Please choose your City",
                 state: "Please choose your State",
                 countryId: "Please choose your Country",
-                address: "Please enter your Address",
+                address: "Please enter your Address"
             },
             // Make sure the form is submitted to the destination defined
             // in the "action" attribute of the form when valid
