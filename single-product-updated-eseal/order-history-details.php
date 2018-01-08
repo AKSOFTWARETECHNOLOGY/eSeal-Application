@@ -212,6 +212,26 @@ $(document).ready(function() {
             });
 */
 </script>
+
+    <!--<script async src="http://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script>
+        var doc = new jsPDF();
+        var specialElementHandlers = {
+            '#editor': function (element, renderer) {
+                return true;
+            }
+        };
+
+        $('#cmd').click(function () {
+            doc.fromHTML($('#content').html(), 15, 15, {
+                'width': 170,
+                'elementHandlers': specialElementHandlers
+            });
+            doc.save('sample-file.pdf');
+        });
+    </script>
+
 </head>
 
 <body>
@@ -255,7 +275,7 @@ $(document).ready(function() {
                             <tbody>
                             <tr>
                                 <td><b>Order ID: </b> #<?php echo $product_order_fet['product_order_id']; ?> <br>
-                                    <b>Date Added:</b> <?php echo $product_order_fet['product_sale_date']; ?>
+                                    <b>Date Ordered:</b> <?php echo $product_order_fet['product_sale_date']; ?>
                                 </td>
                                 <td>
                                     <b>Order Method: </b>
@@ -347,7 +367,7 @@ $(document).ready(function() {
                                 <td></td>
                             </tr>
 
-                            <tr>
+                            <tr class="hidden">
                                 <td colspan="3"></td>
                                 <td>Shipping Rate(50/Unit)</td>
                                 <td>Rs. <?php echo $product_order_fet['product_sale_delivery']; ?></td>
@@ -408,7 +428,11 @@ $(document).ready(function() {
                                 </tr>
 
                                 <tr>
-                                    <td><?php echo $product_order_fet['product_order_date']; ?></td>
+                                    <td>
+
+                                        <?php echo $product_order_fet['product_order_date']; ?>
+
+                                    </td>
                                     <td>
                                         <?php if($product_order_fet['product_order_status'] == 0){
                                             ?>
@@ -442,7 +466,13 @@ $(document).ready(function() {
                             </table>
                         </div>
 
+                        <div id="content">
+                            <h3>Hello, this is a H3 tag</h3>
 
+                            <p>a pararaph</p>
+                        </div>
+                        <div id="editor">ddddddddddddddddd</div>
+                        <button id="cmd">generate PDF</button>
 
                     </div><!--Table Responsive-->
                     <div class="con-btn">

@@ -193,7 +193,8 @@ $(document).ready(function() {
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="form-group">
         <label>IEC Code <span class="required">*</span></label>
-        <input type="text" name="icecode" class="register-input" maxlength="10" value="" placeholder="IEC Code" required />
+        <input type="text" name="icecode" id="icecode" class="register-input" maxlength="10" value="" placeholder="IEC Code" required />
+        <span id="icecodestatus"></span>
         <p>(IEC Code is unique 10 digit code issued by DGFT)</p>
     </div>
 </div>
@@ -390,6 +391,50 @@ $(document).ready(function() {
     });
 </script>
 
+<script>
+    $("input#icecode").change(function(){
+
+        //alert("The text has been changed.");
+
+        var icecode = $("input#icecode").val();
+        var BASEURL = "http://www.ssgaeseal.com/";
+        //var BASEURL = "http://localhost/eSeal-Application/single-product-updated-eseal/";
+        var BASEURL = "";
+        var status = 1;
+        var callurl = BASEURL + 'ajax-check-ieccode.php?icecode='+icecode;
+
+        $.ajax({
+            url: callurl,
+            type: "get",
+            data: {"icecode": icecode, "status": status},
+            success: function (data) {
+                var obj = JSON.parse(data);
+                //alert(obj.status);
+                if(obj.status==1)
+                {
+                    $("#icecodestatus").text("");
+                }
+                else if(obj.status==2)
+                {
+                    $("input#icecode").val("");
+                    $("#icecodestatus").text(obj.icecode+" IEC Code Already Taken!");
+                }
+
+                /*
+                 $("input#DeliveryName").val(obj.name);
+                 $("input#DeliveryMobile").val(obj.mobile);
+                 $("textarea#DeliveryAddress").val(obj.address);
+                 $("select#DeliveryCountry").val(obj.country);
+                 $("select#DeliveryState").val(obj.state);
+                 $("select#DeliveryCity").val(obj.city);
+                 $("input#DeliveryPin").val(obj.pincode);
+                 */
+
+            }
+        });
+
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 
 <script>
@@ -534,6 +579,7 @@ $(document).ready(function() {
     label.error { color: red; }
     span.required { color: red; float: right;  padding: 5px 0px 0px 5px; }
     span#emailstatus { color: red; }
+    span#icecodestatus { color: red; }
 </style>
 </body>
 </html>

@@ -75,13 +75,13 @@ if($inv_cnt >= $quantity){
     product_sale_quantity, product_sale_price, product_sale_total, product_sale_gst, product_sale_delivery, product_sale_discount, product_sale_grand_total,
     product_sale_type, product_sale_status, product_sale_date, product_sale_payment_type, product_sale_payment_notes,
     product_delivery_name, product_delivery_address, product_delivery_city,  product_delivery_state, product_delivery_country, product_delivery_pincode, product_delivery_mobile,
-    product_delivery_type, product_delivery_status, product_delivery_date,
+    product_delivery_type, product_delivery_status, product_delivery_date, product_order_date,
     created_by, updated_by, created_at, updated_at)
     VALUES ('$user_id','$exporterId','$productName','$ProductOrder',
     '$quantity','$ProductAmount','$TotalAmount','$GstAmount','$ShippingAmount','$DiscountAmount','$GrandAmount',
     '$SaleType','$SaleStatus','$SaleDate','$PaymentType','$PaymentNotes',
     '$DeliveryName','$DeliveryAddress','$DeliveryCity','$DeliveryState','$DeliveryCountry','$DeliveryPin','$DeliveryMobile',
-    '$DeliveryType', '$DeliveryStatus', '$DeliveryDate',
+    '$DeliveryType', '$DeliveryStatus', '$DeliveryDate', '$date',
     '$username','$username','$date','$date')";
     $insert_order_exe = mysql_query($insert_order_sq1);
 

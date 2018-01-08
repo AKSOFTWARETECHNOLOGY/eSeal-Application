@@ -253,7 +253,7 @@ else
                             <tbody>
                             <tr>
                                 <td><b>Order ID: </b> #<?php echo $product_order_fet['product_order_id']; ?> <br>
-                                    <b>Date Added:</b> <?php echo $product_order_fet['product_sale_date']; ?>
+                                    <b>Date Ordered:</b> <?php echo $product_order_fet['product_sale_date']; ?>
                                 </td>
                                 <td>
                                     <b>Order Method: </b>
