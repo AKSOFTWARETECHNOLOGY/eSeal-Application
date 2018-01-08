@@ -86,6 +86,7 @@ $user_email=$_SESSION['adminuseremail'];
                                         <label class="col-sm-3 control-label">Users Code<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="userscode" id="userscode" value="" maxlength="10" required />
+                                            <span class="error" id="userscodestatus"></span>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
@@ -243,6 +244,37 @@ $user_email=$_SESSION['adminuseremail'];
     });
 </script>
 
+<script>
+
+    $("input#userscode").change(function(){
+        var userscode = $("input#userscode").val();
+        //var BASEURL = "http://www.ssgaeseal.com/";
+        var BASEURL = "http://localhost/eSeal-Application/admin/";
+        var status = 1;
+        var callurl = BASEURL + 'ajax-check-usercode.php?userscode='+userscode;
+
+        $.ajax({
+            url: callurl,
+            type: "get",
+            data: {"userscode": userscode, "status": status},
+            success: function (data) {
+                var obj = JSON.parse(data);
+                if(obj.status==1)
+                {
+                    $("#userscodestatus").text("");
+                }
+                else if(obj.status==2)
+                {
+                    $("input#userscode").val("");
+                    $("#userscodestatus").text(obj.supportcode+" Users Code Already Exists!");
+                }
+            }
+        });
+
+    });
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 
 <script>
@@ -325,7 +357,7 @@ $user_email=$_SESSION['adminuseremail'];
                 cityId: "Please choose your City",
                 state: "Please choose your State",
                 countryId: "Please choose your Country",
-                address: "Please enter your Address",
+                address: "Please enter your Address"
             },
             // Make sure the form is submitted to the destination defined
             // in the "action" attribute of the form when valid

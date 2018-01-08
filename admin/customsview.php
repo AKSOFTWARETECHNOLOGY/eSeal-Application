@@ -78,7 +78,7 @@ $custom_fet=mysql_fetch_array($custom_exe);
                                         <a href="customslist.php" style="float: right;margin-right: 10px;"><button type="button" class="btn btn-info btn-md" style="margin-bottom:10px;" >Back to Customs List</button></a>
                                         <a href="customsedit.php?customs_id=<?php echo $custom_fet['id']; ?>" style="float: right;margin-right: 10px;"><button type="button" class="btn btn-warning btn-md" style="margin-bottom:10px;"><i class="fa fa-pencil"></i> Edit</button></a>
                                         <?php
-                                        if($export_fet['delete_status'] == 1){
+                                        if($custom_fet['delete_status'] == 1){
                                             ?>
                                             <a href="customs-delete.php?delete=1&customs_id=<?php echo $custom_fet['user_id']; ?>" style="float: right;margin-right: 10px;" onclick="return confirm('Are you sure you want to disable this item?');"><button type="button" class="btn btn-danger btn-md"><i class="fa fa-trash-o"></i> Disable</button></a>
                                         <?php
