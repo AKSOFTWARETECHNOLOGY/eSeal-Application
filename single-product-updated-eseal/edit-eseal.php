@@ -63,6 +63,11 @@ $product_info_order_sql="SELECT * FROM `product_order_info` WHERE `id`='$product
 $product_info_order_exe=mysql_query($product_info_order_sql);
 $product_info_order_fet=mysql_fetch_array($product_info_order_exe);
 //print_r($product_info_order_fet);
+
+
+$attachment_sql="SELECT * FROM `eseal_attachment` WHERE `eseal_id`='$product_info_order_id' AND `eseal_attachment_status`='1'";
+$attachment_exe=mysql_query($attachment_sql);
+$attachment_cnt=mysql_num_rows($attachment_exe);
 ?>
 <!doctype html>
 <html>
@@ -392,7 +397,7 @@ $product_info_order_fet=mysql_fetch_array($product_info_order_exe);
                      <div class="row">
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
-                                 <label>Seael Type *</label>
+                                 <label>Seal Type *</label>
                                  <!--
                                  <input type="text" name="seal_type" id="seal_type" class="register-input" value="" required />
                                  -->
@@ -425,9 +430,39 @@ $product_info_order_fet=mysql_fetch_array($product_info_order_exe);
 
 
                      <div class="row">
+
                          <div class="col-md-12 col-sm-12 col-xs-12">
                              <div class="form-group">
-                                 <label>Documents : Support File Format [jpeg, jpg, png, pdf, csv, doc, docx, xls, xlsx]</label>
+                                 <label>Documents</label>
+                                <span class="account-input">
+                                 <?php if($attachment_cnt>0) { ?>
+
+                                     <?php while($attachment_fet=mysql_fetch_array($attachment_exe)) { ?>
+                                         <a href="<?php echo $attachment_fet['eseal_attachment_path']; ?>" target="_blank">
+                                             <?php echo $attachment_fet['eseal_attachment_name']; ?>
+                                             <img style="width:20px;" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/699329-icon-57-document-download-128.png" title="Download" alttitle="Download"/>
+                                         </a>
+
+                                         <a href="delete-attachment.php?id=<?php echo $attachment_fet['id']; ?>&delete=1" target="_blankX">
+                                             <img style="width:20px;" src="https://cdn4.iconfinder.com/data/icons/Primo_Icons/PNG/48x48/sub_blue_delete.png" title="Download" alttitle="Download"/>
+                                         </a>
+                                         <br/>
+                                     <?php } ?>
+
+                                 <?php } ?>
+                                 </span>
+                             </div>
+                         </div><!-- Inner Column -->
+
+                     </div><!-- Inner Row -->
+
+                     <div class="row">
+                         <div class="col-md-12 col-sm-12 col-xs-12">
+                             <div class="form-group">
+                                 <label>
+                                     Documents : Support File Format [jpeg, jpg, png, pdf, csv, tsv, txt, doc, docx, xls, xlsx, ppt, pptx]<br/>
+                                     Attach document size should be max of 1 MB
+                                 </label>
 
                                  <div id="filediv"><input name="file[]" type="file" id="file"/></div><br/>
 

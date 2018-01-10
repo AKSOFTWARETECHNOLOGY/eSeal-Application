@@ -391,7 +391,7 @@ $product_info_order_fet=mysql_fetch_array($product_info_order_exe);
                      <div class="row">
                          <div class="col-md-6 col-sm-6 col-xs-12">
                              <div class="form-group">
-                                 <label>Seael Type *</label>
+                                 <label>Seal Type *</label>
                                  <!--
                                  <input type="text" name="seal_type" id="seal_type" class="register-input" value="" required />
                                  -->
@@ -426,7 +426,10 @@ $product_info_order_fet=mysql_fetch_array($product_info_order_exe);
                      <div class="row">
                          <div class="col-md-12 col-sm-12 col-xs-12">
                              <div class="form-group">
-                                 <label>Documents : Support File Format [jpeg, jpg, png, pdf, csv, doc, docx, xls, xlsx]</label>
+                                 <label>
+                                     Documents : Support File Format [jpeg, jpg, png, pdf, csv, tsv, txt, doc, docx, xls, xlsx, ppt, pptx]<br/>
+                                     Attach document size should be max of 1 MB
+                                 </label>
 
                                  <div id="filediv"><input name="file[]" type="file" id="file"/></div><br/>
 

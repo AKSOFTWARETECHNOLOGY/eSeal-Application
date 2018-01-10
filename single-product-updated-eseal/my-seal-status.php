@@ -141,6 +141,13 @@ $(document).ready(function() {
 <div class="order-history">
     <h3><i class="fa fa-pencil-square" aria-hidden="true"></i> My E-Seal Status Information</h3>
 
+    <?php if(isset($_REQUEST['success'])) { ?>
+        <p style="color:green;font-weight:bold"> E-Seal Details Updated.</p>
+    <?php } ?>
+
+    <?php if(isset($_REQUEST['err'])) { ?>
+        <p style="color:red;font-weight:bold"> E-Seal Details Not Updated, Try Again.</p>
+    <?php } ?>
     <div class="table-responsive">
 
         <table id="myTable" class="display table">

@@ -213,24 +213,10 @@ $(document).ready(function() {
 */
 </script>
 
-    <!--<script async src="http://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
-    <script>
-        var doc = new jsPDF();
-        var specialElementHandlers = {
-            '#editor': function (element, renderer) {
-                return true;
-            }
-        };
 
-        $('#cmd').click(function () {
-            doc.fromHTML($('#content').html(), 15, 15, {
-                'width': 170,
-                'elementHandlers': specialElementHandlers
-            });
-            doc.save('sample-file.pdf');
-        });
-    </script>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/jspdf/1.2.61/jspdf.min.js"></script>
+
 
 </head>
 
@@ -266,6 +252,207 @@ $(document).ready(function() {
                     </ul>
                 </div><!--Form Btn-->
                 <div class="order-history-details">
+
+                    <div id="contentsample" style="display:none;">
+                        <table class="table">
+                            <thead>
+                            <th>Order Details</th>
+                            <th></th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <b>Order ID: </b> #<?php echo $product_order_fet['product_order_id']; ?><br/><b>Date Ordered:</b> <?php echo $product_order_fet['product_sale_date']; ?>
+                                </td>
+                                <td>
+                                    <b>Order Method: </b>
+                                    <?php
+                                    if($product_order_fet['product_sale_type']==1)
+                                    { echo "Direct Online"; }
+                                    else if($product_order_fet['product_sale_type']==2)
+                                    { echo "Vendor"; }
+                                    ?>
+                                    <?php //echo $product_order_fet['product_sale_type']; ?><br/>
+                                    <b>Payment Method: </b>
+                                    <?php
+                                    if($product_order_fet['product_sale_payment_type']==1)
+                                    { echo "CCAVENUE"; }
+                                    else if($product_order_fet['product_sale_payment_type']==2)
+                                    { echo "Credit - 15 Days"; }
+                                    else if($product_order_fet['product_sale_payment_type']==3)
+                                    { echo "Credit - 30 Days"; }
+                                    else if($product_order_fet['product_sale_payment_type']==4)
+                                    { echo "Cash On Delivery"; }
+                                    else if($product_order_fet['product_sale_payment_type']==5)
+                                    { echo "NEFT"; }
+                                    else if($product_order_fet['product_sale_payment_type']==6)
+                                    { echo "Cheque/DD"; }
+                                    ?>
+                                    <?php //echo $product_order_fet['product_sale_payment_type']; ?><br/>
+                                    <?php /* ?>
+                                    <b>Shipping Method:</b> <?php echo $product_order_fet['product_delivery_type']; ?>
+                                    <?php */ ?>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table">
+                            <thead>
+                            <th>Delivery Address</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <?php echo $product_order_fet['product_delivery_name']; ?><br/>
+                                    <?php echo $product_order_fet['product_delivery_address']; ?>,
+                                    <?php echo $city_name; ?>, <?php echo $state_name; ?>, <?php echo $country_name; ?> - <?php echo $product_order_fet['product_delivery_pincode']; ?><br/>
+                                    <?php echo "Mobile : ".$product_order_fet['product_delivery_mobile']; ?><br/>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                        <table class="table">
+                            <thead>
+                            <th>Product Name</th>
+                            <th>Model</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th></th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><?php echo $product_fet['product_name']; ?> </td>
+                                <td>Electronic Seal</td>
+                                <td><?php echo $product_order_fet['product_sale_quantity']; ?></td>
+                                <td>Rs. <?php echo $product_fet['product_price']; ?></td>
+                                <td>Rs. <?php echo $product_order_fet['product_sale_total']; ?></td>
+                                <td>
+                                    <ul class="hidden">
+                                        <li><a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a href="javascript:void(0);"><i class="fa fa-reply"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Sub-Total</td>
+                                <td>Rs. <?php echo $product_order_fet['product_sale_total']; ?></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>GST Rate(18%)</td>
+                                <td>Rs. <?php echo $product_order_fet['product_sale_gst']; ?></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Total</td>
+                                <td>Rs. <?php echo $product_order_fet['product_sale_grand_total']; ?></td>
+                                <td></td>
+                            </tr>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+
+                        <h3>Order Items</h3>
+
+                        <table class="table">
+                            <thead>
+                            <th>Sl.No</th>
+                            <th>E-SEAL NUMBER</th>
+                            <th>STATUS</th>
+                            </thead>
+                            <tbody>
+                            <?php if(mysql_num_rows($product_info_order_exe)>0) { $sl=0; ?>
+                                <?php while($product_info_order_fet=mysql_fetch_array($product_info_order_exe)) { $sl++; ?>
+
+                                    <tr>
+                                        <td><?php //echo $product_info_order_fet['product_unicode']; ?><?php echo $sl; ?></td>
+                                        <td><?php echo $product_info_order_fet['product_sealcode']; ?></td>
+                                        <td><?php if($product_info_order_fet['seal_type']=="") { echo "Unused"; } else {  echo "Used"; }?></td>
+                                    </tr>
+
+                                <?php } ?>
+
+                            <?php } else { ?>
+                                <tr>
+                                    <td colspan="3"> No Order Item </td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+
+                        <div class="other-fields">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Order Summary</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Comment</th>
+                                </tr>
+
+                                <tr>
+                                    <td>
+
+                                        <?php echo $product_order_fet['product_order_date']; ?>
+
+                                    </td>
+                                    <td>
+                                        <?php if($product_order_fet['product_order_status'] == 0){
+                                            ?>
+                                            <button type="button" class="btn btn-warning btn-xs"> Order Placed </button>
+                                        <?php
+                                        }
+                                        else if($product_order_fet['product_order_status'] == 1){
+                                            ?>
+                                            <button type="button" class="btn btn-info btn-xs"> Order Confirmed </button>
+                                        <?php
+                                        }
+                                        else if($product_order_fet['product_order_status'] == 2){
+                                            ?>
+                                            <button type="button" class="btn btn-info btn-xs"> Order Packed </button>
+                                        <?php
+                                        }
+                                        else if($product_order_fet['product_order_status'] == 3){
+                                            ?>
+                                            <button type="button" class="btn btn-info btn-xs"> Order Intransit </button>
+                                        <?php
+                                        }
+                                        else if($product_order_fet['product_order_status'] == 4){
+                                            ?>
+                                            <button type="button" class="btn btn-success btn-xs"> Order Delivered </button>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
+                                    <td><?php echo $product_order_fet['product_order_note']; ?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
 
                     <div class="table-responsive">
                         <table class="table">
@@ -466,19 +653,16 @@ $(document).ready(function() {
                             </table>
                         </div>
 
-                        <div id="content">
-                            <h3>Hello, this is a H3 tag</h3>
-
-                            <p>a pararaph</p>
-                        </div>
-                        <div id="editor">ddddddddddddddddd</div>
-                        <button id="cmd">generate PDF</button>
 
                     </div><!--Table Responsive-->
                     <div class="con-btn">
                         <a href="order-history.php">Back to List</a>
                     </div><!--Submit Btn-->
                 </div><!--Order History-->
+
+
+                <button class="hidden" id="cmd">generate PDF</button>
+
             </div><!-- Column 9  -->
         </div><!-- Row  -->
     </div><!-- Container -->
@@ -492,3 +676,23 @@ $(document).ready(function() {
 
 </body>
 </html>
+
+<script type="text/javascript">
+
+    var doc = new jsPDF();
+    var specialElementHandlers = {
+        '#editor': function (element, renderer) {
+            return true;
+        }
+    };
+
+    $('#cmd').click(function () {
+        console.log($('#contentsample').html())
+        doc.fromHTML($('#contentsample').html(), 15, 15, {
+            'width': 170,
+            'elementHandlers': specialElementHandlers
+        });
+        doc.save('ssga-order-bill-<?php echo time(); ?>.pdf');
+    });
+
+</script>
