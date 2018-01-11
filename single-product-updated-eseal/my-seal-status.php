@@ -204,7 +204,7 @@ $(document).ready(function() {
 <?php //include "bottom_footer.php"; ?>
 
 <?php include "footer-app.php"; ?>
-
+<?php /* ?>
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" />
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script>
@@ -213,6 +213,7 @@ $(document).ready(function() {
     });
 
 </script>
+<?php */ ?>
 <style>
     .table-responsive {
         min-height: .01%;
@@ -226,5 +227,28 @@ $(document).ready(function() {
         float: right;
     }
 </style>
+
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.0/js/dataTables.buttons.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.5.0/js/buttons.flash.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="//cdn.datatables.net/buttons/1.5.0/js/buttons.html5.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.5.0/js/buttons.print.min.js"></script>
+<script>
+
+    $(document).ready(function() {
+        $('#myTable').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel', 'pdf'
+            ]
+        } );
+    } );
+
+</script>
+
 </body>
 </html>
