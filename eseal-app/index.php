@@ -7,76 +7,38 @@ include "config.php";
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Welcome to Sri Sai Ganesh Associates</title>
-<link href="images/favicon.png" type="image/png" rel="shortcut icon">
-<link href="css/style.css" type="text/css" rel="stylesheet">
-<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-<link href="css/font-awesome.min.css" type="text/css" rel="stylesheet">
-<link href="css/owl.carousel.css" type="text/css" rel="stylesheet">
-<link href="css/jquery.bxslider.min.css" type="text/css" rel="stylesheet">
-<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/owl.carousel.js" type="text/javascript"></script>
-<script src="js/jquery.bxslider.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-              $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                responsiveClass: true,
-				autoplay:true,
-                responsive: {
-                  0: {
-                    items: 1,
-                    nav: true,
-					navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
-                  },
-                  600: {
-                    items:2,
-                    nav: true,
-					navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
-                  },
-                  1000: {
-                    items: 2,
-                    nav: true,
-                    loop: false,
-                    margin: 20,
-					navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
-                  }
-                }
-              })
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to SSGA</title>
+    <link href="images/favicon.png" type="image/png" rel="shortcut icon">
+    <link href="css/style-inner.css" type="text/css" rel="stylesheet">
 
-
-    $('.bxslider').bxSlider({
-        mode: 'fade',
-        moveSlides:1,
-        infiniteLoop: true,
-        minSlides:1,
-        maxSlides: 1,
-        speed:3000,
-        auto:true,
-    });
-
-			  
-	$(window).scroll(function(){
-  var sticky = $('.main-header'),
-      scroll = $(window).scrollTop();
-
-  if (scroll >= 500) sticky.addClass('fixed');
-  else sticky.removeClass('fixed');
-});
-			  
+    <link href="ssga/css/style.css" type="text/css" rel="stylesheet">
+    <link href="ssga/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="ssga/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="ssga/css/jquery.bxslider.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="ssga/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="ssga/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="ssga/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.bxslider').bxSlider({
+                mode: 'horizontal',
+                moveSlides: 1,
+                infiniteLoop: true,
+                speed: 800,
             });
-</script>
+        });
+    </script>
 </head>
 
 <body>
 
 <?php //include "top_header.php"; ?>
 
-<?php include "header.php"; ?>
+<?php //include "header.php"; ?>
+
+<?php include "header-new.php"; ?>
 
 <?php include "banner.php"; ?>
 

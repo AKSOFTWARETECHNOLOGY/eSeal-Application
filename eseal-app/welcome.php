@@ -1,4 +1,5 @@
-<div class="welcome">
+<?php /* ?>
+<div class="welcome hidden">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -9,7 +10,7 @@
 </div><!-- Welcome -->
 
 
-<div class="how-it-works" style="border: none;">
+<div class="how-it-works hidden" style="border: none;">
     <div class="container">
         <div class="row">
             <div class="col-md-2 col-sm-2 col-xs-12"></div>
@@ -38,7 +39,7 @@
 </div><!-- How it Works -->
 
 
-<div class="why-choose">
+<div class="why-choose hidden">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 hidden">
@@ -68,3 +69,91 @@
         </div><!-- Row -->
     </div><!-- Container Fluid -->
 </div><!-- How it Works -->
+<?php */ ?>
+
+
+<div class="service" >
+    <div class="container" style="width:900px;">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h3 class="text-center">OUR PROCESS</h3>
+                <p class="text-center have">We have wide network of offices in all major locations to help you with the services we offer</p>
+
+            </div>
+        </div>
+        <div class="row our-services">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+<span>
+<img src="images/login-account.png" style="width: 80%;" />
+<!--<i class="glyph-icon flaticon-boats4"></i>-->
+</span>
+                    <h4>Login into your account</h4>
+                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+<span>
+<img src="images/eseal-product.png" style="width: 80%;" />
+<!--<i class="glyph-icon flaticon-boats4"></i>-->
+</span>
+                    <h4>Buy E-Seal Product</h4>
+                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+<span>
+<img src="images/delivery-truck.png" style="width: 80%;" />
+<!--<i class="glyph-icon flaticon-boats4"></i>-->
+</span>
+                    <h4>Get Doorstep Delivery</h4>
+                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+<span>
+<img src="images/quick-easy.png" style="width: 80%;" />
+<!--<i class="glyph-icon flaticon-boats4"></i>-->
+</span>
+                    <h4>Quick & Easy</h4>
+                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+<span>
+<img src="images/convenient.png" style="width: 80%;" />
+<!--<i class="glyph-icon flaticon-boats4"></i>-->
+</span>
+                    <h4>Convenient</h4>
+                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+<span>
+<img src="images/legally-verified.png" style="width: 80%;" />
+<!--<i class="glyph-icon flaticon-boats4"></i>-->
+</span>
+                    <h4>Legally Verified</h4>
+                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
