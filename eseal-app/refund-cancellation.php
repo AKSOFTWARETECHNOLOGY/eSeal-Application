@@ -6,8 +6,8 @@ include "config.php";
 ?>
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Return &amp; Refund Policy</title>
     <link href="images/favicon.png" type="image/png" rel="shortcut icon">
@@ -47,7 +47,6 @@ include "config.php";
 <p>Thanks for shopping at My Site <a href="www.ssgaeseal.com">www.ssgaeseal.com</a> </p>
 <p>If you are not entirely satisfied with your purchase, we're here to help.</p>
 <h2>Returns</h2>
-<p>You have 30 (change this) calendar days to return an item from the date you received it</p>
 <p>To be eligible for a return, your item must be unused and in the same condition that you received it.</p>
 <p>Your item must be in the original packaging.</p>
 <p>Your item needs to have the receipt or proof of purchase.</p>
@@ -62,11 +61,12 @@ include "config.php";
 <p>Certain Products / Services are non- returnable and Non Refundable : such products and services cannot be claimed under this refund / return policy.</p>
 <h2>Contact Us</h2>
 <p><strong>If you have any questions on how to return your item to us, contact us.</strong></p>
-<p><strong>Email Id :</strong> ssgassociates2015@gmail.com</p>
-<p><strong>Contact No :</strong> (+91) 94880 15119, (+91) 88256 23258.</p>
-<p><b>Postal Address : </b>No.44, MIG, G1/5 Marutham Enclave,</p>
-<p>6th Main Road, Mogappair ERI Scheme,</p>
-<p>Chennai - 600 0037</p>
+<p><strong>Email Id :</strong> info@ssgaeseal.com</p>
+<p><strong>Contact No :</strong>  044-48677050</p>
+<p><b>Postal Address : </b>1-D First Floor, AM Tower,</p>
+<p>Old No: 239, New No: 36,
+<p> Angappanaikken Street, Mannady,</p>
+<p>Chennai -  600 001</p>
 </div><!-- Column 12 -->
 </div><!-- Row -->
 </div><!-- Container -->

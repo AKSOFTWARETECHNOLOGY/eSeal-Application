@@ -58,7 +58,7 @@ include "config.php";
 <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="common-item">
 <div class="text">
-    <h3><a href="javascript:void(0);">RFID Electronic Seal -  ₹ 299.00 </a></h3>
+    <h3><a href="javascript:void(0);">RFID Electronic Seal </a></h3>
 </div>
 <div class="item">
 <a href="javascript:void(0);"><img src="images/seal.jpg" alt="" title="" class="img-responsive"></a>

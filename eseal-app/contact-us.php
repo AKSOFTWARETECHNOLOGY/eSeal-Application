@@ -94,15 +94,19 @@ include "config.php";
 <div class="col-md-6 col-sm-6 col-xs-12 contact">
     <p><b>Sri Sai Ganesh Associates,</b></p>
 
-    <p>1-D First Floor, AM Tower, Old No: 239, New No: 36, Angappanaikken Street, Mannady, Chennai - 600 001</p>
-    <p>(+91) 94880 15119 , (+91) 88256 23258.</p>
+    <p>1-D First Floor, AM Tower, Old No: 239, New No: 36, 
+    <p>Angappanaikken Street, Mannady,
+    <p> Chennai - 600 001</p>
+    <p>Phone: 044-48677050</p>
 <!--
 <p><b>Sri Sai Ganesh Associates</b></p>
-<p>No.44, MIG, G1/5 Marutham Enclave,</p>
-<p>6th Main Road, Mogappair ERI Scheme,</p>
-<p>Chennai - 600 0037</p>
+<p>1-D First Floor, AM Tower,</p> 
+<p>Old No: 239, New No: 36, </p>
+<p>Angappanaikken Street, Mannady, </p>
+<p>Chennai - 600 0001</p>
 -->
-<p>ssgassociates2015@gmail.com</p>
+<p>info@ssgaeseal.com</p>
+
 
  
 

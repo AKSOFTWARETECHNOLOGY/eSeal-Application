@@ -47,6 +47,10 @@ include "config.php";
             background: #f8f3f7;
             padding: 30px 0;
         }
+		
+		#only-one button {
+			background: #228dcb !important;
+		}
     </style>
 </head>
 
@@ -111,7 +115,7 @@ include "config.php";
         <div data-content>
           <article>
 		  <p>
-Sri Sai Ganesh Associates and the Sri Sai Ganesh Associates App have been customized to meet the requirements of the new customs procedure prescribed under circular numbers 26/2017 and 36/2017. Each seal comes with a laser engraved serial number as prescribed by the CBEC in the format LYNK-1234-5678, which you will be uploading in the online shipping bill as well as on the Lynkseal App. The Sri Sai Ganesh Associates App is enabled for you to upload shipment data as required by para 4(a) of the circular 36/2017. Our customized Sri Sai Ganesh Associates Reader will scan the seal and verify its authenticity by giving a message on the reader’s screen. To enjoy this highly automated system, you have to just register on the Sri Sai Ganesh Associates website and provide your IEC number and other identifying particulars (please refer to para 2(e) of Circular 36/2017 dated 28.8.2017). The data you provide serves two purposes. Firstly, it is part of the security drill put in place by customs to ensure that exporters procure seals directly and “chain of custody” is visible. Secondly, the data gathered at the time of registration enables you use the web application with many of the required fields being auto-populated. Please rest assured that Sri Sai Ganesh Associates.com maintains highest global standards in data privacy		  
+Sri Sai Ganesh Associates and the Sri Sai Ganesh Associates App have been customized to meet the requirements of the new customs procedure prescribed under circular numbers 26/2017 and 36/2017. Each seal comes with a laser engraved serial number as prescribed by the CBEC in the format SSGA-1234-5678, which you will be uploading in the online shipping bill as well as on the SSGA E-Seal App. The Sri Sai Ganesh Associates App is enabled for you to upload shipment data as required by para 4(a) of the circular 36/2017. Our customized Sri Sai Ganesh Associates Reader will scan the seal and verify its authenticity by giving a message on the reader’s screen. To enjoy this highly automated system, you have to just register on the Sri Sai Ganesh Associates website and provide your IEC number and other identifying particulars (please refer to para 2(e) of Circular 36/2017 dated 28.8.2017). The data you provide serves two purposes. Firstly, it is part of the security drill put in place by customs to ensure that exporters procure seals directly and “chain of custody” is visible. Secondly, the data gathered at the time of registration enables you use the web application with many of the required fields being auto-populated. Please rest assured that Sri Sai Ganesh Associates maintains highest global standards in data privacy		  
 		  </p></article>
         </div>
       </section>
@@ -132,7 +136,7 @@ Once you have completed the registration form, you can click on shop now and sec
         <div data-content>
           <article>
 		  <p>
-RFID Sri Sai Ganesh Associates comes in boxes of 10 seals. For a single order of 50 pieces or more, we have special offers and you should contact us on <b>ssgassociates2015@gmail.com</b>
+RFID Sri Sai Ganesh Associates comes in boxes of 10 seals. For a single order of 50 pieces or more, we have special offers and you should contact us on <b>info@ssgaeseal.com</b>
 		  </p></article>
         </div>
       </section>
@@ -173,7 +177,7 @@ We are setting up a state of the art eco-system to ensure maximum security of yo
         <div data-content>
           <article>
 		  <p>
-Sri Sai Ganesh Associates is consciously aware of your time critical needs. Blue Dart ®, the best courier firm in the business of express deliveries, is our logistics partner. They ensure that each of your orders is delivered to you anywhere in India as fast as possible and as securely as possible.
+Sri Sai Ganesh Associates is consciously aware of your time critical needs.The best courier firm in the business of express deliveries, is our logistics partner. They ensure that each of your orders is delivered to you anywhere in India as fast as possible and as securely as possible.
 		  </p></article>
         </div>
       </section>
@@ -183,8 +187,8 @@ Sri Sai Ganesh Associates is consciously aware of your time critical needs. Blue
         <div data-content>
           <article>
 		  <ul>
-		  <li>Email us at <b>ssgassociates2015@gmail.com</b> to buy in bulk and avail special offers.</li>
-		  <li>Give us a standing instruction to ship you a specified quantity every month. Our customer executive can be contacted at <b>ssgassociates2015@gmail.com</b> to assist you with this process.</li>
+		  <li>Email us at <b>info@ssgaeseal.com</b> to buy in bulk and avail special offers.</li>
+		  <li>Give us a standing instruction to ship you a specified quantity every month. Our customer executive can be contacted at <b>info@ssgaeseal.com</b> to assist you with this process.</li>
 		  <li>Visit the site each time and buy with speed and ease.</li>
 		  </ul>
 		  </article>
@@ -195,7 +199,7 @@ Sri Sai Ganesh Associates is consciously aware of your time critical needs. Blue
         <button data-control>12) Can I also buy a reader for my use?   </button>
         <div data-content>
           <article>
-		  <p>We have deployed specialized readers meant for use by Indian customs. The data downloaded from RFID Sri Sai Ganesh Associates is securely read on the device and simultaneously uploaded on secure servers for access by officers of customs. However, you will have access to read your shipment data by using a log in ID and password which we will provide to you upon registration. Of course, for other applications that we offer, you are most welcome to reach us with your requirement for Readers and / or a complete RFID solution. Just email us at <b><b>ssgassociates2015@gmail.com</b>.</b></p>
+		  <p>We have deployed specialized readers meant for use by Indian customs. The data downloaded from RFID Sri Sai Ganesh Associates is securely read on the device and simultaneously uploaded on secure servers for access by officers of customs. However, you will have access to read your shipment data by using a log in ID and password which we will provide to you upon registration. Of course, for other applications that we offer, you are most welcome to reach us with your requirement for Readers and / or a complete RFID solution. Just email us at <b><b>info@ssgaeseal.com</b>.</b></p>
 		  </article>
         </div>
       </section>

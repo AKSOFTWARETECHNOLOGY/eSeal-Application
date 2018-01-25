@@ -40,7 +40,7 @@
 <div class="reg-process">
 
 <h4>Welcome! Enjoy the new digital freedom of self-sealing and improve your logistics, reduce your costs and control your shipment like never before!</h4>
-<p>The data we collect is stored securely and will not be used for any purpose other than in the course of your use of the lynkseals web based application. You will have secure access to your data including for tracking of your shipment. The data you provide will enable you to comply with the requirements under para 9 of the circular 26/2017. It will also enable us to generate for you a printed letter addressed to the jurisdictional customs officer intimating each time that a self-sealing is performed (para 9(iii) of circular 26/2017 may be referred.) </p>
+<p>The data we collect is stored securely and will not be used for any purpose other than in the course of your use of the SSGAESEAL web based application. You will have secure access to your data including for tracking of your shipment. The data you provide will enable you to comply with the requirements under para 9 of the circular 26/2017. It will also enable us to generate for you a printed letter addressed to the jurisdictional customs officer intimating each time that a self-sealing is performed (para 9(iii) of circular 26/2017 may be referred.) </p>
 <p><b>Please begin your registration process. Please keep the following documents handy for your convenience:</b></p>
 <p>1. Your IEC Number</p>
 <p>2. GSTIN Number</p>
@@ -67,7 +67,7 @@
 <p>You can access the web application to read your shipment data by using a log in ID and password which we will provide to you upon registration. You can track your shipment when it reaches the port/ICD, once the seal is scanned by the reader provided to the Indian customs and cloud hosted data is updated with the time and result of the scan.</p>
 <h2>5. Purchase, return and non-transfer of ssga e-seal</h2>
 <p>You agree that the SSGA eseals purchased by you through our website cannot be transferred to another person/entity. You agree that the SSGA E-SEAL shall be used only by you and for the purpose stated in the CBEC Circulars 26/2017 dated 1st July 2017, 36/2017 dated 28th August 2017 and 37/2017 dated 20 th September 2017.</p><br>
-<p>You undertake and agree to report any theft or misplacement or any such event of unused seals in your custody to the Risk Management Division, Central Board of Excise & Customs at Chennai and helpdesk@SSGA eseals.com as soon as it comes to your notice.</p>
+<p>You undertake and agree to report any theft or misplacement or any such event of unused seals in your custody to the Risk Management Division, Central Board of Excise & Customs at Chennai and info@ssgaeseals.com as soon as it comes to your notice.</p>
 <p>You understand that the technical specifications of seals prescribed by the Central Board of Excise & Customs may change at any point in time, without prior notice. You agree and understand that SSGA eseals once sold shall not be returnable nor any refunds shall be due to you, in case any changes arise in law affecting the use of the RFID tamper proof one-time- bolt seals or your entitlement to use the same.</p>
 <p>We undertake to repair or replace, any seal found to be defective after examination, free of cost. For this purpose, if You find any seal to be defective, you may send the same to us at your cost by express courier service.</p>
 <h2>6. Information uploaded by the users</h2>
@@ -110,11 +110,11 @@
 <p>The Website contains copyright material, trade names and marks and other proprietary information, including, but not limited to, text, information, software, photos and graphics, videos, and sound (hereinafter referred to as the 'Content'). The Content is protected by copyright law, registered and unregistered trademarks, database rights and other intellectual property rights. This website and its Content is copyright of SSGA. The User acknowledges the copyright of SSGA in the Content.</p>
 <p>Any redistribution or reproduction of part or all of the Content in any form is prohibited unless express consent or permission is taken from SSGA. The User may not, except with our express written permission, distribute or commercially exploit the Content. Nor may the User transmit the Content or store the Content in any other website or other form of electronic retrieval system.</p>
 <h2>19. Complaints</h2>
-<p>For all complaints regarding our services, you can email us at support@ssgaeseals.com.</p>
+<p>For all complaints regarding our services, you can email us at info@ssgaeseals.com.</p>
 <h2>20. Notice</h2>
-<p>Any notice may be sent to SSGA by sending the same Sri Sai Ganesh Associates (SSGA), No.44, MIG, G1/5, Marutham Enclave, 
-6th Main Road, Mogappair Eri Scheme, Mogappair,
-Chennai-600037, Tamil Nadu – India. Except as explicitly stated otherwise, SSGA will send a notice to you at the email address that you have provided to us during the registration process. Notice shall be deemed given 24 hours after email is sent. Alternatively, we may give you notice by certified mail or post, to the address provided to us during the registration process. In such case, notice shall be deemed given 3 days after the date of mailing.</p><br>
+<p>Any notice may be sent to SSGA by sending the same Sri Sai Ganesh Associates (SSGA), 1-D First Floor, AM Tower, 
+Old No: 239, New No: 36,  
+Angappanaikken Street, Mannady, Chennai - 600 001, Tamil Nadu – India. Except as explicitly stated otherwise, SSGA will send a notice to you at the email address that you have provided to us during the registration process. Notice shall be deemed given 24 hours after email is sent. Alternatively, we may give you notice by certified mail or post, to the address provided to us during the registration process. In such case, notice shall be deemed given 3 days after the date of mailing.</p><br>
 <h2>21. Severability</h2>
 <p>The Terms and Conditions shall be severable. In the event that any provision is determined to be unenforceable, illegal or invalid, such provision shall nonetheless be enforced to the fullest extent permitted by applicable law, and such determination shall not affect the enforceability, legality and validity of any other remaining provisions.</p>
 <h2>22. Governing law & jurisdiction</h2>

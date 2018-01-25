@@ -71,7 +71,7 @@ include "config.php";
 <h2>Changes to This Privacy Policy</h2>
 <p>We may update our Privacy Policy from time to time. Thus, we advise you to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately, after they are posted on this page.</p>
 <h2>Contact Us</h2>
-<p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at <a href="ssgassociates2015@gmail.com">ssgassociates2015@gmail.com</a></p>
+<p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at <a href="info@ssgaeseal.com">info@ssgaeseal.com</a></p>
 <p>This Privacy Policy page was created at <a href="www.ssgaeseal.com">www.ssgaeseal.com</a></p>
 </div><!-- Column 12 -->
 </div><!-- Row -->

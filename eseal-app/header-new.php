@@ -1,3 +1,6 @@
+
+
+<link href="http://templines.rocks/html/sokolcov/transcargo/css/master.cssX" type="text/css" rel="stylesheet">
 <?php /* ?>
 <style>
     .logo img {
@@ -106,10 +109,21 @@
 <?php */ ?>
 
 <style>
-    #logo {
-        width: 430px;
-        height: 90px;
-    }
+#logo {
+	width: 430px;
+	height: 90px;
+}
+
+.top-bar, .top-menu nav:first-child::before {
+	border-top-color: #228dcb !important;
+}
+
+.top-bar {
+	border-top: 6px solid #228dcb !important;
+}
+.top-menu nav {
+    background: #228dcb !important;
+}
 </style>
 <div class="top-bar">
     <div class="container-fluid">

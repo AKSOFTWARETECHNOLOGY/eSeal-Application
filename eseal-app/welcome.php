@@ -90,7 +90,7 @@
 <!--<i class="glyph-icon flaticon-boats4"></i>-->
 </span>
                     <h4>Login into your account</h4>
-                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                    <p></p>
                 </a>
             </div>
 
@@ -102,7 +102,7 @@
 <!--<i class="glyph-icon flaticon-boats4"></i>-->
 </span>
                     <h4>Buy E-Seal Product</h4>
-                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                    <p></p>
                 </a>
             </div>
 
@@ -114,7 +114,7 @@
 <!--<i class="glyph-icon flaticon-boats4"></i>-->
 </span>
                     <h4>Get Doorstep Delivery</h4>
-                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                    <p></p>
                 </a>
             </div>
 
@@ -126,7 +126,7 @@
 <!--<i class="glyph-icon flaticon-boats4"></i>-->
 </span>
                     <h4>Quick & Easy</h4>
-                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                    <p></p>
                 </a>
             </div>
 
@@ -137,7 +137,7 @@
 <!--<i class="glyph-icon flaticon-boats4"></i>-->
 </span>
                     <h4>Convenient</h4>
-                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                    <p></p>
                 </a>
             </div>
 
@@ -148,7 +148,7 @@
 <!--<i class="glyph-icon flaticon-boats4"></i>-->
 </span>
                     <h4>Legally Verified</h4>
-                    <p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
+                    <p></p>
                 </a>
             </div>
 
