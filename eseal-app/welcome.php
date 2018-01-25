@@ -1,3 +1,101 @@
+<div class="service" >
+    <div class="container" style="width:900px;">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h3 class="text-center">OUR PROCESS</h3>
+                <p class="text-center have">We have wide network of offices in all major locations to help you with the services we offer</p>
+
+            </div>
+        </div>
+        <div class="row our-services">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/login-account.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Login into Your Account</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/eseal-product.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Buy E-seal Product</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/delivery-truck.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Get Doorstep Delivery</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/quick.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Quick &amp; Easy</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/convenient.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Convenient</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/legally-verified.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Legally Verified</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
 <?php /* ?>
 <div class="welcome hidden">
     <div class="container-fluid">
@@ -71,7 +169,106 @@
 </div><!-- How it Works -->
 <?php */ ?>
 
+<?php /* ?>
+<div class="service" >
+    <div class="container" style="width:900px;">
+        <div class="row">
+            <div class="col-md-12">
 
+                <h3 class="text-center">OUR PROCESS</h3>
+                <p class="text-center have">We have wide network of offices in all major locations to help you with the services we offer</p>
+
+            </div>
+        </div>
+        <div class="row our-services">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/login-account.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Login into Your Account</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/eseal-product.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Buy E-seal Product</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/delivery-truck.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Get Doorstep Delivery</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/quick.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Quick &amp; Easy</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/convenient.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Convenient</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <a href="javascript:void(0);">
+                    <div class="container-new">
+                        <div class="item">
+                            <img src="ssga/images/legally-verified.jpg" alt="" title="" class="img-responsive">
+                            <div class="image-info">
+                                <h4>Legally Verified</h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<?php */ ?>
+
+<?php /* ?>
 <div class="service" >
     <div class="container" style="width:900px;">
         <div class="row">
@@ -155,5 +352,5 @@
         </div>
     </div>
 </div>
-
+<?php */ ?>
 

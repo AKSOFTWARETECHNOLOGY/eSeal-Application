@@ -1,215 +1,370 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Welcome to SSGA</title>
-<link href="css/style.css" type="text/css" rel="stylesheet">
-<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-<link href="css/font-awesome.min.css" type="text/css" rel="stylesheet">
-<link href="css/jquery.bxslider.min.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.bxslider').bxSlider({
-			mode: 'horizontal',
-			moveSlides: 1,
-			infiniteLoop: true,
-			speed: 800,
-		});
-	});
-</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to SSGA</title>
+    <link href="images/favicon.png" type="image/png" rel="shortcut icon">
+    <link href="css/style-inner.css" type="text/css" rel="stylesheet">
+
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="css/jquery.bxslider.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.bxslider').bxSlider({
+                mode: 'horizontal',
+                moveSlides: 1,
+                infiniteLoop: true,
+                speed: 800,
+            });
+        });
+    </script>
 </head>
 
 <body>
-<div class="top-bar">
-<div class="container">
-<div class="row top-menu">
-<nav class="col-sm-offset-3 col-md-offset-4 col-lg-offset-4 col-sm-6 col-md-5 col-lg-5">
-<a href="#">LOGIN</a>
-<a href="#">REGISTER</a>
-<a href="#">WHY US</a>
-</nav>
-<nav class="text-right col-sm-3 col-md-3 col-lg-3">
-<a href="#"><i class="fa fa-facebook"></i></a>
-<a href="#"><i class="fa fa-google-plus"></i></a>
-<a href="#"><i class="fa fa-twitter"></i></a>
-<a href="#"><i class="fa fa-pinterest"></i></a>
-<a href="#"><i class="fa fa-youtube"></i></a>
-</nav>
 
-</div><!-- Nav Top Menu -->
-<div class="row header">
-<div class="col-sm-3 col-md-3 col-lg-3">
-<a href="javascript:void(0);" id="logo">
-<img src="images/logo.pngx" />
-</a>
-</div>
-<div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-8 col-md-8 col-lg-8">
-<div class="text-right header-padding">
-<div class="h-block"><span>CALL US</span>044-48677050</div>
-<div class="h-block"><span>EMAIL US</span>info@ssgaeseal.com</div>
-<div class="h-block"><span>WORKING HOURS</span>Mon - Sat  8.00 - 19.00</div>
-<a class="btn-new btn-success" href="#">BUY NOW</a>
-</div>
-</div>
-</div>
-</div>
+
+
+
+
+<link href="http://templines.rocks/html/sokolcov/transcargo/css/master.cssX" type="text/css" rel="stylesheet">
+
+<style>
+#logo {
+	width: 430px;
+	height: 90px;
+}
+
+.top-bar, .top-menu nav:first-child::before {
+	border-top-color: #228dcb !important;
+}
+
+.top-bar {
+	border-top: 6px solid #228dcb !important;
+}
+.top-menu nav {
+    background: #228dcb !important;
+}
+</style>
+<div class="top-bar">
+    <div class="container-fluid">
+        <div class="row top-menu">
+            <nav class="col-sm-offset-3 col-md-offset-4 col-lg-offset-4 col-sm-6 col-md-5 col-lg-5">
+                <a href="#" class="hidden">LOGIN</a>
+                <a href="#" class="hidden">REGISTER</a>
+                <a href="#" class="hidden">WHY US</a>
+            </nav>
+            <nav class="text-right col-sm-3 col-md-3 col-lg-3">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </nav>
+
+        </div><!-- Nav Top Menu -->
+        <div class="row header">
+            <div class="col-sm-3 col-md-3 col-lg-3" style="top: -25px;height: 75px;">
+                <a href="index.php" id="logo">
+                </a>
+            </div>
+            <div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-8 col-md-8 col-lg-8">
+                <div class="text-right header-padding">
+                    <div class="h-block"><span>CALL US</span>044-48677050</div>
+                    <div class="h-block"><span>EMAIL US</span>info@ssgaeseal.com</div>
+                    <div class="h-block"><span>WORKING HOURS</span>Mon - Fri  10.00 AM - 6.00 PM</div>
+                    <div class="h-block"><span>WORKING HOURS</span>Sat  10.00 AM - 4.00 PM</div>
+
+                    
+                        <a class="btn-new btn-success" href="login.php">LOGIN</a>
+
+                        <a class="btn-new btn-success" href="registration-terms.php">REGISTER</a>
+
+                        <ul class="hidden">
+                            <li><i class="fa fa-phone"></i> Hotline: 044-48677050</li>
+                            <li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="registration-terms.php"><i class="fa fa-user"></i> Register</a></li>
+                        </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="css-menu">
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-default main-menu ">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand visible-xs" href="#">Brand</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav navbar-main">
+                            <li class="active"><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
+                            <li><a href="about-us.php">About us</a></li>
+                            <li><a href="product.php">Products</a></li>
+                            <li><a href="faq.php">FAQ</a></li>
+                            <li><a href="contact-us.php">Contact Us</a></li>
+                        </ul>
+
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="banner">
+    <ul class="bxslider">
+        <li><img src="images/1.jpg" alt="" title="" class="img-responsive" /></li>
+        <li><img src="images/2.jpg" alt="" title="" class="img-responsive" /></li>
+        <li><img src="images/3.jpg" alt="" title="" class="img-responsive" /></li>
+    </ul>
+</div>
+
+<style>
+    .big-hr::before {
+        border-top: 100px solid #f48929;
+    }
+    .big-hr::after {
+        border-top: 100px solid #f48929;
+    }
+
+    .big-hr {
+        margin-top: -70px;
+        max-width: 700px;
+        height: 100px;
+        padding-top: 5px;
+    }
+
+    .normal-stiff {
+        padding: 100px 0 30px 0px;
+    }
+</style>
+<div class="normal-stiff">
+    <!--<hr>-->
+    <div class="container">
+        <div class="row">
+            <div class="big-hr">
+                <div class="text-left" style="margin-right:40px;">
+                    <h2>Sri Sai Ganesh Associates</h2>
+                    <p>helps manufacturers with gaining full control of their supply chain.</p>
+                </div>
+                <div class="request">
+                                        <a class="btnn btn-success btn-lg" href="login.php">BUY NOW</a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="home-about hidden">
 <div class="container">
 <div class="row">
-<nav class="navbar navbar-default main-menu ">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand visible-xs" href="#">Brand</a>
-    </div>
+<div class="col-md-12 col-sm-12 col-xs-12 about">
+<h3>About Us</h3>
+<p>Head quartered in Thanjavur District, Tamil Nadu, SSG Groupis a major player in Tamil Nadu and the flagship company . With a rich heritage and an exhaustive and diverse portfolio of successfully completed projects across industry sectors, the company is poised for the next era of growth. The key factors to its robust and stable growth are its client focus, its leadership, the adoption of the latest technology and its work force orientation. SSG Group brings a host of capabilities to major  projects through an integrated approach that spans the life cycle of infrastructure, Education and Training, Media and Entertainment and Logistic Solutions to professional & support services are been Headed by Mr.Sridharan, along with the energetic team of professionals.</p>
+<div class="read-more"><a href="about-us.php">Read More</a></div>
+</div><!-- Column 12 -->
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-main">
-        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Contact us</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+
+
+</div><!-- Row -->
+</div><!-- Container -->
+</div><!-- Home About -->
+
+
+<div class="products-category hidden">
+<div class="container">
+<div class="row">
+<div class="col-md-12 col-sm-12 col-xs-12">
+<h2>Seal Product</h2>
 </div>
+
+<div class="col-md-6 col-sm-6 col-xs-12 freedom-list">
+<ul>
+<li><i class="fa fa-bullseye"></i>Freedom - avail self-sealing of cargo at your premises</li>
+<li><i class="fa fa-crosshairs" aria-hidden="true"></i>Reduce risk of pilferage and theft</li>
+<li><i class="fa fa-file-text-o" aria-hidden="true"></i>View your shipment data anytime</li>
+<li><i class="fa fa-binoculars" aria-hidden="true"></i>Track your shipment from your business premises to port gate</li>
+<li><i class="fa fa-area-chart" aria-hidden="true"></i>Free analytics to support your supply chain management Know more</li>
+</ul>
+
+</div><!-- Column 6 -->
+
+<div class="col-md-6 col-sm-6 col-xs-12 hidden">
+<div class="common-item">
+<div class="text">
+<h3><a href="javascript:void(0);">RFID Electronic Seal -  ₹ 299.00 </a></h3>
 </div>
-</div>
-<div class="banner">
-<ul class="bxslider">
-<li><img src="images/1.jpg" alt="" title="" class="img-responsive" /></li>
-<li><img src="images/2.jpg" alt="" title="" class="img-responsive" /></li>
+<div class="item">
+<a href="javascript:void(0);"><img src="images/seal.jpg" alt="" title="" class="img-responsive"></a>
+<div class="btn-group hidden">
+<ul>
+<li><a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i> Add to cart</a></li>
+<li><a href="javascript:void(0);"><i class="fa fa-heart"></i> Wishlist</a></li>
 </ul>
 </div>
+</div><!-- Item -->
+<div class="buy-now">
+            <a href="login.php">Buy Now</a>
+    </div>
+</div><!-- Common Item -->
+</div><!-- Column 6 -->
 
 
-<div class="normal-stiff">
-<hr>
-<div class="container">
-<div class="row">
-<div class="big-hr">
-<div class="text-left" style="margin-right:40px;">
-<h2>Sri Sai Ganesh Associates</h2>
-<p>helps manufacturers with gaining full control of their supply chain.</p>
+</div><!-- Row -->
+</div><!-- Container Fluid -->
+</div><!-- Product category -->
+
+
+
+
+
+
+
+<div class="service" >
+    <div class="container" style="width:900px;">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h3 class="text-center">OUR PROCESS</h3>
+                <p class="text-center have">We have wide network of offices in all major locations to help you with the services we offer</p>
+
+            </div>
+        </div>
+        <div class="row our-services">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+            <a href="javascript:void(0);">
+            <div class="container-new">
+              <div class="item">
+                   <img src="images/login-account.jpg" alt="" title="" class="img-responsive">
+                   <div class="image-info">
+                     <h4>Login into Your Account</h4>
+                    </div>
+              </div>
+			</div>
+            </a>
+            </div>
+            
+            
+            <div class="col-sm-6 col-md-4 col-lg-4">
+            <a href="javascript:void(0);">
+            <div class="container-new">
+              <div class="item">
+                   <img src="images/eseal-product.jpg" alt="" title="" class="img-responsive">
+                   <div class="image-info">
+                     <h4>Buy E-seal Product</h4>
+                    </div>
+              </div>
+			</div>
+            </a>
+            </div>
+            
+            
+            <div class="col-sm-6 col-md-4 col-lg-4">
+            <a href="javascript:void(0);">
+            <div class="container-new">
+              <div class="item">
+                   <img src="images/delivery-truck.jpg" alt="" title="" class="img-responsive">
+                   <div class="image-info">
+                     <h4>Get Doorstep Delivery</h4>
+                    </div>
+              </div>
+			</div>
+            </a>
+            </div>
+            
+            
+            <div class="col-sm-6 col-md-4 col-lg-4">
+            <a href="javascript:void(0);">
+            <div class="container-new">
+              <div class="item">
+                   <img src="images/quick.jpg" alt="" title="" class="img-responsive">
+                   <div class="image-info">
+                     <h4>Quick &amp; Easy</h4>
+                    </div>
+              </div>
+			</div>
+            </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+            <a href="javascript:void(0);">
+            <div class="container-new">
+              <div class="item">
+                   <img src="images/convenient.jpg" alt="" title="" class="img-responsive">
+                   <div class="image-info">
+                     <h4>Convenient</h4>
+                    </div>
+              </div>
+			</div>
+            </a>
+            </div>
+            
+            
+            <div class="col-sm-6 col-md-4 col-lg-4">
+            <a href="javascript:void(0);">
+            <div class="container-new">
+              <div class="item">
+                   <img src="images/legally-verified.jpg" alt="" title="" class="img-responsive">
+                   <div class="image-info">
+                     <h4>Legally Verified</h4>
+                    </div>
+              </div>
+			</div>
+            </a>
+            </div>
+
+        </div>
+    </div>
 </div>
- <div class="request"><a class="btnn btn-success btn-lg" href="#">BUY NOW</a></div>
-</div>
-</div>
-</div>
-</div>
-
-
-<div class="service">
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-
-<h3 class="text-center">OUR PROCESS</h3>
-<p class="text-center have">We have wide network of offices in all major locations to help you with the services we offer</p>
-
-</div>
-</div>
-<div class="row our-services"> 
-<div class="col-sm-6 col-md-4 col-lg-4">
-<a href="javascript:void(0);">
-<span>
-<img src="images/login-account.png" style="width: 80%;" />
-<!--<i class="glyph-icon flaticon-boats4"></i>-->
-</span>
-<h4>Login into your account</h4>
-<p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
-</a>
-</div>
-
-
-<div class="col-sm-6 col-md-4 col-lg-4">
-<a href="javascript:void(0);">
-<span>
-<img src="images/eseal-product.png" style="width: 80%;" />
-<!--<i class="glyph-icon flaticon-boats4"></i>-->
-</span>
-<h4>Buy E-Seal Product</h4>
-<p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
-</a>
-</div>
-
-
-<div class="col-sm-6 col-md-4 col-lg-4">
-<a href="javascript:void(0);">
-<span>
-<img src="images/delivery-truck.png" style="width: 80%;" />
-<!--<i class="glyph-icon flaticon-boats4"></i>-->
-</span>
-<h4>Get Doorstep Delivery</h4>
-<p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
-</a>
-</div>
-
-
-<div class="col-sm-6 col-md-4 col-lg-4">
-<a href="javascript:void(0);">
-<span>
-<img src="images/quick-easy.png" style="width: 80%;" />
-<!--<i class="glyph-icon flaticon-boats4"></i>-->
-</span>
-<h4>Quick & Easy</h4>
-<p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
-</a>
-</div>
-
-<div class="col-sm-6 col-md-4 col-lg-4">
-<a href="javascript:void(0);">
-<span>
-<img src="images/convenient.png" style="width: 80%;" />
-<!--<i class="glyph-icon flaticon-boats4"></i>-->
-</span>
-<h4>Convenient</h4>
-<p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
-</a>
-</div>
-
-<div class="col-sm-6 col-md-4 col-lg-4">
-<a href="javascript:void(0);">
-<span>
-<img src="images/legally-verified.png" style="width: 80%;" />
-<!--<i class="glyph-icon flaticon-boats4"></i>-->
-</span>
-<h4>Legally Verified</h4>
-<p>Integer congue elit non semper laore lectus orci posuer nisl tempor lacus mauris led ipsum.</p>
-</a>
-</div>
-
-</div>
-</div>
-</div>
-
-
 <div class="footer">
-<div class="footer-overlay">
-  <div class="container">
+<div class="color-part2"></div>
+<div class="color-part"></div>
+  <div class="container-fluid">
+<div class="row block-content">
+      <div class="col-md-4 col-sm-4 col-xs-12 account">
+        <h3>Get in touch</h3>
+          <p>Sri Sai Ganesh Associates,<br/> 
+		  1-D First Floor, AM Tower,<br/>
+		  Old No: 239, New No: 36, <br/>
+		  Angappanaikken Street, Mannady,<br/>
+		  Chennai - 600 001</p>
+          <p>HotLine: 044-48677050</p>
 
-      <div class="col-md-3 col-sm-3 col-xs-12 account">
-        <h3>My Account</h3>
+          <!--
+          <p>No.44, MIG, G1/5 Marutham Enclave, 6th Main Road, Mogappair ERI Scheme, Mogappair, Chennai - 600 0037</p>
+          <p>Ph No. 044-48677050 </p>
+          -->
+
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-12 account">
+		<h3>My Account</h3>
                         <ul>
                   <li><a href="login.php">Login</a></li>
                   <li><a href="user-registration.php">Registration</a></li>
                   <li class="hidden"><a href="javascript:void(0);">View Cart</a></li>
               </ul>
-          
+                    
           <ul class="social">
               <li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
               <li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
@@ -217,53 +372,52 @@
               <li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
           </ul>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-12 account">
-        <h3>Policy</h3>
-        <ul>
-          <li><a href="privacy-policy.php">Privacy Policy</a></li>
-          <li><a href="terms-and-conditions.php">Terms &amp; Conditions</a></li>
-          <li><a href="refund-cancellation.php">Refund &amp; cancellation</a></li>          
-        </ul>
-      </div>
-	  <div class="col-md-3 col-sm-3 col-xs-12">
-        <h3>Get in touch</h3>
-          <p>Sri Sai Ganesh Associates,<br> 1-D First Floor, AM Tower, <br>Old No: 239, New No: 36, Angappanaikken Street, Mannady, Chennai - 600 001</p>
-          <p>HotLine: 044-48677050</p>
-
-          <!--
-          <p>No.44, MIG, G1/5 Marutham Enclave, 6th Main Road, Mogappair ERI Scheme, Mogappair, Chennai - 600 0037</p>
-          <p>(+91) 94880 15119 , (+91) 88256 23258.</p>
-          -->
-
+	  <div class="col-md-2 col-sm-2 col-xs-12 account">
+		<h3>Policy</h3>
+		<ul>
+		  <li><a href="privacy-policy.php">Privacy Policy</a></li>
+		  <li><a href="terms-and-conditions.php">Terms &amp; Conditions</a></li>
+		  <li><a href="refund-cancellation.php">Refund &amp; cancellation</a></li>          
+		</ul>        
       </div>
 
-      <div class="col-md-3 col-sm-3 col-xs-12 store">
-<h3>Store Hours</h3>
-<ul>
-<li>Monday - Friday : <span>10 AM to 6PM</span></li>
-<li>Saturday :<span>10 AM to 4PM</span></li>
-<li>Sunday : <span>Holiday</span></li>
-        </ul>
-</div>
-       
+      <div class="col-md-4 col-sm-4 col-xs-12 store">
+		<h3>Store Hours</h3>
+		<ul>
+		<li>Monday - Friday : <span>10 AM to 6PM</span></li>
+		<li>Saturday :<span>10 AM to 4PM</span></li>
+		<li>Sunday : <span>Holiday</span></li>
+		</ul>
+		</div>
+      </div> 
     </div>
-  </div>
 </div>
-  <div class="footer-bottom">
+<div class="footer-bottom">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-12" style="float: left;">
-                <p style="text-align: left;">SSGA © Copyright 2018 All Rights Reserved.</p>
+                <p style="text-align: left;">SSGA &copy; Copyright 2018 All Rights Reserved.</p>
             </div>
 
             <div class="col-md-6 col-sm-6 col-xs-12" style="float: right;">
-                <p style="text-align: right;">Design &amp; Developed by <a href="http://www.aramsolutions.com" target="_blank">ARAM</a> </p>
+                <p style="text-align: right;">created by <a href="http://www.aramsolutions.com" target="_blank">அறம்</a> </p>
             </div>
 
 
         </div>
     </div>
 </div>
-
+</div>
+<!--
+<div class="footer-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <p>SSGA © Copyright 2017-2018 All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</div>
+-->
 </body>
 </html>

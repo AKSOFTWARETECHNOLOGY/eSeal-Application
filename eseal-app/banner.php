@@ -15,6 +15,7 @@
     <ul class="bxslider">
         <li><img src="ssga/images/1.jpg" alt="" title="" class="img-responsive" /></li>
         <li><img src="ssga/images/2.jpg" alt="" title="" class="img-responsive" /></li>
+        <li><img src="ssga/images/3.jpg" alt="" title="" class="img-responsive" /></li>
     </ul>
 </div>
 
