@@ -287,17 +287,21 @@ $(document).ready(function() {
     <div class="row">
         <div class="col-lg-6 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-orange" style="background: orange;padding: 17px;height: 240px;">
-                <div class="inner col-lg-6 col-xs-6">
-                    <h3><?php echo $product_order_cnt;?></h3>
-                    <p>E-Seal Inventory</p>
+            <div class="small-box bg-orange" style="background: #228dcb;padding: 17px;height: 140px;color: #fff;">
+                <div class="inner col-lg-12 col-xs-12">
+                    <div class="inner col-lg-6 col-xs-6">
+                        <p style="text-align: center;">E-seal Order</p>
+                        <h3 style="font-size: 60px;"><?php echo $product_order_cnt;?></h3>
+                    </div>
+                    <div class="inner col-lg-6 col-xs-6">
                     <p>Placed <b><?php echo $product_order_placed_cnt;?></b></p>
                     <p>Confirmed <b><?php echo $product_order_confirmed_cnt;?></b></p>
                     <p>Packed <b><?php echo $product_order_packed_cnt;?></b></p>
                     <p>Intransit <b><?php echo $product_order_intransit_cnt;?></b></p>
                     <p>Delivered <b><?php echo $product_order_delivered_cnt;?></b></p>
+                    </div>
                 </div>
-                <div class="icon col-lg-6 col-xs-6">
+                <div class="icon col-lg-6 col-xs-6 hidden">
                     <i class="ion ion-android-person" style="font-size:200px;"></i>
                 </div>
                 <a href="order-history.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
@@ -306,16 +310,20 @@ $(document).ready(function() {
 
         <div class="col-lg-6 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-aqua" style="background: aqua;padding: 17px;height: 240px;">
-                <div class="inner col-lg-6 col-xs-6">
-                    <h3><?php echo $eseal_cnt;?></h3>
-                    <p>E-seal Status</p>
+            <div class="small-box bg-aqua" style="background: #228dcb;padding: 17px;height: 140px;color: #fff;">
+                <div class="inner col-lg-12 col-xs-12">
+                    <div class="inner col-lg-6 col-xs-6">
+                        <p style="text-align: center;">E-seal Status</p>
+                        <h3 style="font-size: 60px;"><?php echo $eseal_cnt;?></h3>
+                    </div>
+                    <div class="inner col-lg-6 col-xs-6">
                     <p>Pending <b><?php echo $eseal_pending_cnt;?></b></p>
                     <p>Success <b><?php echo $eseal_success_cnt;?></b></p>
                     <p>Tampered <b><?php echo $eseal_tampered_cnt;?></b></p>
                     <p>Other <b><?php echo $eseal_other_cnt;?></b></p>
+                    </div>
                 </div>
-                <div class="icon col-lg-6 col-xs-6">
+                <div class="icon col-lg-6 col-xs-6 hidden">
                     <i class="ion ion-android-person" style="font-size:200px;"></i>
                 </div>
                 <a href="my-seal-status.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>

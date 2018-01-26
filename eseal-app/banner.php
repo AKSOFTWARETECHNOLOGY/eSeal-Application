@@ -16,26 +16,36 @@
         <li><img src="ssga/images/1.jpg" alt="" title="" class="img-responsive" /></li>
         <li><img src="ssga/images/2.jpg" alt="" title="" class="img-responsive" /></li>
         <li><img src="ssga/images/3.jpg" alt="" title="" class="img-responsive" /></li>
+        <li><img src="ssga/images/bg1.jpg" alt="" title="" class="img-responsive" /></li>
+        <li><img src="ssga/images/bg2.jpg" alt="" title="" class="img-responsive" /></li>
+        <li><img src="ssga/images/bg3.jpg" alt="" title="" class="img-responsive" /></li>
     </ul>
 </div>
 
 <style>
     .big-hr::before {
-        border-top: 100px solid #f48929;
+        border-top: 60px solid #f48929;
     }
     .big-hr::after {
-        border-top: 100px solid #f48929;
+        border-top: 60px solid #f48929;
+    }
+    .normal-stiff {
+        padding: 100px 0 30px 0px;
     }
 
     .big-hr {
         margin-top: -70px;
-        max-width: 700px;
-        height: 100px;
+        max-width: 600px;
+        height: 60px;
         padding-top: 5px;
     }
 
-    .normal-stiff {
-        padding: 100px 0 30px 0px;
+    .big-hr h2 {
+        margin: 5px;
+    }
+
+    .big-hr a.btnn {
+        float: right;
     }
 </style>
 <div class="normal-stiff">

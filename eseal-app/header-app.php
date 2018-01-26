@@ -18,25 +18,25 @@
     .main-header {background: #4E4E4E; }
 
     .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-        color: #00bfff;
+        color: #228dcb;
     }
     .navbar-default .navbar-nav>li>a {
-        color: #00bfff;
+        color: #FFFFFF;
     }
     .mail-link ul li {
-        color: #00bfff;
+        color: #FFFFFF;
     }
     .mail-link ul li a {
-        color: #00bfff;
+        color: #FFFFFF;
     }
 
 </style>
-<div class="main-header" style="padding: 5px 0;">
+<div class="main-header" style="padding: 5px 0;    background: #228dcb !important;">
 <div class="container-fluid">
 <div class="row">
 <div class="col-md-4 col-sm-4 col-xs-12 logo">
 <h3><a href="dashboard.php">
-        <img src="images/logo-blue.png" alt="Sri Sai Ganesh Associates" title="Sri Sai Ganesh Associates" class="img-responsive">
+        <img src="images/logo-white.png" alt="Sri Sai Ganesh Associates" title="Sri Sai Ganesh Associates" class="img-responsive">
     </a>
 </h3>
 </div>

@@ -1,3 +1,8 @@
+<style>
+    .footer {
+        height: 300px !important;
+    }
+</style>
 <div class="footer">
 <div class="color-part2"></div>
 <div class="color-part"></div>

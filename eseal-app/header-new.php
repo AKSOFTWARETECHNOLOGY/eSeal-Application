@@ -124,6 +124,21 @@
 .top-menu nav {
     background: #228dcb !important;
 }
+
+.header .btn-new {
+    padding: 10px 30px !important;
+}
+
+.navbar {
+    min-height: 45px !important;
+}
+.navbar-main > li {
+    padding: 13px 0 13px !important;
+}
+
+.main-menu::before, .main-menu::after {
+    height: 48px !important;
+}
 </style>
 <div class="top-bar">
     <div class="container-fluid">
