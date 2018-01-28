@@ -31,7 +31,7 @@
     }
 
 </style>
-<div class="main-header" style="padding: 5px 0;    background: #228dcb !important;">
+<div id="header" class="main-header" style="padding: 5px 0;    background: #228dcb !important;">
 <div class="container-fluid">
 <div class="row">
 <div class="col-md-4 col-sm-4 col-xs-12 logo">

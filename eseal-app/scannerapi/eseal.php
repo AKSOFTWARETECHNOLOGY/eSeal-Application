@@ -24,7 +24,27 @@ $sealnumber=$_REQUEST['sealnumber'];
 $portid=$_REQUEST['portid'];
 
 $active="1";
-$node_sql_query = "SELECT * FROM product_order_info WHERE product_sealcode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
+
+$customs_approve_status="1";
+$customs_approve_date=date("Y-m-d");
+$customs_approve_time=date("h:i:s");
+
+$sql="UPDATE `product_order_info` SET `customs_approve_status` = '$customs_approve_status',`customs_approve_date` = '$customs_approve_date',`customs_approve_time` = '$customs_approve_time'
+WHERE product_unicode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
+$exe=mysql_query($sql);
+
+//$node_sql_query = "SELECT * FROM product_order_info WHERE product_sealcode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
+$node_sql_query = "SELECT * FROM product_order_info WHERE product_unicode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
+
+$node_sql_query = "SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name, ports.ports_name,terminals.terminals_name
+FROM `product_order_info` AS `poi`
+LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+LEFT JOIN `products` ON products.id = poi.product_id
+LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+LEFT JOIN `ports` ON ports.id = poi.destination_port
+LEFT JOIN `terminals` ON terminals.id = poi.terminal_name
+WHERE product_unicode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
+
 //$node_sql_query = "SELECT * FROM product_order_info WHERE product_sealcode = '$sealnumber' LIMIT 1";
 //$data['SQL']=$node_sql_query;
 
@@ -37,7 +57,8 @@ if($node_count)
 		$i=0;
 		while($node_fetch = mysql_fetch_array($node_sql))
 		{	
-			
+			//print_r($node_fetch);
+
 			$data['eseal']['product_sealcode']=$node_fetch['product_sealcode'];
 			
 			$data['eseal']['shipping_no']=$node_fetch['shipping_no'];
@@ -64,9 +85,9 @@ if($node_count)
 	
 	
 
-			$data['eseal']['destination_port']=$node_fetch['destination_port'];
+			$data['eseal']['destination_port']=$node_fetch['ports_name'];
 	
-			$data['eseal']['terminal_name']=$node_fetch['terminal_name'];
+			$data['eseal']['terminal_name']=$node_fetch['terminals_name'];
 	
 	
 			
@@ -80,7 +101,7 @@ if($node_count)
 			
 			$data['eseal']['product_exporter_id']=$node_fetch['product_exporter_id'];
 			
-			$data['eseal']['product_exporter_name']="SSGA Exporter Name";
+			$data['eseal']['product_exporter_name']=$node_fetch['name_exporter'];
 			
 			$data['eseal']['product_exporter_iec_no']=$node_fetch['iec_no'];
 			
@@ -98,7 +119,7 @@ if($node_count)
 			
 			
 			
-			for($i=0;$i<=5;$i++)
+			for($i=0;$i<1;$i++)
 			{
 			
 			/*	
@@ -113,13 +134,13 @@ if($node_count)
 				
 			*/
 			
-			$data['eseal']['scans'][$i]['customs_approve_status']=1;
+			$data['eseal']['scans'][$i]['customs_approve_status']=$customs_approve_status;
+
+			$data['eseal']['scans'][$i]['customs_approve_note']=$node_fetch['terminals_name'].'-'.$node_fetch['ports_name'];
 			
-			$data['eseal']['scans'][$i]['customs_approve_note']=$i." PROCESS ".$i;
+			$data['eseal']['scans'][$i]['customs_approve_date']=$customs_approve_date;
 			
-			$data['eseal']['scans'][$i]['customs_approve_date']=date("Y-m-d");
-			
-			$data['eseal']['scans'][$i]['customs_approve_time']=date("h:i:s");
+			$data['eseal']['scans'][$i]['customs_approve_time']=$customs_approve_time;
 			
 			}
 			

@@ -270,6 +270,18 @@ $(document).ready(function() {
 </span>
             </div>
         </div>
+
+        <div class="form-group row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>Exporter Aadhar No</label>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+<span class="account-input">
+    <?php echo $userinfo['aadhaar_number']; ?>
+</span>
+            </div>
+        </div>
+
         <div class="form-group row">
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <label>Person Name</label>

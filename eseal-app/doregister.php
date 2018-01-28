@@ -25,6 +25,7 @@ $email = $_REQUEST['email'];
 $password = $_REQUEST['password'];
 $gstin = $_REQUEST['gstin'];
 $panNumber = $_REQUEST['panNumber'];
+$AadhaarNumber = $_REQUEST['AadhaarNumber'];
 $username = "User";
 $date = date("Y-m-d");
 $role = 3;
@@ -56,8 +57,8 @@ $joindate=date("Y-m-d");
 				$insert_role_exe=mysql_query($insert_role_sql);
 
 
-                $insert_exporter_sq1 = "INSERT INTO `exporter_info` (user_id, name_exporter, name_person, address, city, state, country, pincode, telephone, mobile, email, gstin, pan_number, iec_code, created_by, updated_by, created_at, updated_at)
-VALUES ('$user_id','$exporterName','$personName','$address','$cityId','$state','$countryId','$pincode','$telephone','$mobile','$email','$gstin','$panNumber','$icecode','$username','$username','$date','$date')";
+                $insert_exporter_sq1 = "INSERT INTO `exporter_info` (user_id, name_exporter, name_person, address, city, state, country, pincode, telephone, mobile, email, gstin, pan_number, aadhaar_number iec_code, created_by, updated_by, created_at, updated_at)
+VALUES ('$user_id','$exporterName','$personName','$address','$cityId','$state','$countryId','$pincode','$telephone','$mobile','$email','$gstin','$panNumber','$AadhaarNumber', '$icecode','$username','$username','$date','$date')";
 
                 $insert_exporter_exe = mysql_query($insert_exporter_sq1);
 

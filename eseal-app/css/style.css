@@ -305,3 +305,7 @@
 .logo-slider h3{margin-top:0px;}
 .footer {text-align: center;}
 }
+
+
+
+form label { text-transform: uppercase !important; }

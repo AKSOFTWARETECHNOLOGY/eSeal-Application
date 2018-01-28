@@ -223,19 +223,27 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
 
 
 <div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="col-md-4 col-sm-4 col-xs-12">
 <div class="form-group">
 <label>Pan Number <span class="required">*</span></label>
 <input type="text" name="panNumber" id="panNumber" class="register-input" maxlength="10" value="" required/>
 </div>
 </div><!-- Inner Column -->
 
-<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="col-md-4 col-sm-4 col-xs-12">
 <div class="form-group">
 <label>GSTIN <span class="required">*</span></label>
 <input type="text" name="gstin" id="gstin" class="register-input" maxlength="15" value="" required/>
 </div>
 </div><!-- Inner Column -->
+
+<div class="col-md-4 col-sm-4 col-xs-12">
+<div class="form-group">
+<label>Aadhaar Number <span class="required">&nbsp;</span></label>
+<input type="text" name="AadhaarNumber" id="AadhaarNumber" class="register-input" maxlength="12" value="" />
+</div>
+</div><!-- Inner Column -->
+
 </div><!-- Inner Row -->
 </div>
 
@@ -415,6 +423,11 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                     minlength: 10,
                     maxlength: 10,
                 },
+                AadhaarNumber: {
+                    number: true,
+                    minlength: 12,
+                    maxlength: 12,
+                },
                 personName: {
                     required: true,
                     lettersonly: true
@@ -473,6 +486,10 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                     required: "Please provide a valid Pan Card Details",
                     minlength: "Your Pan Card must be 10 characters long",
                     maxlength: "Your Pan Card must be 10 characters long"
+                },
+                AadhaarNumber: {
+                    minlength: "Your Aadhaar number must be 12 characters long",
+                    maxlength: "Your Aadhaar number must be 12 characters long"
                 },
                 personName: {
                     required: "Please enter your name",

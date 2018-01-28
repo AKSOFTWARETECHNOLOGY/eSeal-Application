@@ -154,6 +154,25 @@ $(document).ready(function() {
             });
 */
 </script>
+
+<script>
+    function forprint(){
+        $("#header").hide();
+        $("#sidebar").hide();
+        $("#footer").hide();
+        if (!window.print){
+
+            $("#header").show();
+            $("#sidebar").show();
+            $("#footer").show();
+            return
+        }
+        window.print();
+        $("#header").show();
+        $("#sidebar").show();
+        $("#footer").show();
+    }
+</script>
 </head>
 
 <body>
@@ -175,14 +194,18 @@ $(document).ready(function() {
 <div class="container-fluid">
 <div class="row">
 
-<div class="col-md-3 col-sm-3 col-xs-12">
+<div id="sidebar" class="col-md-3 col-sm-3 col-xs-12">
 <?php include "sidebar.php"; ?>
 </div><!--Column 6-->
 
 <div class="col-md-9 col-sm-9 col-xs-12">
     <div class="submit-btn">
         <ul>
-            <li><a class="hidden" href="#">New Complaint</a></li>
+            <li><a class="hidden" href="#">New Complaint</a>
+                <a href="javascript:forprint()">
+                    Print
+                </a>
+            </li>
             <li><a class="" href="my-seal-status.php">Back</a></li>
         </ul>
     </div><!--Form Btn-->
@@ -603,6 +626,12 @@ $(document).ready(function() {
 <li><a href="javascript:void(0);">New Address</a></li>
 </ul>
 </div><!--Form Btn-->
+
+    <div align="center">
+        <a href="javascript:forprint()">
+            <img src="http://www.iconarchive.com/download/i18772/iconshock/real-vista-text/print.ico" style="border:0; align:middle;width:5%"> Print / Download
+        </a>
+    </div>
 
 </div><!-- Column 9  -->
 </div><!-- Row  -->

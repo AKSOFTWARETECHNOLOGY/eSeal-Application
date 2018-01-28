@@ -33,6 +33,12 @@ where poi.id = $eseal_id";
 $order_exe=mysql_query($order_sql);
 $order_cnt=@mysql_num_rows($order_exe);
 $order_fet=mysql_fetch_array($order_exe);
+
+
+
+$attachment_sql="SELECT * FROM `eseal_attachment` WHERE `eseal_id`='$eseal_id' AND `eseal_attachment_status`='1'";
+$attachment_exe=mysql_query($attachment_sql);
+$attachment_cnt=mysql_num_rows($attachment_exe);
 ?>
 <!DOCTYPE html>
 <html>
@@ -177,6 +183,29 @@ $order_fet=mysql_fetch_array($order_exe);
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="row">
+                                    <fieldset class="form-group col-md-12">
+                                        <legend>Document Details</legend>
+                                        <div class="form-group">
+                                <span class="account-input">
+                                 <?php if($attachment_cnt>0) { ?>
+
+                                     <?php while($attachment_fet=mysql_fetch_array($attachment_exe)) { ?>
+                                         <a href="<?php echo $attachment_fet['eseal_attachment_path']; ?>" target="_blank">
+                                             <?php echo $attachment_fet['eseal_attachment_name']; ?>
+                                             <img style="width:20px;" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/699329-icon-57-document-download-128.png" title="Download" alttitle="Download"/>
+                                         </a>
+                                         <br/>
+                                     <?php } ?>
+
+                                 <?php } ?>
+                                 </span>
+                                        </div>
+                                    </div><!-- Inner Column -->
+
+                                </div><!-- Inner Row -->
 
                                 <div class="row">
                                     <fieldset class="form-group col-md-12">

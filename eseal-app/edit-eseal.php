@@ -440,11 +440,11 @@ $attachment_cnt=mysql_num_rows($attachment_exe);
                                      <?php while($attachment_fet=mysql_fetch_array($attachment_exe)) { ?>
                                          <a href="<?php echo $attachment_fet['eseal_attachment_path']; ?>" target="_blank">
                                              <?php echo $attachment_fet['eseal_attachment_name']; ?>
-                                             <img style="width:20px;" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/699329-icon-57-document-download-128.png" title="Download" alttitle="Download"/>
+                                             <i class="fa fa-download"></i>
                                          </a>
-
-                                         <a href="delete-attachment.php?id=<?php echo $attachment_fet['id']; ?>&delete=1" target="_blankX">
-                                             <img style="width:20px;" src="https://cdn4.iconfinder.com/data/icons/Primo_Icons/PNG/48x48/sub_blue_delete.png" title="Download" alttitle="Download"/>
+                                            &nbsp;&nbsp;::&nbsp;&nbsp;
+                                         <a href="delete-attachment.php?id=<?php echo $attachment_fet['id']; ?>&delete=1" onclick="return confirm('Are you sure you want to delete this item?');">
+                                             <i class="fa fa-trash"></i>
                                          </a>
                                          <br/>
                                      <?php } ?>

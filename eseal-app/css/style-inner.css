@@ -306,3 +306,7 @@
 .footer {text-align: center;}
 }
 */
+
+
+
+form label { text-transform: uppercase !important; }

@@ -213,11 +213,28 @@ $(document).ready(function() {
 */
 </script>
 
-
+<?php /* ?>
     <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/jspdf/1.2.61/jspdf.min.js"></script>
+<?php */ ?>
+<script>
+    function forprint(){
+        $("#header").hide();
+        $("#sidebar").hide();
+        $("#footer").hide();
+        if (!window.print){
 
-
+            $("#header").show();
+            $("#sidebar").show();
+            $("#footer").show();
+            return
+        }
+        window.print();
+        $("#header").show();
+        $("#sidebar").show();
+        $("#footer").show();
+    }
+</script>
 </head>
 
 <body>
@@ -240,18 +257,22 @@ $(document).ready(function() {
         <div class="row">
 
 
-            <div class="col-md-3 col-sm-3 col-xs-12">
+            <div id="sidebar" class="col-md-3 col-sm-3 col-xs-12">
                 <?php include "sidebar.php"; ?>
             </div><!--Column 6-->
 
             <div class="col-md-9 col-sm-9 col-xs-12">
                 <div class="submit-btn">
                     <ul>
-                        <li><a class="hidden" href="#">New Complaint</a></li>
+                        <li><a class="hidden" href="#">New Complaint</a>
+                            <a href="javascript:forprint()">
+                                Print
+                            </a>
+                        </li>
                         <li><a class="" href="order-history.php">Back</a></li>
                     </ul>
                 </div><!--Form Btn-->
-                <div class="order-history-details">
+                <div id="order-history-details" class="order-history-details">
 
                     <div class="table-responsive">
                         <table class="table">
@@ -461,6 +482,12 @@ $(document).ready(function() {
 
 
                 <button class="hidden" id="cmd">generate PDF</button>
+
+                <div align="center">
+                    <a href="javascript:forprint()">
+                        <img src="http://www.iconarchive.com/download/i18772/iconshock/real-vista-text/print.ico" style="border:0; align:middle;width:5%"> Print / Download
+                    </a>
+                </div>
 
             </div><!-- Column 9  -->
         </div><!-- Row  -->
