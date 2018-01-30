@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 if($_SERVER['SERVER_NAME']=="localhost")
 {
 $hostname="localhost";

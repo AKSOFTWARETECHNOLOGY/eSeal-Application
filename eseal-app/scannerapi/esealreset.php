@@ -24,15 +24,15 @@ $sealnumber=$_REQUEST['sealnumber'];
 $portid=$_REQUEST['portid'];
 
 $active="1";
-/*
-$customs_approve_status="1";
-$customs_approve_date=date("Y-m-d");
-$customs_approve_time=date("h:i:s");
+
+$customs_approve_status="0";
+$customs_approve_date="";
+$customs_approve_time="";
 
 $sql="UPDATE `product_order_info` SET `customs_approve_status` = '$customs_approve_status',`customs_approve_date` = '$customs_approve_date',`customs_approve_time` = '$customs_approve_time'
 WHERE product_unicode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
 $exe=mysql_query($sql);
-*/
+
 //$node_sql_query = "SELECT * FROM product_order_info WHERE product_sealcode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
 $node_sql_query = "SELECT * FROM product_order_info WHERE product_unicode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
 
@@ -54,11 +54,13 @@ if($node_count)
 	{
 		$data['isSuccess']="1";
 		$data['message']="data Fetched Successfully";
+		
+		 
 		$i=0;
 		while($node_fetch = mysql_fetch_array($node_sql))
 		{	
 			//print_r($node_fetch);
-
+			/*
 			$data['eseal']['product_sealcode']=$node_fetch['product_sealcode'];
 			
 			$data['eseal']['shipping_no']=$node_fetch['shipping_no'];
@@ -117,22 +119,15 @@ if($node_count)
 	
 			$data['eseal']['notes']=$node_fetch['notes'];
 			
-			
+		
+			*/	
 			
 			for($i=0;$i<1;$i++)
 			{
-			 
 			
 			$data['eseal']['scans'][$i]['customs_approve_status']=$node_fetch['customs_approve_status'];
 
-			if($node_fetch['customs_approve_status']==1)
-			{
-			$data['eseal']['scans'][$i]['customs_approve_note']=$node_fetch['terminals_name'].'-'.$node_fetch['ports_name'];	
-			}
-			else
-			{
-			$data['eseal']['scans'][$i]['customs_approve_note']="";	
-			}			
+			$data['eseal']['scans'][$i]['customs_approve_note']=$node_fetch['terminals_name'].'-'.$node_fetch['ports_name'];
 			
 			$data['eseal']['scans'][$i]['customs_approve_date']=$node_fetch['customs_approve_date'];
 			
@@ -145,7 +140,7 @@ if($node_count)
 			
 		}
 		
-		
+	
 	}
 	else
 	{
