@@ -29,6 +29,12 @@ $complaint_cnt=@mysql_num_rows($complaint_exe);
 
 </head>
 <body class="skin-blue sidebar-mini">
+<style>
+    th{
+        text-align: center;
+        text-transform: uppercase;
+    }
+</style>
 <div class="wrapper">
     <?php include "header.php"; ?>
 

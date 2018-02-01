@@ -33,6 +33,11 @@ $product_cnt=@mysql_num_rows($product_exe);
     <?php include "head1.php"; ?>
 </head>
 <body class="skin-blue sidebar-mini">
+<style>
+    th{
+        text-align: center;
+    }
+</style>
 <div class="wrapper">
     <?php include "header.php"; ?>
 
@@ -70,10 +75,10 @@ $product_cnt=@mysql_num_rows($product_exe);
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Product Name</th>
-                                        <th>Product Info</th>
-                                        <th>Product Price</th>
-                                        <th>Product Status</th>
+                                        <th>PRODUCT NAME</th>
+                                        <th>PRODUCT INFO</th>
+                                        <th>PRODUCT PRICE</th>
+                                        <th>PRODUCT STATUS</th>
                                         <th></th>
                                     </tr>
                                     </thead>

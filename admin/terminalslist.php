@@ -32,6 +32,12 @@ $terminal_cnt=@mysql_num_rows($terminal_exe);
     <?php include "head1.php"; ?>
 </head>
 <body class="skin-blue sidebar-mini">
+<style>
+    th{
+        text-align: center;
+        text-transform: uppercase;
+    }
+</style>
 <div class="wrapper">
     <?php include "header.php"; ?>
 
