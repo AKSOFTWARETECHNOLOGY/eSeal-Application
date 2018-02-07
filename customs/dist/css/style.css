@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+*{margin:0; padding:0;}
+body {
+   /* font-family: 'Montserrat', sans-serif !important; */
+   font-family: 'Merriweather', serif !important;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #228dcb !important;
+}
+
+.skin-blue .main-header .logo{
+    background-color: #228dcb !important;
+}
+
+.skin-blue .main-header .logo:hover {
+    background-color: #228dcb !important;
+}
+
+
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    /* background-color: #228dcb !important; */
+}
+
+.skin-blue .wrapper {
+    background-color: #ffffff !important;
+}
+
+.main-sidebar, .left-side {
+    position: absolute;
+    background-color: #228dcb !important;
+    padding-top: 0px !important;
+    margin: 60px 10px !important;
+}
+
+.skin-blue .sidebar-menu>li.header {
+    color: #ffffff !important;
+    background:  #228dcb !important;
+}
+
+
+.skin-blue .sidebar-menu>li:hover>a, .skin-blue .sidebar-menu>li.active>a {
+    color: #ffffff !important;
+    background: #228dcb !important;
+    border-left-color: #228dcb !important;
+}
+
+.skin-blue .sidebar a {
+    color: #ffffff !important;
+}
+
+.content-wrapper, .right-side, .main-footer {
+    /* margin-left: 250px !important; */
+    margin-left: 24% !important;
+    background: none !important;
+}
+
+.content-wrapper .box {
+    border-top: 0px solid #fff !important;
+}
+
+.content-wrapper .col-sm-6,.content-wrapper .col-sm-4,.content-wrapper .col-sm-3,.content-wrapper .col-sm-2{
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.content-wrapper .col-md-6,.content-wrapper .col-md-4,.content-wrapper .col-md-3,.content-wrapper .col-md-2{
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+
+.sidebar ul li a {
+    list-style: none;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    display: block;
+    line-height: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    margin-right: 10px;
+}
+
+
+.small-box {
+    color: #ffffff !important;
+    background: #228dcb !important;
+    min-height: 250px !important;
+}
+
+.small-box .inner {
+    min-height: 230px !important;
+}
+
+.content-header {
+    padding: 15px 15px 0 20px !important;
+}
+
+.btn-info:hover, .btn-info:active, .btn-info.hover {
+    background-color: #228dcb !important;
+    border-color: #228dcb !important;
+}
+
+.btn-info {
+    background-color: #228dcb !important;
+    border-color: #228dcb !important;
+}

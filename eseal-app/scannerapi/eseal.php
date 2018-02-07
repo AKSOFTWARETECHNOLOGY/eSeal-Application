@@ -23,16 +23,21 @@ $portid=$parameters_json['portid'];
 $sealnumber=$_REQUEST['sealnumber'];
 $portid=$_REQUEST['portid'];
 
+
+$sealnumber=str_replace("-","",$_REQUEST['sealnumber']);
+
 $active="1";
-/*
-$customs_approve_status="1";
-$customs_approve_date=date("Y-m-d");
-$customs_approve_time=date("h:i:s");
+
+
+$customs_approve_status="0";
+$customs_approve_date="";
+$customs_approve_time="";
 
 $sql="UPDATE `product_order_info` SET `customs_approve_status` = '$customs_approve_status',`customs_approve_date` = '$customs_approve_date',`customs_approve_time` = '$customs_approve_time'
 WHERE product_unicode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
 $exe=mysql_query($sql);
-*/
+
+
 //$node_sql_query = "SELECT * FROM product_order_info WHERE product_sealcode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
 $node_sql_query = "SELECT * FROM product_order_info WHERE product_unicode = '$sealnumber' AND destination_port='$portid' LIMIT 1";
 
@@ -123,20 +128,26 @@ if($node_count)
 			{
 			 
 			
-			$data['eseal']['scans'][$i]['customs_approve_status']=$node_fetch['customs_approve_status'];
+
 
 			if($node_fetch['customs_approve_status']==1)
 			{
-			$data['eseal']['scans'][$i]['customs_approve_note']=$node_fetch['terminals_name'].'-'.$node_fetch['ports_name'];	
+                $data['eseal']['scans'][$i]['customs_approve_status']=$node_fetch['customs_approve_status'];
+                $data['eseal']['scans'][$i]['customs_approve_note']=$node_fetch['terminals_name'].'-'.$node_fetch['ports_name'];
+                $data['eseal']['scans'][$i]['customs_approve_date']=$node_fetch['customs_approve_date'];
+                $data['eseal']['scans'][$i]['customs_approve_time']=$node_fetch['customs_approve_time'];
 			}
 			else
 			{
-			$data['eseal']['scans'][$i]['customs_approve_note']="";	
+                $data['eseal']['scans'][$i]['customs_approve_status']="0";
+                $data['eseal']['scans'][$i]['customs_approve_note']="";
+                $data['eseal']['scans'][$i]['customs_approve_date']=date("Y-m-d");
+                $data['eseal']['scans'][$i]['customs_approve_time']=date("h:i:s");
 			}			
 			
-			$data['eseal']['scans'][$i]['customs_approve_date']=$node_fetch['customs_approve_date'];
+
 			
-			$data['eseal']['scans'][$i]['customs_approve_time']=$node_fetch['customs_approve_time'];
+
 			
 			}
 			
@@ -150,7 +161,7 @@ if($node_count)
 	else
 	{
 	$data['isSuccess']="0";
-	$data['message']="data Not Fetched / Invalid Request";
+	$data['message']="Mismatched Seal and Port Details";
 	}
 
 echo html_entity_decode(json_encode($data));

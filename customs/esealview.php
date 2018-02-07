@@ -189,21 +189,20 @@ $attachment_cnt=mysql_num_rows($attachment_exe);
                                     <fieldset class="form-group col-md-12">
                                         <legend>Document Details</legend>
                                         <div class="form-group">
-                                <span class="account-input">
-                                 <?php if($attachment_cnt>0) { ?>
+                                        <span class="account-input">
+                                         <?php if($attachment_cnt>0) { ?>
 
-                                     <?php while($attachment_fet=mysql_fetch_array($attachment_exe)) { ?>
-                                         <a href="<?php echo $attachment_fet['eseal_attachment_path']; ?>" target="_blank">
-                                             <?php echo $attachment_fet['eseal_attachment_name']; ?>
-                                             <i class="fa fa-download"></i>
-                                         </a>
-                                         <br/>
-                                     <?php } ?>
+                                             <?php while($attachment_fet=mysql_fetch_array($attachment_exe)) { ?>
+                                                 <a href="<?php echo $attachment_fet['eseal_attachment_path']; ?>" target="_blank">
+                                                     <?php echo $attachment_fet['eseal_attachment_name']; ?>
+                                                     <i class="fa fa-download"></i>
+                                                 </a>
+                                                 <br/>
+                                             <?php } ?>
 
-                                 <?php } ?>
-                                 </span>
+                                         <?php } ?>
+                                         </span>
                                         </div>
-                                    </div><!-- Inner Column -->
 
                                 </div><!-- Inner Row -->
 
@@ -245,30 +244,14 @@ $attachment_cnt=mysql_num_rows($attachment_exe);
                                         ?>
                                     </fieldset>
                                 </div>
-                            </div>
+                            </div><!-- /.box-body -->
                         </form>
-                    </div><!-- /.box-body -->
+
 
                 </div><!-- /.box -->
             </div><!--/.col (left) -->
 
-                <!-- right column -->
-                <div class="col-md-3 hidden">
-                    <!-- Horizontal Form -->
-                    <div class="box box-danger" >
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Eseal</h3>
-                        </div><!-- /.box-header -->
-                        <!-- form start -->
-
-                        <div class="box-body">
-                            <div class="form-group col-md-12">
-                                <a href="eseallist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Eseal List</button></a>
-                            </div>
-                        </div><!-- /.box-body -->
-                    </div><!-- /.box -->
-                </div><!--/.col (right) -->
-    </div>   <!-- /.row -->
+            </div>   <!-- /.row -->
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 

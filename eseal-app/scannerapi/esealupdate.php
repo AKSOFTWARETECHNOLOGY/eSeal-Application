@@ -23,6 +23,8 @@ $portid=$parameters_json['portid'];
 $sealnumber=$_REQUEST['sealnumber'];
 $portid=$_REQUEST['portid'];
 
+$sealnumber=str_replace("-","",$_REQUEST['sealnumber']);
+
 $active="1";
 
 $customs_approve_status="1";
@@ -60,7 +62,7 @@ if($node_count)
 		while($node_fetch = mysql_fetch_array($node_sql))
 		{	
 			//print_r($node_fetch);
-			/*
+
 			$data['eseal']['product_sealcode']=$node_fetch['product_sealcode'];
 			
 			$data['eseal']['shipping_no']=$node_fetch['shipping_no'];
@@ -120,7 +122,7 @@ if($node_count)
 			$data['eseal']['notes']=$node_fetch['notes'];
 			
 		
-			*/	
+			 	
 			
 			for($i=0;$i<1;$i++)
 			{

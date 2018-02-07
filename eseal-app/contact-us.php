@@ -20,8 +20,7 @@ include "config.php";
     <script type="text/javascript" src="ssga/js/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="ssga/js/bootstrap.min.js"></script>
 
-    <style>
-        .contact-us {
+    <style> .Contact-Us {
             width: 100%;
             float: left;
             background: #f8f3f7;
@@ -46,7 +45,7 @@ include "config.php";
 </div>
 
 
-<div class="contact-us">
+<div class="Contact-Us">
 <div class="container">
 <div class="row">
 <h3>Contact Us</h3>
@@ -92,7 +91,7 @@ include "config.php";
 
 
 <div class="col-md-6 col-sm-6 col-xs-12 contact">
-    <p><b>Sri Sai Ganesh Associates,</b></p>
+    <p><b>SRI SAI GANESH ASSOCIATES,</b></p>
 
     <p>1-D First Floor, AM Tower, Old No: 239, New No: 36, 
     <p>Angappanaikken Street, Mannady,

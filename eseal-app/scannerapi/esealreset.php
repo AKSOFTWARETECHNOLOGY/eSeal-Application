@@ -23,6 +23,8 @@ $portid=$parameters_json['portid'];
 $sealnumber=$_REQUEST['sealnumber'];
 $portid=$_REQUEST['portid'];
 
+$sealnumber=str_replace("-","",$_REQUEST['sealnumber']);
+
 $active="1";
 
 $customs_approve_status="0";
