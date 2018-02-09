@@ -37,6 +37,11 @@ $product_fet=mysql_fetch_array($product_exe);
     <meta charset="UTF-8">
     <title>Admin Panel </title>
     <?php include "head1.php"; ?>
+    <style>
+        label{
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
@@ -94,6 +99,21 @@ $product_fet=mysql_fetch_array($product_exe);
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product Sale Date</label>
                                         <div class="col-sm-9"><div class=""> <?php echo $product_fet['product_sale_date']; ?></div></div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">Product Sale Date</label>
+                                        <div class="col-sm-9"><div class="">
+                                                <?php if($product_fet['product_sale_status'] == 0){
+                                                    ?>
+                                                    <button type="button" class="btn btn-success btn-xs"> Instock </button>
+                                                <?php
+                                                }
+                                                else if($product_fet['product_sale_status'] == 1){
+                                                    ?>
+                                                    <button type="button" class="btn btn-warning btn-xs"> Sold </button>
+                                                <?php
+                                                }?>
+                                            </div></div>
                                     </div>
                                 </div>
                                 <div class="col-md-1"></div>

@@ -202,6 +202,7 @@ LEFT JOIN `exporter_info` ON product_info.product_exporter_id = exporter_info.us
                                         <th class="hidden">Exporter Name</th>
                                         <th class="hidden">Sold Date</th>
                                         <th class="hidden">Sale Price</th>
+                                        <th class="hidden">Order Number</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -231,6 +232,7 @@ LEFT JOIN `exporter_info` ON product_info.product_exporter_id = exporter_info.us
                                             </td>
                                             <td class="hidden"><?php echo $product_fet['name_exporter']; ?></td>
                                             <td class="hidden"><?php echo $product_fet['product_sale_date']; ?></td>
+                                            <td class="hidden"><?php echo $product_fet['product_sale_price']; ?></td>
                                             <td class="hidden"><?php echo $product_fet['product_sale_price']; ?></td>
                                             <td>
                                                 <a href="inventoryview.php?inventory_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> View</button></a>

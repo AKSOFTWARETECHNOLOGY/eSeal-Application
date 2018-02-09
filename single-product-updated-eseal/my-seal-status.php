@@ -25,7 +25,14 @@ $userinfo=mysql_fetch_array($userinfo_exe);
 
 
 $product_exporter_id=$user_id;
-$product_info_order_sql="SELECT * FROM `product_order_info` WHERE `product_exporter_id`='$product_exporter_id' AND `product_item_status`='1'";
+$product_info_order_sql="SELECT poi.*, `exporter_info`.`name_exporter`, products.product_name, ports.ports_name, terminals.terminals_name
+FROM `product_order_info` AS `poi`
+LEFT JOIN `product_order` ON product_order.id = poi.product_order_id
+LEFT JOIN `products` ON products.id = poi.product_id
+LEFT JOIN `exporter_info` ON exporter_info.user_id = product_order.product_exporter_id
+LEFT JOIN `ports` ON ports.id = poi.destination_port
+LEFT JOIN `terminals` ON terminals.id = poi.terminal_name
+ WHERE poi.product_exporter_id='$product_exporter_id' AND poi.product_item_status='1'";
 $product_info_order_exe=mysql_query($product_info_order_sql);
 ?>
 <!doctype html>
@@ -149,13 +156,23 @@ $(document).ready(function() {
         <p style="color:red;font-weight:bold"> E-Seal Details Not Updated, Try Again.</p>
     <?php } ?>
     <div class="table-responsive">
-
         <table id="myTable" class="display table">
             <thead>
-            <th>SL.NO</th>
-            <th>E-SEAL NUMBER</th>
-            <th>STATUS</th>
-            <th></th>
+                <tr>
+                    <th>SL.NO</th>
+                    <th class="hidden">EXPORTER NAME</th>
+                    <th>E-SEAL NUMBER</th>
+                    <th>STATUS</th>
+                    <th class="hidden">IEC CODE</th>
+                    <th class="hidden">DESTINATION STATION</th>
+                    <th class="hidden">SEAL DATE AND TIME</th>
+                    <th class="hidden">TERMINAL NAME</th>
+                    <th class="hidden">SHIPPING BILL NUMBER</th>
+                    <th class="hidden">SHIPPING BILL DATE</th>
+                    <th class="hidden">CONTAINER NUMBER</th>
+                    <th class="hidden">TRUCK NUMBER</th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
             <?php if(mysql_num_rows($product_info_order_exe)>0) { ?>
@@ -164,12 +181,22 @@ $(document).ready(function() {
                 <?php $sl++; ?>
                     <tr>
                         <td><?php //print_r($product_info_order_fet); ?><?php echo $sl; ?></td>
+                        <td class="hidden"><?php echo $product_info_order_fet['name_exporter']; ?></td>
                         <td><?php echo $product_info_order_fet['product_sealcode']; ?></td>
                         <td><?php
                             if($product_info_order_fet['customs_approve_status']==0) { echo "Pending"; }
                             else if($product_info_order_fet['customs_approve_status']==1) { echo "Success"; }
                             else if($product_info_order_fet['customs_approve_status']==2) { echo "Tampered"; }
-                            else {  echo "Others"; }?></td>
+                            else {  echo "Others"; }?>
+                        </td>
+                        <td class="hidden"><?php echo $product_info_order_fet['iec_no']; ?></td>
+                        <td class="hidden"><?php echo $product_info_order_fet['ports_name'];; ?></td>
+                        <td class="hidden"><?php echo $product_info_order_fet['sealing_date'] . " " . $product_info_order_fet['sealing_time'];; ?></td>
+                        <td class="hidden"><?php echo $product_info_order_fet['terminals_name']; ?></td>
+                        <td class="hidden"><?php echo $product_info_order_fet['shipping_no']; ?></td>
+                        <td class="hidden"><?php echo $product_info_order_fet['shipping_date']; ?></td>
+                        <td class="hidden"><?php echo $product_info_order_fet['container_no']; ?></td>
+                        <td class="hidden"><?php echo $product_info_order_fet['trailer_truck_no']; ?></td>
                         <td>
                             <?php if($product_info_order_fet['product_item_status']==0) { ?>
                                 <a href="update-eseal.php?id=<?php echo $product_info_order_fet['id']; ?>">UPDATE SEAL</a>

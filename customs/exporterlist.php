@@ -35,6 +35,12 @@ $export_cnt=@mysql_num_rows($export_exe);
     <meta charset="UTF-8">
     <title>Customs Admin Panel </title>
     <?php include "head1.php"; ?>
+    <style>
+        th{
+            text-align: center;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
