@@ -131,7 +131,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
         <label>IEC Code <span class="required">*</span></label>
         <input type="text" name="icecode" id="icecode" class="register-input" maxlength="10" value="" placeholder="IEC Code" required />
         <span id="icecodestatus"></span>
-        <p>(IEC Code is unique 10 digit code issued by DGFT)</p>
+        <p>(IEC Code is unique 10 character code issued by DGFT)</p>
     </div>
 </div>
 </div>
@@ -240,7 +240,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
 <div class="col-md-4 col-sm-4 col-xs-12">
 <div class="form-group">
 <label>Aadhaar Number <span class="required">&nbsp;</span></label>
-<input type="text" name="AadhaarNumber" id="AadhaarNumber" class="register-input" maxlength="12" value="" />
+<input type="text" name="AadhaarNumber" id="AadhaarnNumber" class="register-input" maxlength="12" value="" />
 </div>
 </div><!-- Inner Column -->
 
@@ -408,7 +408,7 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                 },
                 icecode: {
                     required: true,
-                    number: true,
+                    alphanumeric: true,
                     minlength: 10,
                     maxlength: 10,
                 },
@@ -473,7 +473,6 @@ while($row1 = mysql_fetch_assoc($country_exe)) {
                 },
                 icecode: {
                     required: "Please provide a valid ICE Code",
-                    number: "IEC Code must be Number",
                     minlength: "Your IEC Code must be 10 characters long",
                     maxlength: "Your IEC Code must be 10 characters long"
                 },
