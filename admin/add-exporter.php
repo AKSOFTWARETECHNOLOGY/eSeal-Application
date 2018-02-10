@@ -325,6 +325,7 @@ $user_email=$_SESSION['adminuseremail'];
                 },
                 ieccode: {
                     required: true,
+                    alphanumeric: true,
                     minlength: 10,
                     maxlength: 10
                 },
