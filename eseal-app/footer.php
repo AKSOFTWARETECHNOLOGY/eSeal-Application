@@ -40,10 +40,11 @@
           <?php } ?>
           
           <ul class="social">
-              <li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="https://www.facebook.com/ssga.eseal.1" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://twitter.com/ssgaeseal" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://plus.google.com/113423698076331939580" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/ssga-e-seal-989506154/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+			  <li><a href="https://www.youtube.com/channel/UCEFTQPfpTllUDqFWrgFpV_A" target="_blank"><i class="fa fa-youtube"></i></a></li>
           </ul>
       </div>
 	  <div class="col-md-2 col-sm-2 col-xs-12 account">

@@ -149,11 +149,11 @@
                 <a href="#" class="hidden">WHY US</a>
             </nav>
             <nav class="text-right col-sm-3 col-md-3 col-lg-3">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-google-plus"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-pinterest"></i></a>
-                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="https://www.facebook.com/ssga.eseal.1" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/ssgaeseal" target="_blank"><i class="fa fa-twitter"></i></a>
+				<a href="https://plus.google.com/113423698076331939580" target="_blank"><i class="fa fa-google-plus"></i></a>
+				<a href="https://www.linkedin.com/in/ssga-e-seal-989506154/" target="_blank"><i class="fa fa-linkedin"></i></a>               
+                <a href="https://www.youtube.com/channel/UCEFTQPfpTllUDqFWrgFpV_A" target="_blank"><i class="fa fa-youtube"></i></a>
             </nav>
 
         </div><!-- Nav Top Menu -->
