@@ -185,9 +185,9 @@ $(document).ready(function() {
                         <td class="hidden"><?php echo $product_info_order_fet['name_exporter']; ?></td>
                         <td><?php echo $product_info_order_fet['product_sealcode']; ?></td>
                         <td><?php
-                            if($product_info_order_fet['customs_approve_status']==0) { echo "Pending"; }
-                            else if($product_info_order_fet['customs_approve_status']==1) { echo "Success"; }
-                            else if($product_info_order_fet['customs_approve_status']==2) { echo "Tampered"; }
+                            if($product_info_order_fet['customs_approve_status']==0) { ?> <button type="button" class="btn btn-warning btn-xs"> Pending </button> <?php }
+                            else if($product_info_order_fet['customs_approve_status']==1) { ?>  <button type="button" class="btn btn-success btn-xs"> Success </button> <?php }
+                            else if($product_info_order_fet['customs_approve_status']==2) { ?>  <button type="button" class="btn btn-error btn-xs"> Tampered </button> <?php }
                             else {  echo "Others"; }?>
                         </td>
                         <td class="hidden"><?php echo $product_info_order_fet['iec_no']; ?></td>

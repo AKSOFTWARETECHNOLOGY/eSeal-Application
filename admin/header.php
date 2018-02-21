@@ -1,12 +1,22 @@
-
+<style>
+table tr th {
+    text-transform: uppercase !important;
+}
+</style>
       <header class="main-header">
         <!-- Logo -->
-        <a href="dashboard.php" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><img src="images/ssg.png" width="100%"></span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><img src="images/ssg.png" width="40%"></span>
-        </a>
+          <a href="dashboard.php" class="logo">
+              <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini">
+          <img src="images/ssg.png" width="100%" class="hidden">
+          <img src="../images/logo-white.png" alt="Sri Sai Ganesh Associates" title="Sri Sai Ganesh Associates" class="img-responsive">
+          </span>
+              <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg">
+          <img src="../images/logo-white.png" alt="Sri Sai Ganesh Associates" title="Sri Sai Ganesh Associates" class="img-responsive" style="
+    width: 120%;padding: 10px 0px 0px 0px;" />
+          <img src="images/ssg.png" width="40%" class="hidden"></span>
+          </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -48,11 +58,11 @@
         </nav>
       </header>
       <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
+      <aside class="main-sidebar col-md-3 col-sm-3 col-xs-12" style="width:23% !important;padding: 0px !important;">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- Sidebar user panel -->
-          <div class="user-panel">
+          <div class="user-panel hidden">
             <div class="pull-left image">
               <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>

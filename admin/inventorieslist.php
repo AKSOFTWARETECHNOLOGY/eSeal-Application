@@ -167,6 +167,7 @@ LEFT JOIN `exporter_info` ON product_info.product_exporter_id = exporter_info.us
                                             <option value="1"> All </option>
                                             <option value="2"> Sold </option>
                                             <option value="3"> Instock </option>
+                                            <option value="4"> Return </option>
                                         </select>
                                     </div>
                                     <div class="col-sm-3">
@@ -227,6 +228,11 @@ LEFT JOIN `exporter_info` ON product_info.product_exporter_id = exporter_info.us
                                                 else if($product_fet['product_sale_status'] == 1){
                                                     ?>
                                                     <button type="button" class="btn btn-warning btn-xs"> Sold </button>
+                                                <?php
+                                                }
+                                                else if($product_fet['product_sale_status'] == 2){
+                                                    ?>
+                                                    <button type="button" class="btn btn-info btn-xs"> Return </button>
                                                 <?php
                                                 }?>
                                             </td>

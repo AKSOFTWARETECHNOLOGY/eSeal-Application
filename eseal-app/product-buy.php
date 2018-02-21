@@ -402,7 +402,7 @@ $(document).ready(function() {
                     </div><!-- Inner Column -->
                 </div><!-- Inner Row -->
 
-                <div class="buy-now">
+                <div class="buy-now hidden">
                     <div class="form-group last-otp">
                         <input type="hidden" name="ProductAmount" id="ProductAmount" value="<?php echo $product_fetch['product_price']; ?>" />
 
@@ -413,6 +413,14 @@ $(document).ready(function() {
                         <input type="hidden" name="GrandAmount" id="GrandAmount" value="0" />
 
                         <input type="submit" name="buyproduct" id="submitbutton" value="Buy Now" />
+                    </div>
+                </div>
+
+                <div class="buy-now">
+                    <div class="form-group last-otp">
+                        
+                        <input type="button" name="button" id="button" value="Buy Now" onclick="alert('BUY PROCESS STOPPED, TRY AGAIN LATER');" />
+
                     </div>
                 </div>
 

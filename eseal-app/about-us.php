@@ -49,7 +49,7 @@ include "config.php";
             <div class="col-md-6 col-sm-6 col-xs-12 freedom-list">
                 <ul>
                     <li style="font-size: 15px;line-height: 30px;text-align: justify;">
-                        Head quartered in Thanjavur District, Tamil Nadu, SSGA Group is a major player in Tamil Nadu and the flagship company . With a rich heritage and an exhaustive and diverse portfolio of successfully completed projects across industry sectors, the company is poised for the next era of growth. The key factors to its robust and stable growth are its client focus, its leadership, the adoption of the latest technology and its work force orientation. SSGA Group brings a host of capabilities to major  projects through an integrated approach that spans the life cycle of infrastructure, Education and Training, Media and Entertainment and Logistic Solutions to professional & support services are been Headed by Mr.Sridharan, along with the energetic team of professionals.
+                        Sri Sai Ganesh Associates (SSGA) Group is a major player located in Chennai,Tamil Nadu and the flagship company,  With a rich heritage and an exhaustive and diverse portfolio of successfully completed projects across industry sectors, the company is poised for the next era of growth. The key factors to its robust and stable growth are its client focus, its leadership, the adoption of the latest technology and its work force orientation. SSGA Group brings a host of capabilities to major  projects through an integrated approach that spans the life cycle of infrastructure, Education and Training, Media, Entertainment, Logistic and Supply Chain Solutions to professional & support services across the South India are been Headed by Mr.Sridharan, along with the energetic team of professionals.
                     </li>
                 </ul>
 
@@ -59,6 +59,7 @@ include "config.php";
                 <div class="common-item">
                     <div class="item">
                         <a href="javascript:void(0);"><img src="images/seal.jpg" alt="" title="" class="img-responsive"></a>
+
                     </div><!-- Item -->
 
                 </div><!-- Common Item -->

@@ -127,6 +127,14 @@ $eseal_other_cnt=@mysql_num_rows($eseal_other_exe);
     <meta charset="UTF-8">
     <title>Admin Panel | Dashboard</title>
     <?php include "head.php"; ?>
+      <style>
+          .small-box {
+              min-height: 300px !important;
+          }
+          .small-box .inner {
+              min-height: 300px !important;
+          }
+      </style>
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">

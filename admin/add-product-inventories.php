@@ -39,17 +39,20 @@ $seal_exe=mysql_query($seal_sql);
 $seal_fet=mysql_fetch_array($seal_exe);
 $code = $seal_fet['maxCode'];
 $seal = str_replace('SSGA', '', $code);
+
 if($seal=="")
 {
-    $maxseal =  10000001;
+    $maxseal =  "00000001";
+	$maxseal = str_pad($maxseal, 8, '0', STR_PAD_LEFT);
     $sealcode = 'SSGA' . $maxseal;
 }
 else
 {
-    $maxseal =  $seal + 1;
+    $maxseal =  $seal + "00000001";
+	$maxseal = str_pad($maxseal, 8, '0', STR_PAD_LEFT);
     $sealcode = 'SSGA' . $maxseal;
 }
-
+//echo $sealcode;
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,7 +70,6 @@ else
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
     <?php include "header.php"; ?>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -101,7 +103,6 @@ else
                                         <label class="col-sm-3 control-label">Product Name<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <select class="form-control" name="productId" id="productId">
-                                                <option value="0">Select Product</option>
                                                 <?php
                                                 foreach($prod_results as $key => $value){ ?>
                                                     <option value="<?php echo $value['id']; ?>"><?php echo $value['product_name']; ?></option>
@@ -109,7 +110,7 @@ else
                                                 }
                                                 ?>
                                             </select>
-                                            <input type="hidden" name="productPrice" value="<?php echo $product_fet['product_price'] ?>">
+                                            <input type="hidden" name="productPrice" value="<?php echo $value['product_price']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12 hidden">
@@ -127,7 +128,7 @@ else
                                     <div class="form-group col-md-12 hidden">
                                         <label class="col-sm-3 control-label">Product Sale Price</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control"  type="number" name="salePrice" id="salePrice" value="0" />
+                                            <input class="form-control"  type="number" name="salePrice" id="salePrice" value="<?php echo $value['product_price']; ?>" />
                                             <div id="errProdPrice" style="color:red"></div>
                                         </div>
                                     </div>

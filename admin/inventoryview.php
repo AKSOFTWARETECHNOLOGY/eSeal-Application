@@ -101,7 +101,7 @@ $product_fet=mysql_fetch_array($product_exe);
                                         <div class="col-sm-9"><div class=""> <?php echo $product_fet['product_sale_date']; ?></div></div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="col-sm-3 control-label">Product Sale Date</label>
+                                        <label class="col-sm-3 control-label">E-Seal Status</label>
                                         <div class="col-sm-9"><div class="">
                                                 <?php if($product_fet['product_sale_status'] == 0){
                                                     ?>
@@ -111,6 +111,11 @@ $product_fet=mysql_fetch_array($product_exe);
                                                 else if($product_fet['product_sale_status'] == 1){
                                                     ?>
                                                     <button type="button" class="btn btn-warning btn-xs"> Sold </button>
+                                                <?php
+                                                }
+                                                else if($product_fet['product_sale_status'] == 2){
+                                                    ?>
+                                                    <button type="button" class="btn btn-info btn-xs"> Return </button>
                                                 <?php
                                                 }?>
                                             </div></div>
@@ -135,7 +140,7 @@ $product_fet=mysql_fetch_array($product_exe);
                             <div class="form-group col-md-12">
                                 <a href="inventorieslist.php"><button type="submit" class="btn btn-warning col-md-12" style="margin-bottom:10px;" >Back to Product Inventories List</button></a>
                                 <a href="inventoryedit.php?inventory_id=<?php echo $product_fet['id']; ?>"><button type="button" class="btn btn-danger col-md-12" style="margin-bottom: 10px;"><i class="fa fa-pencil"></i> Edit</button></a>
-                                <a href="inventory-delete.php?delete=1&inventory_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Delete</button></a>
+                                <a href="inventory-delete.php?delete=1&inventory_id=<?php echo $product_fet['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');" class="hidden"><button type="button" class="btn btn-warning col-md-12"><i class="fa fa-trash-o"></i> Delete</button></a>
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->

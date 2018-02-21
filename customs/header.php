@@ -1,4 +1,8 @@
-
+<style>
+table tr th {
+    text-transform: uppercase !important;
+}
+</style>
       <header class="main-header">
         <!-- Logo -->
         <a href="dashboard.php" class="logo">

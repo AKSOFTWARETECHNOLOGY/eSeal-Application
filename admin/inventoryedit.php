@@ -83,19 +83,33 @@ $product_fet=mysql_fetch_array($product_exe);
                                     <div class="form-group col-md-12 hidden">
                                         <label class="col-sm-3 control-label">Product Code</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="unicode" id="unicode" value="<?php echo $product_fet['product_unicode']; ?>"/>
+                                            <input class="form-control" type="text" name="unicode" id="unicode" value="<?php echo $product_fet['product_unicode']; ?>" readonly/>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">E-Seal Number</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="sealcode" id="sealcode" value="<?php echo $product_fet['product_sealcode']; ?>"/>
+                                            <input class="form-control" type="text" name="sealcode" id="sealcode" value="<?php echo $product_fet['product_sealcode']; ?>" readonly/>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-3 control-label">Product sale Price<span class="req"> *</span></label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="number" name="salePrice" id="salePrice" value="<?php echo $product_fet['product_sale_price']; ?>" readonly/>
+                                            <div id="errProdPrice" style="color:red"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-3 control-label">E-Sale Status<span class="req"> *</span></label>
+                                        <div class="col-sm-9">
+                                             
+
+<select class="form-control" name="product_sale_status" id="product_sale_status" required> 
+<option value="0" <?php if($product_fet['product_sale_status'] == 0){ echo 'selected'; } ?>>Instock</option>
+<option value="1" <?php if($product_fet['product_sale_status'] == 1){ echo 'selected'; } ?>>Sold</option>
+<option value="2" <?php if($product_fet['product_sale_status'] == 2){ echo 'selected'; } ?>>Return</option>
+                                            </select>
+  
                                             <div id="errProdPrice" style="color:red"></div>
                                         </div>
                                     </div>

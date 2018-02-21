@@ -172,7 +172,7 @@ else
                             <a href="orderlist.php"><button type="submit" class="btn btn-warning col-md-2" style="margin-bottom:10px;float:right;" >Back to Product Order List</button></a>
                         </div>
                         <div class="row" style="line-height: 2px;"></div>
-                        <div class="row other-fields">
+                        <div class="row other-fields" style="padding-left: 30px;">
                             <div class="row">
                                 <div class="col-md-12"><h4 style="font-weight: bold; text-align: center;">Exporter</h4></div>
                             </div>
